@@ -73,7 +73,7 @@ export function SignupForm({ redirectNext }: { redirectNext?: string }) {
       return;
     }
     setSuccessMessage(
-      'Check your email for a confirmation link to finish setting up your account.'
+      "Check your email for a confirmation link to finish setting up your account. If you don't see it, check your spam or junk folder."
     );
   }
 
@@ -144,6 +144,10 @@ export function SignupForm({ redirectNext }: { redirectNext?: string }) {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-4 border-t border-border/60 bg-muted/20 pt-6">
+          <p className="text-center text-xs leading-relaxed text-muted-foreground">
+            We&apos;ll send a verification email after you sign up. If you don&apos;t see it in your
+            inbox, check your spam or junk folder.
+          </p>
           <Button type="submit" className="w-full" loading={isSubmitting} disabled={isSubmitting}>
             Sign up
           </Button>

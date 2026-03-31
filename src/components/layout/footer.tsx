@@ -9,6 +9,7 @@ const FOOTER_LINKS = [
   { label: 'Submit', href: '/submit' },
   { label: 'About', href: '/about' },
   { label: 'How It Works', href: '/how-it-works' },
+  { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Log in', href: '/login' },
   { label: 'Sign up', href: '/signup' },
 ] as const;
