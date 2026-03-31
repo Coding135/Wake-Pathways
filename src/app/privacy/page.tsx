@@ -131,10 +131,10 @@ export default function PrivacyPage() {
           <p>
             Privacy questions or requests:{' '}
             <a
-              href="mailto:privacy@wakepathways.com"
+              href="mailto:wakepathways@gmail.com"
               className="font-medium text-primary underline-offset-4 hover:underline"
             >
-              privacy@wakepathways.com
+              wakepathways@gmail.com
             </a>
           </p>
         </Section>

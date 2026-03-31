@@ -44,7 +44,9 @@ import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { OpportunityCard } from '@/components/opportunities/opportunity-card';
+import { OpportunityReviewsSection } from '@/components/opportunities/opportunity-reviews-section';
 import { SaveButton } from '@/components/opportunities/save-button';
+import { getOpportunityReviewsForDetail } from '@/lib/reviews/fetch-for-detail';
 import { ShareButton } from './share-button';
 import {
   CATEGORY_BADGE_CLASSES,
@@ -123,6 +125,8 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
     .filter((o) => o.id !== opp.id)
     .sort((a, b) => scoreSimilarity(b) - scoreSimilarity(a))
     .slice(0, 3);
+
+  const reviews = await getOpportunityReviewsForDetail(slug);
 
   const details = [
     {
@@ -443,6 +447,15 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
           </dl>
         </section>
       )}
+
+      <OpportunityReviewsSection
+        slug={slug}
+        initialApproved={reviews.approved}
+        initialMyReview={reviews.myReview}
+        userId={reviews.userId}
+        profileName={reviews.profileName}
+        loadError={reviews.loadError}
+      />
 
       {/* Similar opportunities */}
       {similar.length > 0 && (

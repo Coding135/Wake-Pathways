@@ -32,6 +32,8 @@ export type SubmissionStatus = 'pending' | 'approved' | 'rejected' | 'needs_edit
 
 export type SourceType = 'official' | 'community' | 'scraped' | 'manual' | 'csv_import';
 
+export type ReviewModerationStatus = 'pending' | 'approved' | 'rejected';
+
 // =============================================================================
 // Row types (select)
 // =============================================================================
@@ -167,6 +169,32 @@ export interface SavedOpportunity {
   id: string;
   user_id: string;
   opportunity_slug: string;
+  created_at: string;
+}
+
+/** public.opportunity_reviews */
+export interface OpportunityReview {
+  id: string;
+  user_id: string;
+  opportunity_slug: string;
+  rating: number;
+  title: string | null;
+  body: string;
+  display_name: string;
+  graduation_year: number | null;
+  grade_level: number | null;
+  participated: boolean;
+  would_recommend: boolean | null;
+  status: ReviewModerationStatus;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface OpportunityReviewFlag {
+  id: string;
+  review_id: string;
+  user_id: string;
+  note: string | null;
   created_at: string;
 }
 
@@ -310,6 +338,18 @@ export interface Database {
         Update: SavedOpportunityUpdate;
         Relationships: [];
       };
+      opportunity_reviews: {
+        Row: OpportunityReview;
+        Insert: Record<string, unknown>;
+        Update: Partial<OpportunityReview>;
+        Relationships: [];
+      };
+      opportunity_review_flags: {
+        Row: OpportunityReviewFlag;
+        Insert: Record<string, unknown>;
+        Update: Partial<OpportunityReviewFlag>;
+        Relationships: [];
+      };
     };
     Enums: {
       opportunity_category: OpportunityCategory;
@@ -320,6 +360,7 @@ export interface Database {
       verification_status: VerificationStatus;
       submission_status: SubmissionStatus;
       source_type: SourceType;
+      review_moderation_status: ReviewModerationStatus;
     };
   };
 }

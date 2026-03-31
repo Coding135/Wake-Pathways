@@ -13,6 +13,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { APP_SHORT_NAME } from '@/lib/constants';
+import { WCPSS_ENROLLMENT_DISPLAY, getAboutPageListingStats } from '@/lib/about-public-stats';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -68,6 +69,8 @@ const STEPS = [
 ];
 
 export default function AboutPage() {
+  const { verifiedActiveListings, opportunityCategoryCount } = getAboutPageListingStats();
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
       {/* Hero */}
@@ -90,6 +93,57 @@ export default function AboutPage() {
           did not know it existed. {APP_SHORT_NAME} makes it easier for students, parents,
           and counselors to find what matters.
         </p>
+      </section>
+
+      {/* Why this matters */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-bold tracking-tight text-foreground text-center">
+          Why this matters
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-muted-foreground">
+          Wake County has a large student population, but opportunities are often scattered across
+          school emails, nonprofit sites, university pages, and job boards. {APP_SHORT_NAME} brings
+          verified opportunities into one place so students can find them faster and miss fewer
+          deadlines.
+        </p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <div className="rounded-xl border border-border bg-white p-6 text-center shadow-sm dark:bg-card dark:shadow-none">
+            <p className="text-3xl font-bold tabular-nums tracking-tight text-foreground sm:text-4xl">
+              {WCPSS_ENROLLMENT_DISPLAY}
+            </p>
+            <p className="mt-2 text-sm font-medium text-foreground">students in WCPSS</p>
+            <p className="mt-1.5 text-xs leading-snug text-muted-foreground">
+              Public district enrollment, rounded (see{' '}
+              <a
+                href="https://www.wcpss.net/"
+                className="text-primary underline-offset-2 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                wcpss.net
+              </a>{' '}
+              for current figures).
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-white p-6 text-center shadow-sm dark:bg-card dark:shadow-none">
+            <p className="text-3xl font-bold tabular-nums tracking-tight text-foreground sm:text-4xl">
+              {verifiedActiveListings}
+            </p>
+            <p className="mt-2 text-sm font-medium text-foreground">verified opportunities</p>
+            <p className="mt-1.5 text-xs leading-snug text-muted-foreground">
+              Active listings on {APP_SHORT_NAME} today, sourced and checked against official pages.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-white p-6 text-center shadow-sm dark:bg-card dark:shadow-none">
+            <p className="text-3xl font-bold tabular-nums tracking-tight text-foreground sm:text-4xl">
+              {opportunityCategoryCount}
+            </p>
+            <p className="mt-2 text-sm font-medium text-foreground">browse categories</p>
+            <p className="mt-1.5 text-xs leading-snug text-muted-foreground">
+              From internships and jobs to scholarships, programs, volunteering, and more.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* What makes us different */}

@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { Shield, ArrowLeft, FileText, BarChart3, Users, Link2 } from 'lucide-react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { Shield, ArrowLeft, FileText, BarChart3, Users, Link2, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 
@@ -11,11 +11,14 @@ const ADMIN_NAV = [
   { label: 'Submissions', tab: 'submissions', icon: FileText },
   { label: 'Listings', tab: 'listings', icon: Users },
   { label: 'Verification', tab: 'verification', icon: Link2 },
+  { label: 'Reviews', href: '/admin/reviews', icon: Star },
 ] as const;
 
 export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentTab = searchParams.get('tab') ?? 'overview';
+  const onReviewsRoute = pathname.startsWith('/admin/reviews');
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -44,8 +47,28 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav className="flex gap-1 overflow-x-auto border-b border-border py-2">
-          {ADMIN_NAV.map(({ label, tab, icon: Icon }) => {
-            const isActive = currentTab === tab;
+          {ADMIN_NAV.map((item) => {
+            const Icon = item.icon;
+            if ('href' in item) {
+              const isActive = onReviewsRoute;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    'flex items-center gap-2 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                    isActive
+                      ? 'bg-primary/10 text-primary'
+                      : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+                  )}
+                >
+                  <Icon className="h-4 w-4" />
+                  {item.label}
+                </Link>
+              );
+            }
+            const { label, tab } = item;
+            const isActive = !onReviewsRoute && currentTab === tab;
             const href = tab === 'overview' ? '/admin' : `/admin?tab=${tab}`;
             return (
               <Link
