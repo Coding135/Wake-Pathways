@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { isPast } from 'date-fns';
 import { getOpportunityBySlug, getOpportunities } from '@/lib/mock-data';
+import { parseExploreReturnParam } from '@/lib/explore-search-params';
 import { CATEGORY_MAP } from '@/lib/constants';
 import type { OpportunityCategory } from '@/types/database';
 import {
@@ -83,8 +84,13 @@ const PAID_LABELS: Record<string, string> = {
   varies: 'Varies',
 };
 
+function firstSearchParam(v: string | string[] | undefined): string | undefined {
+  return Array.isArray(v) ? v[0] : v;
+}
+
 interface PageProps {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -97,8 +103,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function OpportunityDetailPage({ params }: PageProps) {
+export default async function OpportunityDetailPage({ params, searchParams }: PageProps) {
   const { slug } = await params;
+  const sp = await searchParams;
+  const returnRaw = firstSearchParam(sp.return);
+  const exploreContextQuery = parseExploreReturnParam(returnRaw);
+  const backHref =
+    exploreContextQuery !== null ? `/opportunities?${exploreContextQuery}` : '/opportunities';
+
   const opp = getOpportunityBySlug(slug);
   if (!opp) notFound();
 
@@ -172,7 +184,7 @@ export default async function OpportunityDetailPage({ params }: PageProps) {
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
       <Link
-        href="/opportunities"
+        href={backHref}
         className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
       >
         <ChevronLeft className="h-4 w-4" />
@@ -455,7 +467,11 @@ export default async function OpportunityDetailPage({ params }: PageProps) {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {similar.map((s) => (
-              <OpportunityCard key={s.id} opportunity={s} />
+              <OpportunityCard
+                key={s.id}
+                opportunity={s}
+                exploreContextQuery={exploreContextQuery ?? undefined}
+              />
             ))}
           </div>
         </section>

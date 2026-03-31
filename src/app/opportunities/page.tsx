@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Search } from 'lucide-react';
 import { getOpportunities } from '@/lib/mock-data';
+import { serializeExploreParams } from '@/lib/explore-search-params';
 import type { OpportunityCategory, RemoteType, PaidType, ApplicationStatus } from '@/types/database';
 import { OpportunityCard } from '@/components/opportunities/opportunity-card';
 import { OpportunityFilters } from '@/components/opportunities/opportunity-filters';
@@ -48,6 +49,8 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
     per_page: 12,
   });
 
+  const exploreContextQuery = serializeExploreParams(sp);
+
   return (
     <main className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-8">
@@ -82,7 +85,11 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
       {result.data.length > 0 ? (
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {result.data.map((opp) => (
-            <OpportunityCard key={opp.id} opportunity={opp} />
+            <OpportunityCard
+              key={opp.id}
+              opportunity={opp}
+              exploreContextQuery={exploreContextQuery || undefined}
+            />
           ))}
         </div>
       ) : (
@@ -129,13 +136,7 @@ function Pagination({
   searchParams: Record<string, string | string[] | undefined>;
 }) {
   function pageHref(page: number) {
-    const params = new URLSearchParams();
-    for (const [key, value] of Object.entries(searchParams)) {
-      if (value !== undefined) {
-        const v = Array.isArray(value) ? value[0] : value;
-        if (v) params.set(key, v);
-      }
-    }
+    const params = new URLSearchParams(serializeExploreParams(searchParams));
     if (page > 1) params.set('page', String(page));
     else params.delete('page');
     const qs = params.toString();

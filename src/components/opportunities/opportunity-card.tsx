@@ -56,15 +56,29 @@ const PAID_LABELS: Record<string, string> = {
 interface OpportunityCardProps {
   opportunity: OpportunityWithOrganization;
   className?: string;
+  /**
+   * When set, detail URL includes `?return=…` so Back links and navigation can
+   * restore this /opportunities query string (whitelisted keys only).
+   */
+  exploreContextQuery?: string;
 }
 
-export function OpportunityCard({ opportunity, className }: OpportunityCardProps) {
+export function OpportunityCard({
+  opportunity,
+  className,
+  exploreContextQuery,
+}: OpportunityCardProps) {
   const CategoryIcon = CATEGORY_ICONS[opportunity.category];
   const categoryInfo = CATEGORY_MAP[opportunity.category];
 
+  const href =
+    exploreContextQuery && exploreContextQuery.length > 0
+      ? `/opportunities/${opportunity.slug}?return=${encodeURIComponent(exploreContextQuery)}`
+      : `/opportunities/${opportunity.slug}`;
+
   return (
     <Link
-      href={`/opportunities/${opportunity.slug}`}
+      href={href}
       className={cn(
         'group relative flex flex-col rounded-xl border border-border bg-card shadow-sm',
         'transition-all duration-200 hover:shadow-md hover:-translate-y-0.5',
