@@ -72,7 +72,7 @@ export function OpportunityCard({
     <Link
       href={href}
       className={cn(
-        'group relative flex flex-col rounded-xl border border-border bg-white shadow-[0_1px_3px_rgba(28,25,23,0.06)]',
+        'group relative flex flex-col rounded-xl border border-border bg-white shadow-[var(--elevated-card-shadow)]',
         'transition-all duration-200 hover:shadow-md hover:-translate-y-0.5',
         'dark:border-border dark:bg-card dark:shadow-sm',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]',
@@ -82,18 +82,18 @@ export function OpportunityCard({
       <div className="flex flex-col gap-3 p-5 pb-0">
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-1.5">
-            <Badge className={cn('gap-1', CATEGORY_BADGE_CLASSES[opportunity.category])}>
+            <Badge variant="opportunity" className={CATEGORY_BADGE_CLASSES[opportunity.category]}>
               <CategoryIcon className="h-3 w-3" />
               {categoryInfo.label}
             </Badge>
-            <Badge className={cn('gap-1', getApplicationStatusColor(opportunity.application_status))}>
+            <Badge variant="opportunity" className={getApplicationStatusColor(opportunity.application_status)}>
               {getStatusLabel(opportunity.application_status)}
             </Badge>
           </div>
 
           <div className="flex items-center gap-1">
             {opportunity.verified && (
-              <Badge className={cn('gap-1', VERIFIED_OPPORTUNITY_BADGE_CLASSES)}>
+              <Badge variant="opportunity" className={VERIFIED_OPPORTUNITY_BADGE_CLASSES}>
                 <CheckCircle2 className="h-3 w-3" />
                 Verified
               </Badge>

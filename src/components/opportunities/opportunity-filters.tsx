@@ -437,12 +437,12 @@ export function OpportunityFilters() {
 
 function FilterChip({ label, onRemove }: { label: string; onRemove: () => void }) {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-primary/5 px-2.5 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/15 dark:bg-primary/15 dark:ring-primary/30">
+    <span className="opp-filter-chip inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium">
       {label}
       <button
         type="button"
         onClick={onRemove}
-        className="ml-0.5 rounded-full p-0.5 hover:bg-primary/20 transition-colors"
+        className="opp-filter-chip-remove ml-0.5 rounded-full p-0.5 transition-colors"
         aria-label={`Remove ${label} filter`}
       >
         <X className="h-3 w-3" />

@@ -122,22 +122,20 @@ export function SavedAuthenticatedView({ initialSlugs }: { initialSlugs: string[
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.04 }}
               >
-                <div className="rounded-xl border border-border bg-white p-5 shadow-[0_1px_3px_rgba(28,25,23,0.06)] transition-shadow hover:shadow-md dark:bg-card dark:shadow-sm">
+                <div className="rounded-xl border border-border bg-white p-5 shadow-[var(--elevated-card-shadow)] transition-shadow hover:shadow-md dark:bg-card dark:shadow-sm">
                   <div className="flex items-start gap-4">
                     <div className="min-w-0 flex-1">
                       <div className="mb-2 flex flex-wrap items-center gap-1.5">
                         {category && (
-                          <Badge className={cn('text-xs', getCategoryColor(opp.category))}>
+                          <Badge variant="opportunity" className={getCategoryColor(opp.category)}>
                             {category.label}
                           </Badge>
                         )}
-                        <Badge
-                          className={cn('text-xs', getApplicationStatusColor(opp.application_status))}
-                        >
+                        <Badge variant="opportunity" className={getApplicationStatusColor(opp.application_status)}>
                           {getStatusLabel(opp.application_status)}
                         </Badge>
                         {opp.verified && (
-                          <Badge className={cn('gap-1 text-xs', VERIFIED_OPPORTUNITY_BADGE_CLASSES)}>
+                          <Badge variant="opportunity" className={VERIFIED_OPPORTUNITY_BADGE_CLASSES}>
                             <CheckCircle2 className="h-3 w-3" />
                             Verified
                           </Badge>

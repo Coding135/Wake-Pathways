@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./opportunity-badges.css";
 
 @theme inline {
   --color-background: var(--background);

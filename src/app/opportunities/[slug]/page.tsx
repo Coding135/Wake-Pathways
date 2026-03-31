@@ -186,15 +186,15 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
       {/* Header */}
       <header className="mb-8">
         <div className="flex flex-wrap items-center gap-2 mb-3">
-          <Badge className={cn('gap-1', CATEGORY_BADGE_CLASSES[opp.category])}>
+          <Badge variant="opportunity" className={CATEGORY_BADGE_CLASSES[opp.category]}>
             <CategoryIcon className="h-3 w-3" />
             {categoryInfo.label}
           </Badge>
-          <Badge className={cn('gap-1', getApplicationStatusColor(opp.application_status))}>
+          <Badge variant="opportunity" className={getApplicationStatusColor(opp.application_status)}>
             {getStatusLabel(opp.application_status)}
           </Badge>
           {opp.verified && (
-            <Badge className={cn('gap-1', VERIFIED_OPPORTUNITY_BADGE_CLASSES)}>
+            <Badge variant="opportunity" className={VERIFIED_OPPORTUNITY_BADGE_CLASSES}>
               <CheckCircle2 className="h-3 w-3" />
               Verified
             </Badge>

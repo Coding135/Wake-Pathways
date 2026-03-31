@@ -65,8 +65,8 @@ export default function HomePage() {
   return (
     <>
       {/* ===== Hero ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-background via-[#faf8fc] to-blue-50/35 dark:from-primary/10 dark:via-background dark:to-blue-950/40">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(99,102,241,0.05),transparent_52%),radial-gradient(ellipse_at_bottom_left,rgba(13,148,136,0.04),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top_right,rgba(129,140,248,0.12),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.08),transparent_50%)]" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50/90 via-[#fbf9fc] to-violet-100/50 dark:from-primary/10 dark:via-background dark:to-blue-950/40">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(99,102,241,0.08),transparent_52%),radial-gradient(ellipse_at_bottom_left,rgba(13,148,136,0.07),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top_right,rgba(129,140,248,0.12),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.08),transparent_50%)]" />
 
         <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 sm:pb-28 sm:pt-28 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
@@ -117,7 +117,8 @@ export default function HomePage() {
       </section>
 
       {/* ===== Featured ===== */}
-      <AnimatedSection className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <AnimatedSection className="bg-[var(--section-featured-bg)]">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="flex items-end justify-between mb-8">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
@@ -151,11 +152,12 @@ export default function HomePage() {
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
+        </div>
       </AnimatedSection>
 
       {/* ===== Deadlines Coming Up ===== */}
       {deadlinesComingUp.length > 0 && (
-        <AnimatedSection className="border-y border-amber-200/40 bg-amber-50/45 dark:border-amber-900/40 dark:bg-amber-950/25">
+        <AnimatedSection className="border-y border-[color:var(--section-deadlines-border)] bg-[var(--section-deadlines-bg)]">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
             <div className="flex items-end justify-between mb-8">
               <div>
@@ -185,7 +187,7 @@ export default function HomePage() {
       )}
 
       {/* ===== Categories ===== */}
-      <AnimatedSection className="bg-muted/30">
+      <AnimatedSection className="bg-[var(--section-browse-bg)]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">

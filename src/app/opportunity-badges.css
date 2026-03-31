@@ -1,0 +1,328 @@
+/**
+ * Theme-isolated opportunity UI: light and dark each define their own --badge-* / --home-* tokens.
+ * No shared Tailwind one-liners; .dark only overrides variables.
+ */
+
+/* -------------------------------------------------------------------------- */
+/* Section / page surfaces (light vs dark) */
+/* -------------------------------------------------------------------------- */
+:root {
+  --surface-explore: #f8fafc;
+  --section-featured-bg: #f5f2ed;
+  --section-deadlines-bg: #ece4d9;
+  --section-deadlines-border: rgb(180 83 9 / 0.2);
+  --section-browse-bg: #ffffff;
+  --elevated-card-shadow: 0 1px 3px rgb(28 25 23 / 0.07);
+  --filter-chip-bg: rgb(13 148 136 / 0.06);
+  --filter-chip-ring: rgb(13 148 136 / 0.16);
+  --filter-chip-hover-bg: rgb(13 148 136 / 0.1);
+}
+
+.dark {
+  --surface-explore: #0c0a09;
+  --section-featured-bg: #141210;
+  --section-deadlines-bg: rgba(120 53 15 / 0.18);
+  --section-deadlines-border: rgb(251 191 36 / 0.22);
+  --section-browse-bg: #141210;
+  --elevated-card-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
+  --filter-chip-bg: rgb(45 212 191 / 0.12);
+  --filter-chip-ring: rgb(45 212 191 / 0.28);
+  --filter-chip-hover-bg: rgb(45 212 191 / 0.18);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Opportunity pill base (no fill from Badge default variant) */
+/* -------------------------------------------------------------------------- */
+.opp-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Category badges — light tokens in :root, dark overrides in .dark */
+/* -------------------------------------------------------------------------- */
+:root {
+  --badge-cat-internship-bg: #eff6ff;
+  --badge-cat-internship-fg: #1d4ed8;
+  --badge-cat-internship-ring: rgb(29 78 216 / 0.14);
+  --badge-cat-volunteer-bg: #ecfdf5;
+  --badge-cat-volunteer-fg: #047857;
+  --badge-cat-volunteer-ring: rgb(4 120 87 / 0.14);
+  --badge-cat-scholarship-bg: #f3e8ff;
+  --badge-cat-scholarship-fg: #7c3aed;
+  --badge-cat-scholarship-ring: rgb(124 58 237 / 0.14);
+  --badge-cat-summer-program-bg: #fff7ed;
+  --badge-cat-summer-program-fg: #c2410c;
+  --badge-cat-summer-program-ring: rgb(194 65 12 / 0.14);
+  --badge-cat-competition-bg: #fff1f2;
+  --badge-cat-competition-fg: #be123c;
+  --badge-cat-competition-ring: rgb(190 18 60 / 0.14);
+  --badge-cat-leadership-bg: #eef2ff;
+  --badge-cat-leadership-fg: #4338ca;
+  --badge-cat-leadership-ring: rgb(67 56 202 / 0.14);
+  --badge-cat-job-bg: #f0fdfa;
+  --badge-cat-job-fg: #0f766e;
+  --badge-cat-job-ring: rgb(15 118 110 / 0.16);
+  --badge-cat-mentorship-bg: #fdf2f8;
+  --badge-cat-mentorship-fg: #be185d;
+  --badge-cat-mentorship-ring: rgb(190 24 93 / 0.14);
+  --badge-cat-other-bg: #f9fafb;
+  --badge-cat-other-fg: #4b5563;
+  --badge-cat-other-ring: rgb(75 85 99 / 0.12);
+}
+
+.dark {
+  --badge-cat-internship-bg: rgba(30 58 138 / 0.5);
+  --badge-cat-internship-fg: #dbeafe;
+  --badge-cat-internship-ring: rgb(96 165 250 / 0.35);
+  --badge-cat-volunteer-bg: rgba(6 78 59 / 0.5);
+  --badge-cat-volunteer-fg: #a7f3d0;
+  --badge-cat-volunteer-ring: rgb(52 211 153 / 0.35);
+  --badge-cat-scholarship-bg: rgba(88 28 135 / 0.5);
+  --badge-cat-scholarship-fg: #e9d5ff;
+  --badge-cat-scholarship-ring: rgb(192 132 252 / 0.35);
+  --badge-cat-summer-program-bg: rgba(124 45 18 / 0.45);
+  --badge-cat-summer-program-fg: #ffedd5;
+  --badge-cat-summer-program-ring: rgb(251 146 60 / 0.35);
+  --badge-cat-competition-bg: rgba(136 19 55 / 0.45);
+  --badge-cat-competition-fg: #ffe4e6;
+  --badge-cat-competition-ring: rgb(251 113 133 / 0.35);
+  --badge-cat-leadership-bg: rgba(49 46 129 / 0.5);
+  --badge-cat-leadership-fg: #e0e7ff;
+  --badge-cat-leadership-ring: rgb(129 140 248 / 0.35);
+  --badge-cat-job-bg: rgba(19 78 74 / 0.55);
+  --badge-cat-job-fg: #99f6e4;
+  --badge-cat-job-ring: rgb(45 212 191 / 0.35);
+  --badge-cat-mentorship-bg: rgba(131 24 67 / 0.45);
+  --badge-cat-mentorship-fg: #fce7f3;
+  --badge-cat-mentorship-ring: rgb(244 114 182 / 0.35);
+  --badge-cat-other-bg: rgba(63 63 70 / 0.65);
+  --badge-cat-other-fg: #e4e4e7;
+  --badge-cat-other-ring: rgb(161 161 170 / 0.3);
+}
+
+.opp-cat-internship {
+  background-color: var(--badge-cat-internship-bg);
+  color: var(--badge-cat-internship-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-cat-internship-ring);
+}
+.opp-cat-volunteer {
+  background-color: var(--badge-cat-volunteer-bg);
+  color: var(--badge-cat-volunteer-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-cat-volunteer-ring);
+}
+.opp-cat-scholarship {
+  background-color: var(--badge-cat-scholarship-bg);
+  color: var(--badge-cat-scholarship-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-cat-scholarship-ring);
+}
+.opp-cat-summer-program {
+  background-color: var(--badge-cat-summer-program-bg);
+  color: var(--badge-cat-summer-program-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-cat-summer-program-ring);
+}
+.opp-cat-competition {
+  background-color: var(--badge-cat-competition-bg);
+  color: var(--badge-cat-competition-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-cat-competition-ring);
+}
+.opp-cat-leadership {
+  background-color: var(--badge-cat-leadership-bg);
+  color: var(--badge-cat-leadership-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-cat-leadership-ring);
+}
+.opp-cat-job {
+  background-color: var(--badge-cat-job-bg);
+  color: var(--badge-cat-job-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-cat-job-ring);
+}
+.opp-cat-mentorship {
+  background-color: var(--badge-cat-mentorship-bg);
+  color: var(--badge-cat-mentorship-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-cat-mentorship-ring);
+}
+.opp-cat-other {
+  background-color: var(--badge-cat-other-bg);
+  color: var(--badge-cat-other-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-cat-other-ring);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Application status badges */
+/* -------------------------------------------------------------------------- */
+:root {
+  --badge-st-open-bg: #ecfdf5;
+  --badge-st-open-fg: #047857;
+  --badge-st-open-ring: rgb(4 120 87 / 0.16);
+  --badge-st-closing-soon-bg: #fffbeb;
+  --badge-st-closing-soon-fg: #b45309;
+  --badge-st-closing-soon-ring: rgb(180 83 9 / 0.2);
+  --badge-st-rolling-bg: #e0f2fe;
+  --badge-st-rolling-fg: #0369a1;
+  --badge-st-rolling-ring: rgb(3 105 161 / 0.16);
+  --badge-st-closed-bg: #f3f4f6;
+  --badge-st-closed-fg: #4b5563;
+  --badge-st-closed-ring: rgb(75 85 99 / 0.14);
+  --badge-st-unknown-bg: #f9fafb;
+  --badge-st-unknown-fg: #6b7280;
+  --badge-st-unknown-ring: rgb(107 114 128 / 0.14);
+}
+
+.dark {
+  --badge-st-open-bg: rgba(6 78 59 / 0.45);
+  --badge-st-open-fg: #a7f3d0;
+  --badge-st-open-ring: rgb(52 211 153 / 0.32);
+  --badge-st-closing-soon-bg: rgba(120 53 15 / 0.4);
+  --badge-st-closing-soon-fg: #fde68a;
+  --badge-st-closing-soon-ring: rgb(251 191 36 / 0.3);
+  --badge-st-rolling-bg: rgba(12 74 110 / 0.45);
+  --badge-st-rolling-fg: #bae6fd;
+  --badge-st-rolling-ring: rgb(56 189 248 / 0.32);
+  --badge-st-closed-bg: rgba(39 39 42 / 0.85);
+  --badge-st-closed-fg: #d4d4d8;
+  --badge-st-closed-ring: rgb(113 113 122 / 0.35);
+  --badge-st-unknown-bg: rgba(39 39 42 / 0.65);
+  --badge-st-unknown-fg: #a1a1aa;
+  --badge-st-unknown-ring: rgb(113 113 122 / 0.28);
+}
+
+.opp-st-open {
+  background-color: var(--badge-st-open-bg);
+  color: var(--badge-st-open-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-st-open-ring);
+}
+.opp-st-closing-soon {
+  background-color: var(--badge-st-closing-soon-bg);
+  color: var(--badge-st-closing-soon-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-st-closing-soon-ring);
+}
+.opp-st-rolling {
+  background-color: var(--badge-st-rolling-bg);
+  color: var(--badge-st-rolling-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-st-rolling-ring);
+}
+.opp-st-closed {
+  background-color: var(--badge-st-closed-bg);
+  color: var(--badge-st-closed-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-st-closed-ring);
+}
+.opp-st-unknown {
+  background-color: var(--badge-st-unknown-bg);
+  color: var(--badge-st-unknown-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-st-unknown-ring);
+}
+
+/* Verified listing pill */
+:root {
+  --badge-verified-listing-bg: #ecfdf5;
+  --badge-verified-listing-fg: #047857;
+  --badge-verified-listing-ring: rgb(4 120 87 / 0.16);
+}
+.dark {
+  --badge-verified-listing-bg: rgba(6 78 59 / 0.45);
+  --badge-verified-listing-fg: #a7f3d0;
+  --badge-verified-listing-ring: rgb(52 211 153 / 0.32);
+}
+.opp-verified-listing {
+  background-color: var(--badge-verified-listing-bg);
+  color: var(--badge-verified-listing-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-verified-listing-ring);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Homepage category grid icon tiles (tint + icon color) */
+/* -------------------------------------------------------------------------- */
+:root {
+  --home-tile-internship-bg: #eff6ff;
+  --home-tile-internship-fg: #1d4ed8;
+  --home-tile-volunteer-bg: #ecfdf5;
+  --home-tile-volunteer-fg: #047857;
+  --home-tile-scholarship-bg: #f3e8ff;
+  --home-tile-scholarship-fg: #7c3aed;
+  --home-tile-summer-program-bg: #fff7ed;
+  --home-tile-summer-program-fg: #c2410c;
+  --home-tile-competition-bg: #fff1f2;
+  --home-tile-competition-fg: #be123c;
+  --home-tile-leadership-bg: #eef2ff;
+  --home-tile-leadership-fg: #4338ca;
+  --home-tile-job-bg: #f0fdfa;
+  --home-tile-job-fg: #0f766e;
+  --home-tile-mentorship-bg: #fdf2f8;
+  --home-tile-mentorship-fg: #be185d;
+  --home-tile-other-bg: #f3f4f6;
+  --home-tile-other-fg: #4b5563;
+}
+
+.dark {
+  --home-tile-internship-bg: rgba(30 58 138 / 0.4);
+  --home-tile-internship-fg: #bfdbfe;
+  --home-tile-volunteer-bg: rgba(6 78 59 / 0.4);
+  --home-tile-volunteer-fg: #6ee7b7;
+  --home-tile-scholarship-bg: rgba(88 28 135 / 0.4);
+  --home-tile-scholarship-fg: #e9d5ff;
+  --home-tile-summer-program-bg: rgba(124 45 18 / 0.4);
+  --home-tile-summer-program-fg: #fdba74;
+  --home-tile-competition-bg: rgba(136 19 55 / 0.4);
+  --home-tile-competition-fg: #fecdd3;
+  --home-tile-leadership-bg: rgba(49 46 129 / 0.4);
+  --home-tile-leadership-fg: #c7d2fe;
+  --home-tile-job-bg: rgba(19 78 74 / 0.45);
+  --home-tile-job-fg: #5eead4;
+  --home-tile-mentorship-bg: rgba(131 24 67 / 0.4);
+  --home-tile-mentorship-fg: #f9a8d4;
+  --home-tile-other-bg: rgba(63 63 70 / 0.55);
+  --home-tile-other-fg: #e4e4e7;
+}
+
+.home-tile-internship {
+  background-color: var(--home-tile-internship-bg);
+  color: var(--home-tile-internship-fg);
+}
+.home-tile-volunteer {
+  background-color: var(--home-tile-volunteer-bg);
+  color: var(--home-tile-volunteer-fg);
+}
+.home-tile-scholarship {
+  background-color: var(--home-tile-scholarship-bg);
+  color: var(--home-tile-scholarship-fg);
+}
+.home-tile-summer-program {
+  background-color: var(--home-tile-summer-program-bg);
+  color: var(--home-tile-summer-program-fg);
+}
+.home-tile-competition {
+  background-color: var(--home-tile-competition-bg);
+  color: var(--home-tile-competition-fg);
+}
+.home-tile-leadership {
+  background-color: var(--home-tile-leadership-bg);
+  color: var(--home-tile-leadership-fg);
+}
+.home-tile-job {
+  background-color: var(--home-tile-job-bg);
+  color: var(--home-tile-job-fg);
+}
+.home-tile-mentorship {
+  background-color: var(--home-tile-mentorship-bg);
+  color: var(--home-tile-mentorship-fg);
+}
+.home-tile-other {
+  background-color: var(--home-tile-other-bg);
+  color: var(--home-tile-other-fg);
+}
+
+/* Explore filter chips (active filters row) */
+.opp-filter-chip {
+  background-color: var(--filter-chip-bg);
+  color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--filter-chip-ring);
+}
+.opp-filter-chip-remove:hover {
+  background-color: var(--filter-chip-hover-bg);
+}

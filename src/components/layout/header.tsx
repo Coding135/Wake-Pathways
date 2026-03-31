@@ -130,8 +130,8 @@ export function Header() {
           <Link
             href="/submit"
             className={cn(
-              buttonVariants({ variant: 'outline', size: 'sm' }),
-              'hidden h-9 gap-2 border-primary/40 bg-white text-primary hover:bg-primary/5 md:inline-flex dark:border-primary/50 dark:bg-transparent dark:hover:bg-primary/10'
+              buttonVariants({ size: 'sm' }),
+              'hidden h-9 gap-2 shadow-sm ring-1 ring-primary/15 hover:bg-primary/90 md:inline-flex'
             )}
           >
             <Send className="h-3.5 w-3.5" />
@@ -228,10 +228,7 @@ export function Header() {
                 <Link
                   href="/submit"
                   onClick={closeMobile}
-                  className={cn(
-                    buttonVariants({ variant: 'outline', size: 'sm' }),
-                    'w-full gap-2 border-primary/40 text-primary hover:bg-primary/5 dark:border-primary/50 dark:hover:bg-primary/10'
-                  )}
+                  className={cn(buttonVariants({ size: 'sm' }), 'w-full gap-2 shadow-sm ring-1 ring-primary/15')}
                 >
                   <Send className="h-3.5 w-3.5" />
                   Submit an Opportunity

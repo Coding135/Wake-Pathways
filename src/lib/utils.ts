@@ -24,17 +24,14 @@ export function formatDeadline(
   return format(d, 'MMM d');
 }
 
+/** Status pill classes — colors live in `opportunity-badges.css` per theme. */
 export function getApplicationStatusColor(status: ApplicationStatus): string {
   const colors: Record<ApplicationStatus, string> = {
-    open: 'bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20 dark:bg-green-950/45 dark:text-green-200 dark:ring-green-400/35',
-    closing_soon:
-      'bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 dark:bg-amber-950/45 dark:text-amber-200 dark:ring-amber-400/35',
-    rolling:
-      'bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-600/20 dark:bg-blue-950/45 dark:text-blue-200 dark:ring-blue-400/35',
-    closed:
-      'bg-gray-50 text-gray-600 ring-1 ring-inset ring-gray-500/20 dark:bg-stone-800/90 dark:text-stone-300 dark:ring-stone-500/30',
-    unknown:
-      'bg-gray-50 text-gray-500 ring-1 ring-inset ring-gray-500/20 dark:bg-stone-800/70 dark:text-stone-400 dark:ring-stone-500/25',
+    open: 'opp-st-open',
+    closing_soon: 'opp-st-closing-soon',
+    rolling: 'opp-st-rolling',
+    closed: 'opp-st-closed',
+    unknown: 'opp-st-unknown',
   };
   return colors[status];
 }
