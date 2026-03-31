@@ -29,22 +29,22 @@
   --radius-xl: 1rem;
 }
 
-/* Light theme: warm cream page (#fcfaf7), white elevated surfaces, crisp borders (reference screenshots). */
+/* Light: crisp neutral white / cool gray (no warm cream). Dark: neutral zinc charcoal (no brown cast). */
 :root {
-  --background: #fcfaf7;
-  --foreground: #1c1917;
+  --background: #ffffff;
+  --foreground: #18181b;
   --primary: #0d9488;
   --primary-foreground: #ffffff;
-  --secondary: #f4f1eb;
-  --secondary-foreground: #292524;
-  --muted: #f0ece6;
-  --muted-foreground: #57534e;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
   --accent: #d97706;
   --accent-foreground: #ffffff;
   --card: #ffffff;
-  --card-foreground: #1c1917;
-  --border: #e8e4df;
-  --input: #e0dcd6;
+  --card-foreground: #18181b;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
   --ring: #0d9488;
   --ring-offset: #ffffff;
   --destructive: #dc2626;
@@ -54,22 +54,22 @@
 
 .dark {
   color-scheme: dark;
-  --background: #0c0a09;
-  --foreground: #fafaf9;
+  --background: #09090b;
+  --foreground: #fafafa;
   --primary: #2dd4bf;
   --primary-foreground: #042f2e;
-  --secondary: #292524;
-  --secondary-foreground: #e7e5e4;
-  --muted: #1c1917;
-  --muted-foreground: #a8a29e;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
   --accent: #fbbf24;
-  --accent-foreground: #1c1917;
-  --card: #1c1917;
-  --card-foreground: #fafaf9;
+  --accent-foreground: #18181b;
+  --card: #18181b;
+  --card-foreground: #fafafa;
   --border: #3f3f46;
-  --input: #3f3f46;
+  --input: #27272a;
   --ring: #5eead4;
-  --ring-offset: #0c0a09;
+  --ring-offset: #09090b;
   --destructive: #f87171;
   --success: #34d399;
   --warning: #fbbf24;

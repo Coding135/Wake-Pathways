@@ -8,23 +8,23 @@
 /* -------------------------------------------------------------------------- */
 :root {
   --surface-explore: #f8fafc;
-  --section-featured-bg: #f5f2ed;
-  --section-deadlines-bg: #ece4d9;
-  --section-deadlines-border: rgb(180 83 9 / 0.2);
+  --section-featured-bg: #f8fafc;
+  --section-deadlines-bg: #f1f5f9;
+  --section-deadlines-border: rgb(100 116 139 / 0.22);
   --section-browse-bg: #ffffff;
-  --elevated-card-shadow: 0 1px 3px rgb(28 25 23 / 0.07);
+  --elevated-card-shadow: 0 1px 3px rgb(0 0 0 / 0.06);
   --filter-chip-bg: rgb(13 148 136 / 0.06);
   --filter-chip-ring: rgb(13 148 136 / 0.16);
   --filter-chip-hover-bg: rgb(13 148 136 / 0.1);
 }
 
 .dark {
-  --surface-explore: #0c0a09;
-  --section-featured-bg: #141210;
-  --section-deadlines-bg: rgba(120 53 15 / 0.18);
-  --section-deadlines-border: rgb(251 191 36 / 0.22);
-  --section-browse-bg: #141210;
-  --elevated-card-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
+  --surface-explore: #09090b;
+  --section-featured-bg: #09090b;
+  --section-deadlines-bg: #18181b;
+  --section-deadlines-border: rgb(63 63 70 / 0.65);
+  --section-browse-bg: #09090b;
+  --elevated-card-shadow: 0 1px 3px rgb(0 0 0 / 0.45);
   --filter-chip-bg: rgb(45 212 191 / 0.12);
   --filter-chip-ring: rgb(45 212 191 / 0.28);
   --filter-chip-hover-bg: rgb(45 212 191 / 0.18);

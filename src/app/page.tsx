@@ -65,8 +65,20 @@ export default function HomePage() {
   return (
     <>
       {/* ===== Hero ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50/90 via-[#fbf9fc] to-violet-100/50 dark:from-primary/10 dark:via-background dark:to-blue-950/40">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(99,102,241,0.08),transparent_52%),radial-gradient(ellipse_at_bottom_left,rgba(13,148,136,0.07),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top_right,rgba(129,140,248,0.12),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.08),transparent_50%)]" />
+      {/* Light hero: screenshot 3 — bright center, soft cool lavender/ice-blue at periphery (no green/mint wash). */}
+      <section className="relative overflow-hidden bg-white dark:bg-[#09090b]">
+        <div
+          className="pointer-events-none absolute inset-0 dark:hidden"
+          style={{
+            backgroundImage: [
+              'radial-gradient(ellipse 110% 90% at 50% -15%, #ffffff 0%, transparent 52%)',
+              'radial-gradient(ellipse 85% 70% at 100% 0%, rgb(219 234 254 / 0.42), transparent 55%)',
+              'radial-gradient(ellipse 80% 65% at 0% 100%, rgb(224 231 255 / 0.38), transparent 50%)',
+              'radial-gradient(ellipse 100% 80% at 50% 100%, rgb(238 242 255 / 0.25), transparent 45%)',
+            ].join(', '),
+          }}
+        />
+        <div className="pointer-events-none absolute inset-0 hidden dark:block bg-[radial-gradient(ellipse_100%_80%_at_50%_-10%,rgb(39_39_42/0.55),transparent_55%),radial-gradient(ellipse_70%_50%_at_100%_100%,rgb(30_58_138/0.12),transparent_50%)]" />
 
         <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 sm:pb-28 sm:pt-28 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
@@ -77,7 +89,7 @@ export default function HomePage() {
 
             <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Real opportunities for{' '}
-              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent dark:from-teal-300 dark:to-blue-400">
+              <span className="bg-gradient-to-r from-teal-500 via-sky-500 to-blue-600 bg-clip-text text-transparent dark:from-teal-300 dark:via-sky-300 dark:to-blue-400">
                 Wake County teens
               </span>
             </h1>
@@ -100,7 +112,7 @@ export default function HomePage() {
                     href={`/opportunities?category=${cat}`}
                     className={cn(
                       'inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1.5 text-sm font-medium text-foreground shadow-sm',
-                      'hover:border-stone-300/90 hover:bg-stone-50/90',
+                      'hover:border-zinc-300 hover:bg-zinc-50',
                       'dark:border-border dark:bg-card dark:hover:bg-secondary'
                     )}
                   >
