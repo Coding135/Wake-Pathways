@@ -10,9 +10,12 @@ import {
 } from 'react';
 import type { User } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/client';
+import type { UserProfileDisplay } from '@/lib/auth/user-display';
 
 type AuthContextValue = {
   user: User | null;
+  /** Server-loaded `profiles.full_name`; stays in sync when the root layout refreshes. */
+  profile: UserProfileDisplay;
 };
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
@@ -20,16 +23,23 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 export function AuthProvider({
   children,
   initialUser,
+  initialProfile,
 }: {
   children: ReactNode;
   initialUser: User | null;
+  initialProfile: UserProfileDisplay;
 }) {
   const [user, setUser] = useState<User | null>(initialUser);
+  const [profile, setProfile] = useState<UserProfileDisplay>(initialProfile);
   const supabase = useMemo(() => createClient(), []);
 
   useEffect(() => {
     setUser(initialUser);
   }, [initialUser]);
+
+  useEffect(() => {
+    setProfile(initialProfile);
+  }, [initialProfile]);
 
   useEffect(() => {
     const {
@@ -40,7 +50,7 @@ export function AuthProvider({
     return () => subscription.unsubscribe();
   }, [supabase]);
 
-  const value = useMemo(() => ({ user }), [user]);
+  const value = useMemo(() => ({ user, profile }), [user, profile]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

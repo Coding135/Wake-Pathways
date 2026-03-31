@@ -37,6 +37,16 @@ export default async function RootLayout({
     data: { user },
   } = await supabase.auth.getUser();
 
+  let initialProfile: { full_name: string | null } | null = null;
+  if (user) {
+    const { data } = await supabase
+      .from('profiles')
+      .select('full_name')
+      .eq('id', user.id)
+      .maybeSingle();
+    initialProfile = data ?? null;
+  }
+
   return (
     <html
       lang="en"
@@ -44,7 +54,7 @@ export default async function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body className="min-h-screen flex flex-col bg-background text-foreground">
-        <Providers initialUser={user}>
+        <Providers initialUser={user} initialProfile={initialProfile}>
           <AuthConfigBanner />
           <Header />
           <main className="flex-1">{children}</main>

@@ -9,9 +9,13 @@ import { cn } from '@/lib/utils';
 import { createClient } from '@/lib/supabase/client';
 import { useAuth } from '@/contexts/auth-context';
 import { buttonVariants } from '@/components/ui/button';
+import {
+  getUserDisplayInitial,
+  getUserDisplayLabel,
+} from '@/lib/auth/user-display';
 
 export function AccountMenu({ className }: { className?: string }) {
-  const { user } = useAuth();
+  const { user, profile } = useAuth();
   const router = useRouter();
   const queryClient = useQueryClient();
   const [open, setOpen] = useState(false);
@@ -34,7 +38,9 @@ export function AccountMenu({ className }: { className?: string }) {
 
   if (!user?.email) return null;
 
-  const initial = user.email?.trim()?.[0]?.toUpperCase() ?? '?';
+  const displayLabel = getUserDisplayLabel(user, profile);
+  const email = user.email.trim();
+  const initial = getUserDisplayInitial(displayLabel, email);
 
   async function signOut() {
     const supabase = createClient();
@@ -56,7 +62,7 @@ export function AccountMenu({ className }: { className?: string }) {
         )}
         aria-expanded={open}
         aria-haspopup="menu"
-        aria-label={`Account menu for ${user.email}`}
+        aria-label={`Account menu for ${displayLabel}`}
       >
         <span
           className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary/15 text-xs font-semibold text-primary sm:hidden"
@@ -65,7 +71,9 @@ export function AccountMenu({ className }: { className?: string }) {
           {initial}
         </span>
         <User className="hidden h-3.5 w-3.5 shrink-0 sm:block" aria-hidden />
-        <span className="hidden max-w-[100px] truncate sm:inline md:max-w-[140px]">{user.email}</span>
+        <span className="hidden max-w-[100px] truncate sm:inline md:max-w-[140px]">
+          {displayLabel}
+        </span>
         <ChevronDown
           className={cn('h-3.5 w-3.5 shrink-0 transition-transform', open && 'rotate-180')}
           aria-hidden
@@ -78,7 +86,7 @@ export function AccountMenu({ className }: { className?: string }) {
         >
           <div className="border-b border-border px-3 py-2.5">
             <p className="text-xs font-medium text-muted-foreground">Signed in</p>
-            <p className="truncate text-sm font-medium text-foreground">{user.email}</p>
+            <p className="truncate text-sm font-medium text-foreground">{displayLabel}</p>
           </div>
           <Link
             role="menuitem"

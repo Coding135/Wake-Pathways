@@ -53,14 +53,13 @@ export function SignupForm({ redirectNext }: { redirectNext?: string }) {
     setSuccessMessage('');
     const supabase = createClient();
     const emailRedirectTo = callbackUrl(next);
+    const trimmedName = values.fullName?.trim();
     const { data, error } = await supabase.auth.signUp({
       email: values.email.trim(),
       password: values.password,
       options: {
         emailRedirectTo: emailRedirectTo || undefined,
-        data: {
-          full_name: values.fullName?.trim() || '',
-        },
+        data: trimmedName ? { full_name: trimmedName } : {},
       },
     });
     if (error) {

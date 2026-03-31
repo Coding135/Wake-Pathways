@@ -14,9 +14,10 @@ import { BRAND_LOGO_MARK_32 } from '@/lib/brand';
 import { buttonVariants } from '@/components/ui/button';
 import { useAuth } from '@/contexts/auth-context';
 import { AccountMenu } from '@/components/layout/account-menu';
+import { getUserDisplayLabel } from '@/lib/auth/user-display';
 
 export function Header() {
-  const { user } = useAuth();
+  const { user, profile } = useAuth();
   const pathname = usePathname();
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -179,9 +180,11 @@ export function Header() {
               })}
               <div className="mt-2 space-y-2 border-t border-border pt-3">
                 {user ? (
-                  <div className="rounded-lg border border-border bg-muted/30 px-3 py-2 text-xs text-muted-foreground">
+                  <div className="rounded-lg border border-border bg-muted/30 px-3 py-2 text-xs text-muted-foreground min-w-0">
                     Signed in as{' '}
-                    <span className="font-medium text-foreground">{user.email}</span>
+                    <span className="font-medium text-foreground">
+                      {getUserDisplayLabel(user, profile)}
+                    </span>
                   </div>
                 ) : (
                   <div className="flex flex-col gap-2">

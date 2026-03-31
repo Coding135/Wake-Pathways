@@ -4,13 +4,16 @@ import { useState, type ReactNode } from 'react';
 import type { User } from '@supabase/supabase-js';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from '@/contexts/auth-context';
+import type { UserProfileDisplay } from '@/lib/auth/user-display';
 
 export function Providers({
   children,
   initialUser,
+  initialProfile,
 }: {
   children: ReactNode;
   initialUser: User | null;
+  initialProfile: UserProfileDisplay;
 }) {
   const [queryClient] = useState(
     () =>
@@ -26,7 +29,9 @@ export function Providers({
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider initialUser={initialUser}>{children}</AuthProvider>
+      <AuthProvider initialUser={initialUser} initialProfile={initialProfile}>
+        {children}
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
