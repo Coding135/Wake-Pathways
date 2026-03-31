@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils';
 export const metadata: Metadata = {
   title: 'Explore Opportunities - Wake Pathways',
   description:
-    'Discover internships, volunteer work, scholarships, and more for Wake County teens.',
+    'Wake County–first internships, volunteering, and leadership, plus Triangle and NC options. Scholarships include local, statewide, and a small curated set of national awards.',
 };
 
 interface PageProps {
@@ -54,8 +54,11 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
         <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Explore Opportunities
         </h1>
-        <p className="mt-2 text-lg text-muted-foreground">
-          Discover internships, volunteer work, scholarships, and more for Wake County teens
+        <p className="mt-2 max-w-3xl text-lg text-muted-foreground">
+          Built for Wake County students: jobs, internships, volunteering, and in-person leadership stay
+          mostly local and regional. Scholarships also cover Triangle and North Carolina programs, plus a
+          short list of strong national awards we curate for high schoolers—not a generic national
+          directory.
         </p>
       </div>
 

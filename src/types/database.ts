@@ -82,6 +82,10 @@ export interface Opportunity {
   is_active: boolean;
   time_commitment: string | null;
   tags: string[];
+  /** Practical skills participants may develop; empty when not enough to infer. */
+  skills: string[];
+  /** When the source documents limited seats, cohort size, or caps. */
+  capacity_note: string | null;
   created_at: string;
   updated_at: string;
 }

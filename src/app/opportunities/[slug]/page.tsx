@@ -23,6 +23,7 @@ import {
   Trophy,
   Sparkles,
   MessageCircle,
+  Layers,
 } from 'lucide-react';
 import { isPast } from 'date-fns';
 import { getOpportunityBySlug, getOpportunities } from '@/lib/mock-data';
@@ -163,6 +164,9 @@ export default async function OpportunityDetailPage({ params }: PageProps) {
     ...(opp.time_commitment
       ? [{ icon: Clock, label: 'Time Commitment', value: opp.time_commitment }]
       : []),
+    ...(opp.capacity_note
+      ? [{ icon: Layers, label: 'Capacity', value: opp.capacity_note }]
+      : []),
   ];
 
   return (
@@ -275,6 +279,24 @@ export default async function OpportunityDetailPage({ params }: PageProps) {
           <div className="prose prose-sm max-w-none text-muted-foreground leading-relaxed">
             {opp.full_description.split('\n').map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {opp.skills.length > 0 && (
+        <section className="mb-8">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+            Skills you may build
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {opp.skills.map((skill) => (
+              <span
+                key={skill}
+                className="rounded-full border border-border/70 bg-muted/35 px-3 py-1 text-xs font-medium text-foreground/90"
+              >
+                {skill}
+              </span>
             ))}
           </div>
         </section>

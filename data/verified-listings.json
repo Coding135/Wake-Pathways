@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-31T12:00:00Z",
-  "total_listings": 117,
+  "generated_at": "2026-04-01T12:00:00Z",
+  "total_listings": 122,
   "organizations": [
     {
       "id": "org-001",
@@ -465,6 +465,46 @@
       "website": "https://www.mathnasium.com/cary",
       "description": "Locally owned Mathnasium learning center in Cary offering math instruction jobs and instructor development for qualified students and adults.",
       "is_verified": true
+    },
+    {
+      "id": "org-059",
+      "name": "Coca-Cola Scholars Foundation",
+      "slug": "coca-cola-scholars-foundation",
+      "website": "https://www.coca-colascholarsfoundation.org",
+      "description": "National nonprofit awarding achievement-based college scholarships to graduating high school seniors across the United States.",
+      "is_verified": true
+    },
+    {
+      "id": "org-060",
+      "name": "Michael & Susan Dell Foundation",
+      "slug": "michael-susan-dell-foundation",
+      "website": "https://www.dellscholars.org",
+      "description": "Philanthropic foundation operating the Dell Scholars college scholarship and completion program for Pell-eligible high school seniors.",
+      "is_verified": true
+    },
+    {
+      "id": "org-061",
+      "name": "Jack Kent Cooke Foundation",
+      "slug": "jack-kent-cooke-foundation",
+      "website": "https://www.jkcf.org",
+      "description": "National foundation awarding competitive scholarships to high-achieving students with financial need for undergraduate study.",
+      "is_verified": true
+    },
+    {
+      "id": "org-062",
+      "name": "Golden LEAF Foundation",
+      "slug": "golden-leaf-foundation",
+      "website": "https://goldenleaf.org",
+      "description": "North Carolina nonprofit supporting economic investment and scholarship programs benefiting students and communities, especially in rural and economically distressed regions of the state.",
+      "is_verified": true
+    },
+    {
+      "id": "org-063",
+      "name": "Amazon Future Engineer",
+      "slug": "amazon-future-engineer",
+      "website": "https://www.amazonfutureengineer.com",
+      "description": "Amazon’s K–12 computer science and scholarship initiative, including a national scholarship administered with Scholarship America for computer science–bound high school seniors.",
+      "is_verified": true
     }
   ],
   "opportunities": [
@@ -508,6 +548,14 @@
         "city-program",
         "work-experience"
       ],
+      "skills": [
+        "Communication",
+        "Leadership",
+        "Time management",
+        "Teamwork",
+        "Professional skills"
+      ],
+      "capacity_note": "Program caps at about 200 paid positions each summer (per City materials); selection is competitive.",
       "source_notes": "Application period was January 21 to March 18, 2026. Applications are now closed for the 2026 season."
     },
     {
@@ -1133,6 +1181,14 @@
         "summer",
         "competitive"
       ],
+      "skills": [
+        "Communication",
+        "Patient interaction",
+        "Teamwork",
+        "Time management",
+        "Professionalism"
+      ],
+      "capacity_note": "Limited seats; competitive program with a very short annual application window per UNC Rex.",
       "source_notes": "Application window was March 12 to 13, 2026. Now closed for 2026."
     },
     {
@@ -1674,6 +1730,14 @@
         "summer",
         "wcpss"
       ],
+      "skills": [
+        "Communication",
+        "Professional skills",
+        "Teamwork",
+        "Time management",
+        "Career exploration"
+      ],
+      "capacity_note": "Summer cohort is limited to a defined number of WCPSS students each year per WakeEd materials.",
       "source_notes": "Check WakeEd Partnership website for updated 2026 dates and application information."
     },
     {
@@ -2100,10 +2164,10 @@
       "title": "Cary Teen Council",
       "organization_id": "org-022",
       "category": "leadership",
-      "short_summary": "A Town of Cary advisory council for high school students who meet quarterly and participate in community service projects.",
-      "full_description": "The Cary Teen Council is a leadership and advisory group for high school students who live or attend school in Cary, NC. Members meet quarterly to discuss issues affecting teens, plan community service projects, and provide input on Town programming. The council gives teens a voice in local government and offers a chance to develop civic engagement skills.",
-      "eligibility": "High school students in Cary.",
-      "grades_min": 9,
+      "short_summary": "A Town of Cary advisory council for students in grades 8–12 who live or attend school in Cary; quarterly meetings, community service, and a $35 registration fee.",
+      "full_description": "The Cary Teen Council is a leadership and advisory group for students in grades 8 through 12 who live or attend school in Cary, NC. Members meet quarterly to discuss issues affecting teens, plan community service projects, and provide input on Town programming. The council gives teens a voice in local government and helps build civic engagement skills. Participation requires a $35 registration fee as published on the Town’s Teen Council page.",
+      "eligibility": "Students in grades 8–12 who live or attend school in Cary, NC (confirm current year rules on the official page).",
+      "grades_min": 8,
       "grades_max": 12,
       "age_min": null,
       "age_max": null,
@@ -2112,8 +2176,8 @@
       "remote_type": "in_person",
       "paid_type": "unpaid",
       "compensation_text": null,
-      "cost_text": null,
-      "is_free": true,
+      "cost_text": "$35 registration fee (annual, per Town of Cary Teen Council information).",
+      "is_free": false,
       "deadline_type": "rolling",
       "deadline_at": null,
       "application_status": "rolling",
@@ -2123,7 +2187,7 @@
       "source_type": "official",
       "verified": true,
       "verification_status": "verified",
-      "last_verified_at": "2026-03-30T00:00:00Z",
+      "last_verified_at": "2026-03-31T18:00:00Z",
       "featured": false,
       "is_active": true,
       "time_commitment": "Quarterly meetings plus community service events",
@@ -2133,7 +2197,15 @@
         "community-service",
         "cary"
       ],
-      "source_notes": null
+      "skills": [
+        "Leadership",
+        "Public speaking",
+        "Teamwork",
+        "Communication",
+        "Civic engagement"
+      ],
+      "capacity_note": null,
+      "source_notes": "Registration fee and grade eligibility confirmed against Town program materials; verify any changes on the official Cary page."
     },
     {
       "id": "opp-041",
@@ -2219,6 +2291,14 @@
         "selective",
         "state-program"
       ],
+      "skills": [
+        "Research",
+        "Writing",
+        "Time management",
+        "Leadership",
+        "Communication"
+      ],
+      "capacity_note": "Small statewide cohort; highly competitive nomination and selection through schools.",
       "source_notes": "Selections for 2026 were made in March. Apply through your school counselor in the fall for the following summer."
     },
     {
@@ -2263,6 +2343,14 @@
         "selective",
         "state-program"
       ],
+      "skills": [
+        "Research",
+        "Data analysis",
+        "Writing",
+        "Communication",
+        "Teamwork"
+      ],
+      "capacity_note": "Limited residential seats across UNC System host sites; highly competitive admission.",
       "source_notes": "Application deadline was January 5, 2026. Selections have been made for 2026."
     },
     {
@@ -2471,7 +2559,7 @@
         "leadership",
         "national"
       ],
-      "source_notes": "Deadline for 2026-2027 was October 28, 2025. Applications closed."
+      "source_notes": "National scholarship (curated). Wake Pathways prioritizes Wake, Triangle, and NC awards first; this listing is included as a selective, reputable option for local seniors. Deadline for 2026-2027 was October 28, 2025. Applications closed."
     },
     {
       "id": "opp-049",
@@ -4613,14 +4701,14 @@
       "verification_status": "verified",
       "last_verified_at": "2026-03-30T00:00:00Z",
       "featured": false,
-      "is_active": true,
+      "is_active": false,
       "time_commitment": "Multi-day national events on published dates.",
       "tags": [
         "4-h",
         "leadership",
         "national"
       ],
-      "source_notes": "Wake participants coordinate through Wake County 4-H and NC 4-H."
+      "source_notes": "Hidden from browse under local-first scope: out-of-state travel summits are not a core fit for Wake Pathways. Wake County 4-H members should still ask their extension office about national delegations if interested."
     },
     {
       "id": "opp-102",
@@ -4825,6 +4913,14 @@
         "selective",
         "duke"
       ],
+      "skills": [
+        "Research",
+        "Writing",
+        "Data analysis",
+        "Communication",
+        "Teamwork"
+      ],
+      "capacity_note": "Highly selective; only a small number of high school students are admitted alongside college and medical student tracks.",
       "source_notes": "The Summer 2026 application window for high school and college students closed January 2, 2026. Watch the DCRI page in late fall for the next cycle."
     },
     {
@@ -4867,6 +4963,14 @@
         "state-program",
         "ncssm"
       ],
+      "skills": [
+        "STEM",
+        "Communication",
+        "Teamwork",
+        "Writing",
+        "Research"
+      ],
+      "capacity_note": "Cohort size is limited per site and application cycle; Wake-eligible students compete for NCSSM-Durham seats.",
       "source_notes": "As of verification, the site states applications are no longer accepted for Summer 2026 and lists February 5, 2026 as the portal close date. Join the NCSSM mailing list for the next cycle."
     },
     {
@@ -4909,6 +5013,14 @@
         "ncssm",
         "engineering"
       ],
+      "skills": [
+        "STEM",
+        "Teamwork",
+        "Communication",
+        "Time management",
+        "Research"
+      ],
+      "capacity_note": "Each course caps enrollment and may fill before the summer; Dogwood Health Trust funds 60 tuition-free seats annually for qualifying students in specified western NC counties per NCSSM.",
       "source_notes": "Apply early; courses close when full. Financial aid questions are addressed in Accelerator admissions FAQs."
     },
     {
@@ -4950,6 +5062,12 @@
         "camp",
         "ncssm"
       ],
+      "skills": [
+        "STEM",
+        "Teamwork",
+        "Communication"
+      ],
+      "capacity_note": "Day-camp seats per course are limited; applications accepted until filled.",
       "source_notes": "Designed for rising fifth and sixth graders; share with younger siblings or mentors supporting middle grades."
     },
     {
@@ -4993,6 +5111,14 @@
         "summer",
         "ncssm"
       ],
+      "skills": [
+        "Teamwork",
+        "Communication",
+        "Leadership",
+        "Problem solving",
+        "Presentation skills"
+      ],
+      "capacity_note": "Small statewide cohort drawn from students who already completed a Teamship experience; residential week at NCSSM-Durham.",
       "source_notes": "NCSSM states 2026 application details should post in February on the College Board Teamship Showcase page. Program requires prior Teamship participation."
     },
     {
@@ -5164,6 +5290,14 @@
         "internship",
         "raleigh"
       ],
+      "skills": [
+        "Teamwork",
+        "Communication",
+        "Problem solving",
+        "Time management",
+        "Professional skills"
+      ],
+      "capacity_note": "Structured high school internship cohort; competitive selection and firm summer dates per posting.",
       "source_notes": "Structured data on the posting listed datePosted 2026-03-30 and validThrough 2026-04-01; compensation is not stated in the summary text—confirm on Workday before applying."
     },
     {
@@ -5292,6 +5426,252 @@
         "stem"
       ],
       "source_notes": "Separate from Online Immersion; confirm current year application status, deadlines, and costs on immersion.summer.wfu.edu."
+    },
+    {
+      "id": "opp-118",
+      "slug": "coca-cola-scholars-program",
+      "title": "Coca-Cola Scholars Program",
+      "organization_id": "org-059",
+      "category": "scholarship",
+      "short_summary": "National $20,000 achievement-based scholarship for graduating high school seniors who demonstrate leadership, service, and impact.",
+      "full_description": "The Coca-Cola Scholars Program recognizes students in their final year of high school for leadership, service, and commitment to school and community. Each year 150 scholars are selected to receive a $20,000 scholarship. The process includes an initial online application phase followed by semifinalist and regional finalist steps with essays, transcripts, and interviews for advancing students.",
+      "eligibility": "U.S. high school students graduating the award cycle academic year with plans for accredited post-secondary study; citizenship/residency rules on the official site; minimum GPA and eligibility exclusions (including Coca-Cola employment ties) apply.",
+      "grades_min": 12,
+      "grades_max": 12,
+      "age_min": null,
+      "age_max": null,
+      "location_city": null,
+      "location_county": null,
+      "remote_type": "remote",
+      "paid_type": "paid",
+      "compensation_text": "$20,000 scholarship for recipients (per foundation materials).",
+      "cost_text": null,
+      "is_free": true,
+      "deadline_type": "none",
+      "deadline_at": null,
+      "application_status": "unknown",
+      "official_application_url": "https://www.coca-colascholarsfoundation.org/apply/",
+      "source_url": "https://www.coca-colascholarsfoundation.org/apply/",
+      "source_name": "Coca-Cola Scholars Foundation",
+      "source_type": "official",
+      "verified": true,
+      "verification_status": "verified",
+      "last_verified_at": "2026-03-31T18:00:00Z",
+      "featured": false,
+      "is_active": true,
+      "time_commitment": "Phase 1 application window is typically early fall each year; see official dates.",
+      "tags": [
+        "scholarship",
+        "leadership",
+        "national",
+        "college-prep"
+      ],
+      "skills": [
+        "Leadership",
+        "Communication",
+        "Writing",
+        "Community engagement",
+        "Time management"
+      ],
+      "capacity_note": "150 scholars are selected nationwide each year (per Coca-Cola Scholars Foundation).",
+      "source_notes": "National scholarship (curated). Wake Pathways prioritizes Wake, Triangle, and NC awards first. The 2027 application (for students graduating in 2026–2027) is listed to open August 1, 2026 on the foundation site; confirm each cycle’s dates on the official apply page."
+    },
+    {
+      "id": "opp-119",
+      "slug": "dell-scholars-program",
+      "title": "Dell Scholars Program",
+      "organization_id": "org-060",
+      "category": "scholarship",
+      "short_summary": "Scholarship and college completion support for Pell-eligible high school seniors in approved college readiness programs, including a $20,000 flexible award.",
+      "full_description": "Dell Scholars targets students who demonstrate grit, potential, and financial need. Scholars receive a $20,000 flexible scholarship, a laptop, book credits, and non-academic support such as advising and teletherapy. Applicants must be high school seniors participating in an approved college readiness program, planning full-time enrollment at a four-year college, Pell-eligible, and meeting minimum GPA requirements on the official site.",
+      "eligibility": "High school senior in an approved college readiness program; planning full-time enrollment at an accredited four-year college immediately after high school; Pell Grant eligible; minimum 2.4 GPA and other criteria on dellscholars.org.",
+      "grades_min": 12,
+      "grades_max": 12,
+      "age_min": null,
+      "age_max": null,
+      "location_city": null,
+      "location_county": null,
+      "remote_type": "remote",
+      "paid_type": "paid",
+      "compensation_text": "$20,000 scholarship plus program supports described on the Dell Scholars site.",
+      "cost_text": null,
+      "is_free": true,
+      "deadline_type": "fixed",
+      "deadline_at": "2026-02-15T23:59:59Z",
+      "application_status": "closed",
+      "official_application_url": "https://www.dellscholars.org/scholarship/",
+      "source_url": "https://www.dellscholars.org/scholarship/",
+      "source_name": "Michael & Susan Dell Foundation",
+      "source_type": "official",
+      "verified": true,
+      "verification_status": "verified",
+      "last_verified_at": "2026-03-31T18:00:00Z",
+      "featured": false,
+      "is_active": true,
+      "time_commitment": "Application opens December and closes mid-February on published annual schedule.",
+      "tags": [
+        "scholarship",
+        "college-prep",
+        "financial-aid",
+        "national"
+      ],
+      "skills": [
+        "Time management",
+        "Communication",
+        "Leadership",
+        "Writing",
+        "Goal setting"
+      ],
+      "capacity_note": "500 new Dell Scholars are selected nationwide each year (per Dell Scholars program page).",
+      "source_notes": "National scholarship (curated). Wake Pathways prioritizes Wake, Triangle, and NC awards first. The 2026 application deadline was February 15, 2026 per the program calendar; watch dellscholars.org for the next cycle."
+    },
+    {
+      "id": "opp-120",
+      "slug": "jack-kent-cooke-college-scholarship",
+      "title": "Jack Kent Cooke College Scholarship Program",
+      "organization_id": "org-061",
+      "category": "scholarship",
+      "short_summary": "Highly competitive last-dollar undergraduate scholarship for high-achieving high school seniors with financial need attending top colleges.",
+      "full_description": "The Cooke College Scholarship Program supports high-achieving high school seniors with financial need who plan to graduate from a four-year college. Awards are individualized last-dollar funding after other aid and can be substantial depending on college cost. The program includes advising on college choice, financial aid, and the transition to campus.",
+      "eligibility": "Senior standing with strong academics and demonstrated financial need; planning to enroll full-time at an accredited four-year institution; full criteria and exclusions on jkcf.org.",
+      "grades_min": 12,
+      "grades_max": 12,
+      "age_min": null,
+      "age_max": null,
+      "location_city": null,
+      "location_county": null,
+      "remote_type": "remote",
+      "paid_type": "paid",
+      "compensation_text": "Award size varies by student; up to about $55,000 per year is cited as a maximum on the foundation page.",
+      "cost_text": null,
+      "is_free": true,
+      "deadline_type": "none",
+      "deadline_at": null,
+      "application_status": "closed",
+      "official_application_url": "https://www.jkcf.org/our-scholarships/college-scholarship-program/",
+      "source_url": "https://www.jkcf.org/our-scholarships/college-scholarship-program/",
+      "source_name": "Jack Kent Cooke Foundation",
+      "source_type": "official",
+      "verified": true,
+      "verification_status": "verified",
+      "last_verified_at": "2026-03-31T18:00:00Z",
+      "featured": false,
+      "is_active": true,
+      "time_commitment": "Annual application window; see foundation site for reopening dates.",
+      "tags": [
+        "scholarship",
+        "college-prep",
+        "financial-aid",
+        "selective",
+        "national"
+      ],
+      "skills": [
+        "Writing",
+        "Leadership",
+        "Time management",
+        "Communication",
+        "Academic skills"
+      ],
+      "capacity_note": "Highly competitive national selection; only a small share of applicants receive awards.",
+      "source_notes": "National scholarship (curated). Wake Pathways prioritizes Wake, Triangle, and NC awards first. As of verification the foundation stated the College Scholarship Program application was closed; monitor jkcf.org for the next intake."
+    },
+    {
+      "id": "opp-121",
+      "slug": "golden-leaf-scholarships",
+      "title": "Golden LEAF Scholarships",
+      "organization_id": "org-062",
+      "category": "scholarship",
+      "short_summary": "North Carolina scholarship programs for students from rural and economically distressed counties, administered by the Golden LEAF Foundation.",
+      "full_description": "Golden LEAF Foundation scholarships support North Carolina students—often from rural and economically distressed counties—who pursue post-secondary credentials at NC institutions. Specific award types, amounts, and county eligibility change by program year; students should read the current scholarship page and any PDF guidelines linked from goldenleaf.org.",
+      "eligibility": "North Carolina residents meeting program-specific county, college, and financial criteria published on the Golden LEAF scholarships page.",
+      "grades_min": 12,
+      "grades_max": 12,
+      "age_min": null,
+      "age_max": null,
+      "location_city": null,
+      "location_county": null,
+      "remote_type": "remote",
+      "paid_type": "paid",
+      "compensation_text": "Award amounts vary by program; see current Golden LEAF scholarship materials.",
+      "cost_text": null,
+      "is_free": true,
+      "deadline_type": "none",
+      "deadline_at": null,
+      "application_status": "unknown",
+      "official_application_url": "https://goldenleaf.org/scholarships/",
+      "source_url": "https://goldenleaf.org/scholarships/",
+      "source_name": "Golden LEAF Foundation",
+      "source_type": "official",
+      "verified": true,
+      "verification_status": "verified",
+      "last_verified_at": "2026-03-31T18:00:00Z",
+      "featured": false,
+      "is_active": true,
+      "time_commitment": "Deadlines vary by scholarship cycle; follow the official page each year.",
+      "tags": [
+        "scholarship",
+        "north-carolina",
+        "rural",
+        "college-prep"
+      ],
+      "skills": [
+        "Writing",
+        "Time management",
+        "Communication",
+        "Planning"
+      ],
+      "capacity_note": "Awards are limited by annual funding; some programs target specific counties or institutions.",
+      "source_notes": "North Carolina–focused scholarship programs (priority tier for this directory). Confirm open programs, deadlines, and county lists on goldenleaf.org before applying."
+    },
+    {
+      "id": "opp-122",
+      "slug": "amazon-future-engineer-scholarship",
+      "title": "Amazon Future Engineer Scholarship and Internship",
+      "organization_id": "org-063",
+      "category": "scholarship",
+      "short_summary": "Need-based computer science scholarship for U.S. high school seniors, with renewable aid and a pathway to a summer internship at Amazon after beginning college.",
+      "full_description": "Amazon Future Engineer, with Scholarship America, offers renewable scholarship support (up to $10,000 per year for unmet need, capped per official FAQ) for seniors planning computer science-related majors who meet coursework, GPA, work authorization, and financial need requirements. Recipients who remain in good standing may also receive an offer to complete a paid summer software engineering internship at Amazon after starting college. Applications were listed as closed on the public page at verification time.",
+      "eligibility": "U.S. high school senior planning a qualifying CS or related major at an accredited four-year or 2+2 path; computer science course or Amazon assessment; minimum 2.3 GPA; demonstrated financial need; work authorization as described on amazonfutureengineer.com and Scholarship America.",
+      "grades_min": 12,
+      "grades_max": 12,
+      "age_min": null,
+      "age_max": null,
+      "location_city": null,
+      "location_county": null,
+      "remote_type": "remote",
+      "paid_type": "paid",
+      "compensation_text": "Renewable scholarship up to $10,000 per year toward unmet need (per program FAQ); separate paid internship after college enrollment for selected scholars.",
+      "cost_text": null,
+      "is_free": true,
+      "deadline_type": "none",
+      "deadline_at": null,
+      "application_status": "closed",
+      "official_application_url": "https://www.amazonfutureengineer.com/scholarships",
+      "source_url": "https://www.amazonfutureengineer.com/scholarships",
+      "source_name": "Amazon Future Engineer",
+      "source_type": "official",
+      "verified": true,
+      "verification_status": "verified",
+      "last_verified_at": "2026-03-31T18:00:00Z",
+      "featured": false,
+      "is_active": true,
+      "time_commitment": "Scholarship applies across undergraduate years per renewal rules; internship occurs after starting college.",
+      "tags": [
+        "scholarship",
+        "coding",
+        "computer-science",
+        "internship",
+        "national"
+      ],
+      "skills": [
+        "Coding",
+        "Communication",
+        "Time management",
+        "Problem solving",
+        "Professional skills"
+      ],
+      "capacity_note": "A defined national cohort is selected each year; internship offers apply to scholarship recipients who continue to meet program rules.",
+      "source_notes": "National scholarship (curated). Wake Pathways prioritizes Wake, Triangle, and NC awards first. Apply through Scholarship America’s Amazon Future Engineer portal when the cycle is open; page indicated applications were closed at verification."
     }
   ]
 }

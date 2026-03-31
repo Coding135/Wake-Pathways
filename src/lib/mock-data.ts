@@ -76,6 +76,8 @@ export const MOCK_OPPORTUNITIES: Opportunity[] = listingsData.opportunities.map(
     is_active: opp.is_active,
     time_commitment: opp.time_commitment ?? null,
     tags: opp.tags ?? [],
+    skills: Array.isArray(opp.skills) ? opp.skills : [],
+    capacity_note: opp.capacity_note ?? null,
     created_at: TIMESTAMP,
     updated_at: TIMESTAMP,
   })
