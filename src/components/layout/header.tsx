@@ -72,7 +72,7 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden h-full items-center gap-0.5 md:flex">
           {NAV_LINKS.map((link) => {
             const active =
               pathname === link.href || pathname.startsWith(link.href + '/');
@@ -81,7 +81,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'relative rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                  'relative flex h-9 items-center justify-center rounded-md px-3 text-sm font-medium leading-none transition-colors',
                   active
                     ? 'text-primary'
                     : 'text-muted-foreground hover:text-foreground',
@@ -91,7 +91,7 @@ export function Header() {
                 {active && (
                   <motion.span
                     layoutId="nav-underline"
-                    className="absolute inset-x-1 -bottom-[13px] h-0.5 rounded-full bg-primary"
+                    className="absolute inset-x-2 top-[calc(100%+0.5rem)] h-0.5 rounded-full bg-primary"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}

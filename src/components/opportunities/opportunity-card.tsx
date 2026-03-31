@@ -79,27 +79,28 @@ export function OpportunityCard({
         className
       )}
     >
-      <div className="flex flex-col gap-3 p-5 pb-0">
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex items-center gap-1.5">
+      <div className="flex flex-col gap-4 p-5 pb-0">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-2">
             <Badge variant="opportunity" className={CATEGORY_BADGE_CLASSES[opportunity.category]}>
-              <CategoryIcon className="h-3 w-3" />
+              <CategoryIcon className="size-3 shrink-0" />
               {categoryInfo.label}
             </Badge>
             <Badge variant="opportunity" className={getApplicationStatusColor(opportunity.application_status)}>
               {getStatusLabel(opportunity.application_status)}
             </Badge>
-          </div>
-
-          <div className="flex items-center gap-1">
             {opportunity.verified && (
               <Badge variant="opportunity" className={VERIFIED_OPPORTUNITY_BADGE_CLASSES}>
-                <CheckCircle2 className="h-3 w-3" />
+                <CheckCircle2 className="size-3 shrink-0" />
                 Verified
               </Badge>
             )}
-            <SaveButton slug={opportunity.slug} className="h-7 w-7 -mr-1" />
           </div>
+          <SaveButton
+            slug={opportunity.slug}
+            size="icon"
+            className="size-8 shrink-0 text-muted-foreground hover:text-foreground"
+          />
         </div>
 
         <div className="min-h-0 flex-1">
@@ -107,12 +108,12 @@ export function OpportunityCard({
             {truncate(opportunity.title, 72)}
           </h3>
           {opportunity.organization && (
-            <p className="mt-1 text-sm text-muted-foreground">
+            <p className="mt-1.5 text-sm text-muted-foreground">
               {opportunity.organization.name}
             </p>
           )}
           {opportunity.short_summary && (
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+            <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground line-clamp-2">
               {truncate(opportunity.short_summary, 140)}
             </p>
           )}

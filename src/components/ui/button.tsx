@@ -42,7 +42,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, loading, disabled, children, ...props }, ref) => (
     <button
       ref={ref}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size }), className)}
       disabled={disabled || loading}
       {...props}
     >
