@@ -1,10 +1,20 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Star, ThumbsUp, ThumbsDown, Pencil, Trash2, Flag, Loader2 } from 'lucide-react';
 import type { OpportunityReview } from '@/types/database';
+import {
+  buildReviewRequestJsonBody,
+  fieldErrorsFromReviewApiPayload,
+  type ReviewApiFieldKey,
+  type ReviewFieldErrorMap,
+  type ReviewFormValues,
+  parseOptionalGradeLevel,
+  parseOptionalGraduationYear,
+} from '@/lib/reviews/client-payload';
+import { REVIEW_GRADUATION_YEAR_MAX, REVIEW_GRADUATION_YEAR_MIN } from '@/lib/reviews/validation';
 import { formatDate, cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -53,6 +63,7 @@ export function OpportunityReviewsSection({
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<ReviewFieldErrorMap>({});
   const [formBanner, setFormBanner] = useState('');
 
   const returnToOpp = `/opportunities/${slug}`;
@@ -281,18 +292,30 @@ export function OpportunityReviewsSection({
           profileName={profileName}
           loading={loading}
           error={error}
+          fieldErrors={fieldErrors}
+          onClearFieldError={(key: ReviewApiFieldKey) => {
+            setFieldErrors((prev) => {
+              if (!prev[key]) return prev;
+              const next = { ...prev };
+              delete next[key];
+              return next;
+            });
+          }}
           onCancel={() => {
             setShowForm(false);
             setEditing(false);
             setError('');
+            setFieldErrors({});
           }}
           onSubmit={async (payload) => {
             if (payload.rating < 1) {
               setError('Please choose a star rating.');
+              setFieldErrors((prev) => ({ ...prev, rating: 'Please choose a star rating.' }));
               return;
             }
             setLoading(true);
             setError('');
+            setFieldErrors({});
             try {
               const isUpdate = Boolean(myReview);
               const url = isUpdate
@@ -302,11 +325,17 @@ export function OpportunityReviewsSection({
                 method: isUpdate ? 'PATCH' : 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
-                body: JSON.stringify(payload),
+                body: JSON.stringify(buildReviewRequestJsonBody(payload)),
               });
-              const data = await res.json().catch(() => ({}));
+              const data = (await res.json().catch(() => ({}))) as {
+                error?: string;
+                fields?: unknown;
+              };
               if (!res.ok) {
-                setError(typeof data.error === 'string' ? data.error : 'Something went wrong');
+                const fe = fieldErrorsFromReviewApiPayload(data);
+                setFieldErrors(fe);
+                const apiError = typeof data.error === 'string' ? data.error : '';
+                setError(Object.keys(fe).length > 0 ? '' : apiError || 'Something went wrong');
                 return;
               }
               const msg = isUpdate
@@ -361,23 +390,14 @@ function FlagReviewButton({ reviewId, slug }: { reviewId: string; slug: string }
   );
 }
 
-type FormPayload = {
-  rating: number;
-  title?: string;
-  body: string;
-  display_name: string;
-  graduation_year: number | null;
-  grade_level: number | null;
-  participated: boolean;
-  would_recommend: boolean | null;
-};
-
 function ReviewForm({
   slug,
   existing,
   profileName,
   loading,
   error,
+  fieldErrors,
+  onClearFieldError,
   onCancel,
   onSubmit,
 }: {
@@ -386,8 +406,10 @@ function ReviewForm({
   profileName: string;
   loading: boolean;
   error: string;
+  fieldErrors: ReviewFieldErrorMap;
+  onClearFieldError: (key: ReviewApiFieldKey) => void;
   onCancel: () => void;
-  onSubmit: (p: FormPayload) => Promise<void>;
+  onSubmit: (p: ReviewFormValues) => Promise<void>;
 }) {
   const [rating, setRating] = useState(existing?.rating ?? 0);
   const [title, setTitle] = useState(existing?.title ?? '');
@@ -399,6 +421,13 @@ function ReviewForm({
   const [rec, setRec] = useState<'yes' | 'no' | 'skip'>(
     existing?.would_recommend === true ? 'yes' : existing?.would_recommend === false ? 'no' : 'skip'
   );
+  const [clientGradYearHint, setClientGradYearHint] = useState('');
+  const [clientGradeHint, setClientGradeHint] = useState('');
+
+  useEffect(() => {
+    setClientGradYearHint('');
+    setClientGradeHint('');
+  }, [existing?.id]);
 
   return (
     <Card className="border-border shadow-sm dark:shadow-none">
@@ -420,23 +449,37 @@ function ReviewForm({
           className="mt-6 space-y-5"
           onSubmit={(e) => {
             e.preventDefault();
+            const gyRaw = gradYear.trim();
+            if (gyRaw.length > 0) {
+              const gyNum = parseInt(gyRaw, 10);
+              if (
+                !Number.isFinite(gyNum) ||
+                gyNum < REVIEW_GRADUATION_YEAR_MIN ||
+                gyNum > REVIEW_GRADUATION_YEAR_MAX
+              ) {
+                setClientGradYearHint(
+                  `Use a year between ${REVIEW_GRADUATION_YEAR_MIN} and ${REVIEW_GRADUATION_YEAR_MAX}, or leave this blank.`
+                );
+                return;
+              }
+            }
+            setClientGradYearHint('');
+            const gRaw = gradeLevel.trim();
+            if (gRaw.length > 0) {
+              const gNum = parseInt(gRaw, 10);
+              if (!Number.isFinite(gNum) || gNum < 6 || gNum > 12) {
+                setClientGradeHint('Use a grade from 6 to 12, or leave this blank.');
+                return;
+              }
+            }
+            setClientGradeHint('');
             void onSubmit({
               rating,
               title: title.trim() || undefined,
               body: body.trim(),
               display_name: displayName.trim(),
-              graduation_year: (() => {
-                const t = gradYear.trim();
-                if (!t) return null;
-                const n = parseInt(t, 10);
-                return Number.isFinite(n) && n >= 1900 && n <= 2100 ? n : null;
-              })(),
-              grade_level: (() => {
-                const t = gradeLevel.trim();
-                if (!t) return null;
-                const n = parseInt(t, 10);
-                return Number.isFinite(n) && n >= 6 && n <= 12 ? n : null;
-              })(),
+              graduation_year: parseOptionalGraduationYear(gradYear),
+              grade_level: parseOptionalGradeLevel(gradeLevel),
               participated,
               would_recommend: rec === 'skip' ? null : rec === 'yes',
             });
@@ -450,7 +493,10 @@ function ReviewForm({
                 <button
                   key={n}
                   type="button"
-                  onClick={() => setRating(n)}
+                  onClick={() => {
+                    onClearFieldError('rating');
+                    setRating(n);
+                  }}
                   className={cn(
                     'rounded-md p-1.5 transition-colors',
                     n <= rating ? 'text-amber-400' : 'text-muted-foreground/30'
@@ -461,7 +507,11 @@ function ReviewForm({
                 </button>
               ))}
             </div>
-            {rating === 0 && <p className="mt-1 text-xs text-destructive">Choose a star rating</p>}
+            {(rating === 0 || fieldErrors.rating) && (
+              <p className="mt-1 text-xs text-destructive">
+                {fieldErrors.rating ?? (rating === 0 ? 'Choose a star rating' : '')}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -471,10 +521,17 @@ function ReviewForm({
             <Input
               id={`rev-title-${slug}`}
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => {
+                onClearFieldError('title');
+                setTitle(e.target.value);
+              }}
               maxLength={120}
               placeholder="e.g. Great summer experience"
+              aria-invalid={Boolean(fieldErrors.title)}
             />
+            {fieldErrors.title && (
+              <p className="text-xs text-destructive">{fieldErrors.title}</p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -484,13 +541,18 @@ function ReviewForm({
             <Textarea
               id={`rev-body-${slug}`}
               value={body}
-              onChange={(e) => setBody(e.target.value)}
+              onChange={(e) => {
+                onClearFieldError('body');
+                setBody(e.target.value);
+              }}
               rows={5}
               maxLength={2000}
               placeholder="What happened? What would you tell another student?"
               className="resize-y min-h-[120px]"
+              aria-invalid={Boolean(fieldErrors.body)}
             />
-            <p className="text-xs text-muted-foreground">{body.length} / 2000</p>
+            <p className="text-xs text-muted-foreground">{body.length} / 2000 (at least 20 characters)</p>
+            {fieldErrors.body && <p className="text-xs text-destructive">{fieldErrors.body}</p>}
           </div>
 
           <div className="space-y-2">
@@ -500,11 +562,18 @@ function ReviewForm({
             <Input
               id={`rev-name-${slug}`}
               value={displayName}
-              onChange={(e) => setDisplayName(e.target.value)}
+              onChange={(e) => {
+                onClearFieldError('display_name');
+                setDisplayName(e.target.value);
+              }}
               maxLength={80}
               placeholder="First name or how you want to appear"
               required
+              aria-invalid={Boolean(fieldErrors.display_name)}
             />
+            {fieldErrors.display_name && (
+              <p className="text-xs text-destructive">{fieldErrors.display_name}</p>
+            )}
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -516,9 +585,17 @@ function ReviewForm({
                 id={`rev-grade-${slug}`}
                 inputMode="numeric"
                 value={gradeLevel}
-                onChange={(e) => setGradeLevel(e.target.value.replace(/\D/g, '').slice(0, 2))}
+                onChange={(e) => {
+                  onClearFieldError('grade_level');
+                  setClientGradeHint('');
+                  setGradeLevel(e.target.value.replace(/\D/g, '').slice(0, 2));
+                }}
                 placeholder="6 to 12"
+                aria-invalid={Boolean(fieldErrors.grade_level)}
               />
+              {(fieldErrors.grade_level || clientGradeHint) && (
+                <p className="text-xs text-destructive">{fieldErrors.grade_level ?? clientGradeHint}</p>
+              )}
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-foreground" htmlFor={`rev-year-${slug}`}>
@@ -528,9 +605,22 @@ function ReviewForm({
                 id={`rev-year-${slug}`}
                 inputMode="numeric"
                 value={gradYear}
-                onChange={(e) => setGradYear(e.target.value.replace(/\D/g, '').slice(0, 4))}
-                placeholder="e.g. 2026"
+                onChange={(e) => {
+                  onClearFieldError('graduation_year');
+                  setClientGradYearHint('');
+                  setGradYear(e.target.value.replace(/\D/g, '').slice(0, 4));
+                }}
+                placeholder={`${REVIEW_GRADUATION_YEAR_MIN}–${REVIEW_GRADUATION_YEAR_MAX}`}
+                aria-invalid={Boolean(fieldErrors.graduation_year)}
               />
+              <p className="text-xs text-muted-foreground">
+                Use a year between {REVIEW_GRADUATION_YEAR_MIN} and {REVIEW_GRADUATION_YEAR_MAX}, or leave blank.
+              </p>
+              {(fieldErrors.graduation_year || clientGradYearHint) && (
+                <p className="text-xs text-destructive">
+                  {fieldErrors.graduation_year ?? clientGradYearHint}
+                </p>
+              )}
             </div>
           </div>
 
@@ -538,25 +628,60 @@ function ReviewForm({
             <p className="text-sm font-medium text-foreground">Would you recommend this to another student?</p>
             <div className="mt-2 flex flex-wrap gap-4 text-sm">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name={`rec-${slug}`} checked={rec === 'yes'} onChange={() => setRec('yes')} />
+                <input
+                  type="radio"
+                  name={`rec-${slug}`}
+                  checked={rec === 'yes'}
+                  onChange={() => {
+                    onClearFieldError('would_recommend');
+                    setRec('yes');
+                  }}
+                />
                 Yes
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name={`rec-${slug}`} checked={rec === 'no'} onChange={() => setRec('no')} />
+                <input
+                  type="radio"
+                  name={`rec-${slug}`}
+                  checked={rec === 'no'}
+                  onChange={() => {
+                    onClearFieldError('would_recommend');
+                    setRec('no');
+                  }}
+                />
                 No
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name={`rec-${slug}`} checked={rec === 'skip'} onChange={() => setRec('skip')} />
+                <input
+                  type="radio"
+                  name={`rec-${slug}`}
+                  checked={rec === 'skip'}
+                  onChange={() => {
+                    onClearFieldError('would_recommend');
+                    setRec('skip');
+                  }}
+                />
                 Prefer not to say
               </label>
             </div>
+            {fieldErrors.would_recommend && (
+              <p className="mt-2 text-xs text-destructive">{fieldErrors.would_recommend}</p>
+            )}
           </div>
 
-          <Checkbox
-            label="I participated in or attended this opportunity."
-            checked={participated}
-            onChange={(e) => setParticipated((e.target as HTMLInputElement).checked)}
-          />
+          <div className="space-y-1">
+            <Checkbox
+              label="I participated in or attended this opportunity."
+              checked={participated}
+              onChange={(e) => {
+                onClearFieldError('participated');
+                setParticipated((e.target as HTMLInputElement).checked);
+              }}
+            />
+            {fieldErrors.participated && (
+              <p className="text-xs text-destructive">{fieldErrors.participated}</p>
+            )}
+          </div>
 
           <div className="flex flex-wrap gap-3 pt-2">
             <Button type="submit" disabled={loading || rating < 1}>

@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { getOpportunityBySlug } from '@/lib/mock-data';
 import { reviewTextFailsContentCheck } from '@/lib/reviews/content-check';
 import { reviewBodySchema } from '@/lib/reviews/validation';
+import { reviewValidationErrorBody } from '@/lib/reviews/validation-response';
 
 export async function PATCH(
   request: Request,
@@ -45,7 +46,7 @@ export async function PATCH(
 
   const parsed = reviewBodySchema.safeParse(json);
   if (!parsed.success) {
-    return NextResponse.json({ error: 'Validation failed', fields: parsed.error.flatten().fieldErrors }, { status: 400 });
+    return NextResponse.json(reviewValidationErrorBody(parsed.error), { status: 400 });
   }
 
   const v = parsed.data;

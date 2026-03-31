@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { getOpportunityBySlug } from '@/lib/mock-data';
 import { reviewTextFailsContentCheck } from '@/lib/reviews/content-check';
 import { reviewBodySchema } from '@/lib/reviews/validation';
+import { reviewValidationErrorBody } from '@/lib/reviews/validation-response';
 
 export async function GET(_request: Request, ctx: { params: Promise<{ slug: string }> }) {
   const { slug } = await ctx.params;
@@ -58,8 +59,7 @@ export async function POST(request: Request, ctx: { params: Promise<{ slug: stri
 
   const parsed = reviewBodySchema.safeParse(json);
   if (!parsed.success) {
-    const msg = parsed.error.flatten().fieldErrors;
-    return NextResponse.json({ error: 'Validation failed', fields: msg }, { status: 400 });
+    return NextResponse.json(reviewValidationErrorBody(parsed.error), { status: 400 });
   }
 
   const v = parsed.data;
