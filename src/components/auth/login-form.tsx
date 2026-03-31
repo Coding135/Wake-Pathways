@@ -48,7 +48,9 @@ export function LoginForm({
   const banner =
     authError === 'auth'
       ? 'That sign-in link was invalid or expired. Try signing in again.'
-      : '';
+      : authError === 'confirm'
+        ? 'That confirmation link was invalid or expired. Try signing up again or request a new confirmation email.'
+        : '';
 
   const savedHint = next === '/saved';
 
