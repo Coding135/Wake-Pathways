@@ -50,7 +50,7 @@ export function ThemeToggle({ className }: { className?: string }) {
         onClick={() => setOpen((o) => !o)}
         className={cn(
           buttonVariants({ variant: 'outline', size: 'sm' }),
-          'h-9 w-9 gap-0 p-0 touch-manipulation',
+          'h-9 w-9 gap-0 bg-white p-0 touch-manipulation dark:bg-transparent',
           'text-foreground'
         )}
         aria-expanded={open}

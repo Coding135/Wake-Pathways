@@ -19,7 +19,6 @@ import { getFeaturedOpportunities, getCategoryStats, getOpportunities } from '@/
 import { CATEGORY_MAP } from '@/lib/constants';
 import type { OpportunityCategory } from '@/types/database';
 import { buttonVariants } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { OpportunityCard } from '@/components/opportunities/opportunity-card';
 import { CATEGORY_HOME_TILE_CLASSES } from '@/lib/opportunity-badge-styles';
@@ -66,15 +65,15 @@ export default function HomePage() {
   return (
     <>
       {/* ===== Hero ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-blue-50/50 dark:from-primary/10 dark:via-background dark:to-blue-950/40">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(99,102,241,0.08),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(16,185,129,0.06),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top_right,rgba(129,140,248,0.12),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.08),transparent_50%)]" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-background via-[#faf8fc] to-blue-50/35 dark:from-primary/10 dark:via-background dark:to-blue-950/40">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(99,102,241,0.05),transparent_52%),radial-gradient(ellipse_at_bottom_left,rgba(13,148,136,0.04),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top_right,rgba(129,140,248,0.12),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.08),transparent_50%)]" />
 
         <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 sm:pb-28 sm:pt-28 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="secondary" className="mb-5 gap-1.5 px-3 py-1 text-sm">
-              <MapPin className="h-3.5 w-3.5" />
+            <span className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1 text-sm font-medium text-muted-foreground shadow-sm dark:border-border dark:bg-card dark:text-muted-foreground">
+              <MapPin className="h-3.5 w-3.5 text-foreground/70" />
               Wake County, NC
-            </Badge>
+            </span>
 
             <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Real opportunities for{' '}
@@ -99,9 +98,13 @@ export default function HomePage() {
                   <Link
                     key={cat}
                     href={`/opportunities?category=${cat}`}
-                    className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'gap-1.5 rounded-full')}
+                    className={cn(
+                      'inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1.5 text-sm font-medium text-foreground shadow-sm',
+                      'hover:border-stone-300/90 hover:bg-stone-50/90',
+                      'dark:border-border dark:bg-card dark:hover:bg-secondary'
+                    )}
                   >
-                    <Icon className="h-3.5 w-3.5" />
+                    <Icon className="h-3.5 w-3.5 shrink-0 text-foreground" />
                     {info.label}
                   </Link>
                 );
@@ -152,7 +155,7 @@ export default function HomePage() {
 
       {/* ===== Deadlines Coming Up ===== */}
       {deadlinesComingUp.length > 0 && (
-        <AnimatedSection className="bg-amber-50/30 border-y border-amber-100/50 dark:bg-amber-950/25 dark:border-amber-900/40">
+        <AnimatedSection className="border-y border-amber-200/40 bg-amber-50/45 dark:border-amber-900/40 dark:bg-amber-950/25">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
             <div className="flex items-end justify-between mb-8">
               <div>
@@ -201,7 +204,7 @@ export default function HomePage() {
                 <Link
                   key={category}
                   href={`/opportunities?category=${category}`}
-                  className="group flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+                  className="group flex items-center gap-3 rounded-xl border border-border bg-white p-4 shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 dark:bg-card dark:shadow-none"
                 >
                   <div
                     className={cn(
@@ -260,7 +263,10 @@ export default function HomePage() {
               description: 'If we are not sure about a detail, we say so instead of guessing.',
             },
           ].map((item) => (
-            <div key={item.title} className="rounded-xl border border-border bg-card p-5">
+            <div
+              key={item.title}
+              className="rounded-xl border border-border bg-white p-5 shadow-sm dark:bg-card dark:shadow-none"
+            >
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 mb-3">
                 <item.icon className="h-4.5 w-4.5 text-primary" />
               </div>
@@ -285,7 +291,7 @@ export default function HomePage() {
       <section className="bg-muted/30 border-t border-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
           <div className="mx-auto max-w-2xl">
-            <div className="rounded-2xl border border-border bg-card p-8 sm:p-10 text-center">
+            <div className="rounded-2xl border border-border bg-white p-8 text-center shadow-sm dark:bg-card dark:shadow-none sm:p-10">
               <h3 className="text-xl font-bold text-foreground">
                 Know about an opportunity?
               </h3>

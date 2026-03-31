@@ -147,7 +147,7 @@ export default function HowItWorksPage() {
           {TRUST_BADGES.map((badge) => (
             <div
               key={badge.label}
-              className="rounded-xl border border-border bg-card p-5"
+              className="rounded-xl border border-border bg-white p-5 shadow-sm dark:bg-card dark:shadow-none"
             >
               <span
                 className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${badge.color}`}
@@ -164,7 +164,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Report an issue */}
-      <section className="rounded-xl border border-border bg-card p-6 sm:p-8">
+      <section className="rounded-xl border border-border bg-white p-6 shadow-sm dark:bg-card dark:shadow-none sm:p-8">
         <div className="flex items-start gap-4">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-warning/10">
             <AlertTriangle className="h-5 w-5 text-warning" />

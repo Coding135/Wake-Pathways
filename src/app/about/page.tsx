@@ -82,7 +82,7 @@ export default function AboutPage() {
       </header>
 
       {/* Mission */}
-      <section className="mb-16 rounded-2xl border border-border bg-card p-8 sm:p-10 text-center">
+      <section className="mb-16 rounded-2xl border border-border bg-white p-8 text-center shadow-sm dark:bg-card dark:shadow-none sm:p-10">
         <Heart className="mx-auto h-8 w-8 text-primary mb-4" />
         <h2 className="text-xl font-semibold text-foreground">Our mission</h2>
         <p className="mt-3 mx-auto max-w-xl leading-relaxed text-muted-foreground">
@@ -99,7 +99,10 @@ export default function AboutPage() {
         </h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {DIFFERENTIATORS.map((item) => (
-            <div key={item.title} className="rounded-xl border border-border bg-card p-5">
+            <div
+              key={item.title}
+              className="rounded-xl border border-border bg-white p-5 shadow-sm dark:bg-card dark:shadow-none"
+            >
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                 <item.icon className="h-5 w-5 text-primary" />
               </div>
@@ -131,7 +134,7 @@ export default function AboutPage() {
       </section>
 
       {/* Community */}
-      <section className="rounded-2xl border border-border bg-card p-8 sm:p-10 text-center">
+      <section className="rounded-2xl border border-border bg-white p-8 text-center shadow-sm dark:bg-card dark:shadow-none sm:p-10">
         <Users className="mx-auto h-8 w-8 text-primary mb-4" />
         <h2 className="text-xl font-semibold text-foreground">Built by the community</h2>
         <p className="mt-3 mx-auto max-w-xl leading-relaxed text-muted-foreground">

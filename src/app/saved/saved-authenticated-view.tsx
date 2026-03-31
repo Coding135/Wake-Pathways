@@ -122,7 +122,7 @@ export function SavedAuthenticatedView({ initialSlugs }: { initialSlugs: string[
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.04 }}
               >
-                <div className="rounded-xl border border-border bg-card p-5 transition-shadow hover:shadow-md">
+                <div className="rounded-xl border border-border bg-white p-5 shadow-[0_1px_3px_rgba(28,25,23,0.06)] transition-shadow hover:shadow-md dark:bg-card dark:shadow-sm">
                   <div className="flex items-start gap-4">
                     <div className="min-w-0 flex-1">
                       <div className="mb-2 flex flex-wrap items-center gap-1.5">

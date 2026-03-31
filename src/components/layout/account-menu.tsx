@@ -57,7 +57,7 @@ export function AccountMenu({ className }: { className?: string }) {
         onClick={() => setOpen((o) => !o)}
         className={cn(
           buttonVariants({ variant: 'outline', size: 'sm' }),
-          'h-9 gap-1.5 px-2.5 font-medium sm:px-3',
+          'h-9 gap-1.5 bg-white px-2.5 font-medium sm:px-3 dark:bg-transparent',
           'touch-manipulation'
         )}
         aria-expanded={open}

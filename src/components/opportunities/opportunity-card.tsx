@@ -72,8 +72,9 @@ export function OpportunityCard({
     <Link
       href={href}
       className={cn(
-        'group relative flex flex-col rounded-xl border border-border bg-card shadow-sm',
+        'group relative flex flex-col rounded-xl border border-border bg-white shadow-[0_1px_3px_rgba(28,25,23,0.06)]',
         'transition-all duration-200 hover:shadow-md hover:-translate-y-0.5',
+        'dark:border-border dark:bg-card dark:shadow-sm',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]',
         className
       )}
