@@ -26,15 +26,15 @@ export function formatDeadline(
 
 export function getApplicationStatusColor(status: ApplicationStatus): string {
   const colors: Record<ApplicationStatus, string> = {
-    open: 'bg-green-50 text-green-800 ring-1 ring-inset ring-green-600/25 dark:bg-green-950/45 dark:text-green-200 dark:ring-green-400/35',
+    open: 'bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20 dark:bg-green-950/45 dark:text-green-200 dark:ring-green-400/35',
     closing_soon:
-      'bg-amber-50 text-amber-800 ring-1 ring-inset ring-amber-600/25 dark:bg-amber-950/45 dark:text-amber-200 dark:ring-amber-400/35',
+      'bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 dark:bg-amber-950/45 dark:text-amber-200 dark:ring-amber-400/35',
     rolling:
-      'bg-blue-50 text-blue-800 ring-1 ring-inset ring-blue-600/25 dark:bg-blue-950/45 dark:text-blue-200 dark:ring-blue-400/35',
+      'bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-600/20 dark:bg-blue-950/45 dark:text-blue-200 dark:ring-blue-400/35',
     closed:
-      'bg-stone-100 text-stone-600 ring-1 ring-inset ring-stone-500/20 dark:bg-stone-800/90 dark:text-stone-300 dark:ring-stone-500/30',
+      'bg-gray-50 text-gray-600 ring-1 ring-inset ring-gray-500/20 dark:bg-stone-800/90 dark:text-stone-300 dark:ring-stone-500/30',
     unknown:
-      'bg-stone-100 text-stone-500 ring-1 ring-inset ring-stone-400/25 dark:bg-stone-800/70 dark:text-stone-400 dark:ring-stone-500/25',
+      'bg-gray-50 text-gray-500 ring-1 ring-inset ring-gray-500/20 dark:bg-stone-800/70 dark:text-stone-400 dark:ring-stone-500/25',
   };
   return colors[status];
 }
@@ -42,15 +42,15 @@ export function getApplicationStatusColor(status: ApplicationStatus): string {
 export function getVerificationBadgeColor(status: VerificationStatus): string {
   const colors: Record<VerificationStatus, string> = {
     verified:
-      'bg-emerald-100 text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200 dark:ring-1 dark:ring-inset dark:ring-emerald-400/25',
+      'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200 dark:ring-1 dark:ring-inset dark:ring-emerald-400/25',
     pending:
-      'bg-yellow-100 text-yellow-900 dark:bg-yellow-950/45 dark:text-yellow-200 dark:ring-1 dark:ring-inset dark:ring-yellow-400/25',
+      'bg-yellow-100 text-yellow-800 dark:bg-yellow-950/45 dark:text-yellow-200 dark:ring-1 dark:ring-inset dark:ring-yellow-400/25',
     needs_review:
-      'bg-orange-100 text-orange-900 dark:bg-orange-950/45 dark:text-orange-200 dark:ring-1 dark:ring-inset dark:ring-orange-400/25',
+      'bg-orange-100 text-orange-800 dark:bg-orange-950/45 dark:text-orange-200 dark:ring-1 dark:ring-inset dark:ring-orange-400/25',
     failed:
-      'bg-red-100 text-red-900 dark:bg-red-950/45 dark:text-red-200 dark:ring-1 dark:ring-inset dark:ring-red-400/25',
+      'bg-red-100 text-red-800 dark:bg-red-950/45 dark:text-red-200 dark:ring-1 dark:ring-inset dark:ring-red-400/25',
     unverified:
-      'bg-stone-100 text-stone-600 dark:bg-stone-800/80 dark:text-stone-400 dark:ring-1 dark:ring-inset dark:ring-stone-500/20',
+      'bg-gray-100 text-gray-600 dark:bg-stone-800/80 dark:text-stone-400 dark:ring-1 dark:ring-inset dark:ring-stone-500/20',
   };
   return colors[status];
 }

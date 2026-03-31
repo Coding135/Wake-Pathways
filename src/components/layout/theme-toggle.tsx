@@ -2,11 +2,9 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
-import { Check, Monitor, Moon, Sun } from 'lucide-react';
+import { Check, Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
-
-type ThemeChoice = 'light' | 'dark' | 'system';
 
 function useIsClient() {
   return useSyncExternalStore(
@@ -16,14 +14,13 @@ function useIsClient() {
   );
 }
 
-const OPTIONS: { value: ThemeChoice; label: string; Icon: typeof Sun }[] = [
-  { value: 'light', label: 'Light', Icon: Sun },
-  { value: 'dark', label: 'Dark', Icon: Moon },
-  { value: 'system', label: 'System', Icon: Monitor },
+const OPTIONS = [
+  { value: 'light' as const, label: 'Light', Icon: Sun },
+  { value: 'dark' as const, label: 'Dark', Icon: Moon },
 ];
 
 export function ThemeToggle({ className }: { className?: string }) {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const mounted = useIsClient();
   const ref = useRef<HTMLDivElement>(null);
@@ -43,8 +40,8 @@ export function ThemeToggle({ className }: { className?: string }) {
     };
   }, []);
 
-  const active = (theme ?? 'system') as ThemeChoice;
-  const PreviewIcon = active === 'system' ? Monitor : active === 'dark' ? Moon : Sun;
+  const active = theme === 'dark' ? 'dark' : 'light';
+  const PreviewIcon = active === 'dark' ? Moon : Sun;
 
   return (
     <div ref={ref} className={cn('relative shrink-0', className)}>
@@ -58,7 +55,7 @@ export function ThemeToggle({ className }: { className?: string }) {
         )}
         aria-expanded={open}
         aria-haspopup="menu"
-        aria-label="Theme: choose light, dark, or system"
+        aria-label="Theme: light or dark"
       >
         {mounted ? (
           <PreviewIcon className="h-4 w-4" aria-hidden />
@@ -69,10 +66,10 @@ export function ThemeToggle({ className }: { className?: string }) {
       {open && mounted && (
         <div
           role="menu"
-          className="absolute right-0 z-[60] mt-2 w-44 rounded-xl border border-border bg-card py-1 shadow-lg"
+          className="absolute right-0 z-[60] mt-2 w-40 rounded-xl border border-border bg-card py-1 shadow-lg"
         >
           <p className="px-3 py-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-            Appearance
+            Theme
           </p>
           {OPTIONS.map(({ value, label, Icon }) => {
             const selected = active === value;
@@ -96,11 +93,6 @@ export function ThemeToggle({ className }: { className?: string }) {
               </button>
             );
           })}
-          {active === 'system' && resolvedTheme && (
-            <p className="border-t border-border px-3 py-2 text-[11px] text-muted-foreground">
-              Using {resolvedTheme === 'dark' ? 'dark' : 'light'} from device
-            </p>
-          )}
         </div>
       )}
     </div>

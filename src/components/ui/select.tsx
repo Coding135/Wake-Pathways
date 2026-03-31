@@ -15,7 +15,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       <select
         ref={ref}
         className={cn(
-          'flex h-10 w-full cursor-pointer appearance-none rounded-lg border bg-card py-2 pl-3 pr-9 text-sm text-foreground transition-colors duration-150',
+          'flex h-10 w-full cursor-pointer appearance-none rounded-lg border bg-white py-2 pl-3 pr-9 text-sm text-foreground transition-colors duration-150 dark:bg-card',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]',
           'disabled:cursor-not-allowed disabled:opacity-50',
           error

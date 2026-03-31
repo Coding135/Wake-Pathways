@@ -44,7 +44,7 @@
   --border: #e7e5e4;
   --input: #e7e5e4;
   --ring: #0d9488;
-  --ring-offset: #fafaf9;
+  --ring-offset: #ffffff;
   --destructive: #dc2626;
   --success: #059669;
   --warning: #d97706;
@@ -124,11 +124,20 @@ body {
   background: linear-gradient(
     90deg,
     var(--muted) 0%,
-    color-mix(in srgb, var(--muted) 65%, var(--card)) 50%,
+    color-mix(in srgb, var(--muted) 60%, white) 50%,
     var(--muted) 100%
   );
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+.dark .skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--muted) 0%,
+    color-mix(in srgb, var(--muted) 65%, var(--card)) 50%,
+    var(--muted) 100%
+  );
 }
 
 @keyframes skeleton-shimmer {
