@@ -52,11 +52,11 @@ export function Header() {
           : 'border-transparent bg-background',
       )}
     >
-      <div className="mx-auto flex h-16 w-full min-w-0 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8 md:justify-start md:gap-4 lg:gap-6">
+      <div className="relative mx-auto flex h-16 w-full min-w-0 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8 md:justify-start md:gap-4 lg:gap-6">
         {/* Brand */}
         <Link
           href="/"
-          className="group flex shrink-0 items-center gap-2.5"
+          className="group relative z-20 flex shrink-0 items-center gap-2.5"
           aria-label="Wake Pathways home"
         >
           <span className="relative flex h-9 w-9 shrink-0 overflow-hidden rounded-xl ring-1 ring-border/60 shadow-sm">
@@ -74,8 +74,11 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Desktop nav: fills space between brand and actions; links stay centered in that band */}
-        <nav className="hidden h-full min-w-0 flex-1 items-center justify-center gap-0.5 overflow-x-auto overscroll-x-contain md:flex md:px-2">
+        {/* Desktop nav: viewport-centered so width of brand / admin / account does not shift it */}
+        <nav
+          aria-label="Main navigation"
+          className="absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-0.5 md:flex"
+        >
           {NAV_LINKS.map((link) => {
             const active =
               pathname === link.href || pathname.startsWith(link.href + '/');
@@ -103,8 +106,8 @@ export function Header() {
           })}
         </nav>
 
-        {/* Auth + CTAs — shrink-0 on md+ so nav never paints under theme toggle; flex-1 only on small screens */}
-        <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-2 md:ml-0 md:w-auto md:min-w-0 md:max-w-none md:flex-none md:shrink-0 md:justify-end md:gap-2 md:pl-3 lg:gap-3 lg:pl-4">
+        {/* Auth + CTAs — z-20 so they stay above centered nav at edges; ml-auto pins right on md+ */}
+        <div className="relative z-20 flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-2 md:ml-auto md:w-auto md:min-w-0 md:flex-none md:shrink-0 md:gap-2 lg:gap-3">
           <ThemeToggle className="hidden md:block md:shrink-0" />
           {canUseAdminToggle && adminViewOn && (
             <Badge
