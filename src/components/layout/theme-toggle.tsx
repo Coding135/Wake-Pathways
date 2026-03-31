@@ -28,17 +28,17 @@ export function ThemeToggle({ className }: { className?: string }) {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
       }}
       className={cn(
-        buttonVariants({ variant: 'outline', size: 'sm' }),
-        'h-9 w-9 gap-0 bg-white p-0 touch-manipulation dark:bg-transparent',
+        buttonVariants({ variant: 'outline', size: 'icon' }),
+        'size-9 shrink-0 grid place-items-center p-0 gap-0 rounded-md bg-white touch-manipulation dark:bg-transparent',
         'text-foreground',
         className
       )}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {mounted ? (
-        <Icon className="h-4 w-4" aria-hidden />
+        <Icon className="size-4 shrink-0 block" aria-hidden />
       ) : (
-        <Sun className="h-4 w-4 opacity-40" aria-hidden />
+        <Sun className="size-4 shrink-0 block opacity-40" aria-hidden />
       )}
     </button>
   );
