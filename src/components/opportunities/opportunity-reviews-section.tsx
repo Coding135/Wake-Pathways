@@ -55,7 +55,9 @@ export function OpportunityReviewsSection({
   const [error, setError] = useState('');
   const [formBanner, setFormBanner] = useState('');
 
-  const loginNext = `/login?next=${encodeURIComponent(`/opportunities/${slug}`)}`;
+  const returnToOpp = `/opportunities/${slug}`;
+  const loginNext = `/login?next=${encodeURIComponent(returnToOpp)}`;
+  const signupNext = `/signup?next=${encodeURIComponent(returnToOpp)}`;
 
   async function handleDelete() {
     if (!myReview || !window.confirm('Delete your review? This cannot be undone.')) return;
@@ -96,25 +98,22 @@ export function OpportunityReviewsSection({
     router.refresh();
   }
 
-  if (loadError) {
-    return (
-      <section className="mb-8 rounded-xl border border-border bg-muted/20 px-5 py-4 text-sm text-muted-foreground">
-        Student reviews are not available right now. You can still use the rest of this listing.
-      </section>
-    );
-  }
-
   return (
-    <section className="mb-8">
+    <section
+      className="mb-8 scroll-mt-24 rounded-2xl border border-border bg-muted/20 p-6 shadow-sm dark:bg-muted/10 dark:shadow-none sm:p-8"
+      aria-labelledby="opportunity-reviews-heading"
+    >
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-xl font-semibold text-foreground">What students said</h2>
+          <h2 id="opportunity-reviews-heading" className="text-xl font-semibold text-foreground">
+            Reviews & testimonials
+          </h2>
           <p className="mt-1 text-sm text-muted-foreground">
             Real experiences from students who participated. New reviews are checked before they appear
             here.
           </p>
         </div>
-        {summary && (
+        {!loadError && summary && (
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <StarsDisplay rating={Math.round(summary.avg)} />
             <span className="font-medium text-foreground">{summary.avg}</span>
@@ -123,13 +122,32 @@ export function OpportunityReviewsSection({
         )}
       </div>
 
+      {loadError && (
+        <div className="mb-6 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm text-foreground dark:border-amber-400/35 dark:bg-amber-400/10">
+          <p className="font-medium text-foreground">We couldn&apos;t load reviews right now.</p>
+          <p className="mt-1 text-muted-foreground">
+            This is usually a temporary connection or setup issue. You can still use the rest of this
+            listing.
+          </p>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="mt-3"
+            onClick={() => router.refresh()}
+          >
+            Try again
+          </Button>
+        </div>
+      )}
+
       {formBanner && (
         <div className="mb-6 rounded-lg border border-primary/25 bg-primary/5 px-4 py-3 text-sm text-foreground">
           {formBanner}
         </div>
       )}
 
-      {approved.length > 0 && (
+      {!loadError && approved.length > 0 && (
         <ul className="mb-8 space-y-4">
           {approved.map((r) => (
             <li key={r.id}>
@@ -175,11 +193,24 @@ export function OpportunityReviewsSection({
         </ul>
       )}
 
-      {approved.length === 0 && !myReview && (
+      {!loadError && approved.length === 0 && !myReview && (
         <p className="mb-6 text-sm text-muted-foreground">No published reviews yet. Be the first to share your experience.</p>
       )}
 
-      {myReview && (
+      {loadError && !userId && (
+        <p className="mb-6 text-sm text-muted-foreground">
+          When reviews are available, you can read what other students said and share your own experience.
+        </p>
+      )}
+
+      {loadError && userId && (
+        <p className="mb-6 text-sm text-muted-foreground">
+          We couldn&apos;t load whether you already have a review. Use &quot;Try again&quot; above, or refresh
+          the page in a moment.
+        </p>
+      )}
+
+      {!loadError && myReview && (
         <div className="mb-6 rounded-lg border border-border bg-muted/25 px-4 py-3 text-sm dark:bg-muted/15">
           {myReview.status === 'pending' && (
             <p className="text-foreground">
@@ -203,23 +234,27 @@ export function OpportunityReviewsSection({
       )}
 
       {!userId && (
-        <div className="rounded-xl border border-border bg-white p-5 shadow-sm dark:bg-card dark:shadow-none">
+        <div className="rounded-xl border border-border bg-background/80 p-5 shadow-sm dark:bg-card/80 dark:shadow-none">
           <p className="text-sm text-muted-foreground">
             <Link href={loginNext} className="font-medium text-primary hover:underline">
               Sign in
+            </Link>{' '}
+            or{' '}
+            <Link href={signupNext} className="font-medium text-primary hover:underline">
+              create an account
             </Link>{' '}
             to share your experience with this opportunity.
           </p>
         </div>
       )}
 
-      {userId && !showForm && !myReview && (
+      {userId && !loadError && !showForm && !myReview && (
         <Button type="button" onClick={() => setShowForm(true)} className="gap-1">
           Share your experience
         </Button>
       )}
 
-      {userId && myReview && !showForm && !editing && (
+      {userId && !loadError && myReview && !showForm && !editing && (
         <div className="flex flex-wrap gap-2">
           <Button type="button" variant="outline" size="sm" className="gap-1" onClick={() => { setEditing(true); setShowForm(true); }}>
             <Pencil className="h-3.5 w-3.5" />
@@ -238,7 +273,7 @@ export function OpportunityReviewsSection({
         </div>
       )}
 
-      {userId && (showForm || (myReview && editing)) && (
+      {userId && !loadError && (showForm || (myReview && editing)) && (
         <ReviewForm
           key={myReview?.id ?? 'new-review'}
           slug={slug}

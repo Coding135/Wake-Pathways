@@ -95,11 +95,20 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* Why this matters */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground text-center">
+      {/* Why this matters / By the numbers */}
+      <section
+        className="mb-16 scroll-mt-24 rounded-2xl border border-border bg-muted/25 p-8 dark:bg-muted/10 sm:p-10"
+        aria-labelledby="about-why-heading"
+      >
+        <h2
+          id="about-why-heading"
+          className="text-2xl font-bold tracking-tight text-foreground text-center"
+        >
           Why this matters
         </h2>
+        <p className="mx-auto mt-2 text-center text-sm font-medium uppercase tracking-wider text-primary">
+          By the numbers
+        </p>
         <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-muted-foreground">
           Wake County has a large student population, but opportunities are often scattered across
           school emails, nonprofit sites, university pages, and job boards. {APP_SHORT_NAME} brings
@@ -107,7 +116,7 @@ export default function AboutPage() {
           deadlines.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-xl border border-border bg-white p-6 text-center shadow-sm dark:bg-card dark:shadow-none">
+          <div className="rounded-xl border border-border bg-background p-6 text-center shadow-sm dark:bg-card dark:shadow-none">
             <p className="text-3xl font-bold tabular-nums tracking-tight text-foreground sm:text-4xl">
               {WCPSS_ENROLLMENT_DISPLAY}
             </p>
@@ -125,7 +134,7 @@ export default function AboutPage() {
               for current figures).
             </p>
           </div>
-          <div className="rounded-xl border border-border bg-white p-6 text-center shadow-sm dark:bg-card dark:shadow-none">
+          <div className="rounded-xl border border-border bg-background p-6 text-center shadow-sm dark:bg-card dark:shadow-none">
             <p className="text-3xl font-bold tabular-nums tracking-tight text-foreground sm:text-4xl">
               {verifiedActiveListings}
             </p>
@@ -134,7 +143,7 @@ export default function AboutPage() {
               Active listings on {APP_SHORT_NAME} today, sourced and checked against official pages.
             </p>
           </div>
-          <div className="rounded-xl border border-border bg-white p-6 text-center shadow-sm dark:bg-card dark:shadow-none">
+          <div className="rounded-xl border border-border bg-background p-6 text-center shadow-sm dark:bg-card dark:shadow-none">
             <p className="text-3xl font-bold tabular-nums tracking-tight text-foreground sm:text-4xl">
               {opportunityCategoryCount}
             </p>
