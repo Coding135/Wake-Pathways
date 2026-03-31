@@ -67,7 +67,7 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
         <p className="text-sm text-muted-foreground">
           {result.total === 0
             ? 'No opportunities found'
-            : `${result.total} opportunity${result.total === 1 ? '' : 's'} found`}
+            : `${result.total} ${result.total === 1 ? 'opportunity' : 'opportunities'} found`}
         </p>
         {result.total_pages > 1 && (
           <p className="text-sm text-muted-foreground">
