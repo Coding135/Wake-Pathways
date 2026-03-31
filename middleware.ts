@@ -1,16 +1,20 @@
-import { type NextRequest } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 import { updateSession } from '@/lib/supabase/middleware';
 
 export async function middleware(request: NextRequest) {
-  return updateSession(request);
+  try {
+    return await updateSession(request);
+  } catch {
+    return NextResponse.next({ request });
+  }
 }
 
 export const config = {
   matcher: [
     /*
-     * Match all paths except static assets and images.
-     * Session refresh must run on auth and app routes.
+     * Skip static/image optimization, crawlers, well-known, favicon, and raster/font files.
+     * Do not exclude all of /_next/ or *.json — RSC uses /_next/data/*.json and needs middleware.
      */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/((?!_next/static|_next/image|\\.well-known/|favicon\\.ico|robots\\.txt|sitemap\\.xml|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|woff2?|ttf|eot)$).*)',
   ],
 };
