@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Header } from '@/components/layout/header';
+import { AuthConfigBanner } from '@/components/layout/auth-config-banner';
 import { Footer } from '@/components/layout/footer';
 import { Providers } from '@/components/providers';
+import { createClient } from '@/lib/supabase/server';
 import './globals.css';
 
 const geistSans = Geist({
@@ -25,11 +27,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <html
       lang="en"
@@ -37,7 +44,8 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body className="min-h-screen flex flex-col bg-background text-foreground">
-        <Providers>
+        <Providers initialUser={user}>
+          <AuthConfigBanner />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />

@@ -1,90 +1,12 @@
 'use client';
 
-import { useSyncExternalStore, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-
-const STORAGE_KEY = 'wake-pathways-saved';
-
-/** Stable empty snapshot: useSyncExternalStore requires the same reference from getServerSnapshot (and empty client state). */
-const EMPTY_SAVED_SLUGS: string[] = [];
-
-let cachedSerialized = '[]';
-let cachedSlugs: string[] = EMPTY_SAVED_SLUGS;
-
-function getSavedSlugs(): string[] {
-  if (typeof window === 'undefined') return [...EMPTY_SAVED_SLUGS];
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [...EMPTY_SAVED_SLUGS];
-  } catch {
-    return [...EMPTY_SAVED_SLUGS];
-  }
-}
-
-function persistSlugs(slugs: string[]) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(slugs));
-    window.dispatchEvent(new Event('saved-updated'));
-  } catch {
-    // localStorage may be unavailable
-  }
-}
-
-function getSnapshot(): string[] {
-  if (typeof window === 'undefined') return EMPTY_SAVED_SLUGS;
-  const raw = localStorage.getItem(STORAGE_KEY);
-  let parsed: string[];
-  try {
-    parsed = raw ? JSON.parse(raw) : [];
-    if (!Array.isArray(parsed)) parsed = [];
-  } catch {
-    parsed = [];
-  }
-  const serialized = JSON.stringify(parsed);
-  if (serialized !== cachedSerialized) {
-    cachedSerialized = serialized;
-    cachedSlugs = parsed.length === 0 ? EMPTY_SAVED_SLUGS : [...parsed];
-  }
-  return cachedSlugs;
-}
-
-function getServerSnapshot(): string[] {
-  return EMPTY_SAVED_SLUGS;
-}
-
-function subscribe(callback: () => void): () => void {
-  function handleStorage(e: StorageEvent) {
-    if (e.key === STORAGE_KEY) callback();
-  }
-  function handleCustom() {
-    callback();
-  }
-  window.addEventListener('storage', handleStorage);
-  window.addEventListener('saved-updated', handleCustom);
-  return () => {
-    window.removeEventListener('storage', handleStorage);
-    window.removeEventListener('saved-updated', handleCustom);
-  };
-}
-
-export function useSavedOpportunities() {
-  const saved = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-
-  const toggle = useCallback((slug: string) => {
-    const current = getSavedSlugs();
-    const next = current.includes(slug)
-      ? current.filter((s) => s !== slug)
-      : [...current, slug];
-    persistSlugs(next);
-  }, []);
-
-  const isSaved = useCallback((slug: string) => saved.includes(slug), [saved]);
-
-  return { saved, toggle, isSaved };
-}
+import { useAuth } from '@/contexts/auth-context';
+import { useSavedSlugs } from '@/hooks/use-saved-slugs';
 
 export function SaveButton({
   slug,
@@ -95,20 +17,32 @@ export function SaveButton({
   className?: string;
   size?: 'sm' | 'icon';
 }) {
-  const { isSaved, toggle } = useSavedOpportunities();
-  const saved = isSaved(slug);
+  const { user } = useAuth();
+  const router = useRouter();
+  const { isSaved, toggleSaved, togglePending, toggleError } = useSavedSlugs();
+  const saved = user ? isSaved(slug) : false;
 
   return (
     <Button
       variant="ghost"
       size={size}
       className={cn('relative', className)}
+      disabled={!!user && togglePending}
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        toggle(slug);
+        if (!user) {
+          const next =
+            typeof window !== 'undefined'
+              ? window.location.pathname + window.location.search
+              : '/opportunities';
+          router.push(`/login?next=${encodeURIComponent(next)}`);
+          return;
+        }
+        void toggleSaved(slug);
       }}
       aria-label={saved ? 'Remove from saved' : 'Save opportunity'}
+      title={toggleError?.message}
     >
       <AnimatePresence mode="wait">
         <motion.div

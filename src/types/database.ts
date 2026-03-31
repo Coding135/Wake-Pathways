@@ -150,10 +150,19 @@ export interface AdminUser {
   created_at: string;
 }
 
+/** Public.profiles — one row per auth user */
+export interface Profile {
+  id: string;
+  email: string | null;
+  full_name: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface SavedOpportunity {
   id: string;
-  user_email: string;
-  opportunity_id: string;
+  user_id: string;
+  opportunity_slug: string;
   created_at: string;
 }
 
@@ -207,6 +216,11 @@ export type AdminUserInsert = Omit<AdminUser, 'id' | 'created_at'> & {
   created_at?: string;
 };
 
+export type ProfileInsert = Omit<Profile, 'created_at' | 'updated_at'> & {
+  created_at?: string;
+  updated_at?: string;
+};
+
 export type SavedOpportunityInsert = Omit<SavedOpportunity, 'id' | 'created_at'> & {
   id?: string;
   created_at?: string;
@@ -222,6 +236,7 @@ export type SubmissionUpdate = Partial<Omit<Submission, 'id' | 'created_at'>>;
 export type VerificationLogUpdate = Partial<Omit<VerificationLog, 'id'>>;
 export type DigestSubscriberUpdate = Partial<Omit<DigestSubscriber, 'id' | 'created_at'>>;
 export type AdminUserUpdate = Partial<Omit<AdminUser, 'id' | 'created_at'>>;
+export type ProfileUpdate = Partial<Omit<Profile, 'id' | 'created_at'>>;
 export type SavedOpportunityUpdate = Partial<Omit<SavedOpportunity, 'id' | 'created_at'>>;
 
 // =============================================================================
@@ -238,41 +253,58 @@ export interface OpportunityWithOrganization extends Opportunity {
 
 export interface Database {
   public: {
+    /** Required by @supabase/supabase-js generics for correct query inference */
+    Views: Record<string, never>;
+    Functions: Record<string, never>;
+    CompositeTypes: Record<string, never>;
     Tables: {
       organizations: {
         Row: Organization;
         Insert: OrganizationInsert;
         Update: OrganizationUpdate;
+        Relationships: [];
       };
       opportunities: {
         Row: Opportunity;
         Insert: OpportunityInsert;
         Update: OpportunityUpdate;
+        Relationships: [];
       };
       submissions: {
         Row: Submission;
         Insert: SubmissionInsert;
         Update: SubmissionUpdate;
+        Relationships: [];
       };
       verification_logs: {
         Row: VerificationLog;
         Insert: VerificationLogInsert;
         Update: VerificationLogUpdate;
+        Relationships: [];
       };
       digest_subscribers: {
         Row: DigestSubscriber;
         Insert: DigestSubscriberInsert;
         Update: DigestSubscriberUpdate;
+        Relationships: [];
       };
       admin_users: {
         Row: AdminUser;
         Insert: AdminUserInsert;
         Update: AdminUserUpdate;
+        Relationships: [];
+      };
+      profiles: {
+        Row: Profile;
+        Insert: ProfileInsert;
+        Update: ProfileUpdate;
+        Relationships: [];
       };
       saved_opportunities: {
         Row: SavedOpportunity;
         Insert: SavedOpportunityInsert;
         Update: SavedOpportunityUpdate;
+        Relationships: [];
       };
     };
     Enums: {

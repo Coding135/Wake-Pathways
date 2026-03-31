@@ -3,16 +3,23 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useQueryClient } from '@tanstack/react-query';
+import { createClient } from '@/lib/supabase/client';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Send } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { NAV_LINKS, APP_SHORT_NAME } from '@/lib/constants';
 import { BRAND_LOGO_MARK_32 } from '@/lib/brand';
 import { buttonVariants } from '@/components/ui/button';
+import { useAuth } from '@/contexts/auth-context';
+import { AccountMenu } from '@/components/layout/account-menu';
 
 export function Header() {
+  const { user } = useAuth();
   const pathname = usePathname();
+  const router = useRouter();
+  const queryClient = useQueryClient();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -91,17 +98,48 @@ export function Header() {
           })}
         </nav>
 
-        {/* Desktop CTA + mobile toggle */}
-        <div className="flex items-center gap-3">
-          <Link href="/submit" className={cn(buttonVariants({ size: 'sm' }), 'hidden md:inline-flex gap-2')}>
+        {/* Auth + CTAs — always visible in top bar (not only inside the mobile drawer) */}
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-1.5 sm:gap-2 md:flex-none md:gap-3">
+          {user ? (
+            <AccountMenu />
+          ) : (
+            <div className="flex shrink-0 items-center gap-1">
+              <Link
+                href="/login"
+                className={cn(
+                  buttonVariants({ variant: 'ghost', size: 'sm' }),
+                  'h-9 px-2.5 text-xs font-semibold sm:px-3 sm:text-sm touch-manipulation'
+                )}
+              >
+                Log in
+              </Link>
+              <Link
+                href="/signup"
+                className={cn(
+                  buttonVariants({ size: 'sm' }),
+                  'h-9 px-2.5 text-xs font-semibold shadow-sm ring-1 ring-primary/20 sm:px-3 sm:text-sm touch-manipulation'
+                )}
+              >
+                Sign up
+              </Link>
+            </div>
+          )}
+          <Link
+            href="/submit"
+            className={cn(
+              buttonVariants({ size: 'sm' }),
+              'hidden h-9 gap-2 md:inline-flex'
+            )}
+          >
             <Send className="h-3.5 w-3.5" />
-            Submit an Opportunity
+            <span className="hidden lg:inline">Submit an Opportunity</span>
+            <span className="lg:hidden">Submit</span>
           </Link>
 
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground md:hidden"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground md:hidden touch-manipulation"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -139,7 +177,45 @@ export function Header() {
                   </Link>
                 );
               })}
-              <div className="mt-2 border-t border-border pt-3">
+              <div className="mt-2 space-y-2 border-t border-border pt-3">
+                {user ? (
+                  <div className="rounded-lg border border-border bg-muted/30 px-3 py-2 text-xs text-muted-foreground">
+                    Signed in as{' '}
+                    <span className="font-medium text-foreground">{user.email}</span>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-2">
+                    <Link
+                      href="/login"
+                      onClick={closeMobile}
+                      className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'w-full')}
+                    >
+                      Log in
+                    </Link>
+                    <Link
+                      href="/signup"
+                      onClick={closeMobile}
+                      className={cn(buttonVariants({ size: 'sm' }), 'w-full')}
+                    >
+                      Sign up
+                    </Link>
+                  </div>
+                )}
+                {user && (
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      closeMobile();
+                      const supabase = createClient();
+                      await supabase.auth.signOut();
+                      queryClient.removeQueries({ queryKey: ['saved-slugs'] });
+                      router.refresh();
+                    }}
+                    className={cn(buttonVariants({ variant: 'ghost', size: 'sm' }), 'w-full text-destructive')}
+                  >
+                    Log out
+                  </button>
+                )}
                 <Link href="/submit" onClick={closeMobile} className={cn(buttonVariants({ size: 'sm' }), 'w-full gap-2')}>
                   <Send className="h-3.5 w-3.5" />
                   Submit an Opportunity

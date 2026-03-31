@@ -5,9 +5,12 @@ import { BRAND_LOGO_MARK_32 } from '@/lib/brand';
 
 const FOOTER_LINKS = [
   { label: 'Explore', href: '/opportunities' },
+  { label: 'Saved', href: '/saved' },
   { label: 'Submit', href: '/submit' },
   { label: 'About', href: '/about' },
   { label: 'How It Works', href: '/how-it-works' },
+  { label: 'Log in', href: '/login' },
+  { label: 'Sign up', href: '/signup' },
 ] as const;
 
 export function Footer() {
