@@ -4,9 +4,15 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { Header } from '@/components/layout/header';
 import { AuthConfigBanner } from '@/components/layout/auth-config-banner';
 import { Footer } from '@/components/layout/footer';
+import { cookies } from 'next/headers';
 import { Providers } from '@/components/providers';
 import { createClient } from '@/lib/supabase/server';
 import { THEME_INIT_SCRIPT } from '@/lib/theme-storage';
+import { isAdminToggleUser } from '@/lib/auth/admin-toggle';
+import {
+  ADMIN_VIEW_COOKIE_NAME,
+  ADMIN_VIEW_COOKIE_VALUE_ON,
+} from '@/lib/admin-view/cookie';
 import './globals.css';
 
 const geistSans = Geist({
@@ -49,6 +55,13 @@ export default async function RootLayout({
     initialProfile = data ?? null;
   }
 
+  const cookieStore = await cookies();
+  const adminViewCookieOn =
+    cookieStore.get(ADMIN_VIEW_COOKIE_NAME)?.value === ADMIN_VIEW_COOKIE_VALUE_ON;
+  const initialAdminViewOn = Boolean(
+    isAdminToggleUser(user?.email ?? null) && adminViewCookieOn
+  );
+
   return (
     <html
       lang="en"
@@ -62,7 +75,11 @@ export default async function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
         />
-        <Providers initialUser={user} initialProfile={initialProfile}>
+        <Providers
+          initialUser={user}
+          initialProfile={initialProfile}
+          initialAdminViewOn={initialAdminViewOn}
+        >
           <AuthConfigBanner />
           <Header />
           <main className="flex-1">{children}</main>

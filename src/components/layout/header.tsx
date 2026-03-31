@@ -15,10 +15,13 @@ import { buttonVariants } from '@/components/ui/button';
 import { useAuth } from '@/contexts/auth-context';
 import { AccountMenu } from '@/components/layout/account-menu';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
+import { Badge } from '@/components/ui/badge';
+import { useAdminView } from '@/contexts/admin-view-context';
 import { getUserDisplayLabel } from '@/lib/auth/user-display';
 
 export function Header() {
   const { user, profile } = useAuth();
+  const { canUseAdminToggle, adminViewOn, clearAdminViewPreference } = useAdminView();
   const pathname = usePathname();
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -103,6 +106,17 @@ export function Header() {
         {/* Auth + CTAs — always visible in top bar (not only inside the mobile drawer) */}
         <div className="flex min-w-0 flex-1 items-center justify-end gap-1.5 sm:gap-2 md:min-w-0 md:flex-none md:justify-self-end md:gap-3 md:pl-1">
           <ThemeToggle className="hidden md:block" />
+          {canUseAdminToggle && adminViewOn && (
+            <Badge
+              variant="outline"
+              className="shrink-0 border-primary/35 bg-primary/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary dark:bg-primary/15 sm:px-2"
+            >
+              <span className="sm:hidden" aria-hidden>
+                Admin
+              </span>
+              <span className="hidden sm:inline">Admin View</span>
+            </Badge>
+          )}
           {user ? (
             <AccountMenu />
           ) : (
@@ -215,6 +229,7 @@ export function Header() {
                     type="button"
                     onClick={async () => {
                       closeMobile();
+                      clearAdminViewPreference();
                       const supabase = createClient();
                       await supabase.auth.signOut();
                       queryClient.removeQueries({ queryKey: ['saved-slugs'] });

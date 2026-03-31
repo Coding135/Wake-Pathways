@@ -4,18 +4,41 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useQueryClient } from '@tanstack/react-query';
-import { ChevronDown, Heart, LogOut, User } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+import {
+  ChevronDown,
+  ClipboardList,
+  Heart,
+  LayoutDashboard,
+  Link2,
+  LogOut,
+  Shield,
+  Star,
+  User,
+  Users,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { createClient } from '@/lib/supabase/client';
 import { useAuth } from '@/contexts/auth-context';
+import { useAdminView } from '@/contexts/admin-view-context';
+import { ADMIN_VIEW_QUICK_LINKS } from '@/lib/admin-view/nav';
 import { buttonVariants } from '@/components/ui/button';
 import {
   getUserDisplayInitial,
   getUserDisplayLabel,
 } from '@/lib/auth/user-display';
 
+const ADMIN_LINK_ICONS: Record<string, LucideIcon> = {
+  '/admin': LayoutDashboard,
+  '/admin?tab=submissions': ClipboardList,
+  '/admin?tab=listings': Users,
+  '/admin?tab=verification': Link2,
+  '/admin/reviews': Star,
+};
+
 export function AccountMenu({ className }: { className?: string }) {
   const { user, profile } = useAuth();
+  const { canUseAdminToggle, adminViewOn, setAdminViewOn, clearAdminViewPreference } = useAdminView();
   const router = useRouter();
   const queryClient = useQueryClient();
   const [open, setOpen] = useState(false);
@@ -43,6 +66,7 @@ export function AccountMenu({ className }: { className?: string }) {
   const initial = getUserDisplayInitial(displayLabel, email);
 
   async function signOut() {
+    clearAdminViewPreference();
     const supabase = createClient();
     await supabase.auth.signOut();
     queryClient.removeQueries({ queryKey: ['saved-slugs'] });
@@ -97,6 +121,63 @@ export function AccountMenu({ className }: { className?: string }) {
             <Heart className="h-4 w-4 text-muted-foreground" />
             Saved opportunities
           </Link>
+          {canUseAdminToggle && (
+            <>
+              <div className="my-1 border-t border-border" role="presentation" />
+              <div className="px-3 py-2">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium text-foreground">Admin View</p>
+                    <p className="text-xs text-muted-foreground">Shortcuts to admin tools</p>
+                  </div>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={adminViewOn}
+                    onClick={() => setAdminViewOn(!adminViewOn)}
+                    className={cn(
+                      'relative h-7 w-11 shrink-0 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                      adminViewOn ? 'bg-primary' : 'bg-muted'
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        'pointer-events-none absolute top-0.5 h-6 w-6 rounded-full bg-background shadow-sm ring-1 ring-border/60 transition-transform',
+                        adminViewOn ? 'translate-x-[1.375rem]' : 'translate-x-0.5'
+                      )}
+                    />
+                  </button>
+                </div>
+              </div>
+              {adminViewOn && (
+                <div className="border-t border-border bg-muted/25 py-1 dark:bg-muted/10">
+                  <p className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                    Admin
+                  </p>
+                  {ADMIN_VIEW_QUICK_LINKS.map((item) => {
+                    const Icon = ADMIN_LINK_ICONS[item.href] ?? Shield;
+                    return (
+                      <Link
+                        key={item.href}
+                        role="menuitem"
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="flex w-full flex-col gap-0.5 px-3 py-2 text-left text-sm text-foreground hover:bg-secondary"
+                      >
+                        <span className="flex items-center gap-2 font-medium">
+                          <Icon className="h-4 w-4 shrink-0 text-muted-foreground" />
+                          {item.label}
+                        </span>
+                        {'description' in item && item.description ? (
+                          <span className="pl-6 text-xs text-muted-foreground">{item.description}</span>
+                        ) : null}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </>
+          )}
           <button
             type="button"
             role="menuitem"
