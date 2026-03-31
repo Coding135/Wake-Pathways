@@ -52,7 +52,7 @@ export function Header() {
           : 'border-transparent bg-background',
       )}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8 md:grid md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center md:gap-x-6 lg:gap-x-8">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,auto)_minmax(0,1fr)] md:items-center md:gap-x-4 lg:gap-x-8">
         {/* Brand */}
         <Link
           href="/"
@@ -75,7 +75,7 @@ export function Header() {
         </Link>
 
         {/* Desktop nav: centered in the bar (equal 1fr tracks left/right) */}
-        <nav className="hidden h-full items-center justify-center gap-0.5 md:flex md:justify-self-center">
+        <nav className="hidden h-full min-w-0 items-center justify-center gap-0.5 md:flex md:justify-self-center">
           {NAV_LINKS.map((link) => {
             const active =
               pathname === link.href || pathname.startsWith(link.href + '/');
@@ -84,7 +84,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'relative flex h-9 items-center justify-center rounded-md px-3 text-sm font-medium leading-none transition-colors',
+                  'relative flex h-9 shrink-0 items-center justify-center rounded-md px-2 text-sm font-medium leading-none transition-colors lg:px-3',
                   active
                     ? 'text-primary'
                     : 'text-muted-foreground hover:text-foreground',
@@ -104,17 +104,15 @@ export function Header() {
         </nav>
 
         {/* Auth + CTAs — always visible in top bar (not only inside the mobile drawer) */}
-        <div className="flex min-w-0 flex-1 items-center justify-end gap-1.5 sm:gap-2 md:min-w-0 md:flex-none md:justify-self-end md:gap-3 md:pl-1">
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-1.5 sm:gap-2 md:min-w-0 md:justify-self-end md:gap-2 md:pl-1 lg:gap-3">
           <ThemeToggle className="hidden md:block" />
           {canUseAdminToggle && adminViewOn && (
             <Badge
               variant="outline"
-              className="shrink-0 border-primary/35 bg-primary/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary dark:bg-primary/15 sm:px-2"
+              className="hidden shrink-0 border-primary/35 bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary lg:inline-flex dark:bg-primary/15"
+              aria-label="Admin View mode is on"
             >
-              <span className="sm:hidden" aria-hidden>
-                Admin
-              </span>
-              <span className="hidden sm:inline">Admin View</span>
+              Admin View
             </Badge>
           )}
           {user ? (

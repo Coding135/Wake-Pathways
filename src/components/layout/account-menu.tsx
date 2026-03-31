@@ -136,15 +136,13 @@ export function AccountMenu({ className }: { className?: string }) {
                     aria-checked={adminViewOn}
                     onClick={() => setAdminViewOn(!adminViewOn)}
                     className={cn(
-                      'relative h-7 w-11 shrink-0 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                      adminViewOn ? 'bg-primary' : 'bg-muted'
+                      'flex h-7 w-11 shrink-0 items-center rounded-full p-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                      adminViewOn ? 'justify-end bg-primary' : 'justify-start bg-muted'
                     )}
                   >
                     <span
-                      className={cn(
-                        'pointer-events-none absolute top-0.5 h-6 w-6 rounded-full bg-background shadow-sm ring-1 ring-border/60 transition-transform',
-                        adminViewOn ? 'translate-x-[1.375rem]' : 'translate-x-0.5'
-                      )}
+                      className="pointer-events-none block h-6 w-6 shrink-0 rounded-full bg-background shadow-sm ring-1 ring-border/60"
+                      aria-hidden
                     />
                   </button>
                 </div>
