@@ -1,18 +1,19 @@
 import { createServerClient } from '@supabase/ssr';
 import { type NextRequest, NextResponse } from 'next/server';
+import { readSupabasePublicEnv } from '@/lib/supabase/env';
 
 /**
  * Refreshes Supabase Auth cookies on each matched request (Edge-safe).
- * Never throws: missing env or Supabase errors fall back to passing the request through.
+ * Does not call createServerClient until URL + key are present (readSupabasePublicEnv).
+ * On missing env or errors, passes the request through without throwing.
  */
 export async function updateSession(request: NextRequest): Promise<NextResponse> {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
-
-  if (!supabaseUrl || !supabaseKey) {
+  const env = readSupabasePublicEnv();
+  if (!env) {
     return NextResponse.next({ request });
   }
 
+  const { url: supabaseUrl, key: supabaseKey } = env;
   let supabaseResponse = NextResponse.next({ request });
 
   try {
