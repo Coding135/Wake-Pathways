@@ -22,6 +22,7 @@ import { buttonVariants } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { OpportunityCard } from '@/components/opportunities/opportunity-card';
+import { CATEGORY_HOME_TILE_CLASSES } from '@/lib/opportunity-badge-styles';
 import { HeroSearchBar } from './hero-search';
 import { AnimatedSection } from './animated-section';
 
@@ -35,18 +36,6 @@ const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
   job: DollarSign,
   mentorship: MessageCircle,
   other: Sparkles,
-};
-
-const CATEGORY_BG: Record<OpportunityCategory, string> = {
-  internship: 'bg-blue-50 text-blue-600 group-hover:bg-blue-100',
-  volunteer: 'bg-emerald-50 text-emerald-600 group-hover:bg-emerald-100',
-  scholarship: 'bg-purple-50 text-purple-600 group-hover:bg-purple-100',
-  summer_program: 'bg-orange-50 text-orange-600 group-hover:bg-orange-100',
-  competition: 'bg-rose-50 text-rose-600 group-hover:bg-rose-100',
-  leadership: 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-100',
-  job: 'bg-teal-50 text-teal-600 group-hover:bg-teal-100',
-  mentorship: 'bg-pink-50 text-pink-600 group-hover:bg-pink-100',
-  other: 'bg-gray-50 text-gray-600 group-hover:bg-gray-100',
 };
 
 const QUICK_CATEGORIES: OpportunityCategory[] = [
@@ -77,8 +66,8 @@ export default function HomePage() {
   return (
     <>
       {/* ===== Hero ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-blue-50/50">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(99,102,241,0.08),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(16,185,129,0.06),transparent_50%)]" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-blue-50/50 dark:from-primary/10 dark:via-background dark:to-blue-950/40">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(99,102,241,0.08),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(16,185,129,0.06),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top_right,rgba(129,140,248,0.12),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(45,212,191,0.08),transparent_50%)]" />
 
         <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 sm:pb-28 sm:pt-28 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
@@ -89,7 +78,7 @@ export default function HomePage() {
 
             <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Real opportunities for{' '}
-              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent dark:from-teal-300 dark:to-blue-400">
                 Wake County teens
               </span>
             </h1>
@@ -163,7 +152,7 @@ export default function HomePage() {
 
       {/* ===== Deadlines Coming Up ===== */}
       {deadlinesComingUp.length > 0 && (
-        <AnimatedSection className="bg-amber-50/30 border-y border-amber-100/50">
+        <AnimatedSection className="bg-amber-50/30 border-y border-amber-100/50 dark:bg-amber-950/25 dark:border-amber-900/40">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
             <div className="flex items-end justify-between mb-8">
               <div>
@@ -214,7 +203,12 @@ export default function HomePage() {
                   href={`/opportunities?category=${category}`}
                   className="group flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
                 >
-                  <div className={cn('flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors', CATEGORY_BG[category])}>
+                  <div
+                    className={cn(
+                      'flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors',
+                      CATEGORY_HOME_TILE_CLASSES[category]
+                    )}
+                  >
                     <Icon className="h-5 w-5" />
                   </div>
                   <div className="min-w-0">

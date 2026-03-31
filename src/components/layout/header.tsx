@@ -14,6 +14,7 @@ import { BRAND_LOGO_MARK_32 } from '@/lib/brand';
 import { buttonVariants } from '@/components/ui/button';
 import { useAuth } from '@/contexts/auth-context';
 import { AccountMenu } from '@/components/layout/account-menu';
+import { ThemeToggle } from '@/components/layout/theme-toggle';
 import { getUserDisplayLabel } from '@/lib/auth/user-display';
 
 export function Header() {
@@ -101,6 +102,7 @@ export function Header() {
 
         {/* Auth + CTAs — always visible in top bar (not only inside the mobile drawer) */}
         <div className="flex min-w-0 flex-1 items-center justify-end gap-1.5 sm:gap-2 md:flex-none md:gap-3">
+          <ThemeToggle className="hidden md:block" />
           {user ? (
             <AccountMenu />
           ) : (
@@ -179,6 +181,10 @@ export function Header() {
                 );
               })}
               <div className="mt-2 space-y-2 border-t border-border pt-3">
+                <div className="flex items-center justify-between rounded-lg border border-border bg-muted/30 px-3 py-2 md:hidden">
+                  <span className="text-xs font-medium text-muted-foreground">Appearance</span>
+                  <ThemeToggle />
+                </div>
                 {user ? (
                   <div className="rounded-lg border border-border bg-muted/30 px-3 py-2 text-xs text-muted-foreground min-w-0">
                     Signed in as{' '}

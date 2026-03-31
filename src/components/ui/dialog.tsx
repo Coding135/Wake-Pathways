@@ -47,7 +47,7 @@ function Dialog({ open, onOpenChange, children }: DialogProps) {
         if (e.target === overlayRef.current) onOpenChange(false);
       }}
     >
-      <div className="fixed inset-0 bg-black/50 animate-fade-in" />
+      <div className="fixed inset-0 bg-black/50 animate-fade-in dark:bg-black/70" />
       <div
         role="dialog"
         aria-modal="true"

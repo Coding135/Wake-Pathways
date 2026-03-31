@@ -55,7 +55,9 @@ export function SaveButton({
           <Heart
             className={cn(
               'h-4 w-4 transition-colors',
-              saved ? 'fill-red-500 text-red-500' : 'text-muted-foreground'
+              saved
+                ? 'fill-red-500 text-red-500 dark:fill-rose-400 dark:text-rose-400'
+                : 'text-muted-foreground'
             )}
           />
         </motion.div>

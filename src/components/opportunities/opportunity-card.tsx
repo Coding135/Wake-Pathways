@@ -20,6 +20,10 @@ import type { OpportunityWithOrganization, OpportunityCategory } from '@/types/d
 import { Badge } from '@/components/ui/badge';
 import { cn, truncate, formatDeadline, getStatusLabel, getApplicationStatusColor } from '@/lib/utils';
 import { CATEGORY_MAP } from '@/lib/constants';
+import {
+  CATEGORY_BADGE_CLASSES,
+  VERIFIED_OPPORTUNITY_BADGE_CLASSES,
+} from '@/lib/opportunity-badge-styles';
 import { SaveButton } from './save-button';
 
 const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
@@ -32,18 +36,6 @@ const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
   job: DollarSign,
   mentorship: MessageCircle,
   other: Sparkles,
-};
-
-const CATEGORY_COLORS: Record<OpportunityCategory, string> = {
-  internship: 'bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10',
-  volunteer: 'bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-700/10',
-  scholarship: 'bg-purple-50 text-purple-700 ring-1 ring-inset ring-purple-700/10',
-  summer_program: 'bg-orange-50 text-orange-700 ring-1 ring-inset ring-orange-700/10',
-  competition: 'bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-700/10',
-  leadership: 'bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-700/10',
-  job: 'bg-teal-50 text-teal-700 ring-1 ring-inset ring-teal-700/10',
-  mentorship: 'bg-pink-50 text-pink-700 ring-1 ring-inset ring-pink-700/10',
-  other: 'bg-gray-50 text-gray-600 ring-1 ring-inset ring-gray-500/10',
 };
 
 const PAID_LABELS: Record<string, string> = {
@@ -82,14 +74,14 @@ export function OpportunityCard({
       className={cn(
         'group relative flex flex-col rounded-xl border border-border bg-card shadow-sm',
         'transition-all duration-200 hover:shadow-md hover:-translate-y-0.5',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]',
         className
       )}
     >
       <div className="flex flex-col gap-3 p-5 pb-0">
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-1.5">
-            <Badge className={cn('gap-1', CATEGORY_COLORS[opportunity.category])}>
+            <Badge className={cn('gap-1', CATEGORY_BADGE_CLASSES[opportunity.category])}>
               <CategoryIcon className="h-3 w-3" />
               {categoryInfo.label}
             </Badge>
@@ -100,7 +92,7 @@ export function OpportunityCard({
 
           <div className="flex items-center gap-1">
             {opportunity.verified && (
-              <Badge className="gap-1 bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-700/10">
+              <Badge className={cn('gap-1', VERIFIED_OPPORTUNITY_BADGE_CLASSES)}>
                 <CheckCircle2 className="h-3 w-3" />
                 Verified
               </Badge>

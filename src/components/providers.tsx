@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from 'react';
 import type { User } from '@supabase/supabase-js';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ThemeProvider } from '@/components/theme-provider';
 import { AuthProvider } from '@/contexts/auth-context';
 import type { UserProfileDisplay } from '@/lib/auth/user-display';
 
@@ -29,9 +30,11 @@ export function Providers({
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider initialUser={initialUser} initialProfile={initialProfile}>
-        {children}
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider initialUser={initialUser} initialProfile={initialProfile}>
+          {children}
+        </AuthProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

@@ -27,12 +27,12 @@ export function HeroSearchBar() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search internships, scholarships, programs..."
-          className="h-14 w-full rounded-2xl border border-border bg-card pl-12 pr-28 text-base text-foreground shadow-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+          className="h-14 w-full rounded-2xl border border-border bg-card pl-12 pr-28 text-base text-foreground shadow-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 focus:ring-offset-[var(--ring-offset)] focus:border-primary transition-all"
           aria-label="Search opportunities"
         />
         <button
           type="submit"
-          className="absolute right-2 top-1/2 -translate-y-1/2 h-10 rounded-xl bg-primary px-5 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="absolute right-2 top-1/2 -translate-y-1/2 h-10 rounded-xl bg-primary px-5 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
         >
           Search
         </button>

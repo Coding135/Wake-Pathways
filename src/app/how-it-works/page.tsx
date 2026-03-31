@@ -48,21 +48,24 @@ const TRUST_BADGES = [
   {
     icon: ShieldCheck,
     label: 'Verified',
-    color: 'bg-emerald-100 text-emerald-700',
+    color:
+      'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200 dark:ring-1 dark:ring-inset dark:ring-emerald-400/25',
     description:
       'Source URL confirmed, details checked, and listing reviewed by a team member.',
   },
   {
     icon: Globe,
     label: 'Source linked',
-    color: 'bg-blue-100 text-blue-700',
+    color:
+      'bg-blue-100 text-blue-800 dark:bg-blue-950/50 dark:text-blue-200 dark:ring-1 dark:ring-inset dark:ring-blue-400/25',
     description:
       'Every verified listing includes a direct link to the official application or information page.',
   },
   {
     icon: CheckCircle2,
     label: 'Recently reviewed',
-    color: 'bg-teal-100 text-teal-700',
+    color:
+      'bg-teal-100 text-teal-800 dark:bg-teal-950/50 dark:text-teal-200 dark:ring-1 dark:ring-inset dark:ring-teal-400/25',
     description:
       'The listing has been checked within the current review cycle and is believed to be active.',
   },

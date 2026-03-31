@@ -46,6 +46,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { OpportunityCard } from '@/components/opportunities/opportunity-card';
 import { SaveButton } from '@/components/opportunities/save-button';
 import { ShareButton } from './share-button';
+import {
+  CATEGORY_BADGE_CLASSES,
+  VERIFIED_OPPORTUNITY_BADGE_CLASSES,
+} from '@/lib/opportunity-badge-styles';
 
 const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
   internship: Briefcase,
@@ -57,18 +61,6 @@ const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
   job: DollarSign,
   mentorship: MessageCircle,
   other: Sparkles,
-};
-
-const CATEGORY_COLORS: Record<OpportunityCategory, string> = {
-  internship: 'bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10',
-  volunteer: 'bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-700/10',
-  scholarship: 'bg-purple-50 text-purple-700 ring-1 ring-inset ring-purple-700/10',
-  summer_program: 'bg-orange-50 text-orange-700 ring-1 ring-inset ring-orange-700/10',
-  competition: 'bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-700/10',
-  leadership: 'bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-700/10',
-  job: 'bg-teal-50 text-teal-700 ring-1 ring-inset ring-teal-700/10',
-  mentorship: 'bg-pink-50 text-pink-700 ring-1 ring-inset ring-pink-700/10',
-  other: 'bg-gray-50 text-gray-600 ring-1 ring-inset ring-gray-500/10',
 };
 
 const REMOTE_LABELS: Record<string, string> = {
@@ -194,7 +186,7 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
       {/* Header */}
       <header className="mb-8">
         <div className="flex flex-wrap items-center gap-2 mb-3">
-          <Badge className={cn('gap-1', CATEGORY_COLORS[opp.category])}>
+          <Badge className={cn('gap-1', CATEGORY_BADGE_CLASSES[opp.category])}>
             <CategoryIcon className="h-3 w-3" />
             {categoryInfo.label}
           </Badge>
@@ -202,7 +194,7 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
             {getStatusLabel(opp.application_status)}
           </Badge>
           {opp.verified && (
-            <Badge className="gap-1 bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-700/10">
+            <Badge className={cn('gap-1', VERIFIED_OPPORTUNITY_BADGE_CLASSES)}>
               <CheckCircle2 className="h-3 w-3" />
               Verified
             </Badge>
@@ -272,7 +264,7 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
                   <p
                     className={cn(
                       'mt-0.5 text-sm font-medium text-foreground',
-                      'highlight' in d && d.highlight && 'text-amber-600'
+                      'highlight' in d && d.highlight && 'text-amber-600 dark:text-amber-400'
                     )}
                   >
                     {d.value}

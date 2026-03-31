@@ -93,7 +93,7 @@ export function SignupForm({ redirectNext }: { redirectNext?: string }) {
             </p>
           )}
           {successMessage && (
-            <p className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-900">
+            <p className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-900 dark:border-emerald-800/50 dark:bg-emerald-950/45 dark:text-emerald-100">
               {successMessage}
             </p>
           )}

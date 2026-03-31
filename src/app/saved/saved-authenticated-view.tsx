@@ -27,6 +27,11 @@ import { SaveButton } from '@/components/opportunities/save-button';
 import { Button } from '@/components/ui/button';
 import { buttonVariants } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import type { OpportunityCategory } from '@/types/database';
+import {
+  CATEGORY_BADGE_CLASSES,
+  VERIFIED_OPPORTUNITY_BADGE_CLASSES,
+} from '@/lib/opportunity-badge-styles';
 
 const PAID_LABELS: Record<string, string> = {
   paid: 'Paid',
@@ -35,20 +40,9 @@ const PAID_LABELS: Record<string, string> = {
   varies: 'Varies',
 };
 
-const CATEGORY_COLORS: Record<string, string> = {
-  internship: 'bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10',
-  volunteer: 'bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-700/10',
-  scholarship: 'bg-purple-50 text-purple-700 ring-1 ring-inset ring-purple-700/10',
-  summer_program: 'bg-orange-50 text-orange-700 ring-1 ring-inset ring-orange-700/10',
-  competition: 'bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-700/10',
-  leadership: 'bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-700/10',
-  job: 'bg-teal-50 text-teal-700 ring-1 ring-inset ring-teal-700/10',
-  mentorship: 'bg-pink-50 text-pink-700 ring-1 ring-inset ring-pink-700/10',
-  other: 'bg-gray-50 text-gray-600 ring-1 ring-inset ring-gray-500/10',
-};
-
 function getCategoryColor(cat: string): string {
-  return CATEGORY_COLORS[cat] || CATEGORY_COLORS.other;
+  const c = cat as OpportunityCategory;
+  return CATEGORY_BADGE_CLASSES[c] ?? CATEGORY_BADGE_CLASSES.other;
 }
 
 type Opp = (typeof MOCK_OPPORTUNITIES)[number];
@@ -143,7 +137,7 @@ export function SavedAuthenticatedView({ initialSlugs }: { initialSlugs: string[
                           {getStatusLabel(opp.application_status)}
                         </Badge>
                         {opp.verified && (
-                          <Badge className="gap-1 bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-700/10 text-xs">
+                          <Badge className={cn('gap-1 text-xs', VERIFIED_OPPORTUNITY_BADGE_CLASSES)}>
                             <CheckCircle2 className="h-3 w-3" />
                             Verified
                           </Badge>
