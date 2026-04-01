@@ -49,6 +49,9 @@ import { SaveButton } from '@/components/opportunities/save-button';
 import { getOpportunityReviewsForDetail } from '@/lib/reviews/fetch-for-detail';
 import { ShareButton } from './share-button';
 import { ReportOpportunityIssueDialog } from '@/components/opportunities/report-opportunity-issue-dialog';
+import { AddDeadlineToCalendar } from '@/components/opportunities/add-deadline-to-calendar';
+import { getOpportunityDeadlineCalendarDraft } from '@/lib/calendar/deadline-calendar';
+import { resolveAbsoluteListingUrl } from '@/lib/site-request-url';
 import {
   CATEGORY_BADGE_CLASSES,
   VERIFIED_OPPORTUNITY_BADGE_CLASSES,
@@ -128,6 +131,18 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
     .slice(0, 3);
 
   const reviews = await getOpportunityReviewsForDetail(slug);
+
+  const listingUrl = await resolveAbsoluteListingUrl(opp.slug);
+  const deadlineCalendarDraft = getOpportunityDeadlineCalendarDraft({
+    slug: opp.slug,
+    title: opp.title,
+    deadline_type: opp.deadline_type,
+    deadline_at: opp.deadline_at,
+    application_status: opp.application_status,
+    organization: opp.organization,
+    official_application_url: opp.official_application_url,
+    listingUrl,
+  });
 
   const details = [
     {
@@ -278,6 +293,17 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
               </div>
             ))}
           </div>
+          {deadlineCalendarDraft && (
+            <div className="mt-5 flex flex-col gap-3 border-t border-border/60 pt-5 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-xs leading-snug text-muted-foreground sm:max-w-[min(100%,20rem)]">
+                Add this deadline to your calendar so you remember to apply.
+              </p>
+              <AddDeadlineToCalendar
+                draft={deadlineCalendarDraft}
+                opportunitySlug={opp.slug}
+              />
+            </div>
+          )}
         </CardContent>
       </Card>
 
