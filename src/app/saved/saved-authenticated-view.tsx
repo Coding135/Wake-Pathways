@@ -32,6 +32,7 @@ import {
   CATEGORY_BADGE_CLASSES,
   VERIFIED_OPPORTUNITY_BADGE_CLASSES,
 } from '@/lib/opportunity-badge-styles';
+import { SavedClosingSoonReminders } from '@/components/saved/saved-closing-soon-reminders';
 
 const PAID_LABELS: Record<string, string> = {
   paid: 'Paid',
@@ -47,7 +48,13 @@ function getCategoryColor(cat: string): string {
 
 type Opp = (typeof MOCK_OPPORTUNITIES)[number];
 
-export function SavedAuthenticatedView({ initialSlugs }: { initialSlugs: string[] }) {
+export function SavedAuthenticatedView({
+  initialSlugs,
+  userId,
+}: {
+  initialSlugs: string[];
+  userId: string;
+}) {
   // Seeds React Query so SaveButton hearts match server data without waiting for /api/saved
   const { slugs } = useSavedSlugs(initialSlugs);
   const [showCompare, setShowCompare] = useState(false);
@@ -88,6 +95,10 @@ export function SavedAuthenticatedView({ initialSlugs }: { initialSlugs: string[
           </Button>
         )}
       </div>
+
+      {slugs.length > 0 && (
+        <SavedClosingSoonReminders userId={userId} savedOpportunities={savedOpportunities} />
+      )}
 
       {slugs.length === 0 ? (
         <motion.div

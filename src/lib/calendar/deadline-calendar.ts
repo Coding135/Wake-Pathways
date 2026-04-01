@@ -192,6 +192,34 @@ export function getOpportunityDeadlineCalendarDraft(
   return draft;
 }
 
+export type OpportunityDeadlineEligibilityInput = Pick<
+  OpportunityDeadlineCalendarInput,
+  'deadline_type' | 'deadline_at' | 'application_status'
+>;
+
+/**
+ * True when the listing has a real, upcoming deadline that can be shown in calendar-style flows
+ * (same rules as Add to calendar: fixed type, open-ish status, parseable, not passed).
+ */
+export function opportunityHasUsableFutureDeadline(
+  input: OpportunityDeadlineEligibilityInput,
+  now: Date = new Date()
+): boolean {
+  return (
+    getOpportunityDeadlineCalendarDraft(
+      {
+        slug: '__eligible__',
+        title: ' ',
+        organization: null,
+        official_application_url: null,
+        listingUrl: 'https://example.com/__/',
+        ...input,
+      },
+      now
+    ) !== null
+  );
+}
+
 export function buildGoogleCalendarUrl(draft: DeadlineCalendarDraft): string {
   const base = 'https://calendar.google.com/calendar/render';
   const params = new URLSearchParams({ action: 'TEMPLATE' });

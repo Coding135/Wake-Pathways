@@ -4,7 +4,7 @@ import type { SavedOpportunity } from '@/types/database';
 import { SavedAuthenticatedView } from './saved-authenticated-view';
 
 export const metadata = {
-  title: 'Saved Opportunities — Wake Pathways',
+  title: 'Saved Opportunities - Wake Pathways',
   description: 'Your saved Wake County teen opportunities.',
 };
 
@@ -34,5 +34,5 @@ export default async function SavedPage() {
   const rows = (data ?? []) as Pick<SavedOpportunity, 'opportunity_slug'>[];
   const slugs = rows.map((r) => r.opportunity_slug);
 
-  return <SavedAuthenticatedView initialSlugs={slugs} />;
+  return <SavedAuthenticatedView initialSlugs={slugs} userId={user.id} />;
 }
