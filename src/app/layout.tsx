@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import { Header } from '@/components/layout/header';
 import { AuthConfigBanner } from '@/components/layout/auth-config-banner';
 import { Footer } from '@/components/layout/footer';
@@ -85,6 +86,7 @@ export default async function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
