@@ -47,7 +47,7 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-muted/30">
       <div className="border-b border-border bg-card">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-3 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
             <Shield className="h-6 w-6 text-primary" />
             <span className="text-lg font-bold text-foreground">Wake Pathways Admin</span>
@@ -63,8 +63,8 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
       </div>
 
       {dataBanner !== 'loading' && dataBanner !== 'live' && (
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="border-b border-border bg-warning/10 px-4 py-2 text-center text-sm text-warning">
+        <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
+          <div className="border-b border-border bg-warning/10 px-3 py-2.5 text-center text-sm text-warning sm:px-4">
             {dataBanner === 'sign_in' && (
               <>
                 <Badge variant="warning" className="mr-2">
@@ -86,8 +86,8 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <nav className="flex gap-1 overflow-x-auto border-b border-border py-2">
+      <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
+        <nav className="-mx-1 flex gap-1 overflow-x-auto overflow-y-hidden border-b border-border py-2 pb-2.5 [-webkit-overflow-scrolling:touch]">
           {ADMIN_NAV.map((item) => {
             const Icon = item.icon;
             if ('href' in item) {
@@ -132,7 +132,7 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
         </nav>
       </div>
 
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <main className="mx-auto min-w-0 max-w-7xl px-3 py-5 sm:px-6 sm:py-6 lg:px-8">
         {children}
       </main>
     </div>

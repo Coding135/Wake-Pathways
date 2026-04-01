@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function ResetPasswordPage() {
   return (
-    <div className="mx-auto flex min-h-[calc(100vh-10rem)] max-w-md flex-col justify-center px-4 py-12 sm:px-6">
+    <div className="mx-auto flex min-h-[calc(100vh-10rem)] min-w-0 max-w-md flex-col justify-center px-3 py-10 sm:px-6 sm:py-12">
       <p className="mb-6 text-center text-sm text-muted-foreground">
         <Link href="/login" className="font-medium text-primary hover:underline">
           ← Back to log in

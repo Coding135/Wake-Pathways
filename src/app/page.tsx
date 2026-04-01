@@ -80,21 +80,21 @@ export default function HomePage() {
         />
         <div className="pointer-events-none absolute inset-0 hidden dark:block bg-[radial-gradient(ellipse_100%_80%_at_50%_-10%,rgb(39_39_42/0.55),transparent_55%),radial-gradient(ellipse_70%_50%_at_100%_100%,rgb(30_58_138/0.12),transparent_50%)]" />
 
-        <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 sm:pb-28 sm:pt-28 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-16 sm:px-6 sm:pb-28 sm:pt-28 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1 text-sm font-medium text-muted-foreground shadow-sm dark:border-border dark:bg-card dark:text-muted-foreground">
-              <MapPin className="h-3.5 w-3.5 text-foreground/70" />
+            <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm sm:mb-5 sm:text-sm dark:border-border dark:bg-card dark:text-muted-foreground">
+              <MapPin className="h-3.5 w-3.5 shrink-0 text-foreground/70" />
               Wake County, NC
             </span>
 
-            <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="text-balance text-3xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Real opportunities for{' '}
               <span className="bg-gradient-to-r from-teal-500 via-sky-500 to-blue-600 bg-clip-text text-transparent dark:from-teal-300 dark:via-sky-300 dark:to-blue-400">
                 Wake County teens
               </span>
             </h1>
 
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-lg md:text-xl">
               Find verified internships, volunteer roles, scholarships, summer programs, jobs, and more in one place.
             </p>
 
@@ -102,7 +102,7 @@ export default function HomePage() {
               <HeroSearchBar />
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2 px-0.5 sm:mt-6">
               {QUICK_CATEGORIES.map((cat) => {
                 const info = CATEGORY_MAP[cat];
                 const Icon = CATEGORY_ICONS[cat];
@@ -111,13 +111,13 @@ export default function HomePage() {
                     key={cat}
                     href={`/opportunities?category=${cat}`}
                     className={cn(
-                      'inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1.5 text-sm font-medium text-foreground shadow-sm',
-                      'hover:border-zinc-300 hover:bg-zinc-50',
-                      'dark:border-border dark:bg-card dark:hover:bg-secondary'
+                      'inline-flex min-h-9 items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-medium text-foreground shadow-sm sm:text-sm',
+                      'hover:border-zinc-300 hover:bg-zinc-50 active:bg-zinc-100',
+                      'dark:border-border dark:bg-card dark:hover:bg-secondary touch-manipulation'
                     )}
                   >
                     <Icon className="h-3.5 w-3.5 shrink-0 text-foreground" />
-                    {info.label}
+                    <span className="leading-tight">{info.label}</span>
                   </Link>
                 );
               })}
@@ -131,18 +131,18 @@ export default function HomePage() {
       {/* ===== Featured ===== */}
       <AnimatedSection className="bg-[var(--section-featured-bg)]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="min-w-0">
+            <h2 className="text-xl font-bold tracking-tight text-foreground text-balance sm:text-2xl md:text-3xl">
               Featured Opportunities
             </h2>
-            <p className="mt-1 text-muted-foreground">
+            <p className="mt-1 text-pretty text-sm text-muted-foreground sm:text-base">
               Highlighted programs worth checking out
             </p>
           </div>
           <Link
             href="/opportunities"
-            className={cn(buttonVariants({ variant: 'ghost' }), 'hidden gap-1 sm:inline-flex')}
+            className={cn(buttonVariants({ variant: 'ghost' }), 'hidden shrink-0 gap-1 sm:inline-flex')}
           >
             See all
             <ArrowRight className="h-4 w-4" />
@@ -171,18 +171,18 @@ export default function HomePage() {
       {deadlinesComingUp.length > 0 && (
         <AnimatedSection className="border-y border-[color:var(--section-deadlines-border)] bg-[var(--section-deadlines-bg)]">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
-            <div className="flex items-end justify-between mb-8">
-              <div>
-                <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div className="min-w-0">
+                <h2 className="text-xl font-bold tracking-tight text-foreground text-balance sm:text-2xl md:text-3xl">
                   Deadlines coming up
                 </h2>
-                <p className="mt-1 text-muted-foreground">
+                <p className="mt-1 text-pretty text-sm text-muted-foreground sm:text-base">
                   These opportunities close within the next two weeks
                 </p>
               </div>
               <Link
                 href="/opportunities?sort=deadline_asc"
-                className={cn(buttonVariants({ variant: 'ghost' }), 'hidden gap-1 sm:inline-flex')}
+                className={cn(buttonVariants({ variant: 'ghost' }), 'hidden shrink-0 gap-1 sm:inline-flex')}
               >
                 View all
                 <ArrowRight className="h-4 w-4" />
@@ -218,21 +218,21 @@ export default function HomePage() {
                 <Link
                   key={category}
                   href={`/opportunities?category=${category}`}
-                  className="group flex items-center gap-3 rounded-xl border border-border bg-white p-4 shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 dark:bg-card dark:shadow-none"
+                  className="group flex min-h-[4.25rem] items-center gap-2.5 rounded-xl border border-border bg-white p-3 shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 active:scale-[0.99] dark:bg-card dark:shadow-none sm:gap-3 sm:p-4 touch-manipulation"
                 >
                   <div
                     className={cn(
-                      'flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors',
+                      'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors sm:h-10 sm:w-10',
                       CATEGORY_HOME_TILE_CLASSES[category]
                     )}
                   >
-                    <Icon className="h-5 w-5" />
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </div>
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold text-foreground truncate">
-                      {info.label}
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-semibold leading-snug text-foreground sm:text-sm">
+                      <span className="line-clamp-2 sm:line-clamp-1 sm:truncate">{info.label}</span>
                     </p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="mt-0.5 text-[11px] text-muted-foreground sm:text-xs">
                       {count} listing{count === 1 ? '' : 's'}
                     </p>
                   </div>
@@ -305,16 +305,16 @@ export default function HomePage() {
       <section className="bg-muted/30 border-t border-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
           <div className="mx-auto max-w-2xl">
-            <div className="rounded-2xl border border-border bg-white p-8 text-center shadow-sm dark:bg-card dark:shadow-none sm:p-10">
-              <h3 className="text-xl font-bold text-foreground">
+            <div className="rounded-2xl border border-border bg-white p-6 text-center shadow-sm dark:bg-card dark:shadow-none sm:p-10">
+              <h3 className="text-lg font-bold text-foreground text-balance sm:text-xl">
                 Know about an opportunity?
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
                 Help Wake County teens by submitting a listing. Our team will verify it and make it available to everyone.
               </p>
               <Link
                 href="/submit"
-                className={cn(buttonVariants(), 'mt-6 gap-1')}
+                className={cn(buttonVariants(), 'mt-5 w-full gap-1 sm:mt-6 sm:w-auto touch-manipulation')}
               >
                 Submit a listing
                 <ArrowRight className="h-4 w-4" />

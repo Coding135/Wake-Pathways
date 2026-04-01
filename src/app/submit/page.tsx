@@ -69,7 +69,7 @@ export default function SubmitPage() {
   return (
     <>
       <title>Submit an Opportunity - Wake Pathways</title>
-      <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto min-w-0 max-w-2xl px-3 py-10 sm:px-6 sm:py-12 lg:px-8">
         <AnimatePresence mode="wait">
           {submitted ? (
             <motion.div
@@ -103,10 +103,10 @@ export default function SubmitPage() {
               transition={{ duration: 0.35 }}
             >
               <div className="mb-10">
-                <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                <h1 className="text-2xl font-bold tracking-tight text-foreground text-balance sm:text-3xl md:text-4xl">
                   Submit an Opportunity
                 </h1>
-                <p className="mt-3 text-lg text-muted-foreground">
+                <p className="mt-3 text-pretty text-base text-muted-foreground sm:text-lg">
                   Help Wake County teens discover programs in your community.
                   Submissions are reviewed before publishing.
                 </p>
@@ -208,7 +208,7 @@ export default function SubmitPage() {
                         error={!!errors.eligibility}
                       />
                     </Field>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <Field label="Min Grade" error={errors.grades_min?.message}>
                         <Select
                           {...register('grades_min', { setValueAs: optionalIntInput })}
@@ -232,7 +232,7 @@ export default function SubmitPage() {
                         </Select>
                       </Field>
                     </div>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <Field label="Min Age" error={errors.age_min?.message}>
                         <Input
                           {...register('age_min', { setValueAs: optionalIntInput })}
@@ -406,7 +406,7 @@ function FormSection({
   return (
     <section>
       <div className="mb-4">
-        <h2 className="text-xl font-semibold text-foreground">{title}</h2>
+        <h2 className="text-lg font-semibold text-foreground sm:text-xl">{title}</h2>
         <p className="text-sm text-muted-foreground">{description}</p>
       </div>
       <Card>
@@ -435,7 +435,7 @@ function Field({
 }) {
   return (
     <div className="space-y-1.5">
-      <div className="flex items-baseline justify-between">
+      <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
         <label className="text-sm font-medium text-foreground">
           {label}
           {required && <span className="ml-0.5 text-destructive">*</span>}

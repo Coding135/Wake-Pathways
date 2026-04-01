@@ -16,7 +16,12 @@ export function ShareButton({ title }: { title: string }) {
   }
 
   return (
-    <Button variant="outline" size="lg" className="gap-2" onClick={handleShare}>
+    <Button
+      variant="outline"
+      size="lg"
+      className="w-full gap-2 sm:w-auto touch-manipulation"
+      onClick={handleShare}
+    >
       <Share2 className="h-4 w-4" />
       Share
     </Button>

@@ -72,14 +72,14 @@ export function OpportunityCard({
     <Link
       href={href}
       className={cn(
-        'group relative flex flex-col rounded-xl border border-border bg-white shadow-[var(--elevated-card-shadow)]',
+        'group relative flex min-w-0 flex-col rounded-xl border border-border bg-white shadow-[var(--elevated-card-shadow)]',
         'transition-all duration-200 hover:shadow-md hover:-translate-y-0.5',
         'dark:border-border dark:bg-card dark:shadow-sm',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]',
         className
       )}
     >
-      <div className="flex flex-col gap-4 p-5 pb-0">
+      <div className="flex flex-col gap-3 p-4 pb-0 sm:gap-4 sm:p-5">
         <div className="flex items-center justify-between gap-3">
           <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-2">
             <Badge variant="opportunity" className={CATEGORY_BADGE_CLASSES[opportunity.category]}>
@@ -104,7 +104,7 @@ export function OpportunityCard({
         </div>
 
         <div className="min-h-0 flex-1">
-          <h3 className="text-base font-semibold leading-snug text-foreground group-hover:text-primary transition-colors duration-150">
+          <h3 className="min-w-0 text-base font-semibold leading-snug text-foreground transition-colors duration-150 group-hover:text-primary">
             {truncate(opportunity.title, 72)}
           </h3>
           {opportunity.organization && (
@@ -120,7 +120,7 @@ export function OpportunityCard({
         </div>
       </div>
 
-      <div className="mt-auto flex items-center border-t border-border/50 px-5 py-3">
+      <div className="mt-auto flex items-center border-t border-border/50 px-4 py-3 sm:px-5">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
           <span className="inline-flex items-center gap-1">
             <MapPin className="h-3 w-3 shrink-0" />

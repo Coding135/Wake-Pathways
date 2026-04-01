@@ -15,9 +15,9 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       <select
         ref={ref}
         className={cn(
-          'flex h-10 w-full cursor-pointer appearance-none rounded-lg border bg-white py-2 pl-3 pr-9 text-sm text-foreground transition-colors duration-150 dark:bg-card',
+          'flex h-11 w-full min-w-0 cursor-pointer appearance-none rounded-lg border bg-white py-2 pl-3 pr-9 text-base text-foreground transition-colors duration-150 sm:h-10 sm:text-sm dark:bg-card',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]',
-          'disabled:cursor-not-allowed disabled:opacity-50',
+          'disabled:cursor-not-allowed disabled:opacity-50 touch-manipulation',
           error
             ? 'border-destructive focus-visible:ring-destructive'
             : 'border-input',

@@ -69,7 +69,7 @@ export function SavedAuthenticatedView({
   }, [slugs, bySlug]);
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="mx-auto min-w-0 max-w-4xl px-3 py-10 sm:px-6 sm:py-12 lg:px-8">
       <div className="mb-8">
         <Link
           href="/opportunities"
@@ -77,7 +77,9 @@ export function SavedAuthenticatedView({
         >
           <ArrowLeft className="h-4 w-4" /> Back to Explore
         </Link>
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">Saved Opportunities</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-foreground text-balance sm:text-3xl">
+          Saved Opportunities
+        </h1>
         <p className="mt-2 text-muted-foreground">
           {slugs.length === 0
             ? 'Save opportunities while browsing to compare them later.'
@@ -133,8 +135,8 @@ export function SavedAuthenticatedView({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.04 }}
               >
-                <div className="rounded-xl border border-border bg-white p-5 shadow-[var(--elevated-card-shadow)] transition-shadow hover:shadow-md dark:bg-card dark:shadow-sm">
-                  <div className="flex items-start gap-4">
+                <div className="rounded-xl border border-border bg-white p-4 shadow-[var(--elevated-card-shadow)] transition-shadow hover:shadow-md dark:bg-card dark:shadow-sm sm:p-5">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-4">
                     <div className="min-w-0 flex-1">
                       <div className="mb-2 flex flex-wrap items-center gap-1.5">
                         {category && (
@@ -197,7 +199,7 @@ export function SavedAuthenticatedView({
                       </div>
                     </div>
 
-                    <SaveButton slug={opp.slug} />
+                    <SaveButton slug={opp.slug} className="self-end sm:self-start" />
                   </div>
                 </div>
               </motion.div>

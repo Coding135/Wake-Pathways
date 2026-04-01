@@ -175,7 +175,9 @@ export function OpportunityFilters() {
         className={cn(
           'grid gap-3 overflow-hidden transition-all duration-200',
           'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6',
-          mobileOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 lg:max-h-none lg:opacity-100'
+          mobileOpen
+            ? 'max-h-[min(75dvh,36rem)] overflow-y-auto overscroll-y-contain opacity-100 [-webkit-overflow-scrolling:touch] lg:max-h-none lg:overflow-visible'
+            : 'max-h-0 opacity-0 lg:max-h-none lg:opacity-100'
         )}
       >
         <Select
@@ -291,7 +293,7 @@ export function OpportunityFilters() {
           </Button>
         </div>
 
-        <div className="col-span-2 sm:col-span-3 lg:col-span-2 xl:col-span-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+        <div className="col-span-2 flex flex-col gap-3 sm:col-span-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-2 lg:col-span-2 xl:col-span-4">
           <Checkbox
             label="Verified only"
             checked={currentValues.verified_only}
@@ -312,7 +314,7 @@ export function OpportunityFilters() {
               variant="ghost"
               size="sm"
               onClick={clearAll}
-              className="ml-auto gap-1 text-muted-foreground hover:text-foreground"
+              className="gap-1 self-start text-muted-foreground hover:text-foreground sm:ml-auto sm:self-center"
             >
               <X className="h-3.5 w-3.5" />
               Clear all ({activeFilterCount})
@@ -329,7 +331,7 @@ export function OpportunityFilters() {
             one selected interest. Matching uses each listing&apos;s verified tags and program type.
           </DialogDescription>
         </DialogHeader>
-        <DialogContent className="max-h-[min(24rem,50vh)] overflow-y-auto px-0">
+        <DialogContent className="max-h-[min(70dvh,28rem)] overflow-y-auto overscroll-contain px-0 sm:max-h-[min(50vh,24rem)]">
           <div className="grid gap-2 sm:grid-cols-2">
             {OPPORTUNITY_INTEREST_OPTIONS.map((opt) => (
               <Checkbox
@@ -437,15 +439,15 @@ export function OpportunityFilters() {
 
 function FilterChip({ label, onRemove }: { label: string; onRemove: () => void }) {
   return (
-    <span className="opp-filter-chip inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium">
-      {label}
+    <span className="opp-filter-chip inline-flex max-w-full items-center gap-0.5 rounded-full py-1 pl-2.5 pr-1 text-xs font-medium">
+      <span className="min-w-0 truncate">{label}</span>
       <button
         type="button"
         onClick={onRemove}
-        className="opp-filter-chip-remove ml-0.5 rounded-full p-0.5 transition-colors"
+        className="opp-filter-chip-remove flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors touch-manipulation"
         aria-label={`Remove ${label} filter`}
       >
-        <X className="h-3 w-3" />
+        <X className="h-3.5 w-3.5" />
       </button>
     </span>
   );

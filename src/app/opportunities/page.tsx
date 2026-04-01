@@ -53,12 +53,12 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
 
   return (
     <div className="w-full bg-[var(--surface-explore)] dark:bg-background">
-    <main className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+    <main className="mx-auto w-full max-w-7xl min-w-0 px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl font-bold tracking-tight text-foreground text-balance sm:text-3xl md:text-4xl">
           Explore Opportunities
         </h1>
-        <p className="mt-2 max-w-3xl text-lg text-muted-foreground">
+        <p className="mt-2 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
           Built for Wake County students: jobs, internships, volunteering, and in-person leadership stay
           mostly local and regional. Scholarships also cover Triangle and North Carolina programs, plus a
           short list of strong national awards we curate for high schoolers rather than serving as a
@@ -70,14 +70,14 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
         <OpportunityFilters />
       </Suspense>
 
-      <div className="mt-6 flex items-center justify-between">
+      <div className="mt-6 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
         <p className="text-sm text-muted-foreground">
           {result.total === 0
             ? 'No opportunities found'
             : `${result.total} ${result.total === 1 ? 'opportunity' : 'opportunities'} found`}
         </p>
         {result.total_pages > 1 && (
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground tabular-nums sm:text-right">
             Page {result.page} of {result.total_pages}
           </p>
         )}
@@ -128,6 +128,42 @@ function EmptyState() {
   );
 }
 
+function buildPageHref(
+  page: number,
+  searchParams: Record<string, string | string[] | undefined>
+) {
+  const params = new URLSearchParams(serializeExploreParams(searchParams));
+  if (page > 1) params.set('page', String(page));
+  else params.delete('page');
+  const qs = params.toString();
+  return `/opportunities${qs ? `?${qs}` : ''}`;
+}
+
+/** Compact page list with ellipses for many pages (desktop). */
+function visiblePageNumbers(current: number, total: number): (number | '…')[] {
+  if (total <= 7) {
+    return Array.from({ length: total }, (_, i) => i + 1);
+  }
+  const pages = new Set<number>([1, total, current, current - 1, current + 1]);
+  if (current <= 3) {
+    pages.add(2);
+    pages.add(3);
+  }
+  if (current >= total - 2) {
+    pages.add(total - 1);
+    pages.add(total - 2);
+  }
+  const sorted = [...pages].filter((p) => p >= 1 && p <= total).sort((a, b) => a - b);
+  const out: (number | '…')[] = [];
+  let prev = 0;
+  for (const p of sorted) {
+    if (p - prev > 1) out.push('…');
+    out.push(p);
+    prev = p;
+  }
+  return out;
+}
+
 function Pagination({
   currentPage,
   totalPages,
@@ -137,50 +173,88 @@ function Pagination({
   totalPages: number;
   searchParams: Record<string, string | string[] | undefined>;
 }) {
-  function pageHref(page: number) {
-    const params = new URLSearchParams(serializeExploreParams(searchParams));
-    if (page > 1) params.set('page', String(page));
-    else params.delete('page');
-    const qs = params.toString();
-    return `/opportunities${qs ? `?${qs}` : ''}`;
-  }
+  const pageHref = (page: number) => buildPageHref(page, searchParams);
+  const desktopPages = visiblePageNumbers(currentPage, totalPages);
 
   return (
-    <nav className="mt-10 flex items-center justify-center gap-2" aria-label="Pagination">
-      <Link
-        href={pageHref(currentPage - 1)}
-        aria-disabled={currentPage <= 1}
-        className={cn(
-          buttonVariants({ variant: 'outline', size: 'sm' }),
-          currentPage <= 1 && 'pointer-events-none opacity-50'
-        )}
-      >
-        Previous
-      </Link>
-
-      {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+    <nav
+      className="mt-8 flex flex-col items-stretch gap-4 sm:mt-10 md:items-center"
+      aria-label="Pagination"
+    >
+      <div className="flex items-center justify-between gap-3 md:hidden">
         <Link
-          key={p}
-          href={pageHref(p)}
+          href={pageHref(currentPage - 1)}
+          aria-disabled={currentPage <= 1}
           className={cn(
-            buttonVariants({ variant: p === currentPage ? 'default' : 'outline', size: 'sm' }),
-            'min-w-9'
+            buttonVariants({ variant: 'outline', size: 'sm' }),
+            'min-h-10 min-w-[5.5rem] touch-manipulation',
+            currentPage <= 1 && 'pointer-events-none opacity-50'
           )}
         >
-          {p}
+          Previous
         </Link>
-      ))}
+        <p className="text-center text-sm font-medium text-muted-foreground tabular-nums">
+          Page {currentPage} of {totalPages}
+        </p>
+        <Link
+          href={pageHref(currentPage + 1)}
+          aria-disabled={currentPage >= totalPages}
+          className={cn(
+            buttonVariants({ variant: 'outline', size: 'sm' }),
+            'min-h-10 min-w-[5.5rem] touch-manipulation',
+            currentPage >= totalPages && 'pointer-events-none opacity-50'
+          )}
+        >
+          Next
+        </Link>
+      </div>
 
-      <Link
-        href={pageHref(currentPage + 1)}
-        aria-disabled={currentPage >= totalPages}
-        className={cn(
-          buttonVariants({ variant: 'outline', size: 'sm' }),
-          currentPage >= totalPages && 'pointer-events-none opacity-50'
+      <div className="hidden flex-wrap items-center justify-center gap-2 md:flex">
+        <Link
+          href={pageHref(currentPage - 1)}
+          aria-disabled={currentPage <= 1}
+          className={cn(
+            buttonVariants({ variant: 'outline', size: 'sm' }),
+            currentPage <= 1 && 'pointer-events-none opacity-50'
+          )}
+        >
+          Previous
+        </Link>
+
+        {desktopPages.map((item, i) =>
+          item === '…' ? (
+            <span
+              key={`e-${i}`}
+              className="flex h-9 min-w-9 items-center justify-center px-1 text-sm text-muted-foreground"
+              aria-hidden
+            >
+              …
+            </span>
+          ) : (
+            <Link
+              key={item}
+              href={pageHref(item)}
+              className={cn(
+                buttonVariants({ variant: item === currentPage ? 'default' : 'outline', size: 'sm' }),
+                'min-h-9 min-w-9 touch-manipulation'
+              )}
+            >
+              {item}
+            </Link>
+          )
         )}
-      >
-        Next
-      </Link>
+
+        <Link
+          href={pageHref(currentPage + 1)}
+          aria-disabled={currentPage >= totalPages}
+          className={cn(
+            buttonVariants({ variant: 'outline', size: 'sm' }),
+            currentPage >= totalPages && 'pointer-events-none opacity-50'
+          )}
+        >
+          Next
+        </Link>
+      </div>
     </nav>
   );
 }

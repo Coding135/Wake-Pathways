@@ -42,7 +42,7 @@ function Dialog({ open, onOpenChange, children }: DialogProps) {
   return createPortal(
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4"
       onClick={(e) => {
         if (e.target === overlayRef.current) onOpenChange(false);
       }}
@@ -51,16 +51,19 @@ function Dialog({ open, onOpenChange, children }: DialogProps) {
       <div
         role="dialog"
         aria-modal="true"
-        className="relative z-10 w-full max-w-lg animate-slide-up rounded-xl border border-border bg-card p-6 shadow-lg"
+        className="relative z-10 flex max-h-[min(100dvh,40rem)] w-full max-w-lg animate-slide-up flex-col overflow-hidden rounded-t-2xl border border-border bg-card shadow-lg sm:rounded-xl"
       >
         <button
+          type="button"
           onClick={() => onOpenChange(false)}
-          className="absolute right-4 top-4 rounded-md p-1 text-muted-foreground transition-colors hover:text-foreground"
+          className="absolute right-2 top-2 z-20 flex h-11 w-11 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted/80 hover:text-foreground touch-manipulation"
         >
-          <X className="h-4 w-4" />
+          <X className="h-5 w-5" />
           <span className="sr-only">Close</span>
         </button>
-        {children}
+        <div className="max-h-[inherit] overflow-y-auto overscroll-contain px-4 pb-6 pt-14 sm:px-6 sm:pt-16">
+          {children}
+        </div>
       </div>
     </div>,
     document.body

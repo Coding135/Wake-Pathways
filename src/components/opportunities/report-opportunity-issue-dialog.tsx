@@ -88,7 +88,7 @@ export function ReportOpportunityIssueDialog({ slug, className }: Props) {
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          'inline-flex items-center gap-1.5 text-left text-sm font-medium text-primary underline decoration-primary/55 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+          'inline-flex min-h-11 items-center gap-1.5 py-1 text-left text-sm font-medium text-primary underline decoration-primary/55 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation sm:min-h-0',
           className
         )}
       >

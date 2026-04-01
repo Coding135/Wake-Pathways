@@ -111,12 +111,15 @@ export function OpportunityReviewsSection({
 
   return (
     <section
-      className="mb-8 scroll-mt-24 rounded-2xl border border-border bg-muted/20 p-6 shadow-sm dark:bg-muted/10 dark:shadow-none sm:p-8"
+      className="mb-8 scroll-mt-24 rounded-2xl border border-border bg-muted/20 p-4 shadow-sm dark:bg-muted/10 dark:shadow-none sm:p-8"
       aria-labelledby="opportunity-reviews-heading"
     >
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 id="opportunity-reviews-heading" className="text-xl font-semibold text-foreground">
+          <h2
+            id="opportunity-reviews-heading"
+            className="text-lg font-semibold text-foreground sm:text-xl"
+          >
             Reviews & testimonials
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -182,7 +185,7 @@ export function OpportunityReviewsSection({
                         )}
                       </div>
                       {r.title && <p className="font-medium text-foreground">{r.title}</p>}
-                      <p className="text-sm leading-relaxed text-muted-foreground whitespace-pre-wrap">
+                      <p className="break-words text-sm leading-relaxed text-muted-foreground whitespace-pre-wrap">
                         {r.body}
                       </p>
                       <p className="text-xs text-muted-foreground">

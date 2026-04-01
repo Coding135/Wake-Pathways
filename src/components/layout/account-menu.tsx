@@ -106,7 +106,7 @@ export function AccountMenu({ className }: { className?: string }) {
       {open && (
         <div
           role="menu"
-          className="absolute right-0 z-50 mt-2 w-[min(100vw-2rem,260px)] rounded-xl border border-border bg-card py-1 shadow-lg"
+          className="absolute right-0 z-50 mt-2 max-h-[min(24rem,70dvh)] w-[min(100vw-2rem,280px)] overflow-y-auto overscroll-contain rounded-xl border border-border bg-card py-1 shadow-lg"
         >
           <div className="border-b border-border px-3 py-2.5">
             <p className="text-xs font-medium text-muted-foreground">Signed in</p>

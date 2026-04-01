@@ -55,12 +55,12 @@ export function AddDeadlineToCalendar({ draft, opportunitySlug }: Props) {
   const googleUrl = buildGoogleCalendarUrl(draft);
 
   return (
-    <div ref={wrapRef} className="relative inline-flex">
+    <div ref={wrapRef} className="relative flex w-full sm:inline-flex sm:w-auto">
       <Button
         type="button"
         variant="outline"
         size="sm"
-        className="gap-1.5 border-border/80 bg-card shadow-sm hover:bg-muted/60"
+        className="w-full gap-1.5 border-border/80 bg-card shadow-sm hover:bg-muted/60 sm:w-auto touch-manipulation"
         aria-expanded={open}
         aria-haspopup="menu"
         onClick={() => setOpen((o) => !o)}
@@ -76,7 +76,7 @@ export function AddDeadlineToCalendar({ draft, opportunitySlug }: Props) {
         <div
           role="menu"
           aria-orientation="vertical"
-          className="absolute left-0 top-full z-30 mt-1.5 min-w-[13.5rem] overflow-hidden rounded-lg border border-border bg-card py-1 text-sm shadow-lg ring-1 ring-black/5 dark:ring-white/10"
+          className="absolute right-0 top-full z-30 mt-1.5 min-w-[min(100%,13.5rem)] max-w-[calc(100vw-2rem)] overflow-hidden rounded-lg border border-border bg-card py-1 text-sm shadow-lg ring-1 ring-black/5 dark:ring-white/10 sm:left-0 sm:right-auto sm:max-w-none"
         >
           <a
             role="menuitem"

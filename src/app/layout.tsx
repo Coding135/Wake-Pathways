@@ -83,7 +83,7 @@ export default async function RootLayout({
         >
           <AuthConfigBanner />
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="min-w-0 flex-1">{children}</main>
           <Footer />
         </Providers>
         <Analytics />

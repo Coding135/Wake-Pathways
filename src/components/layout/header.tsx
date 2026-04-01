@@ -52,11 +52,11 @@ export function Header() {
           : 'border-transparent bg-background',
       )}
     >
-      <div className="relative mx-auto flex h-16 w-full min-w-0 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8 md:justify-start md:gap-4 lg:gap-6">
+      <div className="relative mx-auto flex h-16 w-full min-w-0 max-w-7xl items-center justify-between gap-2 px-3 sm:gap-3 sm:px-6 lg:px-8 md:justify-start md:gap-4 lg:gap-6">
         {/* Brand */}
         <Link
           href="/"
-          className="group relative z-20 flex shrink-0 items-center gap-2.5"
+          className="group relative z-20 flex min-w-0 max-w-[min(100%,11rem)] shrink items-center gap-2 sm:max-w-none sm:shrink-0 sm:gap-2.5"
           aria-label="Wake Pathways home"
         >
           <span className="relative flex h-9 w-9 shrink-0 overflow-hidden rounded-xl ring-1 ring-border/60 shadow-sm">
@@ -69,7 +69,7 @@ export function Header() {
               priority
             />
           </span>
-          <span className="text-lg font-semibold tracking-tight text-foreground">
+          <span className="truncate text-base font-semibold tracking-tight text-foreground sm:text-lg">
             {APP_SHORT_NAME}
           </span>
         </Link>

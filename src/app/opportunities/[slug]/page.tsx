@@ -194,7 +194,7 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
   ];
 
   return (
-    <main className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+    <main className="mx-auto w-full min-w-0 max-w-4xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
       <Link
         href={backHref}
         className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -221,31 +221,40 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
           )}
         </div>
 
-        <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+        <h1 className="text-balance text-xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
           {opp.title}
         </h1>
 
         {opp.organization && (
-          <p className="mt-2 flex items-center gap-1.5 text-lg text-muted-foreground">
-            <Building2 className="h-4 w-4 shrink-0" />
-            {opp.organization.name}
+          <p className="mt-2 flex items-start gap-1.5 text-base text-muted-foreground sm:items-center sm:text-lg">
+            <Building2 className="mt-0.5 h-4 w-4 shrink-0 sm:mt-0" />
+            <span className="min-w-0 break-words">{opp.organization.name}</span>
           </p>
         )}
 
-        <div className="mt-5 flex flex-wrap items-center gap-3">
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           {opp.official_application_url && (
             <a
               href={opp.official_application_url}
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(buttonVariants({ size: 'lg' }), 'gap-2')}
+              className={cn(
+                buttonVariants({ size: 'lg' }),
+                'w-full justify-center gap-2 sm:w-auto touch-manipulation'
+              )}
             >
               {opp.application_status === 'closed' ? 'View Official Page' : 'Apply on Official Site'}
-              <ExternalLink className="h-4 w-4" />
+              <ExternalLink className="h-4 w-4 shrink-0" />
             </a>
           )}
-          <ShareButton title={opp.title} />
-          <SaveButton slug={opp.slug} size="sm" className="h-10 w-10" />
+          <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-3">
+            <ShareButton title={opp.title} />
+            <SaveButton
+              slug={opp.slug}
+              size="sm"
+              className="h-11 w-full justify-center sm:h-10 sm:w-10 sm:justify-center"
+            />
+          </div>
         </div>
 
         {/* Trust metadata */}
@@ -268,8 +277,8 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
       </header>
 
       {/* Details grid */}
-      <Card className="mb-8">
-        <CardContent className="p-6">
+      <Card className="mb-8 overflow-hidden">
+        <CardContent className="p-4 sm:p-6">
           <h2 className="sr-only">Key Details</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {details.map((d) => (
@@ -311,7 +320,7 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
       {opp.full_description && (
         <section className="mb-8">
           <h2 className="text-xl font-semibold text-foreground mb-3">About This Opportunity</h2>
-          <div className="prose prose-sm max-w-none text-muted-foreground leading-relaxed">
+          <div className="prose prose-sm max-w-none break-words text-muted-foreground leading-relaxed">
             {opp.full_description.split('\n').map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
             ))}
@@ -450,32 +459,32 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
           <h2 className="text-sm font-semibold text-foreground mb-3">Source Details</h2>
           <dl className="space-y-2 text-sm">
             {opp.source_name && (
-              <div className="flex gap-2">
-                <dt className="text-muted-foreground shrink-0 w-24">Source</dt>
-                <dd className="text-foreground">{opp.source_name}</dd>
+              <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-2">
+                <dt className="shrink-0 text-muted-foreground sm:w-24">Source</dt>
+                <dd className="min-w-0 break-words text-foreground">{opp.source_name}</dd>
               </div>
             )}
             {opp.source_url && (
-              <div className="flex gap-2">
-                <dt className="text-muted-foreground shrink-0 w-24">Official page</dt>
-                <dd>
-                  <a href={opp.source_url} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80 transition-colors break-all">
+              <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-2">
+                <dt className="shrink-0 text-muted-foreground sm:w-24">Official page</dt>
+                <dd className="min-w-0">
+                  <a href={opp.source_url} target="_blank" rel="noopener noreferrer" className="text-primary underline transition-colors break-all hover:text-primary/80">
                     {opp.source_url}
                   </a>
                 </dd>
               </div>
             )}
             {opp.last_verified_at && (
-              <div className="flex gap-2">
-                <dt className="text-muted-foreground shrink-0 w-24">Last verified</dt>
-                <dd className="text-foreground">{formatDate(opp.last_verified_at)}</dd>
+              <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-2">
+                <dt className="shrink-0 text-muted-foreground sm:w-24">Last verified</dt>
+                <dd className="min-w-0 text-foreground">{formatDate(opp.last_verified_at)}</dd>
               </div>
             )}
           </dl>
         </section>
       )}
 
-      <section className="mb-8 rounded-lg border border-border/50 bg-muted/10 px-4 py-4">
+      <section className="mb-8 rounded-lg border border-border/50 bg-muted/10 px-3 py-4 sm:px-4">
         <p className="mb-2 text-sm text-muted-foreground">
           Spot something outdated or incorrect? Help us keep Wake Pathways accurate.
         </p>
@@ -494,11 +503,14 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
       {/* Similar opportunities */}
       {similar.length > 0 && (
         <section>
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-semibold text-foreground">Similar Opportunities</h2>
+          <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="text-lg font-semibold text-foreground sm:text-xl">Similar Opportunities</h2>
             <Link
               href={`/opportunities?category=${opp.category}`}
-              className={cn(buttonVariants({ variant: 'ghost', size: 'sm' }), 'gap-1')}
+              className={cn(
+                buttonVariants({ variant: 'ghost', size: 'sm' }),
+                'w-fit gap-1 self-start sm:self-auto touch-manipulation'
+              )}
             >
               See all
               <ArrowRight className="h-3.5 w-3.5" />
