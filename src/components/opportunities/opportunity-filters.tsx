@@ -181,9 +181,9 @@ export function OpportunityFilters() {
         <Select
           value={currentValues.category}
           onChange={(e) => updateParams({ category: e.target.value })}
-          aria-label="Category"
+          aria-label="Opportunity type"
         >
-          <option value="">All Categories</option>
+          <option value="">All opportunity types</option>
           {OPPORTUNITY_CATEGORIES.map((cat) => (
             <option key={cat.value} value={cat.value}>
               {cat.label}

@@ -61,8 +61,8 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
         <p className="mt-2 max-w-3xl text-lg text-muted-foreground">
           Built for Wake County students: jobs, internships, volunteering, and in-person leadership stay
           mostly local and regional. Scholarships also cover Triangle and North Carolina programs, plus a
-          short list of strong national awards we curate for high schoolers—not a generic national
-          directory.
+          short list of strong national awards we curate for high schoolers rather than serving as a
+          generic national directory.
         </p>
       </div>
 
