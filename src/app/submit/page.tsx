@@ -16,6 +16,12 @@ import { Select } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent } from '@/components/ui/card';
 
+function optionalIntInput(v: unknown): number | undefined {
+  if (v === '' || v == null) return undefined;
+  const n = typeof v === 'number' ? v : Number(v);
+  return Number.isFinite(n) ? n : undefined;
+}
+
 export default function SubmitPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -204,7 +210,10 @@ export default function SubmitPage() {
                     </Field>
                     <div className="grid grid-cols-2 gap-4">
                       <Field label="Min Grade" error={errors.grades_min?.message}>
-                        <Select {...register('grades_min')} error={!!errors.grades_min}>
+                        <Select
+                          {...register('grades_min', { setValueAs: optionalIntInput })}
+                          error={!!errors.grades_min}
+                        >
                           <option value="">Any</option>
                           {Array.from({ length: 7 }, (_, i) => i + 6).map((g) => (
                             <option key={g} value={g}>{g}th Grade</option>
@@ -212,7 +221,10 @@ export default function SubmitPage() {
                         </Select>
                       </Field>
                       <Field label="Max Grade" error={errors.grades_max?.message}>
-                        <Select {...register('grades_max')} error={!!errors.grades_max}>
+                        <Select
+                          {...register('grades_max', { setValueAs: optionalIntInput })}
+                          error={!!errors.grades_max}
+                        >
                           <option value="">Any</option>
                           {Array.from({ length: 7 }, (_, i) => i + 6).map((g) => (
                             <option key={g} value={g}>{g}th Grade</option>
@@ -223,7 +235,7 @@ export default function SubmitPage() {
                     <div className="grid grid-cols-2 gap-4">
                       <Field label="Min Age" error={errors.age_min?.message}>
                         <Input
-                          {...register('age_min')}
+                          {...register('age_min', { setValueAs: optionalIntInput })}
                           type="number"
                           min={10}
                           max={22}
@@ -233,7 +245,7 @@ export default function SubmitPage() {
                       </Field>
                       <Field label="Max Age" error={errors.age_max?.message}>
                         <Input
-                          {...register('age_max')}
+                          {...register('age_max', { setValueAs: optionalIntInput })}
                           type="number"
                           min={10}
                           max={22}
