@@ -83,7 +83,7 @@ export default function SubmitPage() {
               <h1 className="text-3xl font-bold text-foreground">Thank you!</h1>
               <p className="max-w-md text-lg text-muted-foreground">
                 Your submission is under review. We&rsquo;ll verify it and publish it once
-                approved. This usually takes 1–2 business days.
+                approved. This usually takes 1-2 business days.
               </p>
               <Link href="/">
                 <Button variant="outline" size="lg">Back to Home</Button>
@@ -152,10 +152,10 @@ export default function SubmitPage() {
                         error={!!errors.opportunity_title}
                       />
                     </Field>
-                    <Field label="Category" error={errors.category?.message} required>
+                    <Field label="Opportunity type" error={errors.category?.message} required>
                       <Select
                         {...register('category')}
-                        placeholder="Select a category"
+                        placeholder="Select a type"
                         error={!!errors.category}
                       >
                         {OPPORTUNITY_CATEGORIES.map((c) => (
@@ -171,7 +171,7 @@ export default function SubmitPage() {
                     >
                       <Textarea
                         {...register('short_summary')}
-                        placeholder="A brief description teens will see in search results (20–300 chars)"
+                        placeholder="A brief description teens will see in search results (20-300 chars)"
                         rows={3}
                         error={!!errors.short_summary}
                       />
@@ -197,7 +197,7 @@ export default function SubmitPage() {
                     <Field label="Eligibility Requirements" error={errors.eligibility?.message}>
                       <Textarea
                         {...register('eligibility')}
-                        placeholder="e.g. Must be a Wake County resident, ages 14–18, with a GPA of 2.5+"
+                        placeholder="e.g. Must be a Wake County resident, ages 14-18, with a GPA of 2.5+"
                         rows={3}
                         error={!!errors.eligibility}
                       />

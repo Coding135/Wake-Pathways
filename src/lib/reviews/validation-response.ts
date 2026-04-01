@@ -17,7 +17,7 @@ export function reviewValidationErrorBody(err: ZodError): {
   const first = fieldMessages[0] ?? formErr[0];
   const error =
     fieldMessages.length > 1
-      ? `${fieldMessages[0]} (${fieldMessages.length - 1} more — see below).`
+      ? `${fieldMessages[0]} (${fieldMessages.length - 1} more; see below).`
       : (first ?? 'Please check your review and try again.');
   return { error, fields };
 }

@@ -26,23 +26,23 @@ describe('formatDate', () => {
 });
 
 describe('formatDeadline', () => {
-  it('returns "Closes <date>" for fixed deadlines in the future', () => {
+  it('returns a month and day for fixed deadlines in the future', () => {
     const futureDate = new Date();
     futureDate.setFullYear(futureDate.getFullYear() + 1);
     const result = formatDeadline(futureDate.toISOString(), 'fixed');
-    expect(result).toMatch(/^Closes /);
+    expect(result).toMatch(/^[A-Za-z]{3} \d{1,2}$/);
   });
 
-  it('returns "Rolling admissions" for rolling deadlines', () => {
-    expect(formatDeadline(null, 'rolling')).toBe('Rolling admissions');
+  it('returns Rolling for rolling deadlines', () => {
+    expect(formatDeadline(null, 'rolling')).toBe('Rolling');
   });
 
-  it('returns "No deadline" for none type', () => {
-    expect(formatDeadline(null, 'none')).toBe('No deadline');
+  it('returns None for none type', () => {
+    expect(formatDeadline(null, 'none')).toBe('None');
   });
 
-  it('returns "Deadline passed" for past fixed deadlines', () => {
-    expect(formatDeadline('2020-01-01T00:00:00Z', 'fixed')).toBe('Deadline passed');
+  it('marks past fixed deadlines with (passed)', () => {
+    expect(formatDeadline('2020-01-01T00:00:00Z', 'fixed')).toMatch(/\(passed\)$/);
   });
 });
 

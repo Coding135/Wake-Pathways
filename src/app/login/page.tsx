@@ -5,7 +5,7 @@ import { safeNextPath } from '@/lib/auth/redirect';
 import { LoginForm } from '@/components/auth/login-form';
 
 export const metadata = {
-  title: 'Log in — Wake Pathways',
+  title: 'Log in - Wake Pathways',
   description: 'Sign in to save and compare Wake County teen opportunities.',
 };
 

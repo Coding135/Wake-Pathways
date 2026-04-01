@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import { ForgotPasswordForm } from '@/components/auth/forgot-password-form';
 
 export const metadata = {
-  title: 'Forgot password — Wake Pathways',
+  title: 'Forgot password - Wake Pathways',
   description: 'Reset your Wake Pathways account password.',
 };
 

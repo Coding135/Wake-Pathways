@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 export const metadata: Metadata = {
   title: 'Explore Opportunities - Wake Pathways',
   description:
-    'Wake County–first internships, volunteering, and leadership, plus Triangle and NC options. Scholarships include local, statewide, and a small curated set of national awards.',
+    'Wake County-first internships, volunteering, and leadership, plus Triangle and NC options. Scholarships include local, statewide, and a small curated set of national awards.',
 };
 
 interface PageProps {

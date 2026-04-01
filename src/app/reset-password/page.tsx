@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ResetPasswordForm } from '@/components/auth/reset-password-form';
 
 export const metadata = {
-  title: 'Reset password — Wake Pathways',
+  title: 'Reset password - Wake Pathways',
   description: 'Set a new password for your Wake Pathways account.',
 };
 

@@ -8,7 +8,6 @@
  *   npx tsx scripts/verify-links.ts --dry-run   # Report-only, no HTTP requests
  */
 
-import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 // Scripts can't use @/ aliases - inline the types we need and dynamically
@@ -60,27 +59,48 @@ function isStale(lastVerified: string | null): boolean {
 interface CheckResult {
   url: string;
   field: 'source_url' | 'official_application_url';
-  status: 'ok' | 'failed' | 'skipped';
+  status: 'ok' | 'failed' | 'skipped' | 'blocked';
   httpStatus?: number;
   error?: string;
 }
 
 async function checkUrl(url: string): Promise<{ ok: boolean; status?: number; error?: string }> {
-  try {
+  async function attempt(method: 'HEAD' | 'GET'): Promise<Response> {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    try {
+      return await fetch(url, {
+        method,
+        signal: controller.signal,
+        redirect: 'follow',
+        ...(method === 'GET'
+          ? { headers: { Accept: 'text/html,application/xhtml+xml;q=0.9,*/*;q=0.8' } }
+          : {}),
+      });
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
 
-    const res = await fetch(url, {
-      method: 'HEAD',
-      signal: controller.signal,
-      redirect: 'follow',
-    });
-
-    clearTimeout(timeout);
-    return { ok: res.ok, status: res.status };
+  try {
+    const res = await attempt('HEAD');
+    if (res.ok) return { ok: true, status: res.status };
+    // Many sites block HEAD but serve GET (403/405); retry for a fair check.
+    if (res.status === 403 || res.status === 405 || res.status === 501) {
+      const res2 = await attempt('GET');
+      if (res2.ok || res2.status === 206) return { ok: true, status: res2.status };
+      return { ok: false, status: res2.status };
+    }
+    return { ok: false, status: res.status };
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : String(err);
-    return { ok: false, error: message };
+    try {
+      const res2 = await attempt('GET');
+      if (res2.ok || res2.status === 206) return { ok: true, status: res2.status };
+      return { ok: false, status: res2.status, error: message };
+    } catch {
+      return { ok: false, error: message };
+    }
   }
 }
 
@@ -98,7 +118,7 @@ async function main() {
   if (DRY_RUN) {
     console.log('  Mode: DRY RUN (no HTTP requests will be made)\n');
   } else {
-    console.log('  Mode: LIVE (making HTTP HEAD requests to verify URLs)\n');
+    console.log('  Mode: LIVE (HEAD then GET fallback; 403 = blocked bots, not always a dead link)\n');
   }
 
   // Dynamically import mock data (works with tsx)
@@ -118,6 +138,7 @@ async function main() {
   let totalChecked = 0;
   let okCount = 0;
   let failedCount = 0;
+  let blockedCount = 0;
   let skippedCount = 0;
 
   const issues: string[] = [];
@@ -165,6 +186,15 @@ async function main() {
       if (result.ok) {
         okCount++;
         oppResults.push({ url, field, status: 'ok', httpStatus: result.status });
+      } else if (result.status === 403) {
+        blockedCount++;
+        oppResults.push({
+          url,
+          field,
+          status: 'blocked',
+          httpStatus: 403,
+          error: 'HTTP 403 (often bot protection; confirm in a browser)',
+        });
       } else {
         failedCount++;
         const reason = result.error ?? `HTTP ${result.status}`;
@@ -181,12 +211,11 @@ async function main() {
   console.log('─── Per-Opportunity Results ───────────────────────────────────\n');
 
   for (const r of results) {
-    const statusIcons = r.checks.map((c) => {
-      if (c.status === 'ok') return '✓';
-      if (c.status === 'skipped') return '–';
-      return '✗';
-    });
-    const icon = r.checks.some((c) => c.status === 'failed') ? '✗' : '✓';
+    const icon = r.checks.some((c) => c.status === 'failed')
+      ? '✗'
+      : r.checks.some((c) => c.status === 'blocked')
+        ? '!'
+        : '✓';
     console.log(`  ${icon} ${r.opportunity}`);
 
     for (const c of r.checks) {
@@ -196,6 +225,8 @@ async function main() {
       } else if (c.status === 'ok') {
         const code = c.httpStatus ? ` [${c.httpStatus}]` : '';
         console.log(`      ${label}: ✓ ${c.url}${code}`);
+      } else if (c.status === 'blocked') {
+        console.log(`      ${label}: ⚠ ${c.url} - ${c.error}`);
       } else {
         console.log(`      ${label}: ✗ ${c.url} - ${c.error}`);
       }
@@ -222,6 +253,7 @@ async function main() {
   console.log(`  URLs checked:           ${totalChecked}`);
   console.log(`  OK:                     ${okCount}`);
   console.log(`  Failed:                 ${failedCount}`);
+  console.log(`  Blocked (403):          ${blockedCount}`);
   console.log(`  Skipped (no URL):       ${skippedCount}`);
   console.log(`  Issues flagged:         ${issues.length}`);
   console.log('');
@@ -230,7 +262,11 @@ async function main() {
     console.log('  ⚠ Some URLs failed verification. Review results above.\n');
     process.exit(1);
   } else {
-    console.log('  ✓ All checked URLs are OK.\n');
+    console.log(
+      blockedCount > 0
+        ? '  ✓ No definite failures. Some URLs returned 403 to automated checks; open those in a browser to confirm.\n'
+        : '  ✓ All checked URLs are OK.\n'
+    );
   }
 }
 

@@ -439,7 +439,7 @@
       "name": "Amazon Future Engineer",
       "slug": "amazon-future-engineer",
       "website": "https://www.amazonfutureengineer.com",
-      "description": "Amazon’s K–12 computer science and scholarship initiative, including a national scholarship administered with Scholarship America for computer science–bound high school seniors.",
+      "description": "Amazon’s K-12 computer science and scholarship initiative, including a national scholarship administered with Scholarship America for computer science-bound high school seniors.",
       "is_verified": true
     }
   ],
@@ -1502,7 +1502,7 @@
       "location_county": "Wake",
       "remote_type": "in_person",
       "paid_type": "stipend",
-      "compensation_text": "WakeEd’s June 2025 news coverage described a $150 stipend for students who complete key program elements; the main Career Accelerator page does not list pay—confirm for your cohort.",
+      "compensation_text": "WakeEd’s June 2025 news coverage described a $150 stipend for students who complete key program elements; the main Career Accelerator page does not list pay, so confirm for your cohort.",
       "cost_text": null,
       "is_free": true,
       "deadline_type": "none",
@@ -1534,7 +1534,7 @@
         "Time management",
         "Career exploration"
       ],
-      "capacity_note": "Summer cohort size is limited; the public program page does not host a student application form—selection is coordinated through WCPSS/WakeEd channels.",
+      "capacity_note": "Summer cohort size is limited; the public program page does not host a student application form, and selection is coordinated through WCPSS/WakeEd channels.",
       "source_notes": "Primary source: WakeEd Career Accelerator hub. Stipend/transport details were quoted from WakeEd’s live June 12, 2025 news post (still online at verification); hub page updated Feb 25, 2026."
     },
     {
@@ -1754,9 +1754,9 @@
       "title": "Cary Teen Council",
       "organization_id": "org-022",
       "category": "volunteer",
-      "short_summary": "A Town of Cary advisory council for students in grades 8–12 who live or attend school in Cary; quarterly meetings, community service, and a $35 registration fee.",
+      "short_summary": "A Town of Cary advisory council for students in grades 8-12 who live or attend school in Cary; quarterly meetings, community service, and a $35 registration fee.",
       "full_description": "The Cary Teen Council is a leadership and advisory group for students in grades 8 through 12 who live or attend school in Cary, NC. Members meet quarterly to discuss issues affecting teens, plan community service projects, and provide input on Town programming. The council gives teens a voice in local government and helps build civic engagement skills. Participation requires a $35 registration fee as published on the Town’s Teen Council page.",
-      "eligibility": "Students in grades 8–12 who live or attend school in Cary, NC (confirm current year rules on the official page).",
+      "eligibility": "Students in grades 8-12 who live or attend school in Cary, NC (confirm current year rules on the official page).",
       "grades_min": 8,
       "grades_max": 12,
       "age_min": null,
@@ -4375,7 +4375,7 @@
       "organization_id": "org-024",
       "category": "summer_program",
       "short_summary": "STEM courses for rising seventh through twelfth graders online, residential in Durham or Morganton, or day options in Hickory; tuition varies by course.",
-      "full_description": "Summer Accelerator offers engaging STEM courses taught by scientists, engineers, and university faculty. Programs include Accelerator tracks for rising 7th–9th and 10th–12th graders with residential, online, and day formats. Applications are reviewed until courses fill. A sponsored tuition-free option exists for qualifying students in Dogwood Health Trust counties in western North Carolina.",
+      "full_description": "Summer Accelerator offers engaging STEM courses taught by scientists, engineers, and university faculty. Programs include Accelerator tracks for rising 7th-9th and 10th-12th graders with residential, online, and day formats. Applications are reviewed until courses fill. A sponsored tuition-free option exists for qualifying students in Dogwood Health Trust counties in western North Carolina.",
       "eligibility": "Rising 7th through 12th graders depending on course track; see NCSSM admissions FAQs.",
       "grades_min": 7,
       "grades_max": 12,
@@ -4386,7 +4386,7 @@
       "remote_type": "hybrid",
       "paid_type": "unpaid",
       "compensation_text": null,
-      "cost_text": "Tuition approximately $495–$1,925 depending on course and format (per NCSSM).",
+      "cost_text": "Tuition approximately $495-$1,925 depending on course and format (per NCSSM).",
       "is_free": false,
       "deadline_type": "rolling",
       "deadline_at": null,
@@ -4548,7 +4548,7 @@
       "last_verified_at": "2026-03-31T12:00:00Z",
       "featured": false,
       "is_active": true,
-      "time_commitment": "About 20–30 hours per course; start dates vary.",
+      "time_commitment": "About 20-30 hours per course; start dates vary.",
       "tags": [
         "medicine",
         "law",
@@ -4567,8 +4567,8 @@
       "organization_id": "org-057",
       "category": "internship",
       "short_summary": "Four-week themed team internship in Raleigh for rising juniors and seniors who live in the Raleigh or Boston areas and can work 35 hours per week on-site.",
-      "full_description": "Red Hat's High School Internship Program places students on a team-based project tied to real business priorities. The Raleigh posting lists program dates July 6–July 31, 2026, full attendance requirements, supplemental application questions, a minimum 2.5 GPA, good standing at school, and reliable transportation to the Red Hat office. Applicants must be at least 16 and a rising junior or senior for 2026–2027.",
-      "eligibility": "At least 16 years old; reside in the Raleigh or Boston area per posting; rising junior or senior for 2026–2027; meet GPA and conduct requirements.",
+      "full_description": "Red Hat's High School Internship Program places students on a team-based project tied to real business priorities. The Raleigh posting lists program dates July 6-July 31, 2026, full attendance requirements, supplemental application questions, a minimum 2.5 GPA, good standing at school, and reliable transportation to the Red Hat office. Applicants must be at least 16 and a rising junior or senior for 2026-2027.",
+      "eligibility": "At least 16 years old; reside in the Raleigh or Boston area per posting; rising junior or senior for 2026-2027; meet GPA and conduct requirements.",
       "grades_min": 11,
       "grades_max": 12,
       "age_min": 16,
@@ -4609,17 +4609,17 @@
         "Professional skills"
       ],
       "capacity_note": "Structured high school internship cohort; competitive selection and firm summer dates per posting.",
-      "source_notes": "Structured data on the posting listed datePosted 2026-03-30 and validThrough 2026-04-01; compensation is not stated in the summary text—confirm on Workday before applying."
+      "source_notes": "Structured data on the posting listed datePosted 2026-03-30 and validThrough 2026-04-01; compensation is not stated in the summary text, so confirm on Workday before applying."
     },
     {
       "id": "opp-115",
       "slug": "mathnasium-cary-math-instructor-jobs",
-      "title": "Mathnasium of Cary — Instructor and Center Roles",
+      "title": "Mathnasium of Cary: Instructor and Center Roles",
       "organization_id": "org-058",
       "category": "job",
       "short_summary": "Paid math instructor and leadership-track roles at the Cary center; apply through the center's official interest form.",
       "full_description": "Mathnasium of Cary hires instructors to teach math using the Mathnasium Method and offers paths toward lead instructor and management roles. The center lists job interest through an official Google Form and describes the team as math-positive and training-supported. Strong math skills and comfort working with students are typical expectations; exact age and schedule requirements should be confirmed with the center.",
-      "eligibility": "Varies by role; many centers hire capable high school and college students for instructor positions—confirm with Mathnasium of Cary.",
+      "eligibility": "Varies by role; many centers hire capable high school and college students for instructor positions. Confirm details with Mathnasium of Cary.",
       "grades_min": null,
       "grades_max": null,
       "age_min": null,
@@ -4785,7 +4785,7 @@
         "Time management"
       ],
       "capacity_note": "150 scholars are selected nationwide each year (per Coca-Cola Scholars Foundation).",
-      "source_notes": "National scholarship (curated). Wake Pathways prioritizes Wake, Triangle, and NC awards first. The 2027 application (for students graduating in 2026–2027) is listed to open August 1, 2026 on the foundation site; confirm each cycle’s dates on the official apply page."
+      "source_notes": "National scholarship (curated). Wake Pathways prioritizes Wake, Triangle, and NC awards first. The 2027 application (for students graduating in 2026-2027) is listed to open August 1, 2026 on the foundation site; confirm each cycle’s dates on the official apply page."
     },
     {
       "id": "opp-120",
@@ -4844,7 +4844,7 @@
       "organization_id": "org-062",
       "category": "scholarship",
       "short_summary": "North Carolina scholarship programs for students from rural and economically distressed counties, administered by the Golden LEAF Foundation.",
-      "full_description": "Golden LEAF Foundation scholarships support North Carolina students—often from rural and economically distressed counties—who pursue post-secondary credentials at NC institutions. Specific award types, amounts, and county eligibility change by program year; students should read the current scholarship page and any PDF guidelines linked from goldenleaf.org.",
+      "full_description": "Golden LEAF Foundation scholarships support North Carolina students, often from rural and economically distressed counties, who pursue post-secondary credentials at NC institutions. Specific award types, amounts, and county eligibility change by program year; students should read the current scholarship page and any PDF guidelines linked from goldenleaf.org.",
       "eligibility": "North Carolina residents meeting program-specific county, college, and financial criteria published on the Golden LEAF scholarships page.",
       "grades_min": 12,
       "grades_max": 12,
@@ -4883,7 +4883,7 @@
         "Planning"
       ],
       "capacity_note": "Awards are limited by annual funding; some programs target specific counties or institutions.",
-      "source_notes": "North Carolina–focused scholarship programs (priority tier for this directory). Confirm open programs, deadlines, and county lists on goldenleaf.org before applying."
+      "source_notes": "North Carolina-focused scholarship programs (priority tier for this directory). Confirm open programs, deadlines, and county lists on goldenleaf.org before applying."
     },
     {
       "id": "opp-122",
@@ -4941,8 +4941,8 @@
       "title": "NC State Computer Science High School Internship (CEREAL Lab)",
       "organization_id": "org-003",
       "category": "internship",
-      "short_summary": "Four-week, in-person summer computing internship on NC State’s campus: advanced block-based programming, generative AI, curriculum development for middle school science, and K–12 summer camp support.",
-      "full_description": "The CEREAL Lab’s Computer Science High School Internship Program runs on campus in Raleigh. For summer 2026 the official page lists June 15 through July 10, describes the opportunity as in-person and paid, and states that applications will open around April 2026 with an email alert list at go.ncsu.edu/internship-alert. Interns participate in a computing boot camp, help middle school science teachers integrate computing, build computing-infused curriculum (games, simulations, tutorials), collaborate with teachers on classroom activities, assist with K–12 summer camp learning activities, and may earn school internship credit per program materials. From 2025 through 2027, interns selected for the NSF TRACES project are eligible for a $1,500 stipend per the same page—not all participants may be on that funded track, so confirm compensation when you apply.",
+      "short_summary": "Four-week, in-person summer computing internship on NC State’s campus: advanced block-based programming, generative AI, curriculum development for middle school science, and K-12 summer camp support.",
+      "full_description": "The CEREAL Lab’s Computer Science High School Internship Program runs on campus in Raleigh. For summer 2026 the official page lists June 15 through July 10, describes the opportunity as in-person and paid, and states that applications will open around April 2026 with an email alert list at go.ncsu.edu/internship-alert. Interns participate in a computing boot camp, help middle school science teachers integrate computing, build computing-infused curriculum (games, simulations, tutorials), collaborate with teachers on classroom activities, assist with K-12 summer camp learning activities, and may earn school internship credit per program materials. From 2025 through 2027, interns selected for the NSF TRACES project are eligible for a $1,500 stipend per the same page. Not all participants may be on that funded track, so confirm compensation when you apply.",
       "eligibility": "High school students comfortable with block-based programming who have completed at least one computing course or equivalent camp/outreach; able to work in teams and independently; meets any additional requirements in the application when it opens.",
       "grades_min": null,
       "grades_max": null,
@@ -4952,7 +4952,7 @@
       "location_county": "Wake",
       "remote_type": "in_person",
       "paid_type": "varies",
-      "compensation_text": "Official page labels the program a paid opportunity; TRACES-selected interns (2025–2027) are eligible for a $1,500 stipend per program text—verify your cohort on the application.",
+      "compensation_text": "Official page labels the program a paid opportunity; TRACES-selected interns (2025-2027) are eligible for a $1,500 stipend per program text. Verify your cohort on the application.",
       "cost_text": null,
       "is_free": true,
       "deadline_type": "none",
@@ -4960,14 +4960,14 @@
       "application_status": "unknown",
       "official_application_url": "https://go.ncsu.edu/cs-intern-info",
       "source_url": "https://go.ncsu.edu/cs-intern-info",
-      "source_name": "NC State University — CEREAL Lab",
+      "source_name": "NC State University (CEREAL Lab)",
       "source_type": "official",
       "verified": true,
       "verification_status": "verified",
       "last_verified_at": "2026-03-31T23:45:00Z",
       "featured": false,
       "is_active": true,
-      "time_commitment": "Four consecutive weeks full time; summer 2026 dates listed as June 15–July 10 on the official page.",
+      "time_commitment": "Four consecutive weeks full time; summer 2026 dates listed as June 15-July 10 on the official page.",
       "tags": [
         "internship",
         "stem",
@@ -4995,7 +4995,7 @@
       "organization_id": "org-003",
       "category": "summer_program",
       "short_summary": "Two-week, daytime summer research experience on or near NC State’s campus exploring forestry and natural resources careers, with lunch provided and an application through NC State’s short link.",
-      "full_description": "Supported by the Weyerhaeuser Giving Fund, this program is run by the NC State College of Natural Resources with partner messaging tied to NC A&T. The official page describes seminars, mentorship, connection to undergraduate research events, and building community with peers interested in natural resource careers. Summer 2026 is scheduled July 13–24, 9 a.m. to 2 p.m. daily, on or near campus, with lunch provided. Past cohort highlights on the site referenced about 12 students in a longer historical format; current cohort size is not spelled out for 2026—assume competitive selection.",
+      "full_description": "Supported by the Weyerhaeuser Giving Fund, this program is run by the NC State College of Natural Resources with partner messaging tied to NC A&T. The official page describes seminars, mentorship, connection to undergraduate research events, and building community with peers interested in natural resource careers. Summer 2026 is scheduled July 13-24, 9 a.m. to 2 p.m. daily, on or near campus, with lunch provided. Past cohort highlights on the site referenced about 12 students in a longer historical format; current cohort size is not spelled out for 2026, so assume competitive selection.",
       "eligibility": "High school students interested in forestry and natural resources careers; confirm any grade or residency rules in the official application.",
       "grades_min": null,
       "grades_max": null,
@@ -5020,7 +5020,7 @@
       "last_verified_at": "2026-03-31T23:45:00Z",
       "featured": false,
       "is_active": true,
-      "time_commitment": "Weekdays 9 a.m.–2 p.m. for two weeks (July 13–24, 2026 per official page).",
+      "time_commitment": "Weekdays 9 a.m.-2 p.m. for two weeks (July 13-24, 2026 per official page).",
       "tags": [
         "summer",
         "stem",
@@ -5047,7 +5047,7 @@
       "organization_id": "org-002",
       "category": "internship",
       "short_summary": "Structured summer EMS internship for selected Wake County high school juniors and seniors: academy, simulations, field trips, specialty classes, and ambulance observation, totaling 120 hours aligned with WCPSS internship standards.",
-      "full_description": "Wake County Government’s EMS Programs for Youth page describes a competitive high school summer internship for juniors and seniors. Activities include time in the EMS academy, simulations, field trips, specialty classes, ambulance observation shifts, exposure to EMS system departments, and a final presentation. Successful completion yields 120 hours that may count toward one credit hour at participating high schools per the official page. Program location is the Wake County Emergency Services Education Center (221 South Rogers Ln., Suite 160, Raleigh). Calendar combines weekdays and ambulance shifts; students must provide their own transportation. Important: The public page text still references a prior cycle (for example June–August 2025 and a March 1, 2025 application deadline). Re-read the live Wake County EMS page for the current year’s dates, eligibility, and the active application link before applying.",
+      "full_description": "Wake County Government’s EMS Programs for Youth page describes a competitive high school summer internship for juniors and seniors. Activities include time in the EMS academy, simulations, field trips, specialty classes, ambulance observation shifts, exposure to EMS system departments, and a final presentation. Successful completion yields 120 hours that may count toward one credit hour at participating high schools per the official page. Program location is the Wake County Emergency Services Education Center (221 South Rogers Ln., Suite 160, Raleigh). Calendar combines weekdays and ambulance shifts; students must provide their own transportation. Important: The public page text still references a prior cycle (for example June-August 2025 and a March 1, 2025 application deadline). Re-read the live Wake County EMS page for the current year’s dates, eligibility, and the active application link before applying.",
       "eligibility": "High school junior or senior; able to complete the full 120-hour program including final presentation; parental or guardian approval; reliable transportation on and off site. Preference described for students interested in EMS careers and/or prior Wake County EMS youth program participation.",
       "grades_min": 11,
       "grades_max": 12,
@@ -5065,7 +5065,7 @@
       "application_status": "unknown",
       "official_application_url": "https://www.wake.gov/departments-government/emergency-medical-services-ems/ems-education-and-outreach/ems-programs-youth",
       "source_url": "https://www.wake.gov/departments-government/emergency-medical-services-ems/ems-education-and-outreach/ems-programs-youth",
-      "source_name": "Wake County Government — EMS",
+      "source_name": "Wake County Government (EMS)",
       "source_type": "official",
       "verified": true,
       "verification_status": "verified",

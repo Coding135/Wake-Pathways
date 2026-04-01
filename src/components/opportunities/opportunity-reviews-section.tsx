@@ -610,7 +610,7 @@ function ReviewForm({
                   setClientGradYearHint('');
                   setGradYear(e.target.value.replace(/\D/g, '').slice(0, 4));
                 }}
-                placeholder={`${REVIEW_GRADUATION_YEAR_MIN}–${REVIEW_GRADUATION_YEAR_MAX}`}
+                placeholder={`${REVIEW_GRADUATION_YEAR_MIN}-${REVIEW_GRADUATION_YEAR_MAX}`}
                 aria-invalid={Boolean(fieldErrors.graduation_year)}
               />
               <p className="text-xs text-muted-foreground">

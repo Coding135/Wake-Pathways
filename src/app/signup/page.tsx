@@ -5,7 +5,7 @@ import { safeNextPath } from '@/lib/auth/redirect';
 import { SignupForm } from '@/components/auth/signup-form';
 
 export const metadata = {
-  title: 'Sign up — Wake Pathways',
+  title: 'Sign up - Wake Pathways',
   description: 'Create a Wake Pathways account to save opportunities.',
 };
 
