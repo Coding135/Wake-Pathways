@@ -187,7 +187,10 @@ export function ReportOpportunityIssueDialog({ slug, className }: Props) {
                 </div>
 
                 {error && (
-                  <p className="mt-3 text-sm text-destructive" role="alert">
+                  <p
+                    className="mt-3 max-h-40 overflow-y-auto text-sm text-destructive"
+                    role="alert"
+                  >
                     {error}
                   </p>
                 )}

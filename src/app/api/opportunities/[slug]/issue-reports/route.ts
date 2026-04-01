@@ -7,6 +7,7 @@ import {
   OPPORTUNITY_ISSUE_TYPES,
   type OpportunityIssueType,
 } from '@/lib/opportunity-issue-reports/constants';
+import { userFacingIssueReportStorageError } from '@/lib/opportunity-issue-reports/db-errors';
 
 const issueTypeEnum = z.enum(OPPORTUNITY_ISSUE_TYPES);
 
@@ -49,6 +50,10 @@ function buildPayloadSchema(isSignedIn: boolean) {
     });
 }
 
+type DuplicateCheckResult =
+  | { duplicate: true }
+  | { duplicate: false; storageError?: { message?: string; code?: string; details?: string | null } };
+
 async function findRecentDuplicate(
   admin: NonNullable<ReturnType<typeof createServiceRoleClient>>,
   slug: string,
@@ -56,12 +61,12 @@ async function findRecentDuplicate(
   userId: string | null,
   emailNorm: string | null,
   descriptionNorm: string | null
-): Promise<boolean> {
+): Promise<DuplicateCheckResult> {
   const dayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
   const hourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
 
   if (userId) {
-    const { data } = await admin
+    const { data, error } = await admin
       .from('opportunity_issue_reports')
       .select('id')
       .eq('opportunity_slug', slug)
@@ -70,11 +75,12 @@ async function findRecentDuplicate(
       .gte('created_at', dayAgo)
       .limit(1)
       .maybeSingle();
-    return data != null;
+    if (error) return { duplicate: false, storageError: error };
+    return data != null ? { duplicate: true } : { duplicate: false };
   }
 
   if (emailNorm) {
-    const { data } = await admin
+    const { data, error } = await admin
       .from('opportunity_issue_reports')
       .select('id')
       .eq('opportunity_slug', slug)
@@ -84,11 +90,12 @@ async function findRecentDuplicate(
       .gte('created_at', dayAgo)
       .limit(1)
       .maybeSingle();
-    return data != null;
+    if (error) return { duplicate: false, storageError: error };
+    return data != null ? { duplicate: true } : { duplicate: false };
   }
 
   if (descriptionNorm) {
-    const { data } = await admin
+    const { data, error } = await admin
       .from('opportunity_issue_reports')
       .select('id')
       .eq('opportunity_slug', slug)
@@ -99,10 +106,11 @@ async function findRecentDuplicate(
       .gte('created_at', hourAgo)
       .limit(1)
       .maybeSingle();
-    return data != null;
+    if (error) return { duplicate: false, storageError: error };
+    return data != null ? { duplicate: true } : { duplicate: false };
   }
 
-  return false;
+  return { duplicate: false };
 }
 
 export async function POST(
@@ -154,11 +162,12 @@ export async function POST(
   };
   const parsed = schema.safeParse(coerced);
   if (!parsed.success) {
-    const first = parsed.error.flatten().fieldErrors;
+    const flat = parsed.error.flatten();
     const msg =
-      first.description?.[0] ??
-      first.reporter_email?.[0] ??
-      first.issue_type?.[0] ??
+      flat.fieldErrors.description?.[0] ??
+      flat.fieldErrors.reporter_email?.[0] ??
+      flat.fieldErrors.issue_type?.[0] ??
+      flat.formErrors[0] ??
       'Check your input and try again.';
     return NextResponse.json({ error: msg }, { status: 400 });
   }
@@ -176,7 +185,7 @@ export async function POST(
   const descriptionVal = descTrim.length > 0 ? descTrim : null;
   const emailVal = emailTrim.length > 0 ? emailTrim : null;
 
-  const dup = await findRecentDuplicate(
+  const dupResult = await findRecentDuplicate(
     admin,
     slug,
     parsed.data.issue_type as OpportunityIssueType,
@@ -184,7 +193,14 @@ export async function POST(
     emailVal,
     descriptionVal
   );
-  if (dup) {
+  if (!dupResult.duplicate && dupResult.storageError) {
+    console.error('[issue-reports duplicate check]', dupResult.storageError);
+    return NextResponse.json(
+      { error: userFacingIssueReportStorageError(dupResult.storageError) },
+      { status: 503 }
+    );
+  }
+  if (dupResult.duplicate) {
     return NextResponse.json(
       {
         error:
@@ -194,21 +210,26 @@ export async function POST(
     );
   }
 
-  const { error } = await admin.from('opportunity_issue_reports').insert({
+  const row: Record<string, unknown> = {
     opportunity_slug: slug,
     issue_type: parsed.data.issue_type,
     description: descriptionVal,
-    reporter_user_id: user?.id ?? null,
     reporter_email: emailVal,
-    status: 'open',
-  });
+  };
+  if (user?.id) {
+    row.reporter_user_id = user.id;
+  }
+
+  const { error } = await admin.from('opportunity_issue_reports').insert(row);
 
   if (error) {
     console.error('[issue-reports insert]', error);
-    return NextResponse.json(
-      { error: 'Could not send your report. Please try again later.' },
-      { status: 500 }
-    );
+    const status =
+      /does not exist|schema cache|PGRST20[25]|42P01/i.test(error.message ?? '') ||
+      /permission denied|row-level security/i.test(error.message ?? '')
+        ? 503
+        : 500;
+    return NextResponse.json({ error: userFacingIssueReportStorageError(error) }, { status });
   }
 
   return NextResponse.json({ ok: true });
