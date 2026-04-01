@@ -9,7 +9,7 @@ import { cookies } from 'next/headers';
 import { Providers } from '@/components/providers';
 import { createClient } from '@/lib/supabase/server';
 import { THEME_INIT_SCRIPT } from '@/lib/theme-storage';
-import { isAdminToggleUser } from '@/lib/auth/admin-toggle';
+import { isModeratorEmail } from '@/lib/auth/moderator';
 import {
   ADMIN_VIEW_COOKIE_NAME,
   ADMIN_VIEW_COOKIE_VALUE_ON,
@@ -59,9 +59,8 @@ export default async function RootLayout({
   const cookieStore = await cookies();
   const adminViewCookieOn =
     cookieStore.get(ADMIN_VIEW_COOKIE_NAME)?.value === ADMIN_VIEW_COOKIE_VALUE_ON;
-  const initialAdminViewOn = Boolean(
-    isAdminToggleUser(user?.email ?? null) && adminViewCookieOn
-  );
+  const initialModeratorAccess = isModeratorEmail(user?.email ?? null);
+  const initialAdminViewOn = Boolean(initialModeratorAccess && adminViewCookieOn);
 
   return (
     <html
@@ -80,6 +79,7 @@ export default async function RootLayout({
           initialUser={user}
           initialProfile={initialProfile}
           initialAdminViewOn={initialAdminViewOn}
+          initialModeratorAccess={initialModeratorAccess}
         >
           <AuthConfigBanner />
           <Header />

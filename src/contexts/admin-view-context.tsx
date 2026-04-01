@@ -6,11 +6,11 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from 'react';
 import { useAuth } from '@/contexts/auth-context';
-import { isAdminToggleUser } from '@/lib/auth/admin-toggle';
 import {
   ADMIN_VIEW_COOKIE_NAME,
   ADMIN_VIEW_COOKIE_VALUE_ON,
@@ -19,9 +19,9 @@ import {
 } from '@/lib/admin-view/cookie';
 
 type AdminViewContextValue = {
-  /** User may see the Admin View toggle and shortcuts */
+  /** Signed-in user is in REVIEW_MODERATOR_EMAILS (server-verified) */
   canUseAdminToggle: boolean;
-  /** Admin View is on (cookie + allowed user) */
+  /** Admin View is on (cookie + moderator) */
   adminViewOn: boolean;
   setAdminViewOn: (on: boolean) => void;
   /** Clear preference (e.g. on sign out) */
@@ -33,36 +33,75 @@ const AdminViewContext = createContext<AdminViewContextValue | undefined>(undefi
 export function AdminViewProvider({
   children,
   initialAdminViewOn,
+  initialModeratorAccess,
 }: {
   children: ReactNode;
   initialAdminViewOn: boolean;
+  initialModeratorAccess: boolean;
 }) {
   const { user } = useAuth();
-  const canUseAdminToggle = useMemo(() => isAdminToggleUser(user?.email), [user?.email]);
+  const [moderatorAccess, setModeratorAccess] = useState(initialModeratorAccess);
 
   const [adminViewOn, setAdminViewOnState] = useState(initialAdminViewOn);
+  const prevEmailRef = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!user?.email || !isAdminToggleUser(user.email)) {
+    if (!user?.email) {
+      prevEmailRef.current = null;
+      setModeratorAccess(false);
       clearAdminViewCookieClient();
       setAdminViewOnState(false);
       return;
     }
-    if (typeof document === 'undefined') return;
+
+    const switched =
+      prevEmailRef.current !== null && prevEmailRef.current !== user.email;
+    prevEmailRef.current = user.email;
+    if (switched) {
+      setModeratorAccess(false);
+      clearAdminViewCookieClient();
+      setAdminViewOnState(false);
+    }
+
+    const ac = new AbortController();
+    fetch('/api/admin/access', { credentials: 'same-origin', signal: ac.signal })
+      .then((res) => {
+        if (ac.signal.aborted) return;
+        const ok = res.ok;
+        setModeratorAccess(ok);
+        if (!ok) {
+          clearAdminViewCookieClient();
+          setAdminViewOnState(false);
+        }
+      })
+      .catch(() => {
+        if (ac.signal.aborted) return;
+        setModeratorAccess(false);
+        clearAdminViewCookieClient();
+        setAdminViewOnState(false);
+      });
+
+    return () => ac.abort();
+  }, [user?.email]);
+
+  useEffect(() => {
+    if (!moderatorAccess || typeof document === 'undefined') return;
     const match = document.cookie.match(
       new RegExp(`(?:^|; )${ADMIN_VIEW_COOKIE_NAME.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}=([^;]*)`)
     );
     const v = match?.[1];
     setAdminViewOnState(v === ADMIN_VIEW_COOKIE_VALUE_ON);
-  }, [user?.email]);
+  }, [moderatorAccess]);
+
+  const canUseAdminToggle = moderatorAccess;
 
   const setAdminViewOn = useCallback(
     (on: boolean) => {
-      if (!isAdminToggleUser(user?.email ?? null)) return;
+      if (!moderatorAccess) return;
       setAdminViewOnState(on);
       writeAdminViewCookieClient(on);
     },
-    [user?.email]
+    [moderatorAccess]
   );
 
   const clearAdminViewPreference = useCallback(() => {

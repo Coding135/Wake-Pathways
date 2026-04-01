@@ -9,6 +9,27 @@ export function parseModeratorEmails(): string[] {
     .filter(Boolean);
 }
 
+/** Same allowlist as admin APIs; if the env list is empty, no one is a moderator. */
+export function isModeratorEmail(email: string | null | undefined): boolean {
+  if (!email || typeof email !== 'string') return false;
+  const allowed = parseModeratorEmails();
+  if (allowed.length === 0) return false;
+  return allowed.includes(email.trim().toLowerCase());
+}
+
+/**
+ * Server-only: signed-in user whose email is in REVIEW_MODERATOR_EMAILS.
+ * Use in admin layouts/pages — do not call from client components.
+ */
+export async function getModeratorUser(): Promise<{ email: string; id: string } | null> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user?.email || !isModeratorEmail(user.email)) return null;
+  return { email: user.email, id: user.id };
+}
+
 export async function assertModerator(): Promise<
   { ok: true; email: string } | { ok: false; response: NextResponse }
 > {
@@ -19,8 +40,7 @@ export async function assertModerator(): Promise<
   if (!user?.email) {
     return { ok: false, response: NextResponse.json({ error: 'Unauthorized' }, { status: 401 }) };
   }
-  const allowed = parseModeratorEmails();
-  if (allowed.length === 0 || !allowed.includes(user.email.toLowerCase())) {
+  if (!isModeratorEmail(user.email)) {
     return { ok: false, response: NextResponse.json({ error: 'Forbidden' }, { status: 403 }) };
   }
   return { ok: true, email: user.email };

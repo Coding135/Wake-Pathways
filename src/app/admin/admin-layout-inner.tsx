@@ -16,7 +16,7 @@ const ADMIN_NAV = [
   { label: 'Reports', href: '/admin/reports', icon: Flag },
 ] as const;
 
-type AdminDataBanner = 'loading' | 'live' | 'sign_in' | 'forbidden' | 'config';
+type AdminDataBanner = 'loading' | 'live' | 'sign_in' | 'notice';
 
 export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -34,12 +34,10 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
         if (cancelled) return;
         if (res.status === 200) setDataBanner('live');
         else if (res.status === 401) setDataBanner('sign_in');
-        else if (res.status === 403) setDataBanner('forbidden');
-        else if (res.status === 503) setDataBanner('config');
-        else setDataBanner('config');
+        else setDataBanner('notice');
       })
       .catch(() => {
-        if (!cancelled) setDataBanner('config');
+        if (!cancelled) setDataBanner('notice');
       });
     return () => {
       cancelled = true;
@@ -70,27 +68,18 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
             {dataBanner === 'sign_in' && (
               <>
                 <Badge variant="warning" className="mr-2">
-                  Sign in
+                  Session
                 </Badge>
-                Sign in with a moderator account to load and manage submissions. Listings tabs may still use
-                local preview data.
+                Your session may have expired. Sign in again to load submissions and moderation queues.
               </>
             )}
-            {dataBanner === 'forbidden' && (
+            {dataBanner === 'notice' && (
               <>
                 <Badge variant="warning" className="mr-2">
-                  Not authorized
+                  Submissions API
                 </Badge>
-                Your account is not in REVIEW_MODERATOR_EMAILS. Submissions cannot be loaded.
-              </>
-            )}
-            {dataBanner === 'config' && (
-              <>
-                <Badge variant="warning" className="mr-2">
-                  Configuration
-                </Badge>
-                Submissions require SUPABASE_SERVICE_ROLE_KEY on the server and REVIEW_MODERATOR_EMAILS for your
-                sign-in email. Without them, the queue cannot load.
+                Could not load the submissions queue. Confirm SUPABASE_SERVICE_ROLE_KEY is set on the server and
+                try again.
               </>
             )}
           </div>

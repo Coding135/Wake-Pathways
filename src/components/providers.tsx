@@ -13,11 +13,13 @@ export function Providers({
   initialUser,
   initialProfile,
   initialAdminViewOn,
+  initialModeratorAccess,
 }: {
   children: ReactNode;
   initialUser: User | null;
   initialProfile: UserProfileDisplay;
   initialAdminViewOn: boolean;
+  initialModeratorAccess: boolean;
 }) {
   const [queryClient] = useState(
     () =>
@@ -35,7 +37,10 @@ export function Providers({
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <AuthProvider initialUser={initialUser} initialProfile={initialProfile}>
-          <AdminViewProvider initialAdminViewOn={initialAdminViewOn}>
+          <AdminViewProvider
+            initialAdminViewOn={initialAdminViewOn}
+            initialModeratorAccess={initialModeratorAccess}
+          >
             {children}
           </AdminViewProvider>
         </AuthProvider>

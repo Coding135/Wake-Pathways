@@ -1,6 +1,7 @@
 /**
- * Real admin destinations in the app (tabs on /admin plus /admin/reviews).
- * Do not add routes that do not exist.
+ * Admin destinations (tabs on /admin plus /admin/reviews). Shown only when
+ * /api/admin/access confirms the user is in REVIEW_MODERATOR_EMAILS; routes are
+ * still enforced server-side in app/admin/layout.tsx.
  */
 export const ADMIN_VIEW_QUICK_LINKS = [
   { href: '/admin', label: 'Admin dashboard' },
