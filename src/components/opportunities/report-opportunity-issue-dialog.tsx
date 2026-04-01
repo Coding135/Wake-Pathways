@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useId, useState } from 'react';
-import { Loader2 } from 'lucide-react';
+import { Flag, Loader2 } from 'lucide-react';
 import { useAuth } from '@/contexts/auth-context';
 import {
   OPPORTUNITY_ISSUE_TYPES,
@@ -88,10 +88,11 @@ export function ReportOpportunityIssueDialog({ slug, className }: Props) {
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          'text-left text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline',
+          'inline-flex items-center gap-1.5 text-left text-sm font-medium text-primary underline decoration-primary/55 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
           className
         )}
       >
+        <Flag className="h-3.5 w-3.5 shrink-0 opacity-90" aria-hidden />
         Report an issue with this listing
       </button>
 
