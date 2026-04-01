@@ -457,7 +457,7 @@
 
 ### 40. Cary Teen Council
 - **Organization:** Town of Cary
-- **Category:** Leadership
+- **Category:** Volunteer
 - **Official URL:** https://www.carync.gov/recreation-enjoyment/special-populations/cary-teen-council
 - **Verification Status:** Verified
 - **Source Checked:** 2026-03-30
