@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { Shield, ArrowLeft, FileText, BarChart3, Users, Link2, Star } from 'lucide-react';
+import { Shield, ArrowLeft, FileText, BarChart3, Users, Link2, Star, Flag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 
@@ -12,6 +12,7 @@ const ADMIN_NAV = [
   { label: 'Listings', tab: 'listings', icon: Users },
   { label: 'Verification', tab: 'verification', icon: Link2 },
   { label: 'Reviews', href: '/admin/reviews', icon: Star },
+  { label: 'Reports', href: '/admin/reports', icon: Flag },
 ] as const;
 
 export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
@@ -19,6 +20,7 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
   const currentTab = searchParams.get('tab') ?? 'overview';
   const onReviewsRoute = pathname.startsWith('/admin/reviews');
+  const onReportsRoute = pathname.startsWith('/admin/reports');
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -50,7 +52,9 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
           {ADMIN_NAV.map((item) => {
             const Icon = item.icon;
             if ('href' in item) {
-              const isActive = onReviewsRoute;
+              const isActive =
+                (item.href === '/admin/reviews' && onReviewsRoute) ||
+                (item.href === '/admin/reports' && onReportsRoute);
               return (
                 <Link
                   key={item.href}

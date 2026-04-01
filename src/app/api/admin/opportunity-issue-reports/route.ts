@@ -3,6 +3,8 @@ import { z } from 'zod';
 import { assertModerator } from '@/lib/auth/moderator';
 import { createServiceRoleClient } from '@/lib/supabase/service-role';
 
+type StatusFilter = 'open' | 'reviewed' | 'resolved' | 'all';
+
 export async function GET(request: Request) {
   const mod = await assertModerator();
   if (!mod.ok) return mod.response;
@@ -16,27 +18,33 @@ export async function GET(request: Request) {
   }
 
   const { searchParams } = new URL(request.url);
-  const status = searchParams.get('status') ?? 'pending';
-  if (status !== 'pending' && status !== 'approved' && status !== 'rejected') {
+  const status = (searchParams.get('status') ?? 'open') as StatusFilter;
+  if (status !== 'open' && status !== 'reviewed' && status !== 'resolved' && status !== 'all') {
     return NextResponse.json({ error: 'Invalid status filter' }, { status: 400 });
   }
 
-  const { data, error } = await admin
-    .from('opportunity_reviews')
-    .select('*')
-    .eq('status', status)
-    .order('created_at', { ascending: true });
+  const { data, error } =
+    status === 'all'
+      ? await admin
+          .from('opportunity_issue_reports')
+          .select('*')
+          .order('created_at', { ascending: false })
+      : await admin
+          .from('opportunity_issue_reports')
+          .select('*')
+          .eq('status', status)
+          .order('created_at', { ascending: false });
 
   if (error) {
-    return NextResponse.json({ error: 'Could not load reviews' }, { status: 500 });
+    return NextResponse.json({ error: 'Could not load reports' }, { status: 500 });
   }
 
-  return NextResponse.json({ reviews: data ?? [] });
+  return NextResponse.json({ reports: data ?? [] });
 }
 
 const patchSchema = z.object({
   id: z.string().uuid(),
-  status: z.enum(['approved', 'rejected', 'pending']),
+  status: z.enum(['open', 'reviewed', 'resolved']),
 });
 
 export async function PATCH(request: Request) {
@@ -64,12 +72,12 @@ export async function PATCH(request: Request) {
   }
 
   const { error } = await admin
-    .from('opportunity_reviews')
+    .from('opportunity_issue_reports')
     .update({ status: parsed.data.status })
     .eq('id', parsed.data.id);
 
   if (error) {
-    return NextResponse.json({ error: 'Could not update review' }, { status: 500 });
+    return NextResponse.json({ error: 'Could not update report' }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });

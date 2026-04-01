@@ -34,6 +34,17 @@ export type SourceType = 'official' | 'community' | 'scraped' | 'manual' | 'csv_
 
 export type ReviewModerationStatus = 'pending' | 'approved' | 'rejected';
 
+export type IssueReportStatus = 'open' | 'reviewed' | 'resolved';
+
+export type IssueReportIssueType =
+  | 'outdated_information'
+  | 'broken_link'
+  | 'wrong_deadline'
+  | 'incorrect_eligibility'
+  | 'duplicate_listing'
+  | 'no_longer_available'
+  | 'other';
+
 // =============================================================================
 // Row types (select)
 // =============================================================================
@@ -198,6 +209,19 @@ export interface OpportunityReviewFlag {
   created_at: string;
 }
 
+/** public.opportunity_issue_reports */
+export interface OpportunityIssueReport {
+  id: string;
+  opportunity_slug: string;
+  issue_type: IssueReportIssueType;
+  description: string | null;
+  reporter_user_id: string | null;
+  reporter_email: string | null;
+  status: IssueReportStatus;
+  created_at: string;
+  updated_at: string;
+}
+
 // =============================================================================
 // Insert types (for creating new records - omit generated fields)
 // =============================================================================
@@ -350,6 +374,12 @@ export interface Database {
         Update: Partial<OpportunityReviewFlag>;
         Relationships: [];
       };
+      opportunity_issue_reports: {
+        Row: OpportunityIssueReport;
+        Insert: Record<string, unknown>;
+        Update: Partial<OpportunityIssueReport>;
+        Relationships: [];
+      };
     };
     Enums: {
       opportunity_category: OpportunityCategory;
@@ -361,6 +391,7 @@ export interface Database {
       submission_status: SubmissionStatus;
       source_type: SourceType;
       review_moderation_status: ReviewModerationStatus;
+      issue_report_status: IssueReportStatus;
     };
   };
 }

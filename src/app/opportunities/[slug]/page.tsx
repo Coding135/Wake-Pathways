@@ -48,6 +48,7 @@ import { OpportunityReviewsSection } from '@/components/opportunities/opportunit
 import { SaveButton } from '@/components/opportunities/save-button';
 import { getOpportunityReviewsForDetail } from '@/lib/reviews/fetch-for-detail';
 import { ShareButton } from './share-button';
+import { ReportOpportunityIssueDialog } from '@/components/opportunities/report-opportunity-issue-dialog';
 import {
   CATEGORY_BADGE_CLASSES,
   VERIFIED_OPPORTUNITY_BADGE_CLASSES,
@@ -447,6 +448,13 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
           </dl>
         </section>
       )}
+
+      <section className="mb-8 rounded-lg border border-border/50 bg-muted/10 px-4 py-4">
+        <p className="mb-2 text-sm text-muted-foreground">
+          Spot something outdated or incorrect? Help us keep Wake Pathways accurate.
+        </p>
+        <ReportOpportunityIssueDialog slug={slug} />
+      </section>
 
       <OpportunityReviewsSection
         slug={slug}
