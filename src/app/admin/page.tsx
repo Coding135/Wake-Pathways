@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
   FileText,
@@ -19,7 +19,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 
-import { MOCK_OPPORTUNITIES, MOCK_SUBMISSIONS } from '@/lib/mock-data';
+import { MOCK_OPPORTUNITIES } from '@/lib/mock-data';
 import { OPPORTUNITY_CATEGORIES } from '@/lib/constants';
 import { formatDate, formatRelativeDate, cn } from '@/lib/utils';
 import type { Submission, Opportunity, SubmissionStatus, VerificationStatus } from '@/types/database';
@@ -36,18 +36,64 @@ export default function AdminPage() {
   const searchParams = useSearchParams();
   const currentTab = searchParams.get('tab') ?? 'overview';
 
-  const [submissions, setSubmissions] = useState<Submission[]>(() => [...MOCK_SUBMISSIONS]);
+  const [submissions, setSubmissions] = useState<Submission[]>([]);
+  const [submissionsLoading, setSubmissionsLoading] = useState(true);
+  const [submissionsFetchError, setSubmissionsFetchError] = useState<string | null>(null);
   const [opportunities, setOpportunities] = useState<Opportunity[]>(() => [...MOCK_OPPORTUNITIES]);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      setSubmissionsLoading(true);
+      setSubmissionsFetchError(null);
+      try {
+        const res = await fetch('/api/admin/submissions', { credentials: 'same-origin' });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          if (!cancelled) {
+            setSubmissionsFetchError(
+              typeof body.error === 'string' ? body.error : `Could not load submissions (${res.status})`
+            );
+            setSubmissions([]);
+          }
+          return;
+        }
+        if (!cancelled) {
+          setSubmissions(Array.isArray(body.data) ? body.data : []);
+        }
+      } catch {
+        if (!cancelled) {
+          setSubmissionsFetchError('Network error loading submissions.');
+          setSubmissions([]);
+        }
+      } finally {
+        if (!cancelled) setSubmissionsLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <>
       <title>Admin Dashboard - Wake Pathways</title>
       <Tabs defaultValue={currentTab} value={currentTab}>
         <TabsContent value="overview">
-          <OverviewTab submissions={submissions} opportunities={opportunities} />
+          <OverviewTab
+            submissions={submissions}
+            opportunities={opportunities}
+            submissionsLoading={submissionsLoading}
+            submissionsFetchError={submissionsFetchError}
+          />
         </TabsContent>
         <TabsContent value="submissions">
-          <SubmissionsTab submissions={submissions} setSubmissions={setSubmissions} />
+          <SubmissionsTab
+            submissions={submissions}
+            setSubmissions={setSubmissions}
+            submissionsLoading={submissionsLoading}
+            submissionsFetchError={submissionsFetchError}
+          />
         </TabsContent>
         <TabsContent value="listings">
           <ListingsTab opportunities={opportunities} setOpportunities={setOpportunities} />
@@ -67,9 +113,13 @@ export default function AdminPage() {
 function OverviewTab({
   submissions,
   opportunities,
+  submissionsLoading,
+  submissionsFetchError,
 }: {
   submissions: Submission[];
   opportunities: Opportunity[];
+  submissionsLoading: boolean;
+  submissionsFetchError: string | null;
 }) {
   const stats = useMemo(() => ({
     total: opportunities.filter((o) => o.is_active).length,
@@ -120,7 +170,11 @@ function OverviewTab({
             <CardDescription>Latest community submissions awaiting review</CardDescription>
           </CardHeader>
           <CardContent>
-            {recentSubmissions.length === 0 ? (
+            {submissionsLoading ? (
+              <p className="text-sm text-muted-foreground">Loading submissions...</p>
+            ) : submissionsFetchError ? (
+              <p className="text-sm text-destructive">{submissionsFetchError}</p>
+            ) : recentSubmissions.length === 0 ? (
               <p className="text-sm text-muted-foreground">No submissions yet.</p>
             ) : (
               <div className="space-y-3">
@@ -183,34 +237,86 @@ function OverviewTab({
 function SubmissionsTab({
   submissions,
   setSubmissions,
+  submissionsLoading,
+  submissionsFetchError,
 }: {
   submissions: Submission[];
   setSubmissions: React.Dispatch<React.SetStateAction<Submission[]>>;
+  submissionsLoading: boolean;
+  submissionsFetchError: string | null;
 }) {
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [reviewNotes, setReviewNotes] = useState<Record<string, string>>({});
+  const [actionError, setActionError] = useState<string | null>(null);
+  const [actionPendingId, setActionPendingId] = useState<string | null>(null);
 
   const filtered = useMemo(
     () => statusFilter === 'all' ? submissions : submissions.filter((s) => s.status === statusFilter),
     [submissions, statusFilter]
   );
 
-  const handleAction = useCallback((id: string, action: SubmissionStatus) => {
-    setSubmissions((prev) =>
-      prev.map((s) =>
-        s.id === id
-          ? {
-              ...s,
-              status: action,
-              admin_notes: reviewNotes[id] ?? s.admin_notes,
-              reviewed_at: new Date().toISOString(),
-            }
-          : s
-      )
+  const handleAction = useCallback(
+    async (id: string, action: SubmissionStatus) => {
+      if (action === 'pending') return;
+      setActionError(null);
+      setActionPendingId(id);
+      try {
+        const res = await fetch('/api/admin/submissions', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({
+            id,
+            status: action,
+            admin_notes: reviewNotes[id]?.trim() || null,
+          }),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(typeof body.error === 'string' ? body.error : 'Update failed');
+        }
+        setSubmissions((prev) =>
+          prev.map((s) =>
+            s.id === id
+              ? {
+                  ...s,
+                  status: action,
+                  admin_notes: reviewNotes[id]?.trim() || s.admin_notes,
+                  reviewed_at: new Date().toISOString(),
+                }
+              : s
+          )
+        );
+        setExpandedId(null);
+      } catch (e) {
+        setActionError(e instanceof Error ? e.message : 'Update failed');
+      } finally {
+        setActionPendingId(null);
+      }
+    },
+    [reviewNotes, setSubmissions]
+  );
+
+  if (submissionsLoading) {
+    return (
+      <div className="space-y-6">
+        <h2 className="text-2xl font-bold text-foreground">Submissions Review</h2>
+        <p className="text-sm text-muted-foreground">Loading submissions...</p>
+      </div>
     );
-    setExpandedId(null);
-  }, [reviewNotes, setSubmissions]);
+  }
+
+  if (submissionsFetchError) {
+    return (
+      <div className="space-y-6">
+        <h2 className="text-2xl font-bold text-foreground">Submissions Review</h2>
+        <Card>
+          <CardContent className="py-8 text-center text-sm text-destructive">{submissionsFetchError}</CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -228,6 +334,12 @@ function SubmissionsTab({
           <option value="needs_edits">Needs Edits</option>
         </Select>
       </div>
+
+      {actionError && (
+        <p className="text-sm text-destructive" role="alert">
+          {actionError}
+        </p>
+      )}
 
       {filtered.length === 0 ? (
         <Card>
@@ -311,13 +423,27 @@ function SubmissionsTab({
                         rows={2}
                       />
                       <div className="flex flex-wrap gap-2">
-                        <Button size="sm" onClick={() => handleAction(sub.id, 'approved')}>
+                        <Button
+                          size="sm"
+                          disabled={actionPendingId === sub.id}
+                          onClick={() => void handleAction(sub.id, 'approved')}
+                        >
                           <CheckCircle2 className="h-3.5 w-3.5" /> Approve
                         </Button>
-                        <Button size="sm" variant="outline" onClick={() => handleAction(sub.id, 'needs_edits')}>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          disabled={actionPendingId === sub.id}
+                          onClick={() => void handleAction(sub.id, 'needs_edits')}
+                        >
                           <Edit className="h-3.5 w-3.5" /> Request Edits
                         </Button>
-                        <Button size="sm" variant="destructive" onClick={() => handleAction(sub.id, 'rejected')}>
+                        <Button
+                          size="sm"
+                          variant="destructive"
+                          disabled={actionPendingId === sub.id}
+                          onClick={() => void handleAction(sub.id, 'rejected')}
+                        >
                           <XCircle className="h-3.5 w-3.5" /> Reject
                         </Button>
                       </div>

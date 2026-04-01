@@ -23,23 +23,19 @@ test.describe('Admin Dashboard', () => {
     }
   });
 
-  test('submissions tab shows submissions', async ({ page }) => {
+  test('submissions tab shows review UI', async ({ page }) => {
     await page.goto('/admin?tab=submissions');
 
-    await expect(
-      page.getByText(/trail steward|youth apprentice|coding bootcamp|animal care/i).first()
-    ).toBeVisible();
+    await expect(page.getByRole('heading', { name: /submissions review/i })).toBeVisible();
   });
 
-  test('can view submission details', async ({ page }) => {
+  test('can expand a submission row when list is non-empty', async ({ page }) => {
     await page.goto('/admin?tab=submissions');
 
-    const viewButton = page.getByRole('button', { name: /view|detail|review/i }).first();
-    if (await viewButton.isVisible()) {
-      await viewButton.click();
-      await expect(
-        page.getByText(/organization|contact|summary|category/i).first()
-      ).toBeVisible();
+    const rowToggle = page.locator('button').filter({ hasText: /pending|approved|rejected|needs edits/i }).first();
+    if (await rowToggle.isVisible()) {
+      await rowToggle.click();
+      await expect(page.getByText(/summary|full description|contact/i).first()).toBeVisible();
     }
   });
 });
