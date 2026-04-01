@@ -82,22 +82,33 @@ export function Header() {
           {NAV_LINKS.map((link) => {
             const active =
               pathname === link.href || pathname.startsWith(link.href + '/');
+            const isExplore = link.href === '/opportunities';
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'relative flex h-9 shrink-0 items-center justify-center rounded-md px-2 text-sm font-medium leading-none transition-colors lg:px-3',
-                  active
-                    ? 'text-primary'
-                    : 'text-muted-foreground hover:text-foreground',
+                  'relative flex h-9 shrink-0 items-center justify-center rounded-md px-2 text-sm font-medium leading-none transition-colors duration-150 lg:px-3',
+                  isExplore &&
+                    !active &&
+                    'bg-primary/[0.07] text-foreground/90 ring-1 ring-primary/15 dark:bg-primary/10 dark:text-primary/95 dark:ring-primary/25 hover:bg-primary/[0.11] hover:text-foreground dark:hover:bg-primary/[0.14]',
+                  isExplore &&
+                    active &&
+                    'bg-primary/10 text-primary ring-1 ring-primary/25 dark:bg-primary/[0.14] dark:ring-primary/35',
+                  !isExplore && active && 'text-primary',
+                  !isExplore && !active && 'text-muted-foreground hover:text-foreground',
                 )}
               >
                 {link.label}
                 {active && (
                   <motion.span
                     layoutId="nav-underline"
-                    className="absolute inset-x-2 top-[calc(100%+0.5rem)] h-0.5 rounded-full bg-primary"
+                    className={cn(
+                      'absolute rounded-full bg-primary',
+                      isExplore
+                        ? 'inset-x-1.5 top-[calc(100%+0.45rem)] h-[3px]'
+                        : 'inset-x-2 top-[calc(100%+0.5rem)] h-0.5',
+                    )}
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -179,16 +190,24 @@ export function Header() {
               {NAV_LINKS.map((link) => {
                 const active =
                   pathname === link.href || pathname.startsWith(link.href + '/');
+                const isExplore = link.href === '/opportunities';
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={closeMobile}
                     className={cn(
-                      'rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
-                      active
-                        ? 'bg-primary/10 text-primary'
-                        : 'text-muted-foreground hover:bg-secondary hover:text-foreground',
+                      'rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-150',
+                      isExplore &&
+                        !active &&
+                        'border border-primary/15 bg-primary/[0.06] text-foreground/90 dark:border-primary/25 dark:bg-primary/10 dark:text-primary/95 hover:border-primary/25 hover:bg-primary/10 dark:hover:bg-primary/[0.14]',
+                      isExplore &&
+                        active &&
+                        'border border-primary/30 bg-primary/12 text-primary dark:border-primary/40 dark:bg-primary/[0.16]',
+                      !isExplore && active && 'bg-primary/10 text-primary',
+                      !isExplore &&
+                        !active &&
+                        'text-muted-foreground hover:bg-secondary hover:text-foreground',
                     )}
                   >
                     {link.label}
