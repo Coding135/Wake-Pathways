@@ -74,10 +74,10 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Desktop nav: viewport-centered so width of brand / admin / account does not shift it */}
+        {/* Desktop nav: centered in the bar, nudged left so links clear the right-side controls (theme, account, CTA) */}
         <nav
           aria-label="Main navigation"
-          className="absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-0.5 md:flex"
+          className="absolute left-1/2 top-1/2 z-10 hidden -translate-y-1/2 translate-x-[calc(-50%-1rem)] items-center gap-0.5 md:flex"
         >
           {NAV_LINKS.map((link) => {
             const active =
