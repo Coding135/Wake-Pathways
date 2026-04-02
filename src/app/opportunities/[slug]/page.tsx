@@ -309,7 +309,7 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
       </header>
 
       {/* Details grid */}
-      <Card className="mb-8 overflow-hidden">
+      <Card className="mb-8">
         <CardContent className="p-4 sm:p-6">
           <h2 className="sr-only">Key Details</h2>
           <div className="grid items-start gap-x-4 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
