@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-02T15:45:00Z",
-  "total_listings": 143,
+  "generated_at": "2026-04-02T16:00:00Z",
+  "total_listings": 142,
   "organizations": [
     {
       "id": "org-001",
@@ -6074,54 +6074,6 @@
         "faith-based"
       ],
       "source_notes": "The 2026 recruitment window listed April 1–May 1 on the program page; confirm future years directly on raleighdreamcenter.org."
-    },
-    {
-      "id": "opp-145",
-      "slug": "unc-ishtar-high-school-internship",
-      "title": "ISHTaR Internship (UNC School of Medicine)",
-      "organization_id": "org-040",
-      "category": "internship",
-      "short_summary": "Paid summer research and health careers internship for North Carolina high school students through UNC Emergency Medicine.",
-      "full_description": "The Internship in Science, Health Training, and Research (ISHTaR) introduces North Carolina teens to medicine, public health, and research through UNC’s Department of Emergency Medicine. Activities can include literature review, health communication projects, shadowing, and EMS exposure. The program is competitive with many applicants each year.",
-      "eligibility": "Rising sophomore, junior, or senior at a North Carolina high school; at least 16 years old by May 31 of the program year; interest in health careers.",
-      "grades_min": 10,
-      "grades_max": 12,
-      "age_min": 16,
-      "age_max": null,
-      "location_city": "Chapel Hill",
-      "location_county": "Orange",
-      "remote_type": "hybrid",
-      "paid_type": "paid",
-      "compensation_text": "Paid stipend described in UNC program materials.",
-      "cost_text": null,
-      "is_free": true,
-      "deadline_type": "none",
-      "deadline_at": null,
-      "application_status": "unknown",
-      "official_application_url": "https://www.med.unc.edu/emergmed/education/ishtar/",
-      "source_url": "https://www.med.unc.edu/emergmed/education/ishtar/",
-      "source_name": "UNC School of Medicine — Department of Emergency Medicine",
-      "source_type": "official",
-      "verified": true,
-      "verification_status": "verified",
-      "last_verified_at": "2026-04-02T15:00:00Z",
-      "featured": false,
-      "is_active": true,
-      "time_commitment": "Summer session dates published annually on the ISHTaR site.",
-      "tags": [
-        "internship",
-        "healthcare",
-        "research",
-        "unc",
-        "summer",
-        "paid"
-      ],
-      "skills": [
-        "Research",
-        "Communication",
-        "Professional skills"
-      ],
-      "source_notes": "Wake County students can commute to Chapel Hill; confirm each summer’s application window on the live ISHTaR page."
     },
     {
       "id": "opp-146",
