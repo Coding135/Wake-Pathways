@@ -54,6 +54,10 @@
   --destructive: #dc2626;
   --success: #059669;
   --warning: #d97706;
+  /* Header “Explore” CTA: deeper teal than --primary so it reads as a solid student path without outshining Submit. */
+  --header-explore-bg: #0f766e;
+  --header-explore-bg-hover: #115e59;
+  --header-explore-fg: #ffffff;
 }
 
 .dark {
@@ -77,6 +81,9 @@
   --destructive: #f87171;
   --success: #34d399;
   --warning: #fbbf24;
+  --header-explore-bg: #0f766e;
+  --header-explore-bg-hover: #14b8a6;
+  --header-explore-fg: #ffffff;
 }
 
 html {

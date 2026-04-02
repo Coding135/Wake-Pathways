@@ -101,7 +101,29 @@ export default function HomePage() {
               Find verified internships, research programs, volunteer roles, scholarships, summer programs, jobs, and more in one place.
             </p>
 
-            <div className="mt-8">
+            <div className="mt-5 flex justify-center sm:mt-6">
+              <Link
+                href="/opportunities"
+                aria-label="Start here: browse all opportunities"
+                className={cn(
+                  'group inline-flex min-h-10 items-center gap-1.5 rounded-full border-2 border-[var(--header-explore-bg)]',
+                  'bg-white/90 px-3.5 py-2 text-sm font-semibold text-[var(--header-explore-bg)] shadow-sm backdrop-blur-sm',
+                  'transition-[background-color,color,box-shadow,transform] hover:bg-[var(--header-explore-bg)] hover:text-[var(--header-explore-fg)] hover:shadow-md',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]',
+                  'dark:border-teal-400/75 dark:bg-card/85 dark:text-teal-200',
+                  'dark:hover:border-[var(--header-explore-bg)] dark:hover:bg-[var(--header-explore-bg)] dark:hover:text-[var(--header-explore-fg)]',
+                  'touch-manipulation active:scale-[0.98]'
+                )}
+              >
+                Start here
+                <ArrowRight
+                  className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5"
+                  aria-hidden
+                />
+              </Link>
+            </div>
+
+            <div className="mt-5 sm:mt-6">
               <HeroSearchBar />
             </div>
 

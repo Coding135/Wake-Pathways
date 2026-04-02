@@ -77,38 +77,45 @@ export function Header() {
         {/* Desktop nav: centered in the bar, nudged left so links clear the right-side controls (theme, account, CTA) */}
         <nav
           aria-label="Main navigation"
-          className="absolute left-1/2 top-1/2 z-10 hidden -translate-y-1/2 translate-x-[calc(-50%-1rem)] items-center gap-0.5 md:flex"
+          className="absolute left-1/2 top-1/2 z-10 hidden -translate-y-1/2 translate-x-[calc(-50%-1rem)] items-center gap-1 lg:gap-1.5 md:flex"
         >
           {NAV_LINKS.map((link) => {
             const active =
               pathname === link.href || pathname.startsWith(link.href + '/');
             const isExplore = link.href === '/opportunities';
+            if (isExplore) {
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    'relative flex h-9 shrink-0 items-center justify-center rounded-full px-3.5 text-sm font-semibold leading-none transition-[box-shadow,background-color,transform] duration-150 lg:px-4',
+                    'bg-[var(--header-explore-bg)] text-[var(--header-explore-fg)] shadow-sm',
+                    'hover:bg-[var(--header-explore-bg-hover)] hover:shadow',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]',
+                    active &&
+                      'ring-2 ring-primary/45 ring-offset-2 ring-offset-[var(--ring-offset)] shadow-md dark:ring-primary/55',
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            }
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
                   'relative flex h-9 shrink-0 items-center justify-center rounded-md px-2 text-sm font-medium leading-none transition-colors duration-150 lg:px-3',
-                  isExplore &&
-                    !active &&
-                    'bg-primary/[0.07] text-foreground/90 ring-1 ring-primary/15 dark:bg-primary/10 dark:text-primary/95 dark:ring-primary/25 hover:bg-primary/[0.11] hover:text-foreground dark:hover:bg-primary/[0.14]',
-                  isExplore &&
-                    active &&
-                    'bg-primary/10 text-primary ring-1 ring-primary/25 dark:bg-primary/[0.14] dark:ring-primary/35',
-                  !isExplore && active && 'text-primary',
-                  !isExplore && !active && 'text-muted-foreground hover:text-foreground',
+                  active && 'text-primary',
+                  !active && 'text-muted-foreground hover:text-foreground',
                 )}
               >
                 {link.label}
                 {active && (
                   <motion.span
                     layoutId="nav-underline"
-                    className={cn(
-                      'absolute rounded-full bg-primary',
-                      isExplore
-                        ? 'inset-x-1.5 top-[calc(100%+0.45rem)] h-[3px]'
-                        : 'inset-x-2 top-[calc(100%+0.5rem)] h-0.5',
-                    )}
+                    className="absolute inset-x-2 top-[calc(100%+0.5rem)] h-0.5 rounded-full bg-primary"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -157,7 +164,7 @@ export function Header() {
             href="/submit"
             className={cn(
               buttonVariants({ size: 'sm' }),
-              'hidden h-9 gap-2 shadow-sm ring-1 ring-primary/15 hover:bg-primary/90 md:inline-flex'
+              'hidden h-9 gap-2 font-semibold shadow-md ring-1 ring-black/[0.06] hover:bg-primary/90 dark:ring-white/12 md:inline-flex'
             )}
           >
             <Send className="h-3.5 w-3.5" />
@@ -197,13 +204,15 @@ export function Header() {
                     href={link.href}
                     onClick={closeMobile}
                     className={cn(
-                      'rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-150',
+                      'text-sm font-medium transition-colors duration-150',
                       isExplore &&
-                        !active &&
-                        'border border-primary/15 bg-primary/[0.06] text-foreground/90 dark:border-primary/25 dark:bg-primary/10 dark:text-primary/95 hover:border-primary/25 hover:bg-primary/10 dark:hover:bg-primary/[0.14]',
+                        'flex min-h-11 w-full items-center justify-center rounded-full px-4 py-2.5 font-semibold shadow-sm',
+                      isExplore &&
+                        'bg-[var(--header-explore-bg)] text-[var(--header-explore-fg)] hover:bg-[var(--header-explore-bg-hover)]',
                       isExplore &&
                         active &&
-                        'border border-primary/30 bg-primary/12 text-primary dark:border-primary/40 dark:bg-primary/[0.16]',
+                        'ring-2 ring-primary/45 ring-offset-2 ring-offset-background dark:ring-primary/55',
+                      !isExplore && 'rounded-lg px-3 py-2.5',
                       !isExplore && active && 'bg-primary/10 text-primary',
                       !isExplore &&
                         !active &&
@@ -263,7 +272,10 @@ export function Header() {
                 <Link
                   href="/submit"
                   onClick={closeMobile}
-                  className={cn(buttonVariants({ size: 'sm' }), 'w-full gap-2 shadow-sm ring-1 ring-primary/15')}
+                  className={cn(
+                    buttonVariants({ size: 'sm' }),
+                    'w-full gap-2 font-semibold shadow-md ring-1 ring-black/[0.06] dark:ring-white/12'
+                  )}
                 >
                   <Send className="h-3.5 w-3.5" />
                   Submit an Opportunity
