@@ -23,7 +23,6 @@ import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { OpportunityCard } from '@/components/opportunities/opportunity-card';
 import { CATEGORY_HOME_TILE_CLASSES } from '@/lib/opportunity-badge-styles';
-import { HeroSearchBar } from './hero-search';
 import { AnimatedSection } from './animated-section';
 
 const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
@@ -83,7 +82,7 @@ export default function HomePage() {
         />
         <div className="pointer-events-none absolute inset-0 hidden dark:block bg-[radial-gradient(ellipse_100%_80%_at_50%_-10%,rgb(39_39_42/0.55),transparent_55%),radial-gradient(ellipse_70%_50%_at_100%_100%,rgb(30_58_138/0.12),transparent_50%)]" />
 
-        <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-16 sm:px-6 sm:pb-28 sm:pt-28 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-16 sm:px-6 sm:pb-24 sm:pt-24 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm sm:mb-5 sm:text-sm dark:border-border dark:bg-card dark:text-muted-foreground">
               <MapPin className="h-3.5 w-3.5 shrink-0 text-foreground/70" />
@@ -101,33 +100,29 @@ export default function HomePage() {
               Find verified internships, research programs, volunteer roles, scholarships, summer programs, jobs, and more in one place.
             </p>
 
-            <div className="mt-5 flex justify-center sm:mt-6">
+            <div className="mt-7 flex justify-center sm:mt-8">
               <Link
                 href="/opportunities"
-                aria-label="Start here: browse all opportunities"
+                aria-label="Explore opportunities: browse all listings"
                 className={cn(
-                  'group inline-flex min-h-10 items-center gap-1.5 rounded-full border-2 border-[var(--header-explore-bg)]',
-                  'bg-white/90 px-3.5 py-2 text-sm font-semibold text-[var(--header-explore-bg)] shadow-sm backdrop-blur-sm',
-                  'transition-[background-color,color,box-shadow,transform] hover:bg-[var(--header-explore-bg)] hover:text-[var(--header-explore-fg)] hover:shadow-md',
+                  'group inline-flex min-h-11 items-center justify-center gap-2 rounded-full',
+                  'bg-[var(--header-explore-bg)] px-5 py-2.5 text-sm font-semibold text-[var(--header-explore-fg)] shadow-md',
+                  'transition-[background-color,box-shadow,transform] hover:bg-[var(--header-explore-bg-hover)] hover:shadow-lg',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]',
-                  'dark:border-teal-400/75 dark:bg-card/85 dark:text-teal-200',
-                  'dark:hover:border-[var(--header-explore-bg)] dark:hover:bg-[var(--header-explore-bg)] dark:hover:text-[var(--header-explore-fg)]',
+                  'sm:min-h-12 sm:px-6 sm:text-base',
+                  'dark:shadow-black/25',
                   'touch-manipulation active:scale-[0.98]'
                 )}
               >
-                Start here
+                Explore opportunities
                 <ArrowRight
-                  className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5"
+                  className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 sm:h-[1.125rem] sm:w-[1.125rem]"
                   aria-hidden
                 />
               </Link>
             </div>
 
-            <div className="mt-5 sm:mt-6">
-              <HeroSearchBar />
-            </div>
-
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-2 px-0.5 sm:mt-6">
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-2 px-0.5 sm:mt-8">
               {QUICK_CATEGORIES.map((cat) => {
                 const info = CATEGORY_MAP[cat];
                 const Icon = CATEGORY_ICONS[cat];
