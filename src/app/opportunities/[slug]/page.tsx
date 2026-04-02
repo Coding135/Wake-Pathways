@@ -302,7 +302,7 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
           {opp.last_verified_at && (
             <span className="inline-flex items-center gap-1">
               <CheckCircle2 className="h-3.5 w-3.5" />
-              Verified {formatDate(opp.last_verified_at)}
+              Last checked {formatDate(opp.last_verified_at)}
             </span>
           )}
         </div>
@@ -528,7 +528,7 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
             )}
             {opp.last_verified_at && (
               <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-2">
-                <dt className="shrink-0 text-muted-foreground sm:w-24">Last verified</dt>
+                <dt className="shrink-0 text-muted-foreground sm:w-24">Last checked</dt>
                 <dd className="min-w-0 text-foreground">{formatDate(opp.last_verified_at)}</dd>
               </div>
             )}

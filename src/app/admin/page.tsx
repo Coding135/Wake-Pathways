@@ -660,7 +660,7 @@ function VerificationTab({ opportunities }: { opportunities: Opportunity[] }) {
           variant="warning"
           renderItem={(o) => (
             <p className="text-xs text-muted-foreground">
-              Last verified: {o.last_verified_at ? formatDate(o.last_verified_at) : 'Never'}
+              Last checked: {o.last_verified_at ? formatDate(o.last_verified_at) : 'Never'}
             </p>
           )}
         />
@@ -704,7 +704,7 @@ function VerificationTab({ opportunities }: { opportunities: Opportunity[] }) {
                   <p className="truncate text-sm font-medium text-foreground">{opp.title}</p>
                   <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                     <VerificationBadge status={opp.verification_status} />
-                    {opp.last_verified_at && <span>Verified: {formatDate(opp.last_verified_at)}</span>}
+                    {opp.last_verified_at && <span>Last checked: {formatDate(opp.last_verified_at)}</span>}
                   </div>
                 </div>
                 <div className="flex items-center gap-2">

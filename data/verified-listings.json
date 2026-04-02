@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-31T20:00:00Z",
-  "total_listings": 143,
+  "generated_at": "2026-04-02T22:00:00Z",
+  "total_listings": 145,
   "organizations": [
     {
       "id": "org-001",
@@ -600,6 +600,14 @@
       "slug": "wake-forest-school-of-medicine",
       "website": "https://school.wakehealth.edu",
       "description": "Medical school campus including the Wake Forest Institute for Regenerative Medicine and K-12 summer research education programs in Winston-Salem.",
+      "is_verified": true
+    },
+    {
+      "id": "org-084",
+      "name": "Artspace",
+      "slug": "artspace",
+      "website": "https://artspacenc.org",
+      "description": "Nonprofit visual arts center in downtown Raleigh with exhibitions, artist studios, and community programs supported by volunteers.",
       "is_verified": true
     }
   ],
@@ -6704,6 +6712,100 @@
       ],
       "capacity_note": "Rolling application review from March 9 through June 15, 2026; a limited number of partial scholarships are available per the official page.",
       "source_notes": "Applications open March 1, 2026 on the program page. Questions: gti-precollege@ncsu.edu. Apply and pay through instructions linked from the official Online Research Academy page."
+    },
+    {
+      "id": "opp-160",
+      "slug": "wake-county-animal-center-volunteer",
+      "title": "Wake County Animal Center Volunteer",
+      "organization_id": "org-002",
+      "category": "volunteer",
+      "short_summary": "County-run animal shelter in Raleigh with volunteer roles supporting animals, adoptions, and shelter operations; requirements and training are outlined on the official pets.wake.gov volunteer page.",
+      "full_description": "The Wake County Animal Center operates the county shelter in Raleigh and relies on volunteers for animal care, customer service, enrichment, and related tasks. The official volunteer hub at pets.wake.gov describes how to apply, orientation expectations, and role types. Policies, age rules, and scheduling can change, so read the live page before you sign up.",
+      "eligibility": "Follow eligibility, orientation, and age rules published on the Wake County Animal Center volunteer page at the time you apply.",
+      "grades_min": null,
+      "grades_max": null,
+      "age_min": null,
+      "age_max": null,
+      "location_city": "Raleigh",
+      "location_county": "Wake",
+      "remote_type": "in_person",
+      "paid_type": "unpaid",
+      "compensation_text": null,
+      "cost_text": null,
+      "is_free": true,
+      "deadline_type": "none",
+      "deadline_at": null,
+      "application_status": "rolling",
+      "official_application_url": "https://pets.wake.gov/volunteer",
+      "source_url": "https://pets.wake.gov/volunteer",
+      "source_name": "Wake County Government (Animal Center)",
+      "source_type": "official",
+      "verified": true,
+      "verification_status": "verified",
+      "last_verified_at": "2026-04-02T22:00:00Z",
+      "featured": false,
+      "is_active": true,
+      "time_commitment": "Varies by volunteer role; orientation and shift expectations are described on the official volunteer page.",
+      "tags": [
+        "volunteer",
+        "animals",
+        "service",
+        "raleigh",
+        "wake-county"
+      ],
+      "skills": [
+        "Communication",
+        "Teamwork",
+        "Responsibility"
+      ],
+      "source_notes": "Shelter address and contact information are listed on pets.wake.gov. Some roles may require a minimum age not spelled out here; confirm on the live volunteer materials."
+    },
+    {
+      "id": "opp-161",
+      "slug": "artspace-raleigh-volunteer",
+      "title": "Artspace Raleigh Volunteer",
+      "organization_id": "org-084",
+      "category": "volunteer",
+      "short_summary": "Volunteer with a downtown Raleigh nonprofit visual arts center supporting exhibitions, events, education programs, and visitor services.",
+      "full_description": "Artspace is a nonprofit visual art center in downtown Raleigh. Its official volunteer page explains how community members help with gallery events, education programs, administrative support, and other needs. Requirements, age policies, and time commitments are described in the online materials and may be updated by the organization.",
+      "eligibility": "Meet any age, background check, or training requirements listed on the Artspace volunteer page when you apply.",
+      "grades_min": null,
+      "grades_max": null,
+      "age_min": null,
+      "age_max": null,
+      "location_city": "Raleigh",
+      "location_county": "Wake",
+      "remote_type": "in_person",
+      "paid_type": "unpaid",
+      "compensation_text": null,
+      "cost_text": null,
+      "is_free": true,
+      "deadline_type": "none",
+      "deadline_at": null,
+      "application_status": "rolling",
+      "official_application_url": "https://artspacenc.org/volunteer/",
+      "source_url": "https://artspacenc.org/volunteer/",
+      "source_name": "Artspace",
+      "source_type": "official",
+      "verified": true,
+      "verification_status": "verified",
+      "last_verified_at": "2026-04-02T22:00:00Z",
+      "featured": false,
+      "is_active": true,
+      "time_commitment": "Depends on the volunteer role; see Artspace volunteer information for typical shifts or event support.",
+      "tags": [
+        "volunteer",
+        "arts",
+        "community",
+        "raleigh",
+        "nonprofit"
+      ],
+      "skills": [
+        "Communication",
+        "Customer service",
+        "Teamwork"
+      ],
+      "source_notes": "Canonical volunteer URL may redirect from artspacenc.org/support/volunteer; both resolve to the same program information."
     }
   ]
 }

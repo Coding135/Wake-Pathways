@@ -152,7 +152,7 @@ export function OpportunityFilters() {
 
         <Button
           variant="outline"
-          className="gap-2 lg:hidden shrink-0"
+          className="min-h-11 shrink-0 gap-2 px-4 lg:hidden sm:min-h-9"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-expanded={mobileOpen}
           aria-controls="filter-panel"

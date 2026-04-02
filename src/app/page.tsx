@@ -23,7 +23,6 @@ import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { OpportunityCard } from '@/components/opportunities/opportunity-card';
 import { CATEGORY_HOME_TILE_CLASSES } from '@/lib/opportunity-badge-styles';
-import { AnimatedSection } from './animated-section';
 
 const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
   internship: Briefcase,
@@ -131,7 +130,7 @@ export default function HomePage() {
                     key={cat}
                     href={`/opportunities?category=${cat}`}
                     className={cn(
-                      'inline-flex min-h-9 items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-medium text-foreground shadow-sm sm:text-sm',
+                      'inline-flex min-h-10 items-center gap-1.5 rounded-full border border-border bg-white px-3 py-2 text-xs font-medium text-foreground shadow-sm sm:min-h-9 sm:py-1.5 sm:text-sm',
                       'hover:border-zinc-300 hover:bg-zinc-50 active:bg-zinc-100',
                       'dark:border-border dark:bg-card dark:hover:bg-secondary touch-manipulation'
                     )}
@@ -149,7 +148,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== Featured ===== */}
-      <AnimatedSection className="bg-[var(--section-featured-bg)]">
+      <section className={cn('animate-fade-in bg-[var(--section-featured-bg)]')}>
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">
@@ -185,11 +184,15 @@ export default function HomePage() {
           </Link>
         </div>
         </div>
-      </AnimatedSection>
+      </section>
 
       {/* ===== Deadlines Coming Up ===== */}
       {deadlinesComingUp.length > 0 && (
-        <AnimatedSection className="border-y border-[color:var(--section-deadlines-border)] bg-[var(--section-deadlines-bg)]">
+        <section
+          className={cn(
+            'animate-fade-in border-y border-[color:var(--section-deadlines-border)] bg-[var(--section-deadlines-bg)]'
+          )}
+        >
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
             <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div className="min-w-0">
@@ -215,11 +218,11 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-        </AnimatedSection>
+        </section>
       )}
 
       {/* ===== Categories ===== */}
-      <AnimatedSection className="bg-[var(--section-browse-bg)]">
+      <section className={cn('animate-fade-in bg-[var(--section-browse-bg)]')}>
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
@@ -261,10 +264,10 @@ export default function HomePage() {
             })}
           </div>
         </div>
-      </AnimatedSection>
+      </section>
 
       {/* ===== Why Trust Wake Pathways ===== */}
-      <AnimatedSection className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className={cn('animate-fade-in mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8')}>
         <div className="text-center mb-10">
           <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
             Why trust Wake Pathways?
@@ -284,7 +287,7 @@ export default function HomePage() {
             {
               icon: CheckCircle2,
               title: 'Source date shown',
-              description: 'Every listing displays when it was last verified, so you know it is current.',
+              description: 'Every listing shows when it was last checked against its official source.',
             },
             {
               icon: MapPin,
@@ -319,7 +322,7 @@ export default function HomePage() {
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-      </AnimatedSection>
+      </section>
 
       {/* ===== CTA ===== */}
       <section className="bg-muted/30 border-t border-border">
