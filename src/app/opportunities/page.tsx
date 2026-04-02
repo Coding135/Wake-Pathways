@@ -59,10 +59,10 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
           Explore Opportunities
         </h1>
         <p className="mt-2 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Built for Wake County students: jobs, internships, volunteering, and in-person leadership stay
-          mostly local and regional. Scholarships also cover Triangle and North Carolina programs, plus a
-          short list of strong national awards we curate for high schoolers rather than serving as a
-          generic national directory.
+          Explore internships, volunteer opportunities, scholarships, summer programs, research
+          experiences, leadership roles, jobs, and more for Wake County teens. Use this page to browse
+          real opportunities, filter by what fits you best, and quickly find options that match your
+          interests, goals, and schedule.
         </p>
       </div>
 
