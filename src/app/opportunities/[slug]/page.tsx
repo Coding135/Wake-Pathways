@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { LucideIcon } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
@@ -82,6 +83,21 @@ const PAID_LABELS: Record<string, string> = {
   varies: 'Varies',
 };
 
+/** Long or multi-line values belong in full-width rows so the 3-col grid stays even. */
+function shouldUseExtendedDetailText(text: string | null | undefined): boolean {
+  const t = text?.trim() ?? '';
+  if (!t) return false;
+  if (t.includes('\n')) return true;
+  return t.length > 88;
+}
+
+type DetailBlock = {
+  icon: LucideIcon;
+  label: string;
+  value: string;
+  highlight?: boolean;
+};
+
 function firstSearchParam(v: string | string[] | undefined): string | undefined {
   return Array.isArray(v) ? v[0] : v;
 }
@@ -144,7 +160,11 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
     listingUrl,
   });
 
-  const details = [
+  const paySummary = PAID_LABELS[opp.paid_type];
+  const compensationBody = opp.compensation_text?.trim() ?? '';
+  const compensationExtended = shouldUseExtendedDetailText(compensationBody);
+
+  const compactDetails: DetailBlock[] = [
     {
       icon: MapPin,
       label: 'Location',
@@ -165,15 +185,19 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
     },
     {
       icon: DollarSign,
-      label: 'Compensation',
-      value: opp.compensation_text || PAID_LABELS[opp.paid_type],
+      label: compensationExtended ? 'Payment' : 'Compensation',
+      value: compensationExtended
+        ? paySummary
+        : compensationBody || paySummary,
     },
     ...(opp.category !== 'job' && (opp.cost_text || opp.is_free)
-      ? [{
-          icon: CreditCard,
-          label: 'Cost',
-          value: opp.is_free ? 'Free' : (opp.cost_text || 'Contact for details'),
-        }]
+      ? [
+          {
+            icon: CreditCard,
+            label: 'Cost',
+            value: opp.is_free ? 'Free' : (opp.cost_text || 'Contact for details'),
+          },
+        ]
       : []),
     {
       icon: GraduationCap,
@@ -185,8 +209,14 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
       label: 'Ages',
       value: getAgeRangeLabel(opp.age_min, opp.age_max),
     },
+  ];
+
+  const extendedDetails: DetailBlock[] = [
+    ...(compensationExtended && compensationBody
+      ? [{ icon: DollarSign, label: 'Compensation', value: compensationBody }]
+      : []),
     ...(opp.time_commitment
-      ? [{ icon: Clock, label: 'Time Commitment', value: opp.time_commitment }]
+      ? [{ icon: Clock, label: 'Time commitment', value: opp.time_commitment }]
       : []),
     ...(opp.capacity_note
       ? [{ icon: Layers, label: 'Capacity', value: opp.capacity_note }]
@@ -280,20 +310,20 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
       <Card className="mb-8 overflow-hidden">
         <CardContent className="p-4 sm:p-6">
           <h2 className="sr-only">Key Details</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {details.map((d) => (
-              <div key={d.label} className="flex items-start gap-3">
+          <div className="grid items-start gap-x-4 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+            {compactDetails.map((d) => (
+              <div key={d.label} className="flex min-h-0 min-w-0 items-start gap-3">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted">
                   <d.icon className="h-4 w-4 text-muted-foreground" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     {d.label}
                   </p>
                   <p
                     className={cn(
-                      'mt-0.5 text-sm font-medium text-foreground',
-                      'highlight' in d && d.highlight && 'text-amber-600 dark:text-amber-400'
+                      'mt-0.5 text-pretty text-sm font-medium text-foreground',
+                      d.highlight && 'text-amber-600 dark:text-amber-400'
                     )}
                   >
                     {d.value}
@@ -302,6 +332,25 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
               </div>
             ))}
           </div>
+          {extendedDetails.length > 0 && (
+            <div className="mt-6 space-y-5 border-t border-border/60 pt-6">
+              {extendedDetails.map((d) => (
+                <div key={d.label} className="flex items-start gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted">
+                    <d.icon className="h-4 w-4 text-muted-foreground" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                      {d.label}
+                    </p>
+                    <p className="mt-1.5 text-pretty text-sm leading-relaxed text-foreground">
+                      {d.value}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
           {deadlineCalendarDraft && (
             <div className="mt-5 flex flex-col gap-3 border-t border-border/60 pt-5 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-xs leading-snug text-muted-foreground sm:max-w-[min(100%,20rem)]">
