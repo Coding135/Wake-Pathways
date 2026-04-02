@@ -66,6 +66,9 @@
   --badge-cat-summer-program-bg: #fff7ed;
   --badge-cat-summer-program-fg: #c2410c;
   --badge-cat-summer-program-ring: rgb(194 65 12 / 0.14);
+  --badge-cat-research-bg: #ecfeff;
+  --badge-cat-research-fg: #0e7490;
+  --badge-cat-research-ring: rgb(14 116 144 / 0.16);
   --badge-cat-competition-bg: #fff1f2;
   --badge-cat-competition-fg: #be123c;
   --badge-cat-competition-ring: rgb(190 18 60 / 0.14);
@@ -96,6 +99,9 @@
   --badge-cat-summer-program-bg: rgba(124 45 18 / 0.45);
   --badge-cat-summer-program-fg: #ffedd5;
   --badge-cat-summer-program-ring: rgb(251 146 60 / 0.35);
+  --badge-cat-research-bg: rgba(21 94 117 / 0.45);
+  --badge-cat-research-fg: #a5f3fc;
+  --badge-cat-research-ring: rgb(34 211 238 / 0.32);
   --badge-cat-competition-bg: rgba(136 19 55 / 0.45);
   --badge-cat-competition-fg: #ffe4e6;
   --badge-cat-competition-ring: rgb(251 113 133 / 0.35);
@@ -132,6 +138,11 @@
   background-color: var(--badge-cat-summer-program-bg);
   color: var(--badge-cat-summer-program-fg);
   box-shadow: inset 0 0 0 1px var(--badge-cat-summer-program-ring);
+}
+.opp-cat-research {
+  background-color: var(--badge-cat-research-bg);
+  color: var(--badge-cat-research-fg);
+  box-shadow: inset 0 0 0 1px var(--badge-cat-research-ring);
 }
 .opp-cat-competition {
   background-color: var(--badge-cat-competition-bg);
@@ -253,6 +264,8 @@
   --home-tile-scholarship-fg: #7c3aed;
   --home-tile-summer-program-bg: #fff7ed;
   --home-tile-summer-program-fg: #c2410c;
+  --home-tile-research-bg: #ecfeff;
+  --home-tile-research-fg: #0e7490;
   --home-tile-competition-bg: #fff1f2;
   --home-tile-competition-fg: #be123c;
   --home-tile-leadership-bg: #eef2ff;
@@ -274,6 +287,8 @@
   --home-tile-scholarship-fg: #e9d5ff;
   --home-tile-summer-program-bg: rgba(124 45 18 / 0.4);
   --home-tile-summer-program-fg: #fdba74;
+  --home-tile-research-bg: rgba(21 94 117 / 0.42);
+  --home-tile-research-fg: #a5f3fc;
   --home-tile-competition-bg: rgba(136 19 55 / 0.4);
   --home-tile-competition-fg: #fecdd3;
   --home-tile-leadership-bg: rgba(49 46 129 / 0.4);
@@ -301,6 +316,10 @@
 .home-tile-summer-program {
   background-color: var(--home-tile-summer-program-bg);
   color: var(--home-tile-summer-program-fg);
+}
+.home-tile-research {
+  background-color: var(--home-tile-research-bg);
+  color: var(--home-tile-research-fg);
 }
 .home-tile-competition {
   background-color: var(--home-tile-competition-bg);

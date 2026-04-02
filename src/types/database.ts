@@ -7,6 +7,7 @@ export type OpportunityCategory =
   | 'volunteer'
   | 'scholarship'
   | 'summer_program'
+  | 'research'
   | 'competition'
   | 'leadership'
   | 'job'

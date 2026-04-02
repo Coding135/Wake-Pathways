@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-02T16:00:00Z",
-  "total_listings": 142,
+  "generated_at": "2026-03-31T20:00:00Z",
+  "total_listings": 143,
   "organizations": [
     {
       "id": "org-001",
@@ -776,7 +776,7 @@
       "slug": "ncsu-young-investigators-nuclear-engineering",
       "title": "NC State Young Investigators Nuclear Engineering Program",
       "organization_id": "org-003",
-      "category": "summer_program",
+      "category": "research",
       "short_summary": "A three-week residential summer program at NC State for rising juniors, seniors, and graduating seniors to explore nuclear engineering.",
       "full_description": "The Young Investigators Program in Nuclear Engineering at NC State University offers a three-week residential experience from July 6 to 24, 2026. Students explore nuclear science and engineering through hands-on labs, lectures, and research activities. The program is all-inclusive at a cost of $2,400 covering housing, meals, and materials. Applications are due by April 30, 2026.",
       "eligibility": "Open to rising high school juniors, seniors, and graduating seniors.",
@@ -2388,7 +2388,7 @@
       "slug": "nc-museum-natural-sciences-junior-curators",
       "title": "NC Museum of Natural Sciences Junior Curators",
       "organization_id": "org-010",
-      "category": "summer_program",
+      "category": "research",
       "short_summary": "A summer program at the NC Museum of Natural Sciences for high school students in grades 9 to 12 to engage with museum collections and research.",
       "full_description": "The Junior Curators program at the NC Museum of Natural Sciences gives high school students in grades 9 through 12 an opportunity to work with museum staff, explore natural science collections, and participate in hands-on research and exhibit development. The program runs during the summer and provides an inside look at museum careers and scientific inquiry. Check the museum website for updated 2026 dates and application information.",
       "eligibility": "Students in grades 9 through 12.",
@@ -5153,7 +5153,7 @@
       "slug": "nc-state-high-school-summer-research-natural-resources",
       "title": "NC State High School Summer Research Program (Natural Resources)",
       "organization_id": "org-003",
-      "category": "summer_program",
+      "category": "research",
       "short_summary": "Two-week, daytime summer research experience on or near NC State’s campus exploring forestry and natural resources careers, with lunch provided and an application through NC State’s short link.",
       "full_description": "Supported by the Weyerhaeuser Giving Fund, this program is run by the NC State College of Natural Resources with partner messaging tied to NC A&T. The official page describes seminars, mentorship, connection to undergraduate research events, and building community with peers interested in natural resource careers. Summer 2026 is scheduled July 13-24, 9 a.m. to 2 p.m. daily, on or near campus, with lunch provided. Past cohort highlights on the site referenced about 12 students in a longer historical format; current cohort size is not spelled out for 2026, so assume competitive selection.",
       "eligibility": "High school students interested in forestry and natural resources careers; confirm any grade or residency rules in the official application.",
@@ -6478,7 +6478,7 @@
       "slug": "wfirm-high-school-summer-research-exposure-program",
       "title": "WFIRM High School Summer Research Exposure Program",
       "organization_id": "org-083",
-      "category": "internship",
+      "category": "research",
       "short_summary": "Four-week, unpaid commuter research exposure in Winston-Salem for NC high school students ages 16–18; separate virtual academy option.",
       "full_description": "Wake Forest Institute for Regenerative Medicine offers a competitive four-week mentored program (June 22–July 17, 2026) for North Carolina high school students ages 16–18. Participants commute to WFIRM for an average of 20–30 research hours per week, attend seminars, and complete application materials including teacher recommendations. A one-week virtual academy is also available for broader ages. The program is unpaid; selected students must meet immunization and TB testing requirements.",
       "eligibility": "North Carolina high school student ages 16–18 for the four-week program; complete online application and mailed or emailed packet by the deadline; two teacher recommendations for the research track.",
@@ -6507,7 +6507,6 @@
       "is_active": true,
       "time_commitment": "Four consecutive weeks in summer; commuter program for NC students.",
       "tags": [
-        "internship",
         "research",
         "stem",
         "pre-med",
@@ -6656,6 +6655,55 @@
         "college"
       ],
       "source_notes": "Not limited to Wake County—Durham and Orange County residents only. Wake County students are not eligible unless they meet the county residency rule. See http://www.alphasouth.org for chapter context."
+    },
+    {
+      "id": "opp-159",
+      "slug": "ncsu-gti-online-research-academy-high-school",
+      "title": "Online Research Academy for High School Students (NC State GTI)",
+      "organization_id": "org-003",
+      "category": "research",
+      "short_summary": "Virtual four-week summer program through NC State’s Global Training Initiative: faculty-mentored, college-level research project online, about 5 to 10 hours per week, with certificate and professor evaluation letter.",
+      "full_description": "The Global Training Initiative’s Online Research Academy is an intensive virtual program. The official page states students apply fundamental research methodologies to complete a dedicated college-level research project with direct faculty mentorship through regular online meetings. Orientation is June 29, 2026; research workshops run July 6 through July 31, 2026; graduation is August 7, 2026. Students who successfully complete the program receive an NC State program certificate and an evaluation letter from the faculty mentor.",
+      "eligibility": "Currently enrolled in high school and rising grade 10 or higher by summer 2026 (per official application requirements). Confirm any additional rules on the live program page.",
+      "grades_min": 10,
+      "grades_max": 12,
+      "age_min": null,
+      "age_max": null,
+      "location_city": null,
+      "location_county": null,
+      "remote_type": "remote",
+      "paid_type": "unpaid",
+      "compensation_text": null,
+      "cost_text": "$1,295 per student; $50 early bird discount for those who register by April 15 (per official page). Partial scholarships available; scholarship essay required in the application to be considered.",
+      "is_free": false,
+      "deadline_type": "fixed",
+      "deadline_at": "2026-06-15T23:59:59Z",
+      "application_status": "open",
+      "official_application_url": "https://gti.ncsu.edu/student-programs/online-research-program-high-school/",
+      "source_url": "https://gti.ncsu.edu/student-programs/online-research-program-high-school/",
+      "source_name": "NC State University (Global Training Initiative)",
+      "source_type": "official",
+      "verified": true,
+      "verification_status": "verified",
+      "last_verified_at": "2026-03-31T20:00:00Z",
+      "featured": false,
+      "is_active": true,
+      "time_commitment": "About 5 to 10 hours per week during workshops; orientation June 29, workshops July 6 through July 31, graduation August 7, 2026 (per official page).",
+      "tags": [
+        "research",
+        "stem",
+        "summer",
+        "remote",
+        "nc-state"
+      ],
+      "skills": [
+        "Research methods",
+        "Communication",
+        "Independent work",
+        "Time management"
+      ],
+      "capacity_note": "Rolling application review from March 9 through June 15, 2026; a limited number of partial scholarships are available per the official page.",
+      "source_notes": "Applications open March 1, 2026 on the program page. Questions: gti-precollege@ncsu.edu. Apply and pay through instructions linked from the official Online Research Academy page."
     }
   ]
 }

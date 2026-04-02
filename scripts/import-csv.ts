@@ -24,7 +24,7 @@ import { resolve } from 'node:path';
 // ---------------------------------------------------------------------------
 
 const VALID_CATEGORIES = [
-  'internship', 'volunteer', 'scholarship', 'summer_program',
+  'internship', 'volunteer', 'scholarship', 'summer_program', 'research',
   'competition', 'leadership', 'job', 'mentorship', 'other',
 ] as const;
 

@@ -244,6 +244,7 @@ const CATEGORY_HINTS: Partial<Record<OpportunityCategory, readonly OpportunityIn
   internship: ['business', 'leadership'],
   job: ['business', 'leadership'],
   summer_program: ['education', 'stem'],
+  research: ['research', 'stem'],
 };
 
 /** AI only when the title or summary explicitly mentions it (conservative). */

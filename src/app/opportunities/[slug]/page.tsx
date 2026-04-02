@@ -24,6 +24,7 @@ import {
   Trophy,
   Sparkles,
   MessageCircle,
+  Microscope,
   Layers,
 } from 'lucide-react';
 import { isPast } from 'date-fns';
@@ -63,6 +64,7 @@ const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
   volunteer: Heart,
   scholarship: GraduationCap,
   summer_program: Sun,
+  research: Microscope,
   competition: Trophy,
   leadership: Users,
   job: DollarSign,
@@ -408,6 +410,7 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
                 volunteer: 'Good for teens interested in community service',
                 scholarship: 'For students planning for college or career training',
                 summer_program: 'Great for students looking for structured summer activities',
+                research: 'Good for students who want mentored science or academic research experience',
                 competition: 'For students who enjoy academic or creative challenges',
                 leadership: 'Good for students who want to develop leadership skills',
                 job: 'For teens seeking paid work experience',

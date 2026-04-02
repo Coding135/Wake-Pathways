@@ -12,6 +12,7 @@ import {
   DollarSign,
   Sparkles,
   MessageCircle,
+  Microscope,
   ShieldCheck,
   AlertCircle,
 } from 'lucide-react';
@@ -30,6 +31,7 @@ const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
   volunteer: Heart,
   scholarship: GraduationCap,
   summer_program: Sun,
+  research: Microscope,
   competition: Trophy,
   leadership: Users,
   job: DollarSign,
@@ -42,6 +44,7 @@ const QUICK_CATEGORIES: OpportunityCategory[] = [
   'volunteer',
   'scholarship',
   'summer_program',
+  'research',
   'job',
   'leadership',
 ];
@@ -95,7 +98,7 @@ export default function HomePage() {
             </h1>
 
             <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-lg md:text-xl">
-              Find verified internships, volunteer roles, scholarships, summer programs, jobs, and more in one place.
+              Find verified internships, research programs, volunteer roles, scholarships, summer programs, jobs, and more in one place.
             </p>
 
             <div className="mt-8">

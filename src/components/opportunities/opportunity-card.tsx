@@ -14,6 +14,7 @@ import {
   Users,
   Sparkles,
   MessageCircle,
+  Microscope,
   Globe,
 } from 'lucide-react';
 import type { OpportunityWithOrganization, OpportunityCategory } from '@/types/database';
@@ -31,6 +32,7 @@ const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
   volunteer: Heart,
   scholarship: GraduationCap,
   summer_program: Sun,
+  research: Microscope,
   competition: Trophy,
   leadership: Users,
   job: DollarSign,

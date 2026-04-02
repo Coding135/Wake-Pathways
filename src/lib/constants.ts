@@ -14,7 +14,7 @@ import type {
 export const APP_NAME = 'Wake Pathways';
 export const APP_SHORT_NAME = 'Wake Pathways';
 export const APP_DESCRIPTION =
-  'Discover real internships, volunteer roles, scholarships, and programs for teens in Wake County, NC.';
+  'Discover real internships, research experiences, volunteer roles, scholarships, and programs for teens in Wake County, NC.';
 
 // =============================================================================
 // Navigation
@@ -47,6 +47,7 @@ export const OPPORTUNITY_CATEGORIES: CategoryOption[] = [
   { value: 'volunteer', label: 'Volunteer', icon: 'Heart' },
   { value: 'scholarship', label: 'Scholarship', icon: 'GraduationCap' },
   { value: 'summer_program', label: 'Summer Program', icon: 'Sun' },
+  { value: 'research', label: 'Research', icon: 'Microscope' },
   { value: 'competition', label: 'Competition', icon: 'Trophy' },
   { value: 'leadership', label: 'Leadership', icon: 'Users' },
   { value: 'job', label: 'Job', icon: 'DollarSign' },

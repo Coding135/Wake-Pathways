@@ -5,6 +5,7 @@ const opportunityCategorySchema = z.enum([
   'volunteer',
   'scholarship',
   'summer_program',
+  'research',
   'competition',
   'leadership',
   'job',

@@ -185,7 +185,7 @@ export function OpportunityFilters() {
           onChange={(e) => updateParams({ category: e.target.value })}
           aria-label="Opportunity type"
         >
-          <option value="">All opportunity types</option>
+          <option value="">All Opportunity Types</option>
           {OPPORTUNITY_CATEGORIES.map((cat) => (
             <option key={cat.value} value={cat.value}>
               {cat.label}
