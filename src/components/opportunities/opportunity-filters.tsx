@@ -250,7 +250,7 @@ export function OpportunityFilters() {
           onChange={(e) => updateParams({ application_status: e.target.value })}
           aria-label="Application status"
         >
-          <option value="">Open, rolling & closing soon</option>
+          <option value="">Any Status</option>
           <option value="all">All statuses (including closed)</option>
           {APPLICATION_STATUS_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>

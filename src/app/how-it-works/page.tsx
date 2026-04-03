@@ -80,9 +80,10 @@ export default function HowItWorksPage() {
           How It Works
         </h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          {APP_SHORT_NAME} is built on trust. Here&rsquo;s how opportunities
-          get from the real world onto this site, and how we keep things
-          honest.
+          {APP_SHORT_NAME}
+          {' '}
+          is built on trust. Here&rsquo;s how opportunities get from the real world onto this site,
+          and how we keep things honest.
         </p>
       </header>
 

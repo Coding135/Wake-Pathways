@@ -35,7 +35,9 @@ export default function PrivacyPage() {
           Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
         </p>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-          {APP_SHORT_NAME} is built for Wake County teens, families, schools, and counselors. This page
+          {APP_SHORT_NAME}
+          {' '}
+          is built for Wake County teens, families, schools, and counselors. This page
           explains, in plain language, what information we collect, why we collect it, and what you can
           do about it. We keep this policy short on purpose.
         </p>
@@ -92,7 +94,9 @@ export default function PrivacyPage() {
 
         <Section title="Teens, students, and families">
           <p>
-            {APP_SHORT_NAME} is meant for high school students and others looking for local opportunities. We
+            {APP_SHORT_NAME}
+            {' '}
+            is meant for high school students and others looking for local opportunities. We
             do not ask for more personal information than we need to run accounts and saved listings. We are
             not providing legal advice on this page.
           </p>

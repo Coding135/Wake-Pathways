@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -58,6 +58,7 @@ export function SavedAuthenticatedView({
   // Seeds React Query so SaveButton hearts match server data without waiting for /api/saved
   const { slugs } = useSavedSlugs(initialSlugs);
   const [showCompare, setShowCompare] = useState(false);
+  const compareSectionRef = useRef<HTMLDivElement>(null);
 
   const bySlug = useMemo(
     () => new Map(MOCK_OPPORTUNITIES.map((o) => [o.slug, o])),
@@ -67,6 +68,11 @@ export function SavedAuthenticatedView({
   const savedOpportunities = useMemo(() => {
     return slugs.map((s) => bySlug.get(s)).filter((o): o is Opp => Boolean(o));
   }, [slugs, bySlug]);
+
+  useLayoutEffect(() => {
+    if (!showCompare || savedOpportunities.length < 2) return;
+    compareSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [showCompare, savedOpportunities.length]);
 
   return (
     <div className="mx-auto min-w-0 max-w-4xl px-3 py-10 sm:px-6 sm:py-12 lg:px-8">
@@ -220,9 +226,11 @@ export function SavedAuthenticatedView({
 
       {showCompare && savedOpportunities.length >= 2 && (
         <motion.div
+          ref={compareSectionRef}
+          id="saved-comparison"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-10"
+          className="mt-10 scroll-mt-24"
         >
           <h2 className="mb-4 text-xl font-semibold text-foreground">Side-by-side comparison</h2>
           <div className="-mx-1 overflow-x-auto rounded-lg border border-border px-1 sm:mx-0 sm:px-0">
