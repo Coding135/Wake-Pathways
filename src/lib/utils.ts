@@ -17,7 +17,7 @@ export function formatDeadline(
   deadlineType: DeadlineType
 ): string {
   if (deadlineType === 'rolling') return 'Rolling';
-  if (deadlineType === 'none' || !deadline) return 'None';
+  if (deadlineType === 'none' || !deadline) return 'No fixed deadline';
 
   const d = new Date(deadline);
   if (isPast(d)) return format(d, 'MMM d') + ' (passed)';

@@ -121,25 +121,33 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-2 px-0.5 sm:mt-8">
-              {QUICK_CATEGORIES.map((cat) => {
-                const info = CATEGORY_MAP[cat];
-                const Icon = CATEGORY_ICONS[cat];
-                return (
-                  <Link
-                    key={cat}
-                    href={`/opportunities?category=${cat}`}
-                    className={cn(
-                      'inline-flex min-h-10 items-center gap-1.5 rounded-full border border-border bg-white px-3 py-2 text-xs font-medium text-foreground shadow-sm sm:min-h-9 sm:py-1.5 sm:text-sm',
-                      'hover:border-zinc-300 hover:bg-zinc-50 active:bg-zinc-100',
-                      'dark:border-border dark:bg-card dark:hover:bg-secondary touch-manipulation'
-                    )}
-                  >
-                    <Icon className="h-3.5 w-3.5 shrink-0 text-foreground" />
-                    <span className="leading-tight">{info.label}</span>
-                  </Link>
-                );
-              })}
+            <div className="mt-7 flex flex-col items-center gap-3 sm:mt-8">
+              <div className="flex flex-wrap items-center justify-center gap-2 px-0.5">
+                {QUICK_CATEGORIES.map((cat) => {
+                  const info = CATEGORY_MAP[cat];
+                  const Icon = CATEGORY_ICONS[cat];
+                  return (
+                    <Link
+                      key={cat}
+                      href={`/opportunities?category=${cat}`}
+                      className={cn(
+                        'inline-flex min-h-10 items-center gap-1.5 rounded-full border border-border bg-white px-3 py-2 text-xs font-medium text-foreground shadow-sm sm:min-h-9 sm:py-1.5 sm:text-sm',
+                        'hover:border-zinc-300 hover:bg-zinc-50 active:bg-zinc-100',
+                        'dark:border-border dark:bg-card dark:hover:bg-secondary touch-manipulation'
+                      )}
+                    >
+                      <Icon className="h-3.5 w-3.5 shrink-0 text-foreground" />
+                      <span className="leading-tight">{info.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+              <Link
+                href="#browse-categories"
+                className="text-sm font-medium text-primary underline-offset-2 hover:underline"
+              >
+                All categories below
+              </Link>
             </div>
           </div>
         </div>
@@ -222,7 +230,10 @@ export default function HomePage() {
       )}
 
       {/* ===== Categories ===== */}
-      <section className={cn('animate-fade-in bg-[var(--section-browse-bg)]')}>
+      <section
+        id="browse-categories"
+        className={cn('animate-fade-in scroll-mt-24 bg-[var(--section-browse-bg)]')}
+      >
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">

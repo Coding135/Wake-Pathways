@@ -1,4 +1,3 @@
-import { OPPORTUNITY_CATEGORIES } from '@/lib/constants';
 import { MOCK_OPPORTUNITIES } from '@/lib/mock-data';
 
 /**
@@ -10,11 +9,17 @@ import { MOCK_OPPORTUNITIES } from '@/lib/mock-data';
 export const WCPSS_ENROLLMENT_DISPLAY = '161,000+';
 
 export function getAboutPageListingStats() {
-  const verifiedActiveListings = MOCK_OPPORTUNITIES.filter(
-    (o) => o.is_active && o.verified
-  ).length;
+  const active = MOCK_OPPORTUNITIES.filter((o) => o.is_active);
+  const verifiedActiveListings = active.filter((o) => o.verified).length;
+  const organizationsRepresented = new Set(
+    active.map((o) => o.organization_id).filter((id): id is string => Boolean(id))
+  ).size;
+  const citiesCovered = new Set(
+    active.map((o) => o.location_city).filter((c): c is string => Boolean(c?.trim()))
+  ).size;
   return {
     verifiedActiveListings,
-    opportunityCategoryCount: OPPORTUNITY_CATEGORIES.length,
+    organizationsRepresented,
+    citiesCovered,
   };
 }

@@ -132,7 +132,9 @@ export const opportunityFiltersSchema = z.object({
   city: z.string().optional(),
   remote_type: remoteTypeSchema.optional(),
   paid_type: paidTypeSchema.optional(),
-  application_status: applicationStatusSchema.optional(),
+  application_status: z
+    .enum(['open', 'closing_soon', 'rolling', 'closed', 'unknown', 'all'])
+    .optional(),
   grade: z.coerce.number().int().min(6).max(12).optional(),
   age: z.coerce.number().int().min(10).max(22).optional(),
   verified_only: z.string().transform((v) => v === 'true').optional(),

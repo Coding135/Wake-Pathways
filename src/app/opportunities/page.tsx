@@ -33,20 +33,36 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
   const pageRaw = first(sp.page);
   const page = pageRaw ? Math.max(1, Number(pageRaw)) : 1;
 
+  const applicationStatusRaw = first(sp.application_status);
+  const applicationStatuses: ApplicationStatus[] = [
+    'open',
+    'closing_soon',
+    'rolling',
+    'closed',
+    'unknown',
+  ];
+  const application_status =
+    applicationStatusRaw === 'all'
+      ? ('all' as const)
+      : applicationStatusRaw &&
+          applicationStatuses.includes(applicationStatusRaw as ApplicationStatus)
+        ? (applicationStatusRaw as ApplicationStatus)
+        : undefined;
+
   const result = getOpportunities({
     search: first(sp.search),
     category: first(sp.category) as OpportunityCategory | undefined,
     city: first(sp.city),
     remote_type: first(sp.remote_type) as RemoteType | undefined,
     paid_type: first(sp.paid_type) as PaidType | undefined,
-    application_status: first(sp.application_status) as ApplicationStatus | undefined,
+    application_status,
     grade: Number.isFinite(grade) ? grade : undefined,
     verified_only: first(sp.verified_only) === 'true',
     is_free: first(sp.is_free) === 'true',
     interests: first(sp.interests),
     sort: first(sp.sort),
     page,
-    per_page: 12,
+    per_page: 18,
   });
 
   const exploreContextQuery = serializeExploreParams(sp);
@@ -58,11 +74,9 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
         <h1 className="text-2xl font-bold tracking-tight text-foreground text-balance sm:text-3xl md:text-4xl">
           Explore Opportunities
         </h1>
-        <p className="mt-2 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Explore internships, volunteer opportunities, scholarships, summer programs, research
-          experiences, leadership roles, jobs, and more for Wake County teens. Use this page to browse
-          real opportunities, filter by what fits you best, and quickly find options that match your
-          interests, goals, and schedule.
+        <p className="mt-2 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+          Browse verified internships, volunteering, scholarships, programs, and jobs for Wake County
+          teens. Filter by what fits you, then open a listing for full details.
         </p>
       </div>
 

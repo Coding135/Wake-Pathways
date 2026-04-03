@@ -69,7 +69,8 @@ const STEPS = [
 ];
 
 export default function AboutPage() {
-  const { verifiedActiveListings, opportunityCategoryCount } = getAboutPageListingStats();
+  const { verifiedActiveListings, organizationsRepresented, citiesCovered } =
+    getAboutPageListingStats();
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
@@ -81,6 +82,14 @@ export default function AboutPage() {
         <p className="mt-4 mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">
           A free, community-driven resource helping Wake County teens discover
           real internships, volunteer work, scholarships, summer programs, and more.
+        </p>
+        <p className="mt-5">
+          <Link
+            href="/how-it-works"
+            className="text-sm font-medium text-primary underline-offset-2 hover:underline"
+          >
+            How listings are verified
+          </Link>
         </p>
       </header>
 
@@ -145,11 +154,12 @@ export default function AboutPage() {
           </div>
           <div className="rounded-xl border border-border bg-background p-6 text-center shadow-sm dark:bg-card dark:shadow-none">
             <p className="text-3xl font-bold tabular-nums tracking-tight text-foreground sm:text-4xl">
-              {opportunityCategoryCount}
+              {organizationsRepresented}
             </p>
-            <p className="mt-2 text-sm font-medium text-foreground">browse categories</p>
+            <p className="mt-2 text-sm font-medium text-foreground">organizations represented</p>
             <p className="mt-1.5 text-xs leading-snug text-muted-foreground">
-              From internships and jobs to scholarships, programs, volunteering, and more.
+              Distinct schools, nonprofits, and employers with active listings. Listings span{' '}
+              {citiesCovered} Wake County cities (plus remote and regional options).
             </p>
           </div>
         </div>
@@ -201,8 +211,10 @@ export default function AboutPage() {
         <Users className="mx-auto h-8 w-8 text-primary mb-4" />
         <h2 className="text-xl font-semibold text-foreground">Built by the community</h2>
         <p className="mt-3 mx-auto max-w-xl leading-relaxed text-muted-foreground">
-          {APP_SHORT_NAME} is maintained by community members who care about youth
-          development in Wake County. Want to help? Submit an opportunity or spread the word.
+          {APP_SHORT_NAME} started as a practical answer to scattered flyers and buried web pages:
+          one calm place for families to check. It is maintained by people who live and work in Wake
+          County and care about youth access to real programs. Want to help? Submit an opportunity or
+          spread the word.
         </p>
         <div className="mt-6">
           <Link

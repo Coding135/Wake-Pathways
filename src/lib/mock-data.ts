@@ -109,7 +109,8 @@ export interface GetOpportunitiesParams {
   city?: string;
   remote_type?: RemoteType;
   paid_type?: PaidType;
-  application_status?: ApplicationStatus;
+  /** Omit or leave unset: actionable listings (excludes closed). Use `'all'` to include closed. */
+  application_status?: ApplicationStatus | 'all';
   grade?: number;
   age?: number;
   verified_only?: boolean;
@@ -180,8 +181,12 @@ export function getOpportunities(
     filtered = filtered.filter((o) => o.paid_type === paid_type);
   }
 
-  if (application_status) {
+  if (application_status === 'all') {
+    // no status filter
+  } else if (application_status) {
     filtered = filtered.filter((o) => o.application_status === application_status);
+  } else {
+    filtered = filtered.filter((o) => o.application_status !== 'closed');
   }
 
   if (grade != null) {

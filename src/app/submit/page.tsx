@@ -110,6 +110,10 @@ export default function SubmitPage() {
                   Help Wake County teens discover programs in your community.
                   Submissions are reviewed before publishing.
                 </p>
+                <p className="mt-3 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  Anyone with a real opportunity can submit: organizations, schools, counselors,
+                  parents, community members, and students who know a program worth listing.
+                </p>
               </div>
 
               {submitError && (
@@ -123,7 +127,12 @@ export default function SubmitPage() {
                 {/* Section: Your Information */}
                 <FormSection title="Your Information" description="So we can reach you if we have questions.">
                   <FieldGroup>
-                    <Field label="Organization Name" error={errors.organization_name?.message} required>
+                    <Field
+                      label="Organization Name"
+                      error={errors.organization_name?.message}
+                      required
+                      hint="School, nonprofit, employer, or Independent if you are submitting as a community member."
+                    >
                       <Input
                         {...register('organization_name')}
                         placeholder="e.g. Triangle Youth Corps"
@@ -185,7 +194,7 @@ export default function SubmitPage() {
                     <Field
                       label="Full Description"
                       error={errors.full_description?.message}
-                      hint={`${fullDescription.length}/5000 characters`}
+                      hint={`${fullDescription.length}/5000 · Optional but helpful: what participants do, time commitment, and who it is for.`}
                     >
                       <Textarea
                         {...register('full_description')}
@@ -347,7 +356,11 @@ export default function SubmitPage() {
                         error={!!errors.official_application_url}
                       />
                     </Field>
-                    <Field label="Supporting Link (optional)" error={errors.supporting_url?.message}>
+                    <Field
+                      label="Supporting Link (optional)"
+                      error={errors.supporting_url?.message}
+                      hint="Flyer, news post, or extra page that helps us verify the listing."
+                    >
                       <Input
                         {...register('supporting_url')}
                         type="url"

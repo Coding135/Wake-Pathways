@@ -5,19 +5,28 @@ import {
 } from '@/lib/mock-data';
 
 const activeCount = MOCK_OPPORTUNITIES.filter((o) => o.is_active).length;
+const actionableCount = MOCK_OPPORTUNITIES.filter(
+  (o) => o.is_active && o.application_status !== 'closed'
+).length;
 
 describe('getOpportunities', () => {
-  it('returns all active opportunities with no filters', () => {
+  it('returns active non-closed opportunities by default', () => {
     const result = getOpportunities();
-    expect(result.total).toBe(activeCount);
+    expect(result.total).toBe(actionableCount);
     expect(result.data.length).toBeLessThanOrEqual(result.per_page);
     result.data.forEach((opp) => {
       expect(opp.is_active).toBe(true);
+      expect(opp.application_status).not.toBe('closed');
     });
   });
 
+  it('includes closed listings when application_status is all', () => {
+    const result = getOpportunities({ application_status: 'all', per_page: 500 });
+    expect(result.total).toBe(activeCount);
+  });
+
   it('filters by search matching title', () => {
-    const result = getOpportunities({ search: 'Teen Arts Council' });
+    const result = getOpportunities({ search: 'Teen Arts Council', application_status: 'all' });
     expect(result.total).toBeGreaterThanOrEqual(1);
     expect(result.data.some((o) => o.slug === 'nc-museum-of-art-teen-arts-council')).toBe(true);
   });

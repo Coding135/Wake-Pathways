@@ -37,8 +37,8 @@ describe('formatDeadline', () => {
     expect(formatDeadline(null, 'rolling')).toBe('Rolling');
   });
 
-  it('returns None for none type', () => {
-    expect(formatDeadline(null, 'none')).toBe('None');
+  it('returns a clear label for none type', () => {
+    expect(formatDeadline(null, 'none')).toBe('No fixed deadline');
   });
 
   it('marks past fixed deadlines with (passed)', () => {

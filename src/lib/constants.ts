@@ -27,7 +27,6 @@ export interface NavLink {
 
 export const NAV_LINKS: NavLink[] = [
   { label: 'Explore', href: '/opportunities' },
-  { label: 'Submit', href: '/submit' },
   { label: 'Saved', href: '/saved' },
   { label: 'About', href: '/about' },
 ];

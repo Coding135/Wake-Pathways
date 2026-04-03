@@ -143,7 +143,7 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
     if (o.application_status !== 'closed') score += 2;
     return score;
   };
-  const similar = getOpportunities({ per_page: 50 }).data
+  const similar = getOpportunities({ per_page: 50, application_status: 'all' }).data
     .filter((o) => o.id !== opp.id)
     .sort((a, b) => scoreSimilarity(b) - scoreSimilarity(a))
     .slice(0, 3);
@@ -201,16 +201,24 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
           },
         ]
       : []),
-    {
-      icon: GraduationCap,
-      label: 'Grades',
-      value: getGradeRangeLabel(opp.grades_min, opp.grades_max),
-    },
-    {
-      icon: Users,
-      label: 'Ages',
-      value: getAgeRangeLabel(opp.age_min, opp.age_max),
-    },
+    ...(opp.grades_min != null || opp.grades_max != null
+      ? [
+          {
+            icon: GraduationCap,
+            label: 'Grades',
+            value: getGradeRangeLabel(opp.grades_min, opp.grades_max),
+          },
+        ]
+      : []),
+    ...(opp.age_min != null || opp.age_max != null
+      ? [
+          {
+            icon: Users,
+            label: 'Ages',
+            value: getAgeRangeLabel(opp.age_min, opp.age_max),
+          },
+        ]
+      : []),
   ];
 
   const extendedDetails: DetailBlock[] = [
@@ -397,66 +405,31 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
         </section>
       )}
 
-      {/* Who is this for */}
-      {(opp.grades_min != null || opp.grades_max != null ||
-        opp.age_min != null || opp.age_max != null ||
-        opp.location_city || opp.remote_type === 'remote' || opp.is_free) && (
-        <section className="mb-8">
-          <h2 className="text-xl font-semibold text-foreground mb-3">At a glance</h2>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            {(() => {
-              const fitCues: Partial<Record<import('@/types/database').OpportunityCategory, string>> = {
-                internship: 'Good for students looking for real-world work experience',
-                volunteer: 'Good for teens interested in community service',
-                scholarship: 'For students planning for college or career training',
-                summer_program: 'Great for students looking for structured summer activities',
-                research: 'Good for students who want mentored science or academic research experience',
-                competition: 'For students who enjoy academic or creative challenges',
-                leadership: 'Good for students who want to develop leadership skills',
-                job: 'For teens seeking paid work experience',
-                mentorship: 'For students looking for guidance and professional connections',
-              };
-              const cue = fitCues[opp.category];
-              return cue ? (
-                <li className="flex items-start gap-2 font-medium text-foreground/80">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  {cue}
-                </li>
-              ) : null;
-            })()}
-            {opp.grades_min != null || opp.grades_max != null ? (
-              <li className="flex items-start gap-2">
-                <GraduationCap className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                Students in {getGradeRangeLabel(opp.grades_min, opp.grades_max).toLowerCase()}
-              </li>
-            ) : null}
-            {opp.age_min != null || opp.age_max != null ? (
-              <li className="flex items-start gap-2">
-                <Users className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                {getAgeRangeLabel(opp.age_min, opp.age_max)}
-              </li>
-            ) : null}
-            {opp.location_city ? (
-              <li className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                Located in {opp.location_city}, NC
-              </li>
-            ) : null}
-            {opp.remote_type === 'remote' ? (
-              <li className="flex items-start gap-2">
-                <Globe className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                Available remotely
-              </li>
-            ) : null}
-            {opp.is_free && opp.category !== 'job' ? (
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                Free to participate
-              </li>
-            ) : null}
-          </ul>
-        </section>
-      )}
+      {/* Quick fit cue only; grades, ages, location, and format are in Key Details above. */}
+      {(() => {
+        const fitCues: Partial<Record<import('@/types/database').OpportunityCategory, string>> = {
+          internship: 'Good for students looking for real-world work experience',
+          volunteer: 'Good for teens interested in community service',
+          scholarship: 'For students planning for college or career training',
+          summer_program: 'Great for students looking for structured summer activities',
+          research: 'Good for students who want mentored science or academic research experience',
+          competition: 'For students who enjoy academic or creative challenges',
+          leadership: 'Good for students who want to develop leadership skills',
+          job: 'For teens seeking paid work experience',
+          mentorship: 'For students looking for guidance and professional connections',
+        };
+        const cue = fitCues[opp.category];
+        if (!cue) return null;
+        return (
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold text-foreground mb-3">Who it fits</h2>
+            <p className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground">
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+              <span className="text-foreground/90">{cue}</span>
+            </p>
+          </section>
+        );
+      })()}
 
       {/* Eligibility */}
       {opp.eligibility && (
@@ -493,11 +466,17 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
       {/* Tags */}
       {opp.tags.length > 0 && (
         <section className="mb-8">
-          <h2 className="sr-only">Tags</h2>
+          <h2 className="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground">
+            <Tag className="h-4 w-4 text-muted-foreground" aria-hidden />
+            Topics
+          </h2>
           <div className="flex flex-wrap gap-2">
-            <Tag className="h-4 w-4 text-muted-foreground" />
             {opp.tags.map((tag) => (
-              <Badge key={tag} variant="outline" className="text-xs">
+              <Badge
+                key={tag}
+                variant="outline"
+                className="text-xs font-normal text-foreground/90 border-border/80"
+              >
                 {tag}
               </Badge>
             ))}

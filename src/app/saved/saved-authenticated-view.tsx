@@ -86,15 +86,25 @@ export function SavedAuthenticatedView({
             : `${slugs.length} saved opportunit${slugs.length === 1 ? 'y' : 'ies'}`}
         </p>
         {slugs.length >= 2 && (
-          <Button
-            variant={showCompare ? 'default' : 'outline'}
-            size="sm"
-            className="mt-3 gap-1.5"
-            onClick={() => setShowCompare(!showCompare)}
-          >
-            <BarChart3 className="h-3.5 w-3.5" />
-            {showCompare ? 'Hide comparison' : 'Compare saved'}
-          </Button>
+          <div className="mt-4 space-y-3">
+            {!showCompare && (
+              <div className="rounded-lg border border-primary/25 bg-primary/5 px-4 py-3 text-sm text-foreground dark:border-primary/30 dark:bg-primary/10">
+                <p className="font-medium">Compare your shortlist</p>
+                <p className="mt-1 text-muted-foreground">
+                  Open a side-by-side table for deadlines, location, and pay at a glance.
+                </p>
+              </div>
+            )}
+            <Button
+              variant={showCompare ? 'outline' : 'default'}
+              size="default"
+              className="gap-2 font-semibold shadow-sm"
+              onClick={() => setShowCompare(!showCompare)}
+            >
+              <BarChart3 className="h-4 w-4" />
+              {showCompare ? 'Hide comparison' : 'Compare saved'}
+            </Button>
+          </div>
         )}
       </div>
 
@@ -215,21 +225,23 @@ export function SavedAuthenticatedView({
           className="mt-10"
         >
           <h2 className="mb-4 text-xl font-semibold text-foreground">Side-by-side comparison</h2>
-          <div className="overflow-x-auto rounded-lg border border-border">
-            <table className="w-full text-sm">
+          <div className="-mx-1 overflow-x-auto rounded-lg border border-border px-1 sm:mx-0 sm:px-0">
+            <table className="w-full min-w-[min(100%,32rem)] border-collapse text-sm">
               <thead>
                 <tr className="border-b border-border bg-muted/50">
-                  <th className="w-28 px-4 py-3 text-left font-medium text-muted-foreground">Field</th>
+                  <th className="sticky left-0 z-10 min-w-[5.5rem] bg-muted/50 px-3 py-3 text-left text-xs font-medium text-muted-foreground sm:min-w-[7rem] sm:px-4 sm:text-sm">
+                    Field
+                  </th>
                   {savedOpportunities.map((opp) => (
                     <th
                       key={opp.id}
-                      className="min-w-44 px-4 py-3 text-left font-medium text-foreground"
+                      className="min-w-[11rem] max-w-[18rem] px-3 py-3 text-left align-bottom sm:min-w-[12rem] sm:px-4"
                     >
                       <Link
                         href={`/opportunities/${opp.slug}`}
-                        className="hover:text-primary hover:underline"
+                        className="line-clamp-4 text-pretty text-sm font-semibold leading-snug text-primary underline-offset-2 hover:underline"
                       >
-                        {opp.title.length > 40 ? opp.title.slice(0, 38) + '...' : opp.title}
+                        {opp.title}
                       </Link>
                     </th>
                   ))}
@@ -292,12 +304,17 @@ export function SavedAuthenticatedView({
                   },
                 ].map((row) => (
                   <tr key={row.label}>
-                    <td className="whitespace-nowrap px-4 py-2.5 font-medium text-muted-foreground">
+                    <td className="sticky left-0 z-10 whitespace-nowrap bg-background/95 px-3 py-2.5 text-xs font-medium text-muted-foreground backdrop-blur-sm sm:bg-background sm:px-4 sm:text-sm">
                       {row.label}
                     </td>
                     {savedOpportunities.map((opp) => (
-                      <td key={opp.id} className="px-4 py-2.5 text-foreground">
-                        {row.render(opp)}
+                      <td
+                        key={opp.id}
+                        className="min-w-0 px-3 py-2.5 align-top text-foreground sm:px-4"
+                      >
+                        <span className="line-clamp-6 text-pretty sm:line-clamp-none">
+                          {row.render(opp)}
+                        </span>
                       </td>
                     ))}
                   </tr>

@@ -250,7 +250,8 @@ export function OpportunityFilters() {
           onChange={(e) => updateParams({ application_status: e.target.value })}
           aria-label="Application status"
         >
-          <option value="">Any Status</option>
+          <option value="">Open, rolling & closing soon</option>
+          <option value="all">All statuses (including closed)</option>
           {APPLICATION_STATUS_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
               {opt.label}
@@ -363,6 +364,12 @@ export function OpportunityFilters() {
       {activeFilterCount > 0 && (
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs text-muted-foreground mr-1">Active filters:</span>
+          {currentValues.search.trim() && (
+            <FilterChip
+              label={`Search: ${currentValues.search.trim()}`}
+              onRemove={() => updateParams({ search: '' })}
+            />
+          )}
           {currentValues.category && (
             <FilterChip
               label={
@@ -405,8 +412,10 @@ export function OpportunityFilters() {
           {currentValues.application_status && (
             <FilterChip
               label={
-                APPLICATION_STATUS_OPTIONS.find((o) => o.value === currentValues.application_status)
-                  ?.label || currentValues.application_status
+                currentValues.application_status === 'all'
+                  ? 'All statuses (including closed)'
+                  : APPLICATION_STATUS_OPTIONS.find((o) => o.value === currentValues.application_status)
+                      ?.label || currentValues.application_status
               }
               onRemove={() => updateParams({ application_status: '' })}
             />

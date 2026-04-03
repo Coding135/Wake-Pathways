@@ -208,7 +208,13 @@ export function OpportunityReviewsSection({
       )}
 
       {!loadError && approved.length === 0 && !myReview && (
-        <p className="mb-6 text-sm text-muted-foreground">No published reviews yet. Be the first to share your experience.</p>
+        <div className="mb-6 rounded-lg border border-border bg-background/90 px-4 py-4 text-sm shadow-sm dark:bg-card/80">
+          <p className="font-medium text-foreground">No published reviews yet</p>
+          <p className="mt-1.5 leading-relaxed text-muted-foreground">
+            If you participated, a short honest note helps other students decide if this opportunity
+            is a good fit. New reviews are checked before they appear here.
+          </p>
+        </div>
       )}
 
       {loadError && !userId && (
