@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-02T22:00:00Z",
-  "total_listings": 145,
+  "generated_at": "2026-04-03T12:00:00Z",
+  "total_listings": 147,
   "organizations": [
     {
       "id": "org-001",
@@ -608,6 +608,14 @@
       "slug": "artspace",
       "website": "https://artspacenc.org",
       "description": "Nonprofit visual arts center in downtown Raleigh with exhibitions, artist studios, and community programs supported by volunteers.",
+      "is_verified": true
+    },
+    {
+      "id": "org-085",
+      "name": "Triangle Aquatic Center (TAC)",
+      "slug": "triangle-aquatic-center",
+      "website": "https://www.triangleaquatics.org",
+      "description": "A 501(c)(3) nonprofit aquatic center in Cary, NC, hosting public swimming, swim instruction, and regional swim meets and events.",
       "is_verified": true
     }
   ],
@@ -6806,6 +6814,101 @@
         "Teamwork"
       ],
       "source_notes": "Canonical volunteer URL may redirect from artspacenc.org/support/volunteer; both resolve to the same program information."
+    },
+    {
+      "id": "opp-162",
+      "slug": "raleigh-aquatics-lifeguard-city-of-raleigh",
+      "title": "City of Raleigh Aquatics Lifeguard",
+      "organization_id": "org-001",
+      "category": "job",
+      "short_summary": "Part-time lifeguard roles for City of Raleigh year-round and seasonal pools; official page lists a minimum age of 15, swim-test requirements, and applications through GovernmentJobs.com.",
+      "full_description": "The City of Raleigh Parks, Recreation and Cultural Resources aquatics program hires lifeguards for four year-round and four seasonal pools. The official Lifeguards service page states the City is accepting applications, describes flexible hours (pools often operate from 5 a.m. to 8 p.m., with noted need for morning and daytime coverage), and outlines how to apply online. Certified lifeguards apply through GovernmentJobs.com listings; applicants who are not yet certified may qualify for the City’s S.A.V.E. (Seasonal Aquatic Vocational Education) training pathway described on the same page, including paid work-hour expectations after training. You must pass a swim-skills evaluation, City background check, and controlled-substance testing as described on the official page.",
+      "eligibility": "15 years of age or older, plus swim-test, background check, and substance-screening requirements described on the official Lifeguards page.",
+      "grades_min": null,
+      "grades_max": null,
+      "age_min": 15,
+      "age_max": null,
+      "location_city": "Raleigh",
+      "location_county": "Wake",
+      "remote_type": "in_person",
+      "paid_type": "paid",
+      "compensation_text": "The official page references $14 per hour for a defined block of paid work hours after completing the S.A.V.E. class; open lifeguard postings on GovernmentJobs.com list pay for each job title.",
+      "cost_text": null,
+      "is_free": true,
+      "deadline_type": "none",
+      "deadline_at": null,
+      "application_status": "rolling",
+      "official_application_url": "https://www.governmentjobs.com/careers/raleighnc?keywords=lifeguard",
+      "source_url": "https://raleighnc.gov/parks-and-recreation/services/lifeguards",
+      "source_name": "City of Raleigh (Parks, Recreation and Cultural Resources)",
+      "source_type": "official",
+      "verified": true,
+      "verification_status": "verified",
+      "last_verified_at": "2026-04-03T12:00:00Z",
+      "featured": false,
+      "is_active": true,
+      "time_commitment": "Part-time shifts including mornings, days, evenings, and weekends depending on pool assignment (per official page).",
+      "tags": [
+        "job",
+        "raleigh",
+        "parks-recreation",
+        "work-experience"
+      ],
+      "skills": [
+        "Water safety",
+        "Teamwork",
+        "Responsibility",
+        "Communication"
+      ],
+      "source_notes": "Confirm the exact lifeguard or lifeguard-in-training posting title on GovernmentJobs.com before you apply. Listing mix changes with hiring cycles."
+    },
+    {
+      "id": "opp-163",
+      "slug": "triangle-aquatic-center-event-staff-cary",
+      "title": "Triangle Aquatic Center Event Staff (Timing & Admissions)",
+      "organization_id": "org-085",
+      "category": "job",
+      "short_summary": "Paid event-support roles at the nonprofit Triangle Aquatic Center in Cary: timing-console operators and admission or heat-sheet sales. Official employment page describes these as strong fits for high school and college students.",
+      "full_description": "Triangle Aquatic Center (TAC) in Cary hires Event Staff for swim meets and programs. The nonprofit’s Join Our Team page describes two tracks: Timing Operators run the timing console with full training provided, and Admission / Heat Sheet Sales staff handle event admissions (cash-handling experience preferred). Both roles require availability for nights and/or weekends. The same page states these positions are a good match for college and high school students and lists a hiring range of $12.50 to $15.00 per hour. Apply through the job application section on the official Join Our Team page.",
+      "eligibility": "High school and college students are explicitly welcomed on the official TAC employment page; meet shift availability and any employer requirements in the application materials.",
+      "grades_min": null,
+      "grades_max": null,
+      "age_min": null,
+      "age_max": null,
+      "location_city": "Cary",
+      "location_county": "Wake",
+      "remote_type": "in_person",
+      "paid_type": "paid",
+      "compensation_text": "$12.50–$15.00/hour hiring range stated on the official Join Our Team page (Event Staff).",
+      "cost_text": null,
+      "is_free": true,
+      "deadline_type": "none",
+      "deadline_at": null,
+      "application_status": "rolling",
+      "official_application_url": "https://www.triangleaquatics.org/about-tac/join-our-team/",
+      "source_url": "https://www.triangleaquatics.org/about-tac/join-our-team/",
+      "source_name": "Triangle Aquatic Center",
+      "source_type": "official",
+      "verified": true,
+      "verification_status": "verified",
+      "last_verified_at": "2026-04-03T12:00:00Z",
+      "featured": false,
+      "is_active": true,
+      "time_commitment": "Weekday evenings and weekends; shifts align with meet and event schedules (per official page).",
+      "tags": [
+        "job",
+        "cary",
+        "business",
+        "communication",
+        "work-experience"
+      ],
+      "skills": [
+        "Customer service",
+        "Cash handling",
+        "Teamwork",
+        "Attention to detail"
+      ],
+      "source_notes": "Event Staff section on Join Our Team includes contact email for the hiring lead and an on-page application form anchor."
     }
   ]
 }
