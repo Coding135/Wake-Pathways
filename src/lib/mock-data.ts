@@ -328,3 +328,26 @@ export function getCategoryStats(): { category: OpportunityCategory; count: numb
     .map(([category, count]) => ({ category, count }))
     .sort((a, b) => b.count - a.count);
 }
+
+/**
+ * Canonical counts for the public site and About page. Uses `is_active` only
+ * (matches Explore/homepage category cards). Dataset may include additional
+ * inactive records in the opportunities array.
+ */
+export function getPublicListingStats() {
+  const active = MOCK_OPPORTUNITIES.filter((o) => o.is_active);
+  const verifiedActiveListings = active.filter((o) => o.verified).length;
+  const organizationsRepresented = new Set(
+    active.map((o) => o.organization_id).filter((id): id is string => Boolean(id))
+  ).size;
+  const citiesCovered = new Set(
+    active.map((o) => o.location_city).filter((c): c is string => Boolean(c?.trim()))
+  ).size;
+  return {
+    activeListings: active.length,
+    totalOpportunityRecords: MOCK_OPPORTUNITIES.length,
+    verifiedActiveListings,
+    organizationsRepresented,
+    citiesCovered,
+  };
+}

@@ -29,7 +29,7 @@ const removed = before - kept.length;
 const orgIds = new Set(kept.map((o) => o.organization_id).filter(Boolean));
 data.organizations = data.organizations.filter((org) => orgIds.has(org.id));
 data.opportunities = kept;
-data.total_listings = kept.length;
+data.total_listings = kept.filter((o) => o.is_active).length;
 
 fs.writeFileSync(DATA, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
 

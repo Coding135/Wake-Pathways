@@ -124,8 +124,8 @@ function OverviewTab({
   const stats = useMemo(() => ({
     total: opportunities.filter((o) => o.is_active).length,
     pending: submissions.filter((s) => s.status === 'pending').length,
-    verified: opportunities.filter((o) => o.verified).length,
-    featured: opportunities.filter((o) => o.featured).length,
+    verified: opportunities.filter((o) => o.is_active && o.verified).length,
+    featured: opportunities.filter((o) => o.is_active && o.featured).length,
   }), [submissions, opportunities]);
 
   const recentSubmissions = useMemo(
