@@ -57,7 +57,6 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
     paid_type: first(sp.paid_type) as PaidType | undefined,
     application_status,
     grade: Number.isFinite(grade) ? grade : undefined,
-    verified_only: first(sp.verified_only) === 'true',
     is_free: first(sp.is_free) === 'true',
     interests: first(sp.interests),
     sort: first(sp.sort),
@@ -75,8 +74,8 @@ export default async function OpportunitiesPage({ searchParams }: PageProps) {
           Explore Opportunities
         </h1>
         <p className="mt-2 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Browse verified internships, volunteering, scholarships, programs, and jobs for Wake County
-          teens. Filter by what fits you, then open a listing for full details.
+          Browse internships, volunteering, scholarships, programs, and jobs for Wake County teens.
+          Filter by what fits you, then open a listing for full details.
         </p>
       </div>
 

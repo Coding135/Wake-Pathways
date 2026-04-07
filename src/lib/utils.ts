@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { format, formatDistanceToNow, differenceInDays, isPast } from 'date-fns';
-import type { ApplicationStatus, DeadlineType, VerificationStatus } from '@/types/database';
+import type { ApplicationStatus, DeadlineType } from '@/types/database';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -32,22 +32,6 @@ export function getApplicationStatusColor(status: ApplicationStatus): string {
     rolling: 'opp-st-rolling',
     closed: 'opp-st-closed',
     unknown: 'opp-st-unknown',
-  };
-  return colors[status];
-}
-
-export function getVerificationBadgeColor(status: VerificationStatus): string {
-  const colors: Record<VerificationStatus, string> = {
-    verified:
-      'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200 dark:ring-1 dark:ring-inset dark:ring-emerald-400/25',
-    pending:
-      'bg-yellow-100 text-yellow-800 dark:bg-yellow-950/45 dark:text-yellow-200 dark:ring-1 dark:ring-inset dark:ring-yellow-400/25',
-    needs_review:
-      'bg-orange-100 text-orange-800 dark:bg-orange-950/45 dark:text-orange-200 dark:ring-1 dark:ring-inset dark:ring-orange-400/25',
-    failed:
-      'bg-red-100 text-red-800 dark:bg-red-950/45 dark:text-red-200 dark:ring-1 dark:ring-inset dark:ring-red-400/25',
-    unverified:
-      'bg-gray-100 text-gray-600 dark:bg-stone-800/80 dark:text-stone-400 dark:ring-1 dark:ring-inset dark:ring-stone-500/20',
   };
   return colors[status];
 }

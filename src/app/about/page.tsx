@@ -19,7 +19,7 @@ import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `About - ${APP_SHORT_NAME}`,
-  description: `Learn about ${APP_SHORT_NAME} and how we help Wake County teens find real, verified local opportunities.`,
+  description: `Learn about ${APP_SHORT_NAME} and how we help Wake County teens find real local opportunities.`,
 };
 
 const DIFFERENTIATORS = [
@@ -58,7 +58,7 @@ const STEPS = [
   },
   {
     icon: ClipboardCheck,
-    title: 'Verify before publishing',
+    title: 'Review before publishing',
     description: 'Every listing is checked against its official source. We confirm details like eligibility, deadlines, and costs.',
   },
   {
@@ -69,7 +69,7 @@ const STEPS = [
 ];
 
 export default function AboutPage() {
-  const { verifiedActiveListings, organizationsRepresented, citiesCovered } =
+  const { activeOpportunities, organizationsRepresented, citiesCovered } =
     getAboutPageListingStats();
 
   return (
@@ -88,7 +88,7 @@ export default function AboutPage() {
             href="/how-it-works"
             className="text-sm font-medium text-primary underline-offset-2 hover:underline"
           >
-            How listings are verified
+            How listings are reviewed
           </Link>
         </p>
       </header>
@@ -121,7 +121,7 @@ export default function AboutPage() {
         <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-muted-foreground">
           Wake County has a large student population, but opportunities are often scattered across
           school emails, nonprofit sites, university pages, and job boards. {APP_SHORT_NAME} brings
-          verified opportunities into one place so students can find them faster and miss fewer
+          curated opportunities into one place so students can find them faster and miss fewer
           deadlines.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -145,11 +145,11 @@ export default function AboutPage() {
           </div>
           <div className="rounded-xl border border-border bg-background p-6 text-center shadow-sm dark:bg-card dark:shadow-none">
             <p className="text-3xl font-bold tabular-nums tracking-tight text-foreground sm:text-4xl">
-              {verifiedActiveListings}
+              {activeOpportunities}
             </p>
-            <p className="mt-2 text-sm font-medium text-foreground">verified opportunities</p>
+            <p className="mt-2 text-sm font-medium text-foreground">active opportunities</p>
             <p className="mt-1.5 text-xs leading-snug text-muted-foreground">
-              Active listings on {APP_SHORT_NAME} today, sourced and checked against official pages.
+              Listings on {APP_SHORT_NAME} today, sourced and checked against official pages.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-background p-6 text-center shadow-sm dark:bg-card dark:shadow-none">

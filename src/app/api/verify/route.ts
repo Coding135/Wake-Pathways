@@ -73,10 +73,10 @@ export async function POST() {
           (now.getTime() - new Date(opp.last_verified_at).getTime()) / (1000 * 60 * 60 * 24)
         );
         if (daysSince > 30) {
-          issues.push(`Stale verification: last checked ${daysSince} days ago`);
+          issues.push(`Stale last-checked date: ${daysSince} days ago`);
         }
       } else {
-        issues.push('Never verified');
+        issues.push('No last-checked date recorded');
       }
 
       issuesList.push(...issues.map((i) => `[${opp.slug}] ${i}`));

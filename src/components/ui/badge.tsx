@@ -7,7 +7,7 @@ export const badgeVariants = cva(
     variants: {
       variant: {
         default: 'bg-primary/10 text-primary',
-        /** Category/status/verified on listings — no primary tint; use `opportunity-badges.css` classes. */
+        /** Category/status pills on listings — no primary tint; use `opportunity-badges.css` classes. */
         opportunity: 'opp-pill',
         secondary: 'bg-secondary text-secondary-foreground',
         outline: 'border border-border text-foreground',

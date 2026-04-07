@@ -54,10 +54,7 @@ import { ReportOpportunityIssueDialog } from '@/components/opportunities/report-
 import { AddDeadlineToCalendar } from '@/components/opportunities/add-deadline-to-calendar';
 import { getOpportunityDeadlineCalendarDraft } from '@/lib/calendar/deadline-calendar';
 import { resolveAbsoluteListingUrl } from '@/lib/site-request-url';
-import {
-  CATEGORY_BADGE_CLASSES,
-  VERIFIED_OPPORTUNITY_BADGE_CLASSES,
-} from '@/lib/opportunity-badge-styles';
+import { CATEGORY_BADGE_CLASSES } from '@/lib/opportunity-badge-styles';
 
 const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
   internship: Briefcase,
@@ -253,12 +250,6 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
           <Badge variant="opportunity" className={getApplicationStatusColor(opp.application_status)}>
             {getStatusLabel(opp.application_status)}
           </Badge>
-          {opp.verified && (
-            <Badge variant="opportunity" className={VERIFIED_OPPORTUNITY_BADGE_CLASSES}>
-              <CheckCircle2 className="h-3 w-3" />
-              Verified
-            </Badge>
-          )}
         </div>
 
         <h1 className="text-balance text-xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">

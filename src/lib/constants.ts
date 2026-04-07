@@ -135,11 +135,11 @@ export const DEADLINE_TYPE_OPTIONS: LabeledOption<DeadlineType>[] = [
 ];
 
 export const VERIFICATION_STATUS_OPTIONS: LabeledOption<VerificationStatus>[] = [
-  { value: 'verified', label: 'Verified' },
+  { value: 'verified', label: 'Review complete' },
   { value: 'pending', label: 'Pending' },
   { value: 'needs_review', label: 'Needs Review' },
   { value: 'failed', label: 'Failed' },
-  { value: 'unverified', label: 'Unverified' },
+  { value: 'unverified', label: 'Not reviewed' },
 ];
 
 // =============================================================================

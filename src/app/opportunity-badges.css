@@ -235,23 +235,6 @@
   box-shadow: inset 0 0 0 1px var(--badge-st-unknown-ring);
 }
 
-/* Verified listing pill */
-:root {
-  --badge-verified-listing-bg: #ecfdf5;
-  --badge-verified-listing-fg: #047857;
-  --badge-verified-listing-ring: rgb(4 120 87 / 0.16);
-}
-.dark {
-  --badge-verified-listing-bg: rgba(6 78 59 / 0.45);
-  --badge-verified-listing-fg: #a7f3d0;
-  --badge-verified-listing-ring: rgb(52 211 153 / 0.32);
-}
-.opp-verified-listing {
-  background-color: var(--badge-verified-listing-bg);
-  color: var(--badge-verified-listing-fg);
-  box-shadow: inset 0 0 0 1px var(--badge-verified-listing-ring);
-}
-
 /* -------------------------------------------------------------------------- */
 /* Homepage category grid icon tiles (tint + icon color) */
 /* -------------------------------------------------------------------------- */

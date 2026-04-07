@@ -164,7 +164,7 @@ async function main() {
       const age = opp.last_verified_at
         ? `${daysBetween(new Date(opp.last_verified_at), new Date())} days ago`
         : 'never';
-      issues.push(`⚠ "${opp.title}" has stale verification (last checked: ${age})`);
+      issues.push(`⚠ "${opp.title}" has a stale last-checked date (${age})`);
     }
 
     for (const { url, field } of urls) {

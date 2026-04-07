@@ -57,7 +57,7 @@ export function Footer() {
 
         <div className="mt-10 border-t border-border pt-6">
           <p className="text-xs leading-relaxed text-muted-foreground">
-            Verify all opportunity details on official source pages. Listings
+            Always confirm opportunity details on official source pages. Listings
             are curated in good faith but may change without notice.
           </p>
           <p className="mt-2 text-xs text-muted-foreground/70">

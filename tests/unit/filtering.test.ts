@@ -95,14 +95,12 @@ describe('getOpportunities', () => {
     });
   });
 
-  it('filters by verified_only', () => {
-    const result = getOpportunities({ verified_only: true });
+  it('filters by application_status rolling', () => {
+    const result = getOpportunities({ application_status: 'rolling', per_page: 100 });
     expect(result.total).toBeGreaterThanOrEqual(1);
     result.data.forEach((opp) => {
-      expect(opp.verified).toBe(true);
+      expect(opp.application_status).toBe('rolling');
     });
-    // opp-011 (Library TAB) is unverified, should be excluded
-    expect(result.data.some((o) => o.slug === 'wake-county-library-teen-advisory')).toBe(false);
   });
 
   it('filters by is_free', () => {

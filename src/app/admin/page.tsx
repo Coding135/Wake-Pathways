@@ -124,7 +124,7 @@ function OverviewTab({
   const stats = useMemo(() => ({
     total: opportunities.filter((o) => o.is_active).length,
     pending: submissions.filter((s) => s.status === 'pending').length,
-    verified: opportunities.filter((o) => o.is_active && o.verified).length,
+    withApplyUrl: opportunities.filter((o) => o.is_active && o.official_application_url).length,
     featured: opportunities.filter((o) => o.is_active && o.featured).length,
   }), [submissions, opportunities]);
 
@@ -136,7 +136,7 @@ function OverviewTab({
   const statCards = [
     { label: 'Total Listings', value: stats.total, icon: Users, color: 'text-primary' },
     { label: 'Pending Submissions', value: stats.pending, icon: Clock, color: 'text-warning' },
-    { label: 'Verified', value: stats.verified, icon: CheckCircle2, color: 'text-success' },
+    { label: 'Apply link set', value: stats.withApplyUrl, icon: Link2, color: 'text-success' },
     { label: 'Featured', value: stats.featured, icon: Star, color: 'text-amber-500' },
   ];
 
@@ -204,7 +204,7 @@ function OverviewTab({
             <div className="space-y-2">
               {[
                 { label: 'Review Submissions', desc: `${stats.pending} pending`, href: '/admin?tab=submissions', icon: FileText },
-                { label: 'Check Links', desc: 'Verify all listing URLs', href: '/admin?tab=verification', icon: Link2 },
+                { label: 'Check Links', desc: 'Check all listing URLs', href: '/admin?tab=verification', icon: Link2 },
                 { label: 'View Category Report', desc: `${OPPORTUNITY_CATEGORIES.length} categories`, href: '/admin?tab=listings', icon: BarChart3 },
               ].map((action) => (
                 <a
@@ -480,7 +480,7 @@ function ListingsTab({
     );
   }, [opportunities, search]);
 
-  const toggle = useCallback((id: string, field: 'featured' | 'is_active' | 'verified') => {
+  const toggle = useCallback((id: string, field: 'featured' | 'is_active') => {
     setOpportunities((prev) =>
       prev.map((o) => (o.id === id ? { ...o, [field]: !o[field] } : o))
     );
@@ -534,14 +534,6 @@ function ListingsTab({
                 >
                   <Star className={cn('h-3.5 w-3.5', opp.featured && 'fill-current')} />
                   {opp.featured ? 'Featured' : 'Feature'}
-                </Button>
-                <Button
-                  size="sm"
-                  variant={opp.verified ? 'default' : 'outline'}
-                  onClick={() => toggle(opp.id, 'verified')}
-                >
-                  <CheckCircle2 className="h-3.5 w-3.5" />
-                  {opp.verified ? 'Verified' : 'Verify'}
                 </Button>
                 <Button
                   size="sm"
@@ -654,7 +646,7 @@ function VerificationTab({ opportunities }: { opportunities: Opportunity[] }) {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <FlagCard
           title="Stale Listings"
-          description="Not verified in 30+ days"
+          description="Not checked against source in 30+ days"
           icon={Clock}
           items={stale}
           variant="warning"
@@ -750,11 +742,11 @@ function SubmissionStatusBadge({ status }: { status: SubmissionStatus }) {
 
 function VerificationBadge({ status }: { status: VerificationStatus }) {
   const map: Record<VerificationStatus, { variant: 'success' | 'warning' | 'destructive' | 'secondary' | 'default'; label: string }> = {
-    verified: { variant: 'success', label: 'Verified' },
+    verified: { variant: 'success', label: 'Review complete' },
     pending: { variant: 'warning', label: 'Pending' },
     needs_review: { variant: 'warning', label: 'Needs Review' },
     failed: { variant: 'destructive', label: 'Failed' },
-    unverified: { variant: 'secondary', label: 'Unverified' },
+    unverified: { variant: 'secondary', label: 'Not reviewed' },
   };
   const { variant, label } = map[status];
   return <Badge variant={variant}>{label}</Badge>;

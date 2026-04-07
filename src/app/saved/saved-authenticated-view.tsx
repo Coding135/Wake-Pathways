@@ -11,7 +11,6 @@ import {
   Calendar,
   DollarSign,
   ExternalLink,
-  CheckCircle2,
 } from 'lucide-react';
 
 import { MOCK_OPPORTUNITIES, MOCK_ORGANIZATIONS } from '@/lib/mock-data';
@@ -28,10 +27,7 @@ import { Button } from '@/components/ui/button';
 import { buttonVariants } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { OpportunityCategory } from '@/types/database';
-import {
-  CATEGORY_BADGE_CLASSES,
-  VERIFIED_OPPORTUNITY_BADGE_CLASSES,
-} from '@/lib/opportunity-badge-styles';
+import { CATEGORY_BADGE_CLASSES } from '@/lib/opportunity-badge-styles';
 import { SavedClosingSoonReminders } from '@/components/saved/saved-closing-soon-reminders';
 
 const PAID_LABELS: Record<string, string> = {
@@ -163,12 +159,6 @@ export function SavedAuthenticatedView({
                         <Badge variant="opportunity" className={getApplicationStatusColor(opp.application_status)}>
                           {getStatusLabel(opp.application_status)}
                         </Badge>
-                        {opp.verified && (
-                          <Badge variant="opportunity" className={VERIFIED_OPPORTUNITY_BADGE_CLASSES}>
-                            <CheckCircle2 className="h-3 w-3" />
-                            Verified
-                          </Badge>
-                        )}
                       </div>
 
                       <Link

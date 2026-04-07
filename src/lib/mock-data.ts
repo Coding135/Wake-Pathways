@@ -113,7 +113,6 @@ export interface GetOpportunitiesParams {
   application_status?: ApplicationStatus | 'all';
   grade?: number;
   age?: number;
-  verified_only?: boolean;
   is_free?: boolean;
   /** Comma-separated validated interest ids; OR logic within this group. */
   interests?: string;
@@ -142,7 +141,6 @@ export function getOpportunities(
     application_status,
     grade,
     age,
-    verified_only,
     is_free,
     interests,
     sort = 'created_desc',
@@ -203,10 +201,6 @@ export function getOpportunities(
         (o.age_min == null || age >= o.age_min) &&
         (o.age_max == null || age <= o.age_max)
     );
-  }
-
-  if (verified_only) {
-    filtered = filtered.filter((o) => o.verified);
   }
 
   if (is_free) {
@@ -336,7 +330,6 @@ export function getCategoryStats(): { category: OpportunityCategory; count: numb
  */
 export function getPublicListingStats() {
   const active = MOCK_OPPORTUNITIES.filter((o) => o.is_active);
-  const verifiedActiveListings = active.filter((o) => o.verified).length;
   const organizationsRepresented = new Set(
     active.map((o) => o.organization_id).filter((id): id is string => Boolean(id))
   ).size;
@@ -346,7 +339,6 @@ export function getPublicListingStats() {
   return {
     activeListings: active.length,
     totalOpportunityRecords: MOCK_OPPORTUNITIES.length,
-    verifiedActiveListings,
     organizationsRepresented,
     citiesCovered,
   };

@@ -5,7 +5,6 @@ import {
   MapPin,
   Calendar,
   DollarSign,
-  CheckCircle2,
   Briefcase,
   Heart,
   GraduationCap,
@@ -21,10 +20,7 @@ import type { OpportunityWithOrganization, OpportunityCategory } from '@/types/d
 import { Badge } from '@/components/ui/badge';
 import { cn, truncate, formatDeadline, getStatusLabel, getApplicationStatusColor } from '@/lib/utils';
 import { CATEGORY_MAP } from '@/lib/constants';
-import {
-  CATEGORY_BADGE_CLASSES,
-  VERIFIED_OPPORTUNITY_BADGE_CLASSES,
-} from '@/lib/opportunity-badge-styles';
+import { CATEGORY_BADGE_CLASSES } from '@/lib/opportunity-badge-styles';
 import { SaveButton } from './save-button';
 
 const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
@@ -91,12 +87,6 @@ export function OpportunityCard({
             <Badge variant="opportunity" className={getApplicationStatusColor(opportunity.application_status)}>
               {getStatusLabel(opportunity.application_status)}
             </Badge>
-            {opportunity.verified && (
-              <Badge variant="opportunity" className={VERIFIED_OPPORTUNITY_BADGE_CLASSES}>
-                <CheckCircle2 className="size-3 shrink-0" />
-                Verified
-              </Badge>
-            )}
           </div>
           <SaveButton
             slug={opportunity.slug}

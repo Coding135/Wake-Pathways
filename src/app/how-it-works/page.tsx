@@ -14,7 +14,7 @@ import { APP_SHORT_NAME } from '@/lib/constants';
 export const metadata: Metadata = {
   title: `How It Works - ${APP_SHORT_NAME}`,
   description:
-    'Learn how opportunities are curated, verified, and kept up-to-date on Wake Pathways.',
+    'Learn how opportunities are curated, reviewed, and kept up-to-date on Wake Pathways.',
 };
 
 const STEPS = [
@@ -32,7 +32,7 @@ const STEPS = [
   },
   {
     icon: ClipboardCheck,
-    title: 'We verify the details',
+    title: 'We review the details',
     description:
       'Every listing is reviewed by a real person. We check the source URL, confirm key details, and make sure the opportunity is genuine and current.',
   },
@@ -47,7 +47,7 @@ const STEPS = [
 const TRUST_BADGES = [
   {
     icon: ShieldCheck,
-    label: 'Verified',
+    label: 'Editorial review',
     color:
       'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-200 dark:ring-1 dark:ring-inset dark:ring-emerald-400/25',
     description:
@@ -59,7 +59,7 @@ const TRUST_BADGES = [
     color:
       'bg-blue-100 text-blue-700 dark:bg-blue-950/50 dark:text-blue-200 dark:ring-1 dark:ring-inset dark:ring-blue-400/25',
     description:
-      'Every verified listing includes a direct link to the official application or information page.',
+      'Each listing includes a direct link to the official application or information page when available.',
   },
   {
     icon: CheckCircle2,
@@ -114,14 +114,13 @@ export default function HowItWorksPage() {
         </ol>
       </section>
 
-      {/* What "verified" means */}
+      {/* What we check */}
       <section className="mb-16">
         <h2 className="text-xl font-semibold text-foreground">
-          What &ldquo;verified&rdquo; means
+          What we check before publishing
         </h2>
         <p className="mt-3 leading-relaxed text-muted-foreground">
-          When you see a verified badge, it means a team member has personally
-          confirmed the listing against its official source. Specifically:
+          A team member confirms each listing against its official source. Specifically:
         </p>
         <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted-foreground">
           <li className="flex items-start gap-2">

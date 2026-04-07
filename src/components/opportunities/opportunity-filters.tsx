@@ -40,7 +40,6 @@ const FILTER_KEYS = [
   'remote_type',
   'paid_type',
   'application_status',
-  'verified_only',
   'is_free',
 ] as const;
 
@@ -74,7 +73,6 @@ export function OpportunityFilters() {
       remote_type: searchParams.get('remote_type') ?? '',
       paid_type: searchParams.get('paid_type') ?? '',
       application_status: searchParams.get('application_status') ?? '',
-      verified_only: searchParams.get('verified_only') === 'true',
       is_free: searchParams.get('is_free') === 'true',
       interests: searchParams.get('interests') ?? '',
       sort: searchParams.get('sort') ?? '',
@@ -296,13 +294,6 @@ export function OpportunityFilters() {
 
         <div className="col-span-2 flex flex-col gap-3 sm:col-span-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-2 lg:col-span-2 xl:col-span-4">
           <Checkbox
-            label="Verified only"
-            checked={currentValues.verified_only}
-            onChange={(e) =>
-              updateParams({ verified_only: String((e.target as HTMLInputElement).checked) })
-            }
-          />
-          <Checkbox
             label="Free only"
             checked={currentValues.is_free}
             onChange={(e) =>
@@ -329,7 +320,7 @@ export function OpportunityFilters() {
           <DialogTitle>Interests</DialogTitle>
           <DialogDescription>
             Choose one or more topics. Results must match every other filter you set, and at least
-            one selected interest. Matching uses each listing&apos;s verified tags and program type.
+            one selected interest. Matching uses each listing&apos;s tags and program type.
           </DialogDescription>
         </DialogHeader>
         <DialogContent className="max-h-[min(70dvh,28rem)] overflow-y-auto overscroll-contain px-0 sm:max-h-[min(50vh,24rem)]">
@@ -427,9 +418,6 @@ export function OpportunityFilters() {
               onRemove={() => toggleInterest(id)}
             />
           ))}
-          {currentValues.verified_only && (
-            <FilterChip label="Verified only" onRemove={() => updateParams({ verified_only: 'false' })} />
-          )}
           {currentValues.is_free && (
             <FilterChip label="Free only" onRemove={() => updateParams({ is_free: 'false' })} />
           )}

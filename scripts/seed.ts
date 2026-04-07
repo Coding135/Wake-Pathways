@@ -99,9 +99,9 @@ async function main() {
 
   const activeCount = opportunities.filter((o) => o.is_active).length;
   const featuredCount = opportunities.filter((o) => o.featured).length;
-  const verifiedCount = opportunities.filter((o) => o.verified).length;
+  const lastCheckedCount = opportunities.filter((o) => o.last_verified_at).length;
 
-  console.log(`  Active: ${activeCount}  |  Featured: ${featuredCount}  |  Verified: ${verifiedCount}`);
+  console.log(`  Active: ${activeCount}  |  Featured: ${featuredCount}  |  With last-checked: ${lastCheckedCount}`);
   console.log('');
 
   if (isProduction) {

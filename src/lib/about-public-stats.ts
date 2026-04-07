@@ -11,7 +11,7 @@ export const WCPSS_ENROLLMENT_DISPLAY = '161,000+';
 export function getAboutPageListingStats() {
   const s = getPublicListingStats();
   return {
-    verifiedActiveListings: s.verifiedActiveListings,
+    activeOpportunities: s.activeListings,
     organizationsRepresented: s.organizationsRepresented,
     citiesCovered: s.citiesCovered,
   };

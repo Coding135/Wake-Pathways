@@ -137,7 +137,6 @@ export const opportunityFiltersSchema = z.object({
     .optional(),
   grade: z.coerce.number().int().min(6).max(12).optional(),
   age: z.coerce.number().int().min(10).max(22).optional(),
-  verified_only: z.string().transform((v) => v === 'true').optional(),
   is_free: z.string().transform((v) => v === 'true').optional(),
   interests: z.string().max(800).optional(),
   sort: z

@@ -96,7 +96,7 @@ export default function HomePage() {
             </h1>
 
             <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-lg md:text-xl">
-              Find verified internships, research programs, volunteer roles, scholarships, summer programs, jobs, and more in one place.
+              Find internships, research programs, volunteer roles, scholarships, summer programs, jobs, and more in one place.
             </p>
 
             <div className="mt-7 flex justify-center sm:mt-8">

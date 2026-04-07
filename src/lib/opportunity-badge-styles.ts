@@ -29,5 +29,3 @@ export const CATEGORY_HOME_TILE_CLASSES: Record<OpportunityCategory, string> = {
   mentorship: 'home-tile-mentorship',
   other: 'home-tile-other',
 };
-
-export const VERIFIED_OPPORTUNITY_BADGE_CLASSES = 'opp-verified-listing';

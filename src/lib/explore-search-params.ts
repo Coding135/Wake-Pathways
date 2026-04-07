@@ -10,7 +10,6 @@ export const EXPLORE_URL_PARAM_KEYS = [
   'remote_type',
   'paid_type',
   'application_status',
-  'verified_only',
   'is_free',
   'interests',
   'sort',
