@@ -63,9 +63,10 @@
   --badge-cat-scholarship-bg: #f3e8ff;
   --badge-cat-scholarship-fg: #7c3aed;
   --badge-cat-scholarship-ring: rgb(124 58 237 / 0.14);
-  --badge-cat-summer-program-bg: #fff7ed;
-  --badge-cat-summer-program-fg: #c2410c;
-  --badge-cat-summer-program-ring: rgb(194 65 12 / 0.14);
+  /* Golden yellow (sun) — distinct from application-status “Closing soon” (amber/warning) */
+  --badge-cat-summer-program-bg: #fefce8;
+  --badge-cat-summer-program-fg: #854d0e;
+  --badge-cat-summer-program-ring: rgb(133 77 14 / 0.18);
   --badge-cat-research-bg: #ecfeff;
   --badge-cat-research-fg: #0e7490;
   --badge-cat-research-ring: rgb(14 116 144 / 0.16);
@@ -96,9 +97,9 @@
   --badge-cat-scholarship-bg: rgba(88 28 135 / 0.5);
   --badge-cat-scholarship-fg: #e9d5ff;
   --badge-cat-scholarship-ring: rgb(192 132 252 / 0.35);
-  --badge-cat-summer-program-bg: rgba(124 45 18 / 0.45);
-  --badge-cat-summer-program-fg: #ffedd5;
-  --badge-cat-summer-program-ring: rgb(251 146 60 / 0.35);
+  --badge-cat-summer-program-bg: rgba(66 32 6 / 0.5);
+  --badge-cat-summer-program-fg: #fef08a;
+  --badge-cat-summer-program-ring: rgb(234 179 8 / 0.32);
   --badge-cat-research-bg: rgba(21 94 117 / 0.45);
   --badge-cat-research-fg: #a5f3fc;
   --badge-cat-research-ring: rgb(34 211 238 / 0.32);
@@ -245,8 +246,8 @@
   --home-tile-volunteer-fg: #047857;
   --home-tile-scholarship-bg: #f3e8ff;
   --home-tile-scholarship-fg: #7c3aed;
-  --home-tile-summer-program-bg: #fff7ed;
-  --home-tile-summer-program-fg: #c2410c;
+  --home-tile-summer-program-bg: #fefce8;
+  --home-tile-summer-program-fg: #854d0e;
   --home-tile-research-bg: #ecfeff;
   --home-tile-research-fg: #0e7490;
   --home-tile-competition-bg: #fff1f2;
@@ -268,8 +269,8 @@
   --home-tile-volunteer-fg: #6ee7b7;
   --home-tile-scholarship-bg: rgba(88 28 135 / 0.4);
   --home-tile-scholarship-fg: #e9d5ff;
-  --home-tile-summer-program-bg: rgba(124 45 18 / 0.4);
-  --home-tile-summer-program-fg: #fdba74;
+  --home-tile-summer-program-bg: rgba(66 32 6 / 0.48);
+  --home-tile-summer-program-fg: #fde047;
   --home-tile-research-bg: rgba(21 94 117 / 0.42);
   --home-tile-research-fg: #a5f3fc;
   --home-tile-competition-bg: rgba(136 19 55 / 0.4);
