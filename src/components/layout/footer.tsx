@@ -60,6 +60,16 @@ export function Footer() {
             Always confirm opportunity details on official source pages. Listings
             are curated in good faith but may change without notice.
           </p>
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground/80">
+            General comments, suggestions, or feedback? Email{' '}
+            <a
+              href="mailto:wakepathways@gmail.com"
+              className="text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline"
+            >
+              wakepathways@gmail.com
+            </a>
+            .
+          </p>
           <p className="mt-2 text-xs text-muted-foreground/70">
             &copy; {new Date().getFullYear()} {APP_SHORT_NAME}. Built with
             care for the Wake County community.
