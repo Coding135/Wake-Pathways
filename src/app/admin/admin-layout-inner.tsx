@@ -3,7 +3,17 @@
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Shield, ArrowLeft, FileText, BarChart3, Users, Link2, Star, Flag } from 'lucide-react';
+import {
+  Shield,
+  ArrowLeft,
+  FileText,
+  BarChart3,
+  Users,
+  Link2,
+  Star,
+  Flag,
+  MessageSquareText,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 
@@ -14,6 +24,7 @@ const ADMIN_NAV = [
   { label: 'Verification', tab: 'verification', icon: Link2 },
   { label: 'Reviews', href: '/admin/reviews', icon: Star },
   { label: 'Reports', href: '/admin/reports', icon: Flag },
+  { label: 'Feedback', href: '/admin/feedback', icon: MessageSquareText },
 ] as const;
 
 type AdminDataBanner = 'loading' | 'live' | 'sign_in' | 'notice';
@@ -24,6 +35,7 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   const currentTab = searchParams.get('tab') ?? 'overview';
   const onReviewsRoute = pathname.startsWith('/admin/reviews');
   const onReportsRoute = pathname.startsWith('/admin/reports');
+  const onFeedbackRoute = pathname.startsWith('/admin/feedback');
 
   const [dataBanner, setDataBanner] = useState<AdminDataBanner>('loading');
 
@@ -93,7 +105,8 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
             if ('href' in item) {
               const isActive =
                 (item.href === '/admin/reviews' && onReviewsRoute) ||
-                (item.href === '/admin/reports' && onReportsRoute);
+                (item.href === '/admin/reports' && onReportsRoute) ||
+                (item.href === '/admin/feedback' && onFeedbackRoute);
               return (
                 <Link
                   key={item.href}
@@ -111,7 +124,11 @@ export function AdminLayoutInner({ children }: { children: React.ReactNode }) {
               );
             }
             const { label, tab } = item;
-            const isActive = !onReviewsRoute && currentTab === tab;
+            const isActive =
+              !onReviewsRoute &&
+              !onReportsRoute &&
+              !onFeedbackRoute &&
+              currentTab === tab;
             const href = tab === 'overview' ? '/admin' : `/admin?tab=${tab}`;
             return (
               <Link

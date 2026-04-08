@@ -13,4 +13,5 @@ export const ADMIN_VIEW_QUICK_LINKS = [
     label: 'Review moderation',
     description: 'Approve or reject student opportunity reviews',
   },
+  { href: '/admin/feedback', label: 'Site feedback', description: 'Footer form messages' },
 ] as const;

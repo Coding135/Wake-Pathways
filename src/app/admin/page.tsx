@@ -17,6 +17,7 @@ import {
   BarChart3,
   Link2,
   ChevronRight,
+  MessageSquareText,
 } from 'lucide-react';
 
 import { MOCK_OPPORTUNITIES } from '@/lib/mock-data';
@@ -204,6 +205,7 @@ function OverviewTab({
             <div className="space-y-2">
               {[
                 { label: 'Review Submissions', desc: `${stats.pending} pending`, href: '/admin?tab=submissions', icon: FileText },
+                { label: 'Site feedback', desc: 'Footer form messages', href: '/admin/feedback', icon: MessageSquareText },
                 { label: 'Check Links', desc: 'Check all listing URLs', href: '/admin?tab=verification', icon: Link2 },
                 { label: 'View Category Report', desc: `${OPPORTUNITY_CATEGORIES.length} categories`, href: '/admin?tab=listings', icon: BarChart3 },
               ].map((action) => (

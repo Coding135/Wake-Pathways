@@ -223,6 +223,15 @@ export interface OpportunityIssueReport {
   updated_at: string;
 }
 
+/** public.site_feedback (footer feedback form) */
+export interface SiteFeedback {
+  id: string;
+  message: string;
+  contact_email: string | null;
+  reporter_user_id: string | null;
+  created_at: string;
+}
+
 // =============================================================================
 // Insert types (for creating new records - omit generated fields)
 // =============================================================================
@@ -379,6 +388,12 @@ export interface Database {
         Row: OpportunityIssueReport;
         Insert: Record<string, unknown>;
         Update: Partial<OpportunityIssueReport>;
+        Relationships: [];
+      };
+      site_feedback: {
+        Row: SiteFeedback;
+        Insert: Record<string, unknown>;
+        Update: Partial<SiteFeedback>;
         Relationships: [];
       };
     };
