@@ -87,7 +87,9 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Instant scroll on navigation and in-page jumps; smooth global scroll made long navigations
+     (e.g. home → /submit) feel like landing mid-page. */
+  scroll-behavior: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;

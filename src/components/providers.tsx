@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from '@/components/theme-provider';
 import { AuthProvider } from '@/contexts/auth-context';
 import { AdminViewProvider } from '@/contexts/admin-view-context';
+import { ScrollToTopOnRoute } from '@/components/scroll-to-top-on-route';
 import type { UserProfileDisplay } from '@/lib/auth/user-display';
 
 export function Providers({
@@ -41,6 +42,7 @@ export function Providers({
             initialAdminViewOn={initialAdminViewOn}
             initialModeratorAccess={initialModeratorAccess}
           >
+            <ScrollToTopOnRoute />
             {children}
           </AdminViewProvider>
         </AuthProvider>

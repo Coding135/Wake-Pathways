@@ -67,7 +67,7 @@ export default async function RootLayout({
       lang="en"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      data-scroll-behavior="smooth"
+      data-scroll-behavior="auto"
     >
       <body className="min-h-screen flex flex-col bg-background text-foreground">
         <Script
