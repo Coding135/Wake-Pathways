@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { APP_SHORT_NAME } from '@/lib/constants';
 import { BRAND_LOGO_MARK_32 } from '@/lib/brand';
+import { SiteFeedbackDialog } from '@/components/layout/site-feedback-dialog';
 
 const FOOTER_LINKS = [
   { label: 'Explore', href: '/opportunities' },
@@ -60,15 +61,23 @@ export function Footer() {
             Always confirm opportunity details on official source pages. Listings
             are curated in good faith but may change without notice.
           </p>
-          <p className="mt-2 text-xs leading-relaxed text-muted-foreground/80">
-            General comments, suggestions, or feedback? Email{' '}
-            <a
-              href="mailto:wakepathways@gmail.com"
-              className="text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline"
-            >
-              wakepathways@gmail.com
-            </a>
-            .
+          <p className="mt-2 flex flex-wrap items-center gap-x-1 gap-y-2 text-sm leading-relaxed text-muted-foreground">
+            <span className="min-w-0">
+              General comments, suggestions, or feedback? Email{' '}
+              <a
+                href="mailto:wakepathways@gmail.com"
+                className="font-medium text-foreground/90 underline-offset-2 transition-colors hover:text-foreground hover:underline"
+              >
+                wakepathways@gmail.com
+              </a>
+            </span>
+            <span className="hidden text-muted-foreground/70 sm:inline" aria-hidden>
+              ·
+            </span>
+            <span className="inline-flex items-center gap-1.5 sm:ml-0">
+              <span className="text-muted-foreground/80">or</span>
+              <SiteFeedbackDialog />
+            </span>
           </p>
           <p className="mt-2 text-xs text-muted-foreground/70">
             &copy; {new Date().getFullYear()} {APP_SHORT_NAME}. Built with
