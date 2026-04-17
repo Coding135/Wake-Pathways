@@ -31,6 +31,12 @@ export function formatAuthError(error: AuthError | Error | null | undefined): st
   if (lower.includes('email rate limit')) {
     return 'Please wait before requesting another email.';
   }
+  if (
+    lower.includes('provider is not enabled') ||
+    lower.includes('unsupported provider')
+  ) {
+    return 'Google sign-in is not enabled for this app yet. The site owner needs to turn on the Google provider in the Supabase dashboard (Authentication → Providers → Google) and add the redirect URL.';
+  }
 
   return msg.length > 120 ? 'Something went wrong. Please try again.' : msg;
 }
