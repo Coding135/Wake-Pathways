@@ -11,6 +11,7 @@ import { Loader2 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { formatAuthError } from '@/lib/auth/errors';
 import { safeNextPath } from '@/lib/auth/redirect';
+import { setOauthReturnPathCookie } from '@/lib/auth/oauth-return-path';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
@@ -113,11 +114,13 @@ export function SignupForm({ redirectNext }: { redirectNext?: string }) {
     setFormError('');
     setSuccessMessage('');
     setOauthLoading(true);
+    setOauthReturnPathCookie(next);
     const supabase = createClient();
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: callbackUrl(next),
+        // Keep exactly `/auth/callback` so it matches Supabase "Redirect URLs" without wildcards.
+        redirectTo: `${window.location.origin}/auth/callback`,
       },
     });
     if (error) {

@@ -11,6 +11,7 @@ import { Loader2 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { formatAuthError } from '@/lib/auth/errors';
 import { safeNextPath } from '@/lib/auth/redirect';
+import { setOauthReturnPathCookie } from '@/lib/auth/oauth-return-path';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -29,11 +30,6 @@ const schema = z.object({
 });
 
 type FormValues = z.infer<typeof schema>;
-
-function callbackUrl(next: string) {
-  if (typeof window === 'undefined') return '';
-  return `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
-}
 
 function GoogleMark({ className }: { className?: string }) {
   return (
@@ -67,9 +63,12 @@ const LOGIN_FORM_ID = 'login-email-form';
 export function LoginForm({
   redirectNext,
   authError,
+  authHint,
 }: {
   redirectNext?: string;
   authError?: string;
+  /** Sanitized server error (e.g. from /auth/callback) for debugging. */
+  authHint?: string;
 }) {
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -84,7 +83,7 @@ export function LoginForm({
 
   const banner =
     authError === 'auth'
-      ? 'That sign-in link was invalid or expired. Try signing in again.'
+      ? 'We could not finish Google sign-in (or the link expired). Use the checklist below, then try again.'
       : authError === 'confirm'
         ? 'That confirmation link was invalid or expired. Try signing up again or request a new confirmation email.'
         : '';
@@ -110,11 +109,12 @@ export function LoginForm({
   async function signInWithGoogle() {
     setFormError('');
     setOauthLoading(true);
+    setOauthReturnPathCookie(next);
     const supabase = createClient();
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: callbackUrl(next),
+        redirectTo: `${window.location.origin}/auth/callback`,
       },
     });
     if (error) {
@@ -137,11 +137,38 @@ export function LoginForm({
             Sign in to view and manage your saved opportunities.
           </p>
         )}
-        {banner && (
-          <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-800/60 dark:bg-amber-950/45 dark:text-amber-100">
-            {banner}
-          </p>
-        )}
+          {banner && (
+            <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-800/60 dark:bg-amber-950/45 dark:text-amber-100">
+              <p>{banner}</p>
+              {authHint?.trim() ? (
+                <p className="mt-2 rounded-md bg-amber-100/80 px-2 py-1.5 font-mono text-xs leading-snug text-amber-950 dark:bg-amber-900/40 dark:text-amber-50">
+                  {authHint.trim()}
+                </p>
+              ) : null}
+              {authError === 'auth' && (
+                <ul className="mt-2 list-inside list-disc space-y-1 text-xs leading-relaxed text-amber-950/90 dark:text-amber-100/90">
+                  <li>
+                    In Supabase → Authentication → URL configuration → Redirect URLs, include your app callback exactly, e.g.{' '}
+                    <code className="rounded bg-amber-100/80 px-1 py-0.5 font-mono text-[11px] dark:bg-amber-900/40">
+                      http://localhost:3000/auth/callback
+                    </code>{' '}
+                    for local dev and your production URL + <code className="font-mono text-[11px]">/auth/callback</code>.
+                  </li>
+                  <li>
+                    In Google Cloud → your OAuth Web client → Authorized redirect URIs, include your Supabase callback:{' '}
+                    <code className="rounded bg-amber-100/80 px-1 py-0.5 font-mono text-[11px] dark:bg-amber-900/40">
+                      https://YOUR_PROJECT.supabase.co/auth/v1/callback
+                    </code>
+                  </li>
+                  <li>Deploy the latest app code, use a normal (not private) window, and try Google again in one go.</li>
+                  <li>
+                    If it still fails, open your host logs (e.g. Vercel / terminal) for{' '}
+                    <code className="font-mono text-[11px]">[auth/callback]</code> — that line shows the real Supabase error.
+                  </li>
+                </ul>
+              )}
+            </div>
+          )}
         {formError && (
           <p className="rounded-lg border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive">
             {formError}

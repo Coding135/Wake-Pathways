@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 type Props = {
-  searchParams: Promise<{ next?: string; error?: string }>;
+  searchParams: Promise<{ next?: string; error?: string; hint?: string }>;
 };
 
 export default async function LoginPage({ searchParams }: Props) {
@@ -30,7 +30,11 @@ export default async function LoginPage({ searchParams }: Props) {
           ← Back to opportunities
         </Link>
       </p>
-      <LoginForm redirectNext={sp.next} authError={sp.error} />
+      <LoginForm
+        redirectNext={sp.next}
+        authError={sp.error}
+        authHint={sp.hint}
+      />
     </div>
   );
 }
