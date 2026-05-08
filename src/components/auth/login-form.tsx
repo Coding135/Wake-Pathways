@@ -81,9 +81,14 @@ export function LoginForm({
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
+  const exchangeHint =
+    authHint?.toLowerCase().includes('unable to exchange') ?? false;
+
   const banner =
     authError === 'auth'
-      ? 'We could not finish Google sign-in (or the link expired). Use the checklist below, then try again.'
+      ? exchangeHint
+        ? "Google returned you to the site, but Supabase could not finish the login with Google's servers. That is almost always a mismatch between Supabase and Google Cloud — not this page or Vercel routing."
+      : 'We could not finish Google sign-in (or the link expired). Use the checklist below, then try again.'
       : authError === 'confirm'
         ? 'That confirmation link was invalid or expired. Try signing up again or request a new confirmation email.'
         : '';
@@ -159,6 +164,13 @@ export function LoginForm({
                     <code className="rounded bg-amber-100/80 px-1 py-0.5 font-mono text-[11px] dark:bg-amber-900/40">
                       https://YOUR_PROJECT.supabase.co/auth/v1/callback
                     </code>
+                    . The <code className="font-mono text-[11px]">YOUR_PROJECT</code> segment must be the{' '}
+                    <strong className="font-semibold">exact</strong> project ref from your live{' '}
+                    <code className="font-mono text-[11px]">NEXT_PUBLIC_SUPABASE_URL</code> (e.g. Vercel env) — if that URL points at a different Supabase project than the credentials you pasted, exchange fails with “Unable to exchange external code”.
+                  </li>
+                  <li>
+                    In Supabase → Authentication → Providers → Google: Client ID and Client Secret must come from the{' '}
+                    <strong className="font-semibold">same</strong> Google Cloud “Web application” OAuth client as above. If unsure, create a new Client Secret in Google, paste it into Supabase, and save — typos or an old rotated secret cause this exact error.
                   </li>
                   <li>Deploy the latest app code, use a normal (not private) window, and try Google again in one go.</li>
                   <li>
