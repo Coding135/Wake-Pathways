@@ -104,7 +104,7 @@ export default function AboutPage() {
         </p>
         <p className="mt-5">
           <Link
-            href="/how-it-works"
+            href="/about#how-listings-are-reviewed"
             className="text-sm font-medium text-primary underline-offset-2 hover:underline"
           >
             How listings are reviewed
@@ -209,9 +209,9 @@ export default function AboutPage() {
       </section>
 
       {/* How it works */}
-      <section className="mb-16">
+      <section id="how-listings-are-reviewed" className="mb-16 scroll-mt-24">
         <h2 className="text-2xl font-bold tracking-tight text-foreground text-center mb-8">
-          How it works
+          How listings are reviewed
         </h2>
         <div className="grid gap-6 sm:grid-cols-2">
           {STEPS.map((step, i) => (
