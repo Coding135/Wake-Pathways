@@ -315,10 +315,10 @@ export default function HomePage() {
 
         <div className="mt-8 text-center">
           <Link
-            href="/how-it-works"
+            href="/about"
             className={cn(buttonVariants({ variant: 'outline' }), 'gap-1')}
           >
-            Learn how it works
+            Learn more
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

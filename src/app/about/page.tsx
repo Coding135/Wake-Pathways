@@ -68,6 +68,25 @@ const STEPS = [
   },
 ];
 
+const FAQS = [
+  {
+    q: 'Is Wake Pathways free?',
+    a: 'Yes. Browsing and using the directory is free.',
+  },
+  {
+    q: 'Do I need an account to browse?',
+    a: 'No. An account is only needed for saved listings and reviews.',
+  },
+  {
+    q: 'How do you verify listings?',
+    a: 'Each listing is reviewed against an official source link before it is published.',
+  },
+  {
+    q: 'How often is the data updated?',
+    a: 'Listings are rechecked in review cycles and stale entries are removed.',
+  },
+];
+
 export default function AboutPage() {
   const { activeOpportunities, totalIndexedOpportunities, organizationsRepresented, citiesCovered } =
     getAboutPageListingStats();
@@ -227,6 +246,23 @@ export default function AboutPage() {
             Submit an opportunity
             <ArrowRight className="h-4 w-4" />
           </Link>
+        </div>
+      </section>
+
+      <section id="faq" className="mt-16 scroll-mt-24">
+        <h2 className="text-2xl font-bold tracking-tight text-foreground text-center mb-8">
+          Frequently asked questions
+        </h2>
+        <div className="space-y-4">
+          {FAQS.map((item) => (
+            <article
+              key={item.q}
+              className="rounded-xl border border-border bg-white p-5 shadow-sm dark:bg-card dark:shadow-none"
+            >
+              <h3 className="text-sm font-semibold text-foreground">{item.q}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.a}</p>
+            </article>
+          ))}
         </div>
       </section>
     </div>

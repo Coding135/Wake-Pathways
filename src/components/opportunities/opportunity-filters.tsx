@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { Search, Filter, X } from 'lucide-react';
+import { Search, Filter, X, Sparkles } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
@@ -279,8 +279,8 @@ export function OpportunityFilters() {
             aria-label="Filter by interests"
             aria-expanded={interestsOpen}
           >
-            <Filter className="h-4 w-4 shrink-0 text-muted-foreground" />
-            <span className="truncate">Interest Tags (multi-select)</span>
+            <Sparkles className="h-4 w-4 shrink-0 text-primary" />
+            <span className="truncate">Choose Interests</span>
             {selectedInterestIds.length > 0 && (
               <Badge
                 variant="secondary"
@@ -317,7 +317,7 @@ export function OpportunityFilters() {
 
       <Dialog open={interestsOpen} onOpenChange={setInterestsOpen}>
         <DialogHeader>
-          <DialogTitle>Interest tags</DialogTitle>
+          <DialogTitle>Choose interests</DialogTitle>
           <DialogDescription>
             Choose one or more topics. Results must match every other filter you set, and at least
             one selected interest. Matching uses each listing&apos;s tags and program type.
