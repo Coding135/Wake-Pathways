@@ -102,14 +102,6 @@ export default function AboutPage() {
           A free, community-driven resource helping Wake County teens discover
           real internships, volunteer work, scholarships, summer programs, and more.
         </p>
-        <p className="mt-5">
-          <Link
-            href="/about#how-listings-are-reviewed"
-            className="text-sm font-medium text-primary underline-offset-2 hover:underline"
-          >
-            How listings are reviewed
-          </Link>
-        </p>
       </header>
 
       {/* Mission */}
@@ -209,9 +201,9 @@ export default function AboutPage() {
       </section>
 
       {/* How it works */}
-      <section id="how-listings-are-reviewed" className="mb-16 scroll-mt-24">
+      <section className="mb-16">
         <h2 className="text-2xl font-bold tracking-tight text-foreground text-center mb-8">
-          How listings are reviewed
+          How it works
         </h2>
         <div className="grid gap-6 sm:grid-cols-2">
           {STEPS.map((step, i) => (
