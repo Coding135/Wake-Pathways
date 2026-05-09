@@ -89,7 +89,7 @@ export function SiteFeedbackDialog({ className }: Props) {
         )}
       >
         <MessageSquareText className="h-4 w-4 shrink-0 opacity-90" aria-hidden />
-        Send a quick note
+        Send feedback
       </button>
 
       <Dialog open={open} onOpenChange={handleOpenChange}>

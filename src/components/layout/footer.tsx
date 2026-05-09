@@ -10,6 +10,7 @@ const FOOTER_LINKS = [
   { label: 'Submit', href: '/submit' },
   { label: 'About', href: '/about' },
   { label: 'How It Works', href: '/how-it-works' },
+  { label: 'FAQ', href: '/how-it-works#faq' },
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Log in', href: '/login' },
   { label: 'Sign up', href: '/signup' },
@@ -26,7 +27,7 @@ export function Footer() {
               <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg ring-1 ring-border/50">
                 <Image
                   src={BRAND_LOGO_MARK_32}
-                  alt=""
+                  alt="Wake Pathways logo"
                   width={32}
                   height={32}
                   className="object-cover"
@@ -71,6 +72,17 @@ export function Footer() {
                 wakepathways@gmail.com
               </a>
             </span>
+            <span className="hidden text-muted-foreground/70 sm:inline" aria-hidden>
+              ·
+            </span>
+            <a
+              href="https://instagram.com/wakepathways"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-10 items-center rounded-md px-1 py-0.5 font-medium text-foreground/90 underline-offset-2 transition-colors hover:text-foreground hover:underline sm:min-h-0"
+            >
+              Follow @wakepathways on Instagram
+            </a>
             <span className="hidden text-muted-foreground/70 sm:inline" aria-hidden>
               ·
             </span>

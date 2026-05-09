@@ -62,7 +62,7 @@ export function Header() {
           <span className="relative flex h-9 w-9 shrink-0 overflow-hidden rounded-xl ring-1 ring-border/60 shadow-sm">
             <Image
               src={BRAND_LOGO_MARK_32}
-              alt=""
+              alt="Wake Pathways logo"
               width={36}
               height={36}
               className="object-cover"

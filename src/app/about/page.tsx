@@ -69,7 +69,7 @@ const STEPS = [
 ];
 
 export default function AboutPage() {
-  const { activeOpportunities, organizationsRepresented, citiesCovered } =
+  const { activeOpportunities, totalIndexedOpportunities, organizationsRepresented, citiesCovered } =
     getAboutPageListingStats();
 
   return (
@@ -149,7 +149,10 @@ export default function AboutPage() {
             </p>
             <p className="mt-2 text-sm font-medium text-foreground">active opportunities</p>
             <p className="mt-1.5 text-xs leading-snug text-muted-foreground">
-              Listings on {APP_SHORT_NAME} today, sourced and checked against official pages.
+              Matches the default Explore count (closed listings are hidden there by default).
+              {totalIndexedOpportunities > activeOpportunities
+                ? ` ${totalIndexedOpportunities} total listings are currently indexed.`
+                : ''}
             </p>
           </div>
           <div className="rounded-xl border border-border bg-background p-6 text-center shadow-sm dark:bg-card dark:shadow-none">

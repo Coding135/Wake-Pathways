@@ -1,0 +1,50 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="0.55" stop-color="#0B2447"/>
+      <stop offset="1" stop-color="#0E7490"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(980 80) rotate(149.766) scale(520 360)">
+      <stop stop-color="#38BDF8" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(120 560) rotate(-22.107) scale(560 320)">
+      <stop stop-color="#14B8A6" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#14B8A6" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cardShadow" x="72" y="116" width="210" height="210" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#020617" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glowA)"/>
+  <rect width="1200" height="630" fill="url(#glowB)"/>
+
+  <g filter="url(#cardShadow)">
+    <rect x="92" y="136" width="170" height="170" rx="38" fill="#0B1220"/>
+    <rect x="102" y="146" width="150" height="150" rx="32" fill="#111827"/>
+    <circle cx="177" cy="221" r="55" fill="#0F172A"/>
+    <path d="M142 224C142 205.222 157.222 190 176 190H191V205H176C165.507 205 157 213.507 157 224V239H142V224Z" fill="#06B6D4"/>
+    <path d="M211 205C211 223.778 195.778 239 177 239H161V224H177C187.493 224 196 215.493 196 205V190H211V205Z" fill="#22D3EE"/>
+  </g>
+
+  <text x="300" y="226" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="600" letter-spacing="0.2">
+    Wake County, NC
+  </text>
+  <text x="300" y="318" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="74" font-weight="800">
+    Wake Pathways
+  </text>
+  <text x="300" y="385" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="600">
+    Real opportunities for teens
+  </text>
+  <text x="300" y="452" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">
+    Internships, scholarships, volunteer roles, summer programs, and more
+  </text>
+
+  <rect x="300" y="494" width="560" height="56" rx="28" fill="#0F766E" fill-opacity="0.35"/>
+  <text x="332" y="530" fill="#CCFBF1" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700">
+    wakepathways.com
+  </text>
+</svg>

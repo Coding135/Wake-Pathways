@@ -330,6 +330,7 @@ export function getCategoryStats(): { category: OpportunityCategory; count: numb
  */
 export function getPublicListingStats() {
   const active = MOCK_OPPORTUNITIES.filter((o) => o.is_active);
+  const exploreDefaultVisible = getOpportunities({ per_page: 1 }).total;
   const organizationsRepresented = new Set(
     active.map((o) => o.organization_id).filter((id): id is string => Boolean(id))
   ).size;
@@ -338,6 +339,7 @@ export function getPublicListingStats() {
   ).size;
   return {
     activeListings: active.length,
+    exploreDefaultVisible,
     totalOpportunityRecords: MOCK_OPPORTUNITIES.length,
     organizationsRepresented,
     citiesCovered,

@@ -110,9 +110,36 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const opp = getOpportunityBySlug(slug);
   if (!opp) return { title: 'Not Found - Wake Pathways' };
+  const base = process.env.NEXT_PUBLIC_SITE_URL?.trim() || 'https://wakepathways.com';
+  const pageUrl = `${base.replace(/\/$/, '')}/opportunities/${opp.slug}`;
+  const ogTitle = `${opp.title} - Wake Pathways`;
+  const ogDescription =
+    opp.short_summary ||
+    `Explore details for ${opp.title} on Wake Pathways, including eligibility, location, and application links.`;
   return {
-    title: `${opp.title} - Wake Pathways`,
-    description: opp.short_summary ?? undefined,
+    title: ogTitle,
+    description: ogDescription,
+    openGraph: {
+      type: 'article',
+      url: pageUrl,
+      title: ogTitle,
+      description: ogDescription,
+      siteName: 'Wake Pathways',
+      images: [
+        {
+          url: '/brand/og-card.svg',
+          width: 1200,
+          height: 630,
+          alt: 'Wake Pathways opportunity listing preview',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: ogTitle,
+      description: ogDescription,
+      images: ['/brand/og-card.svg'],
+    },
   };
 }
 
@@ -162,6 +189,100 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
   const paySummary = PAID_LABELS[opp.paid_type];
   const compensationBody = opp.compensation_text?.trim() ?? '';
   const compensationExtended = shouldUseExtendedDetailText(compensationBody);
+  const schemaDatePublished = opp.created_at || opp.last_verified_at || undefined;
+  const schemaDateModified = opp.updated_at || opp.last_verified_at || undefined;
+  const baseSchema = {
+    '@context': 'https://schema.org',
+    name: opp.title,
+    description: opp.short_summary || opp.full_description || '',
+    url: listingUrl,
+    datePublished: schemaDatePublished,
+    dateModified: schemaDateModified,
+    applicationDeadline: opp.deadline_at || undefined,
+    hiringOrganization: opp.organization
+      ? {
+          '@type': 'Organization',
+          name: opp.organization.name,
+          url: opp.organization.website || undefined,
+        }
+      : undefined,
+    provider: opp.organization
+      ? {
+          '@type': 'Organization',
+          name: opp.organization.name,
+          url: opp.organization.website || undefined,
+        }
+      : undefined,
+    educationalProgramMode: REMOTE_LABELS[opp.remote_type],
+    offers:
+      opp.paid_type !== 'unpaid'
+        ? {
+            '@type': 'Offer',
+            description: opp.compensation_text || PAID_LABELS[opp.paid_type],
+          }
+        : undefined,
+    eligibility: opp.eligibility || undefined,
+    areaServed:
+      opp.location_county || opp.location_city
+        ? {
+            '@type': 'AdministrativeArea',
+            name: [opp.location_city, opp.location_county, 'NC'].filter(Boolean).join(', '),
+          }
+        : undefined,
+  };
+
+  const listingSchema =
+    opp.category === 'job' || opp.category === 'internship'
+      ? {
+          ...baseSchema,
+          '@type': 'JobPosting',
+          title: opp.title,
+          datePosted: schemaDatePublished,
+          employmentType: opp.category === 'internship' ? 'INTERN' : 'PART_TIME',
+          validThrough: opp.deadline_at || undefined,
+          applicantLocationRequirements:
+            opp.remote_type === 'remote'
+              ? {
+                  '@type': 'Country',
+                  name: 'US',
+                }
+              : undefined,
+        }
+      : opp.category === 'competition' || opp.category === 'summer_program'
+        ? {
+            ...baseSchema,
+            '@type': 'Event',
+            eventAttendanceMode:
+              opp.remote_type === 'remote'
+                ? 'https://schema.org/OnlineEventAttendanceMode'
+                : opp.remote_type === 'hybrid'
+                  ? 'https://schema.org/MixedEventAttendanceMode'
+                  : 'https://schema.org/OfflineEventAttendanceMode',
+            eventStatus:
+              opp.application_status === 'closed'
+                ? 'https://schema.org/EventCancelled'
+                : 'https://schema.org/EventScheduled',
+            location:
+              opp.remote_type === 'remote'
+                ? {
+                    '@type': 'VirtualLocation',
+                    url: opp.official_application_url || listingUrl,
+                  }
+                : {
+                    '@type': 'Place',
+                    address: {
+                      '@type': 'PostalAddress',
+                      addressLocality: opp.location_city || undefined,
+                      addressRegion: 'NC',
+                      addressCountry: 'US',
+                    },
+                  },
+          }
+        : {
+            ...baseSchema,
+            '@type': 'EducationalOccupationalProgram',
+            occupationalCategory: CATEGORY_MAP[opp.category]?.label || 'Youth Opportunity',
+          };
 
   const compactDetails: DetailBlock[] = [
     {
@@ -232,6 +353,10 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
 
   return (
     <main className="mx-auto w-full min-w-0 max-w-4xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(listingSchema) }}
+      />
       <Link
         href={backHref}
         className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -513,14 +638,16 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
         <ReportOpportunityIssueDialog slug={slug} />
       </section>
 
-      <OpportunityReviewsSection
-        slug={slug}
-        initialApproved={reviews.approved}
-        initialMyReview={reviews.myReview}
-        userId={reviews.userId}
-        profileName={reviews.profileName}
-        loadError={reviews.loadError}
-      />
+      {reviews.approved.length > 0 && (
+        <OpportunityReviewsSection
+          slug={slug}
+          initialApproved={reviews.approved}
+          initialMyReview={reviews.myReview}
+          userId={reviews.userId}
+          profileName={reviews.profileName}
+          loadError={reviews.loadError}
+        />
+      )}
 
       {/* Similar opportunities */}
       {similar.length > 0 && (

@@ -71,6 +71,25 @@ const TRUST_BADGES = [
   },
 ];
 
+const FAQS = [
+  {
+    q: 'Is Wake Pathways free to use?',
+    a: 'Yes. Browsing listings is free, and there is no charge to view details or official source links.',
+  },
+  {
+    q: 'Do I need an account to browse opportunities?',
+    a: 'No account is required to browse. An account is only needed for features like saving listings and writing reviews.',
+  },
+  {
+    q: 'How do I know listings are real?',
+    a: 'Every listing is tied to an official source URL and reviewed by a person before publishing.',
+  },
+  {
+    q: 'How often are listings updated?',
+    a: 'Listings are checked in recurring review cycles. Closed, stale, or unverifiable opportunities are removed.',
+  },
+];
+
 export default function HowItWorksPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
@@ -183,6 +202,18 @@ export default function HowItWorksPage() {
               out through our contact form. We review every report promptly.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section id="faq" className="mt-16 scroll-mt-24">
+        <h2 className="text-xl font-semibold text-foreground">Frequently asked questions</h2>
+        <div className="mt-5 space-y-4">
+          {FAQS.map((item) => (
+            <article key={item.q} className="rounded-xl border border-border bg-white p-5 dark:bg-card">
+              <h3 className="text-sm font-semibold text-foreground">{item.q}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.a}</p>
+            </article>
+          ))}
         </div>
       </section>
     </div>

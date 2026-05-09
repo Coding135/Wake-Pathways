@@ -30,6 +30,30 @@ export const metadata: Metadata = {
   title: 'Wake Pathways - Opportunities for Wake County Teens',
   description:
     'Discover real internships, volunteer roles, scholarships, and programs for teens in Wake County, NC.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL?.trim() || 'https://wakepathways.com'),
+  openGraph: {
+    title: 'Wake Pathways - Opportunities for Wake County Teens',
+    description:
+      'Discover real internships, volunteer roles, scholarships, and programs for teens in Wake County, NC.',
+    url: '/',
+    siteName: 'Wake Pathways',
+    type: 'website',
+    images: [
+      {
+        url: '/brand/og-card.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Wake Pathways - real opportunities for Wake County teens',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Wake Pathways - Opportunities for Wake County Teens',
+    description:
+      'Discover real internships, volunteer roles, scholarships, and programs for teens in Wake County, NC.',
+    images: ['/brand/og-card.svg'],
+  },
   icons: {
     icon: [{ url: '/brand/logo-mark-32.png', sizes: '32x32', type: 'image/png' }],
     apple: [{ url: '/brand/logo-mark-192.png', sizes: '192x192', type: 'image/png' }],
