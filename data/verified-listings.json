@@ -3903,13 +3903,13 @@
       "deadline_type": "none",
       "deadline_at": null,
       "application_status": "unknown",
-      "official_application_url": "https://www.poetryoutloud.org/competition/north-carolina/",
-      "source_url": "https://www.poetryoutloud.org/competition/north-carolina/",
-      "source_name": "Poetry Out Loud",
+      "official_application_url": "https://www.ncarts.org/arts-council-z/poetry-out-loud",
+      "source_url": "https://www.ncarts.org/arts-council-z/poetry-out-loud",
+      "source_name": "North Carolina Arts Council",
       "source_type": "official",
       "verified": true,
       "verification_status": "verified",
-      "last_verified_at": "2026-05-09T13:55:00Z",
+      "last_verified_at": "2026-05-09T18:00:00Z",
       "featured": false,
       "is_active": true,
       "time_commitment": "Classroom and school contests lead to state finals timing published by the state arts partner.",
@@ -3919,7 +3919,7 @@
         "competition",
         "north-carolina"
       ],
-      "source_notes": "Specific contest dates change each year; follow links to the North Carolina arts agency for deadlines."
+      "source_notes": "North Carolina’s Poetry Out Loud program is administered by the NC Arts Council; contest dates change each year."
     },
     {
       "id": "opp-092",
