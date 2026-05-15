@@ -3910,7 +3910,7 @@
       "verified": true,
       "verification_status": "verified",
       "last_verified_at": "2026-05-09T18:00:00Z",
-      "featured": false,
+      "featured": true,
       "is_active": true,
       "time_commitment": "Classroom and school contests lead to state finals timing published by the state arts partner.",
       "tags": [
