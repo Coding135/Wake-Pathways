@@ -27,14 +27,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Wake Pathways - Opportunities for Wake County Teens',
+  title: {
+    default: 'Wake County Internships, Scholarships & Opportunities for Students | Wake Pathways',
+    template: '%s',
+  },
   description:
-    'Discover real internships, volunteer roles, scholarships, and programs for teens in Wake County, NC.',
+    'Find internships, scholarships, volunteer opportunities, competitions, and more for Wake County high school students. Free, updated weekly, and built for students in Raleigh, Cary, Apex, Holly Springs, and beyond.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL?.trim() || 'https://wakepathways.com'),
   openGraph: {
-    title: 'Wake Pathways - Opportunities for Wake County Teens',
+    title: 'Wake County Internships, Scholarships & Opportunities for Students | Wake Pathways',
     description:
-      'Discover real internships, volunteer roles, scholarships, and programs for teens in Wake County, NC.',
+      'Find internships, scholarships, volunteer opportunities, competitions, and more for Wake County high school students. Free, updated weekly, and built for students in Raleigh, Cary, Apex, Holly Springs, and beyond.',
     url: '/',
     siteName: 'Wake Pathways',
     type: 'website',
@@ -43,15 +46,15 @@ export const metadata: Metadata = {
         url: '/brand/og-card.svg',
         width: 1200,
         height: 630,
-        alt: 'Wake Pathways - real opportunities for Wake County teens',
+        alt: 'Wake Pathways - internships, scholarships, and opportunities for Wake County students',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Wake Pathways - Opportunities for Wake County Teens',
+    title: 'Wake County Internships, Scholarships & Opportunities for Students | Wake Pathways',
     description:
-      'Discover real internships, volunteer roles, scholarships, and programs for teens in Wake County, NC.',
+      'Find internships, scholarships, volunteer opportunities, competitions, and more for Wake County high school students. Free, updated weekly, and built for students in Raleigh, Cary, Apex, Holly Springs, and beyond.',
     images: ['/brand/og-card.svg'],
   },
   icons: {

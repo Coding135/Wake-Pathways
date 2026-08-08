@@ -1,10 +1,13 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ResetPasswordForm } from '@/components/auth/reset-password-form';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Reset password - Wake Pathways',
   description: 'Set a new password for your Wake Pathways account.',
-};
+  path: '/reset-password',
+});
 
 export default function ResetPasswordPage() {
   return (

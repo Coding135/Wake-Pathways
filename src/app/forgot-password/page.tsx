@@ -1,12 +1,15 @@
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { ForgotPasswordForm } from '@/components/auth/forgot-password-form';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Forgot password - Wake Pathways',
   description: 'Reset your Wake Pathways account password.',
-};
+  path: '/forgot-password',
+});
 
 export default async function ForgotPasswordPage() {
   const supabase = await createClient();

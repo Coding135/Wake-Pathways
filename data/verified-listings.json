@@ -439,7 +439,7 @@
       "name": "Amazon Future Engineer",
       "slug": "amazon-future-engineer",
       "website": "https://www.amazonfutureengineer.com",
-      "description": "Amazon’s K-12 computer science and scholarship initiative, including a national scholarship administered with Scholarship America for computer science-bound high school seniors.",
+      "description": "Amazon\u2019s K-12 computer science and scholarship initiative, including a national scholarship administered with Scholarship America for computer science-bound high school seniors.",
       "is_verified": true
     },
     {
@@ -452,7 +452,7 @@
     },
     {
       "id": "org-065",
-      "name": "Zeta Phi Beta Sorority — Sigma Rho Zeta Chapter (Cary)",
+      "name": "Zeta Phi Beta Sorority \u2014 Sigma Rho Zeta Chapter (Cary)",
       "slug": "zeta-phi-beta-sigma-rho-zeta-cary",
       "website": "https://sigmarhozetazphib.org",
       "description": "Local chapter of Zeta Phi Beta Sorority serving Cary and Wake County with community programs and an annual high school scholarship.",
@@ -460,7 +460,7 @@
     },
     {
       "id": "org-066",
-      "name": "Delta Sigma Theta — Knightdale-Wake Forest Alumnae Chapter",
+      "name": "Delta Sigma Theta \u2014 Knightdale-Wake Forest Alumnae Chapter",
       "slug": "dst-knightdale-wake-forest-alumnae",
       "website": "https://kwfalumnae-dst.org",
       "description": "Alumnae chapter of Delta Sigma Theta Sorority supporting Northeast Wake County with scholarships for high school and college students.",
@@ -559,7 +559,7 @@
       "name": "Teach NC",
       "slug": "teach-nc",
       "website": "https://northcarolina.teach.org",
-      "description": "North Carolina’s teacher recruitment initiative, including information on the North Carolina Teaching Fellows forgivable loan program.",
+      "description": "North Carolina\u2019s teacher recruitment initiative, including information on the North Carolina Teaching Fellows forgivable loan program.",
       "is_verified": true
     },
     {
@@ -591,7 +591,7 @@
       "name": "SECU Foundation",
       "slug": "secu-foundation",
       "website": "https://www.ncsecufoundation.org",
-      "description": "Charitable foundation of State Employees’ Credit Union, including the People Helping People high school and community college scholarship programs.",
+      "description": "Charitable foundation of State Employees\u2019 Credit Union, including the People Helping People high school and community college scholarship programs.",
       "is_verified": true
     },
     {
@@ -1611,7 +1611,7 @@
       "organization_id": "org-016",
       "category": "internship",
       "short_summary": "WCPSS partnership program for rising 10th through 12th graders: Business 101 skills, half-day workplace immersions across Wake County, and a digital portfolio (resume, cover letter template, industry-ready credentials).",
-      "full_description": "Career Accelerator is run with the Wake County Public School System for rising 10th through 12th grade WCPSS students. The official program page describes Business 101 instruction (networking, interviewing, cover letters and CVs), high-capacity half-day business immersions at workplaces around Wake County matched to students’ sector interests, and a closing digital portfolio with a basic resume, cover letter template, and district-outlined industry-ready micro-credentials. A June 2025 WakeEd news article about the summer cohort also listed a $150 stipend for students who complete key program elements and referenced transportation support; stipends and logistics can change by year, so confirm with WakeEd or your school for the current cycle.",
+      "full_description": "Career Accelerator is run with the Wake County Public School System for rising 10th through 12th grade WCPSS students. The official program page describes Business 101 instruction (networking, interviewing, cover letters and CVs), high-capacity half-day business immersions at workplaces around Wake County matched to students\u2019 sector interests, and a closing digital portfolio with a basic resume, cover letter template, and district-outlined industry-ready micro-credentials. A June 2025 WakeEd news article about the summer cohort also listed a $150 stipend for students who complete key program elements and referenced transportation support; stipends and logistics can change by year, so confirm with WakeEd or your school for the current cycle.",
       "eligibility": "Must be a rising 10th through 12th grader enrolled in Wake County Public School System.",
       "grades_min": 10,
       "grades_max": 12,
@@ -1621,7 +1621,7 @@
       "location_county": "Wake",
       "remote_type": "in_person",
       "paid_type": "stipend",
-      "compensation_text": "WakeEd’s June 2025 news coverage described a $150 stipend for students who complete key program elements; the main Career Accelerator page does not list pay, so confirm for your cohort.",
+      "compensation_text": "WakeEd\u2019s June 2025 news coverage described a $150 stipend for students who complete key program elements; the main Career Accelerator page does not list pay, so confirm for your cohort.",
       "cost_text": null,
       "is_free": true,
       "deadline_type": "none",
@@ -1654,7 +1654,7 @@
         "Career exploration"
       ],
       "capacity_note": "Summer cohort size is limited; the public program page does not host a student application form, and selection is coordinated through WCPSS/WakeEd channels.",
-      "source_notes": "Primary source: WakeEd Career Accelerator hub. Stipend/transport details were quoted from WakeEd’s live June 12, 2025 news post (still online at verification); hub page updated Feb 25, 2026."
+      "source_notes": "Primary source: WakeEd Career Accelerator hub. Stipend/transport details were quoted from WakeEd\u2019s live June 12, 2025 news post (still online at verification); hub page updated Feb 25, 2026."
     },
     {
       "id": "opp-032",
@@ -1874,7 +1874,7 @@
       "organization_id": "org-022",
       "category": "volunteer",
       "short_summary": "A Town of Cary advisory council for students in grades 8-12 who live or attend school in Cary; quarterly meetings, community service, and a $35 registration fee.",
-      "full_description": "The Cary Teen Council is a leadership and advisory group for students in grades 8 through 12 who live or attend school in Cary, NC. Members meet quarterly to discuss issues affecting teens, plan community service projects, and provide input on Town programming. The council gives teens a voice in local government and helps build civic engagement skills. Participation requires a $35 registration fee as published on the Town’s Teen Council page.",
+      "full_description": "The Cary Teen Council is a leadership and advisory group for students in grades 8 through 12 who live or attend school in Cary, NC. Members meet quarterly to discuss issues affecting teens, plan community service projects, and provide input on Town programming. The council gives teens a voice in local government and helps build civic engagement skills. Participation requires a $35 registration fee as published on the Town\u2019s Teen Council page.",
       "eligibility": "Students in grades 8-12 who live or attend school in Cary, NC (confirm current year rules on the official page).",
       "grades_min": 8,
       "grades_max": 12,
@@ -3919,7 +3919,7 @@
         "competition",
         "north-carolina"
       ],
-      "source_notes": "North Carolina’s Poetry Out Loud program is administered by the NC Arts Council; contest dates change each year."
+      "source_notes": "North Carolina\u2019s Poetry Out Loud program is administered by the NC Arts Council; contest dates change each year."
     },
     {
       "id": "opp-092",
@@ -4904,7 +4904,7 @@
         "Time management"
       ],
       "capacity_note": "150 scholars are selected nationwide each year (per Coca-Cola Scholars Foundation).",
-      "source_notes": "National scholarship (curated). Wake Pathways prioritizes Wake, Triangle, and NC awards first. The 2027 application (for students graduating in 2026-2027) is listed to open August 1, 2026 on the foundation site; confirm each cycle’s dates on the official apply page."
+      "source_notes": "National scholarship (curated). Wake Pathways prioritizes Wake, Triangle, and NC awards first. The 2027 application (for students graduating in 2026-2027) is listed to open August 1, 2026 on the foundation site; confirm each cycle\u2019s dates on the official apply page."
     },
     {
       "id": "opp-120",
@@ -5052,7 +5052,7 @@
         "Professional skills"
       ],
       "capacity_note": "A defined national cohort is selected each year; internship offers apply to scholarship recipients who continue to meet program rules.",
-      "source_notes": "National scholarship (curated). Wake Pathways prioritizes Wake, Triangle, and NC awards first. Apply through Scholarship America’s Amazon Future Engineer portal when the cycle is open; page indicated applications were closed at verification."
+      "source_notes": "National scholarship (curated). Wake Pathways prioritizes Wake, Triangle, and NC awards first. Apply through Scholarship America\u2019s Amazon Future Engineer portal when the cycle is open; page indicated applications were closed at verification."
     },
     {
       "id": "opp-123",
@@ -5060,8 +5060,8 @@
       "title": "NC State Computer Science High School Internship (CEREAL Lab)",
       "organization_id": "org-003",
       "category": "internship",
-      "short_summary": "Four-week, in-person summer computing internship on NC State’s campus: advanced block-based programming, generative AI, curriculum development for middle school science, and K-12 summer camp support.",
-      "full_description": "The CEREAL Lab’s Computer Science High School Internship Program runs on campus in Raleigh. For summer 2026 the official page lists June 15 through July 10, describes the opportunity as in-person and paid, and states that applications will open around April 2026 with an email alert list at go.ncsu.edu/internship-alert. Interns participate in a computing boot camp, help middle school science teachers integrate computing, build computing-infused curriculum (games, simulations, tutorials), collaborate with teachers on classroom activities, assist with K-12 summer camp learning activities, and may earn school internship credit per program materials. From 2025 through 2027, interns selected for the NSF TRACES project are eligible for a $1,500 stipend per the same page. Not all participants may be on that funded track, so confirm compensation when you apply.",
+      "short_summary": "Four-week, in-person summer computing internship on NC State\u2019s campus: advanced block-based programming, generative AI, curriculum development for middle school science, and K-12 summer camp support.",
+      "full_description": "The CEREAL Lab\u2019s Computer Science High School Internship Program runs on campus in Raleigh. For summer 2026 the official page lists June 15 through July 10, describes the opportunity as in-person and paid, and states that applications will open around April 2026 with an email alert list at go.ncsu.edu/internship-alert. Interns participate in a computing boot camp, help middle school science teachers integrate computing, build computing-infused curriculum (games, simulations, tutorials), collaborate with teachers on classroom activities, assist with K-12 summer camp learning activities, and may earn school internship credit per program materials. From 2025 through 2027, interns selected for the NSF TRACES project are eligible for a $1,500 stipend per the same page. Not all participants may be on that funded track, so confirm compensation when you apply.",
       "eligibility": "High school students comfortable with block-based programming who have completed at least one computing course or equivalent camp/outreach; able to work in teams and independently; meets any additional requirements in the application when it opens.",
       "grades_min": null,
       "grades_max": null,
@@ -5113,7 +5113,7 @@
       "title": "NC State High School Summer Research Program (Natural Resources)",
       "organization_id": "org-003",
       "category": "research",
-      "short_summary": "Two-week, daytime summer research experience on or near NC State’s campus exploring forestry and natural resources careers, with lunch provided and an application through NC State’s short link.",
+      "short_summary": "Two-week, daytime summer research experience on or near NC State\u2019s campus exploring forestry and natural resources careers, with lunch provided and an application through NC State\u2019s short link.",
       "full_description": "Supported by the Weyerhaeuser Giving Fund, this program is run by the NC State College of Natural Resources with partner messaging tied to NC A&T. The official page describes seminars, mentorship, connection to undergraduate research events, and building community with peers interested in natural resource careers. Summer 2026 is scheduled July 13-24, 9 a.m. to 2 p.m. daily, on or near campus, with lunch provided. Past cohort highlights on the site referenced about 12 students in a longer historical format; current cohort size is not spelled out for 2026, so assume competitive selection.",
       "eligibility": "High school students interested in forestry and natural resources careers; confirm any grade or residency rules in the official application.",
       "grades_min": null,
@@ -5166,7 +5166,7 @@
       "organization_id": "org-002",
       "category": "internship",
       "short_summary": "Structured summer EMS internship for selected Wake County high school juniors and seniors: academy, simulations, field trips, specialty classes, and ambulance observation, totaling 120 hours aligned with WCPSS internship standards.",
-      "full_description": "Wake County Government’s EMS Programs for Youth page describes a competitive high school summer internship for juniors and seniors. Activities include time in the EMS academy, simulations, field trips, specialty classes, ambulance observation shifts, exposure to EMS system departments, and a final presentation. Successful completion yields 120 hours that may count toward one credit hour at participating high schools per the official page. Program location is the Wake County Emergency Services Education Center (221 South Rogers Ln., Suite 160, Raleigh). Calendar combines weekdays and ambulance shifts; students must provide their own transportation. Important: The public page text still references a prior cycle (for example June-August 2025 and a March 1, 2025 application deadline). Re-read the live Wake County EMS page for the current year’s dates, eligibility, and the active application link before applying.",
+      "full_description": "Wake County Government\u2019s EMS Programs for Youth page describes a competitive high school summer internship for juniors and seniors. Activities include time in the EMS academy, simulations, field trips, specialty classes, ambulance observation shifts, exposure to EMS system departments, and a final presentation. Successful completion yields 120 hours that may count toward one credit hour at participating high schools per the official page. Program location is the Wake County Emergency Services Education Center (221 South Rogers Ln., Suite 160, Raleigh). Calendar combines weekdays and ambulance shifts; students must provide their own transportation. Important: The public page text still references a prior cycle (for example June-August 2025 and a March 1, 2025 application deadline). Re-read the live Wake County EMS page for the current year\u2019s dates, eligibility, and the active application link before applying.",
       "eligibility": "High school junior or senior; able to complete the full 120-hour program including final presentation; parental or guardian approval; reliable transportation on and off site. Preference described for students interested in EMS careers and/or prior Wake County EMS youth program participation.",
       "grades_min": 11,
       "grades_max": 12,
@@ -5218,7 +5218,7 @@
       "organization_id": "org-064",
       "category": "scholarship",
       "short_summary": "Up to $16,000 over four years for Wake County high school seniors who are immigrants, refugees, or first-generation U.S. citizens attending college in North Carolina.",
-      "full_description": "Endowed through Triangle Community Foundation, this scholarship supports Wake County seniors who plan to attend an accredited public, private, or technical college or university in North Carolina full time. Awards renew for up to four years with a 2.5 GPA and semester reporting through the foundation’s universal scholarship application.",
+      "full_description": "Endowed through Triangle Community Foundation, this scholarship supports Wake County seniors who plan to attend an accredited public, private, or technical college or university in North Carolina full time. Awards renew for up to four years with a 2.5 GPA and semester reporting through the foundation\u2019s universal scholarship application.",
       "eligibility": "Wake County resident; high school senior; minimum 2.5 GPA; immigrant, refugee, or first-generation U.S. citizen; plan to enroll full time at an accredited NC postsecondary institution.",
       "grades_min": 12,
       "grades_max": 12,
@@ -5243,7 +5243,7 @@
       "last_verified_at": "2026-05-09T13:55:00Z",
       "featured": false,
       "is_active": false,
-      "time_commitment": "Annual Triangle CF universal application; confirm each cycle’s deadline on the award page.",
+      "time_commitment": "Annual Triangle CF universal application; confirm each cycle\u2019s deadline on the award page.",
       "tags": [
         "scholarship",
         "wake-county",
@@ -5251,7 +5251,7 @@
         "immigrant",
         "first-generation"
       ],
-      "source_notes": "Uses Triangle Community Foundation’s universal online application (Grant Interface). The March 9, 2026 deadline for the listed cycle has passed; watch trianglecf.org for the next award year."
+      "source_notes": "Uses Triangle Community Foundation\u2019s universal online application (Grant Interface). The March 9, 2026 deadline for the listed cycle has passed; watch trianglecf.org for the next award year."
     },
     {
       "id": "opp-127",
@@ -5260,7 +5260,7 @@
       "organization_id": "org-015",
       "category": "scholarship",
       "short_summary": "$1,000 scholarship for Wake County high school seniors attending a North Carolina college or technical school full time.",
-      "full_description": "The Wake County Extension and Community Association awards this scholarship in memory of the county’s first home economics agent. Recipients are selected based on academics, plans for full-time NC postsecondary enrollment, and materials including an acceptance letter, sealed transcript, and three references. Preference is described for family and consumer sciences interest and 4-H or Extension association ties.",
+      "full_description": "The Wake County Extension and Community Association awards this scholarship in memory of the county\u2019s first home economics agent. Recipients are selected based on academics, plans for full-time NC postsecondary enrollment, and materials including an acceptance letter, sealed transcript, and three references. Preference is described for family and consumer sciences interest and 4-H or Extension association ties.",
       "eligibility": "Wake County resident; high school senior; minimum 2.5 GPA; accepted to attend a NC college, university, community, or technical school full time (12+ credits per semester).",
       "grades_min": 12,
       "grades_max": 12,
@@ -5278,7 +5278,7 @@
       "application_status": "closed",
       "official_application_url": "https://wake.ces.ncsu.edu/news/scholarship-opportunity-for-high-school-seniors-in-wake-county-due-march-25th/",
       "source_url": "https://wake.ces.ncsu.edu/news/scholarship-opportunity-for-high-school-seniors-in-wake-county-due-march-25th/",
-      "source_name": "NC Cooperative Extension — Wake County Center",
+      "source_name": "NC Cooperative Extension \u2014 Wake County Center",
       "source_type": "official",
       "verified": true,
       "verification_status": "verified",
@@ -5293,7 +5293,7 @@
         "4-h",
         "cooperative-extension"
       ],
-      "source_notes": "The March 25, 2026 deadline for the cycle described on the Extension news page has passed; confirm the next year’s packet on wake.ces.ncsu.edu when posted."
+      "source_notes": "The March 25, 2026 deadline for the cycle described on the Extension news page has passed; confirm the next year\u2019s packet on wake.ces.ncsu.edu when posted."
     },
     {
       "id": "opp-128",
@@ -5302,7 +5302,7 @@
       "organization_id": "org-065",
       "category": "scholarship",
       "short_summary": "One-time $1,500 scholarship for Wake County graduating seniors with at least a 3.0 unweighted GPA.",
-      "full_description": "The Sigma Rho Zeta Chapter of Zeta Phi Beta Sorority offers a one-time award for full-time study in the next academic year. Funds are sent to the college financial aid office. Applicants need proof of enrollment before disbursement, and recommendation letters must be submitted by the chapter’s deadline through the provided process.",
+      "full_description": "The Sigma Rho Zeta Chapter of Zeta Phi Beta Sorority offers a one-time award for full-time study in the next academic year. Funds are sent to the college financial aid office. Applicants need proof of enrollment before disbursement, and recommendation letters must be submitted by the chapter\u2019s deadline through the provided process.",
       "eligibility": "Graduating high school senior in Wake County; minimum 3.0 unweighted GPA; enrolling full time at an accredited college or university for the fall term (mid-year graduates may still apply per chapter site).",
       "grades_min": 12,
       "grades_max": 12,
@@ -5316,7 +5316,7 @@
       "cost_text": null,
       "is_free": true,
       "deadline_type": "fixed",
-      "deadline_at": "0-02-28T05:00:00.000Z",
+      "deadline_at": "2027-02-28T05:00:00.000Z",
       "application_status": "unknown",
       "official_application_url": "https://sigmarhozetazphib.org/srz-annual-scholarship",
       "source_url": "https://sigmarhozetazphib.org/srz-annual-scholarship",
@@ -5339,11 +5339,11 @@
     {
       "id": "opp-129",
       "slug": "kwf-presidents-scholarship-delta-sigma-theta",
-      "title": "KWF President’s Scholarship (Delta Sigma Theta)",
+      "title": "KWF President\u2019s Scholarship (Delta Sigma Theta)",
       "organization_id": "org-066",
       "category": "scholarship",
-      "short_summary": "One-time $15,000 award for an African American female senior in the Knightdale–Wake Forest chapter service-area schools.",
-      "full_description": "The Knightdale-Wake Forest Alumnae Chapter of Delta Sigma Theta Sorority awards this scholarship to a high school senior who will enter college in the upcoming fall. Applicants must attend a school in the chapter’s published service list and meet GPA requirements. Additional KWF scholarships on the same page may fit other Wake County students.",
+      "short_summary": "One-time $15,000 award for an African American female senior in the Knightdale\u2013Wake Forest chapter service-area schools.",
+      "full_description": "The Knightdale-Wake Forest Alumnae Chapter of Delta Sigma Theta Sorority awards this scholarship to a high school senior who will enter college in the upcoming fall. Applicants must attend a school in the chapter\u2019s published service list and meet GPA requirements. Additional KWF scholarships on the same page may fit other Wake County students.",
       "eligibility": "African American female; senior at a listed high school in the KWF service area (e.g., East Wake, Heritage, Knightdale, Millbrook, Rolesville, Wakefield, Wake Forest, and others on the official page); minimum 3.5 unweighted GPA.",
       "grades_min": 12,
       "grades_max": 12,
@@ -5357,7 +5357,7 @@
       "cost_text": null,
       "is_free": true,
       "deadline_type": "fixed",
-      "deadline_at": "1-02-16T05:00:00.000Z",
+      "deadline_at": "2027-02-16T05:00:00.000Z",
       "application_status": "unknown",
       "official_application_url": "https://kwfalumnae-dst.org/2026-scholarships/",
       "source_url": "https://kwfalumnae-dst.org/2026-scholarships/",
@@ -5375,12 +5375,12 @@
         "college",
         "northeast-wake"
       ],
-      "source_notes": "Online application is linked from the chapter scholarships page (Google Forms). Update to the new year’s page when posted."
+      "source_notes": "Online application is linked from the chapter scholarships page (Google Forms). Update to the new year\u2019s page when posted."
     },
     {
       "id": "opp-130",
       "slug": "garner-gedc-wake-tech-scholarship",
-      "title": "Garner EDC Endowed Scholarship (Garner & South Garner HS → Wake Tech)",
+      "title": "Garner EDC Endowed Scholarship (Garner & South Garner HS \u2192 Wake Tech)",
       "organization_id": "org-030",
       "category": "scholarship",
       "short_summary": "Scholarships for Garner Magnet and South Garner High graduates with financial need who attend Wake Technical Community College.",
@@ -5425,7 +5425,7 @@
       "organization_id": "org-064",
       "category": "scholarship",
       "short_summary": "Up to $10,000 over four years for a Triangle high school senior who shows extraordinary community commitment (plus an adult learner award).",
-      "full_description": "Triangle Community Foundation selects one high school senior and one adult learner who demonstrate strong community impact. High school applicants must be residents of Durham, Orange, Wake, or Chatham counties and plan to attend a public or private college or university in North Carolina. Per the award page, the high school recipient is drawn from the applicant pool for the Benjamin F. Ward Scholarship; adult learners apply via the Joseph Nystrom Working Student Scholarship—follow those award instructions to be considered for the Triangle Scholarship Fund.",
+      "full_description": "Triangle Community Foundation selects one high school senior and one adult learner who demonstrate strong community impact. High school applicants must be residents of Durham, Orange, Wake, or Chatham counties and plan to attend a public or private college or university in North Carolina. Per the award page, the high school recipient is drawn from the applicant pool for the Benjamin F. Ward Scholarship; adult learners apply via the Joseph Nystrom Working Student Scholarship\u2014follow those award instructions to be considered for the Triangle Scholarship Fund.",
       "eligibility": "Minimum 2.5 GPA; resident of Durham, Orange, Wake, or Chatham County; plan to enroll at a NC college or university; meet criteria for the related Ward or Nystrom scholarship process as described on trianglecf.org.",
       "grades_min": 12,
       "grades_max": 12,
@@ -5439,7 +5439,7 @@
       "cost_text": null,
       "is_free": true,
       "deadline_type": "fixed",
-      "deadline_at": "2-03-09T05:00:00.000Z",
+      "deadline_at": "2027-03-09T05:00:00.000Z",
       "application_status": "unknown",
       "official_application_url": "https://trianglecf.org/award/triangle-scholarship-fund/",
       "source_url": "https://trianglecf.org/award/triangle-scholarship-fund/",
@@ -5450,7 +5450,7 @@
       "last_verified_at": "2026-05-31T18:00:00Z",
       "featured": false,
       "is_active": true,
-      "time_commitment": "Part of Triangle CF’s universal application each spring.",
+      "time_commitment": "Part of Triangle CF\u2019s universal application each spring.",
       "tags": [
         "scholarship",
         "triangle",
@@ -5458,7 +5458,7 @@
         "community-service",
         "college"
       ],
-      "source_notes": "Read the “How to apply” section carefully: high school students apply through the Benjamin F. Ward Scholarship listing to be considered."
+      "source_notes": "Read the \u201cHow to apply\u201d section carefully: high school students apply through the Benjamin F. Ward Scholarship listing to be considered."
     },
     {
       "id": "opp-132",
@@ -5481,7 +5481,7 @@
       "cost_text": null,
       "is_free": true,
       "deadline_type": "fixed",
-      "deadline_at": "3-03-09T05:00:00.000Z",
+      "deadline_at": "2027-03-09T05:00:00.000Z",
       "application_status": "unknown",
       "official_application_url": "https://trianglecf.org/award/gsk-opportunity-scholarship/",
       "source_url": "https://trianglecf.org/award/gsk-opportunity-scholarship/",
@@ -5510,7 +5510,7 @@
     {
       "id": "opp-133",
       "slug": "assistance-league-triangle-high-school-scholarship",
-      "title": "Assistance League of the Triangle — High School Senior Scholarships",
+      "title": "Assistance League of the Triangle \u2014 High School Senior Scholarships",
       "organization_id": "org-067",
       "category": "scholarship",
       "short_summary": "Multiple awards for seniors in Wake, Durham, or Orange counties enrolling at nonprofit NC colleges or technical schools.",
@@ -5528,7 +5528,7 @@
       "cost_text": null,
       "is_free": true,
       "deadline_type": "fixed",
-      "deadline_at": "4-03-01T05:00:00.000Z",
+      "deadline_at": "2027-03-01T05:00:00.000Z",
       "application_status": "unknown",
       "official_application_url": "https://altriangle.org/scholarships/",
       "source_url": "https://altriangle.org/philanthropic-programs/",
@@ -5556,7 +5556,7 @@
       "organization_id": "org-064",
       "category": "scholarship",
       "short_summary": "Up to $10,000 over two years for Triangle or Person County residents admitted to an undergraduate nursing program in North Carolina.",
-      "full_description": "This Triangle Community Foundation award honors Carol Ann Beerstecher’s nursing legacy. Recipients must be residents of Chatham, Durham, Orange, Wake, or Person County and admitted to an undergraduate nursing program in North Carolina. The award pays up to $5,000 per year for up to two years with renewal requirements.",
+      "full_description": "This Triangle Community Foundation award honors Carol Ann Beerstecher\u2019s nursing legacy. Recipients must be residents of Chatham, Durham, Orange, Wake, or Person County and admitted to an undergraduate nursing program in North Carolina. The award pays up to $5,000 per year for up to two years with renewal requirements.",
       "eligibility": "Resident of Chatham, Durham, Orange, Wake, or Person County; admitted to or enrolled in an undergraduate nursing program in NC; minimum 2.0 GPA; financial need considered.",
       "grades_min": 12,
       "grades_max": 12,
@@ -5570,7 +5570,7 @@
       "cost_text": null,
       "is_free": true,
       "deadline_type": "fixed",
-      "deadline_at": "5-03-09T05:00:00.000Z",
+      "deadline_at": "2027-03-09T05:00:00.000Z",
       "application_status": "unknown",
       "official_application_url": "https://trianglecf.org/award/carol-ann-beerstecher-nursing-scholarship/",
       "source_url": "https://trianglecf.org/award/carol-ann-beerstecher-nursing-scholarship/",
@@ -5645,7 +5645,7 @@
       "category": "scholarship",
       "short_summary": "Statewide 4-H scholarships for graduating seniors with multiple years of membership planning NC college enrollment.",
       "full_description": "The NC 4-H Development Fund and related endowments award scholarships to enrolled 4-H members who are graduating seniors. Programs typically require several years of 4-H participation, academic achievement, and enrollment at a North Carolina college or community college with transferable programs. CFNC and 4-H resources summarize options and deadlines.",
-      "eligibility": "North Carolina 4-H member; graduating high school senior; multi-year 4-H participation and other criteria per each fund’s description.",
+      "eligibility": "North Carolina 4-H member; graduating high school senior; multi-year 4-H participation and other criteria per each fund\u2019s description.",
       "grades_min": 12,
       "grades_max": 12,
       "age_min": null,
@@ -5658,7 +5658,7 @@
       "cost_text": null,
       "is_free": true,
       "deadline_type": "fixed",
-      "deadline_at": "6-02-01T05:00:00.000Z",
+      "deadline_at": "2027-02-01T05:00:00.000Z",
       "application_status": "unknown",
       "official_application_url": "https://www.cfnc.org/pay-for-college/scholarship-search/north-carolina-4-h-development-fund-scholarships/",
       "source_url": "https://www.cfnc.org/pay-for-college/scholarship-search/north-carolina-4-h-development-fund-scholarships/",
@@ -5868,7 +5868,7 @@
       "organization_id": "org-069",
       "category": "scholarship",
       "short_summary": "State-funded tuition assistance for eligible North Carolina students in grades K-12 attending participating private schools.",
-      "full_description": "Administered by NCSEAA, the Opportunity Scholarship helps families pay tuition and required fees at participating private schools. Awards are income-based and are not usable for college expenses. NCSEAA’s main website links to the K-12 portal and publishes priority application timelines.",
+      "full_description": "Administered by NCSEAA, the Opportunity Scholarship helps families pay tuition and required fees at participating private schools. Awards are income-based and are not usable for college expenses. NCSEAA\u2019s main website links to the K-12 portal and publishes priority application timelines.",
       "eligibility": "North Carolina students entering kindergarten through 12th grade at eligible private schools; household income within program tiers; other rules on NCSEAA materials.",
       "grades_min": 9,
       "grades_max": 12,
@@ -5901,12 +5901,12 @@
         "north-carolina",
         "wake-county"
       ],
-      "source_notes": "NCSEAA redirects K-12 applications to k12.ncseaa.edu; if a link fails to load, use the “Explore K12 Funding” menu on www.ncseaa.edu. This is not a college scholarship."
+      "source_notes": "NCSEAA redirects K-12 applications to k12.ncseaa.edu; if a link fails to load, use the \u201cExplore K12 Funding\u201d menu on www.ncseaa.edu. This is not a college scholarship."
     },
     {
       "id": "opp-142",
       "slug": "class-101-101-scholarship",
-      "title": "Class 101 — 101 Scholarship",
+      "title": "Class 101 \u2014 101 Scholarship",
       "organization_id": "org-070",
       "category": "scholarship",
       "short_summary": "National merit scholarship for U.S. high school students in grades 9-12 who demonstrate leadership and community impact.",
@@ -5924,7 +5924,7 @@
       "cost_text": null,
       "is_free": true,
       "deadline_type": "fixed",
-      "deadline_at": "7-03-15T04:00:00.000Z",
+      "deadline_at": "2027-03-15T04:00:00.000Z",
       "application_status": "unknown",
       "official_application_url": "https://www.class101.com/101scholar/",
       "source_url": "https://www.class101.com/101scholar/",
@@ -5947,7 +5947,7 @@
         "Writing",
         "Community engagement"
       ],
-      "source_notes": "The 2026 cycle listed February 1–March 15 dates on the public page; confirm the next cycle on class101.com."
+      "source_notes": "The 2026 cycle listed February 1\u2013March 15 dates on the public page; confirm the next cycle on class101.com."
     },
     {
       "id": "opp-143",
@@ -5956,8 +5956,8 @@
       "organization_id": "org-001",
       "category": "job",
       "short_summary": "Paid summer employment and career exploration for Raleigh residents ages 15-18 who are in high school.",
-      "full_description": "The City of Raleigh operates RSYEP for teens who live inside Raleigh city limits. Participants work across city departments and partner sites, build workplace skills, and must meet attendance and conduct expectations. The city requires proof of Raleigh residency, mandatory orientation, and successful completion of background checks, drug screening, and fingerprinting. Participants typically cannot miss more than five program days and may not overlap with conflicting summer school or athletics commitments—confirm current rules on the official page. WCPSS materials have referenced both in-person and virtual track options for certain career themes in past years.",
-      "eligibility": "Ages 15–18 as of May 31 of the program year; live within Raleigh city limits; current high school student; able to attend orientation and pass required screenings listed on the city site.",
+      "full_description": "The City of Raleigh operates RSYEP for teens who live inside Raleigh city limits. Participants work across city departments and partner sites, build workplace skills, and must meet attendance and conduct expectations. The city requires proof of Raleigh residency, mandatory orientation, and successful completion of background checks, drug screening, and fingerprinting. Participants typically cannot miss more than five program days and may not overlap with conflicting summer school or athletics commitments\u2014confirm current rules on the official page. WCPSS materials have referenced both in-person and virtual track options for certain career themes in past years.",
+      "eligibility": "Ages 15\u201318 as of May 31 of the program year; live within Raleigh city limits; current high school student; able to attend orientation and pass required screenings listed on the city site.",
       "grades_min": 9,
       "grades_max": 12,
       "age_min": 15,
@@ -5989,7 +5989,7 @@
         "paid",
         "youth"
       ],
-      "source_notes": "Only students living inside Raleigh municipal limits qualify even if they attend Wake County schools elsewhere. Applications for summer 2026 typically run January–March; if that window has closed, check the same page the following winter for the next cohort."
+      "source_notes": "Only students living inside Raleigh municipal limits qualify even if they attend Wake County schools elsewhere. Applications for summer 2026 typically run January\u2013March; if that window has closed, check the same page the following winter for the next cohort."
     },
     {
       "id": "opp-144",
@@ -5998,7 +5998,7 @@
       "organization_id": "org-071",
       "category": "internship",
       "short_summary": "Paid summer ministry and leadership internship for ages 16-24 serving Raleigh neighborhoods and programs.",
-      "full_description": "Interns work Monday through Friday on teams focused on kids’ camps, outreach, and community events. Compensation is hourly with different rates for standard interns and outreach leader roles as published on the Dream Center site. The program is explicitly faith-based; applicants should review expectations around ministry participation.",
+      "full_description": "Interns work Monday through Friday on teams focused on kids\u2019 camps, outreach, and community events. Compensation is hourly with different rates for standard interns and outreach leader roles as published on the Dream Center site. The program is explicitly faith-based; applicants should review expectations around ministry participation.",
       "eligibility": "Ages 16-24; able to attend orientation and commit to the summer schedule including required Saturdays.",
       "grades_min": 9,
       "grades_max": 12,
@@ -6032,7 +6032,7 @@
         "leadership",
         "faith-based"
       ],
-      "source_notes": "The 2026 recruitment window listed April 1–May 1 on the program page; confirm future years directly on raleighdreamcenter.org."
+      "source_notes": "The 2026 recruitment window listed April 1\u2013May 1 on the program page; confirm future years directly on raleighdreamcenter.org."
     },
     {
       "id": "opp-146",
@@ -6041,7 +6041,7 @@
       "organization_id": "org-072",
       "category": "internship",
       "short_summary": "Paid, part-time internships for North Carolina high school students 16+ across NCDOT divisions, including Raleigh-area placements.",
-      "full_description": "NCDOT hires high school students for year-round, part-time internships lasting one or more consecutive semesters. Students gain exposure to engineering, planning, communications, environmental work, and other agency functions. Placements depend on division needs and location. Applicants submit a transcript with the Workday application. School-year work hours are limited; driving state vehicles generally requires being 18 with a valid North Carolina driver license, and the agency restricts relatives from supervising one another in the same unit—see the official program page for full policy text.",
+      "full_description": "NCDOT hires high school students for year-round, part-time internships lasting one or more consecutive semesters. Students gain exposure to engineering, planning, communications, environmental work, and other agency functions. Placements depend on division needs and location. Applicants submit a transcript with the Workday application. School-year work hours are limited; driving state vehicles generally requires being 18 with a valid North Carolina driver license, and the agency restricts relatives from supervising one another in the same unit\u2014see the official program page for full policy text.",
       "eligibility": "Enrolled in a North Carolina high school; at least 16 years old when employed; minimum 2.3 cumulative GPA; able to work part-time during the school year as scheduled; meet additional conditions on the NCDOT high school internship page.",
       "grades_min": 10,
       "grades_max": 12,
@@ -6074,7 +6074,7 @@
         "engineering",
         "north-carolina"
       ],
-      "source_notes": "Apply through the state’s Workday posting (official_application_url). The NCDOT program page explains eligibility and rules; Workday requisition IDs may change each cycle—if the link fails, search NC Careers on jobs.nc.gov for “High School Intern Program.”"
+      "source_notes": "Apply through the state\u2019s Workday posting (official_application_url). The NCDOT program page explains eligibility and rules; Workday requisition IDs may change each cycle\u2014if the link fails, search NC Careers on jobs.nc.gov for \u201cHigh School Intern Program.\u201d"
     },
     {
       "id": "opp-147",
@@ -6126,7 +6126,7 @@
     {
       "id": "opp-148",
       "slug": "youth-mentoring-collaborative-summer-social-justice-academy",
-      "title": "Youth Mentoring Collaborative — Summer Social Justice Academy",
+      "title": "Youth Mentoring Collaborative \u2014 Summer Social Justice Academy",
       "organization_id": "org-074",
       "category": "internship",
       "short_summary": "Three-week hybrid program with a $250 stipend exploring social justice themes with Durham in-person days.",
@@ -6177,7 +6177,7 @@
       "organization_id": "org-075",
       "category": "internship",
       "short_summary": "Trades career pathway with training intensives and hiring connections; verify Triangle placements before applying from Wake County.",
-      "full_description": "Builders Bridge guides young people through skilled trades exploration, employer immersion, hiring expos, and follow-up coaching. While much of the organization’s marketing targets the Charlotte region, Wake County schools have referenced the program in internship resource lists, so students should confirm whether cohorts or employers serve the Triangle before applying.",
+      "full_description": "Builders Bridge guides young people through skilled trades exploration, employer immersion, hiring expos, and follow-up coaching. While much of the organization\u2019s marketing targets the Charlotte region, Wake County schools have referenced the program in internship resource lists, so students should confirm whether cohorts or employers serve the Triangle before applying.",
       "eligibility": "Young adults interested in HVAC, electrical, plumbing, carpentry, masonry, landscaping, and related trades; minimum ages and enrollment rules posted by Builders Bridge.",
       "grades_min": 11,
       "grades_max": 12,
@@ -6219,7 +6219,7 @@
       "organization_id": "org-079",
       "category": "scholarship",
       "short_summary": "One semester of in-state NC State engineering tuition for a Wake County high school senior admitted to the NC State College of Engineering.",
-      "full_description": "The Raleigh Engineers Club awards a competitive scholarship worth one semester of in-state tuition at NC State’s College of Engineering. Applicants must be graduating seniors from a Wake County high school who have been accepted into the College of Engineering. Instructions and the membership/scholarship application process are described on the club website; completed materials are typically emailed to the club secretary.",
+      "full_description": "The Raleigh Engineers Club awards a competitive scholarship worth one semester of in-state tuition at NC State\u2019s College of Engineering. Applicants must be graduating seniors from a Wake County high school who have been accepted into the College of Engineering. Instructions and the membership/scholarship application process are described on the club website; completed materials are typically emailed to the club secretary.",
       "eligibility": "Graduating senior from a Wake County high school; accepted into NC State University College of Engineering; complete club application materials per recnc.org.",
       "grades_min": 12,
       "grades_max": 12,
@@ -6252,7 +6252,7 @@
         "nc-state",
         "college"
       ],
-      "source_notes": "The public club site describes the scholarship but may not list the exact calendar deadline each year. WCPSS counseling materials have cited mid-April deadlines—confirm the due date with secretary@raleighengineersclub.org and your school counselor. The City of Raleigh website is not the program homepage."
+      "source_notes": "The public club site describes the scholarship but may not list the exact calendar deadline each year. WCPSS counseling materials have cited mid-April deadlines\u2014confirm the due date with secretary@raleighengineersclub.org and your school counselor. The City of Raleigh website is not the program homepage."
     },
     {
       "id": "opp-151",
@@ -6306,7 +6306,7 @@
       "title": "Next NC Scholarship",
       "organization_id": "org-081",
       "category": "scholarship",
-      "short_summary": "Need-based grant aid for NC residents: at least $3,000/year at community colleges and $5,000/year at UNC System schools when eligible—apply via FAFSA.",
+      "short_summary": "Need-based grant aid for NC residents: at least $3,000/year at community colleges and $5,000/year at UNC System schools when eligible\u2014apply via FAFSA.",
       "full_description": "The Next NC Scholarship combines federal Pell Grant aid with North Carolina state financial aid for eligible residents from households with adjusted gross income at or below the published threshold. Funds can be used toward cost of attendance at any of the 58 NC community colleges or 16 UNC System universities. There is no separate scholarship form beyond the FAFSA for most students; financial aid offices package eligible students automatically.",
       "eligibility": "North Carolina resident; household AGI at or below program limits (published on nextncscholarship.org); meet federal and state student aid eligibility rules; enroll at an eligible NC public institution.",
       "grades_min": 12,
@@ -6340,7 +6340,7 @@
         "fafsa",
         "wake-tech"
       ],
-      "source_notes": "Use CFNC’s eligibility checker linked from nextncscholarship.org. This is grant aid, not a private competitive essay scholarship."
+      "source_notes": "Use CFNC\u2019s eligibility checker linked from nextncscholarship.org. This is grant aid, not a private competitive essay scholarship."
     },
     {
       "id": "opp-153",
@@ -6348,8 +6348,8 @@
       "title": "SECU Foundation People Helping People High School Scholarship",
       "organization_id": "org-082",
       "category": "scholarship",
-      "short_summary": "$10,000 four-year scholarship for eligible NC public high school seniors—Wake County (WCPSS) receives at least one award annually; selection is school-based.",
-      "full_description": "SECU Foundation’s People Helping People program allocates at least one $10,000 scholarship to each North Carolina local education agency for a senior planning to attend a UNC System university. Recipients are chosen by the district scholarship committee; the foundation does not accept direct student applications. Students must meet membership, academic, service, and financial-need criteria outlined in SECU materials (commonly including at least a 2.5 GPA) and coordinate with their high school counseling office.",
+      "short_summary": "$10,000 four-year scholarship for eligible NC public high school seniors\u2014Wake County (WCPSS) receives at least one award annually; selection is school-based.",
+      "full_description": "SECU Foundation\u2019s People Helping People program allocates at least one $10,000 scholarship to each North Carolina local education agency for a senior planning to attend a UNC System university. Recipients are chosen by the district scholarship committee; the foundation does not accept direct student applications. Students must meet membership, academic, service, and financial-need criteria outlined in SECU materials (commonly including at least a 2.5 GPA) and coordinate with their high school counseling office.",
       "eligibility": "North Carolina public high school senior; planning to attend one of the 16 UNC System universities; SECU membership for the student or an eligible family member per the official criteria PDF; minimum 2.5 GPA and financial need as defined by the program; strong community service record; selected through the school or LEA committee only.",
       "grades_min": 12,
       "grades_max": 12,
@@ -6387,7 +6387,7 @@
         "Service",
         "Communication"
       ],
-      "source_notes": "Start with your high school counselor—WCPSS and other LEAs run the nomination process. Review the “High School Eligibility Criteria” PDF linked from ncsecufoundation.org for membership, GPA, need, and service rules."
+      "source_notes": "Start with your high school counselor\u2014WCPSS and other LEAs run the nomination process. Review the \u201cHigh School Eligibility Criteria\u201d PDF linked from ncsecufoundation.org for membership, GPA, need, and service rules."
     },
     {
       "id": "opp-154",
@@ -6395,8 +6395,8 @@
       "title": "Town of Cary Jobs and Summer Opportunities",
       "organization_id": "org-022",
       "category": "job",
-      "short_summary": "Paid seasonal and part-time town positions—including camps, tennis, and recreation—for Cary residents and others who meet posting requirements (often 16+).",
-      "full_description": "The Town of Cary posts year-round and seasonal employment—including summer camp, athletics, and municipal support roles—through its official GovernmentJobs.com portal. High school students age 16 and older may qualify for select positions such as camp counselor or facility attendant when listings are active. Each posting describes pay, schedule, and any certification or experience requirements (for example, varsity tennis experience for specialized roles).",
+      "short_summary": "Paid seasonal and part-time town positions\u2014including camps, tennis, and recreation\u2014for Cary residents and others who meet posting requirements (often 16+).",
+      "full_description": "The Town of Cary posts year-round and seasonal employment\u2014including summer camp, athletics, and municipal support roles\u2014through its official GovernmentJobs.com portal. High school students age 16 and older may qualify for select positions such as camp counselor or facility attendant when listings are active. Each posting describes pay, schedule, and any certification or experience requirements (for example, varsity tennis experience for specialized roles).",
       "eligibility": "Varies by job posting; many seasonal roles require minimum age 16 and work authorization.",
       "grades_min": 9,
       "grades_max": 12,
@@ -6430,7 +6430,7 @@
         "municipal",
         "recreation"
       ],
-      "source_notes": "The Town’s primary careers site (carync.gov) may block some automated tools; GovernmentJobs.com is the standard application host for Town of Cary listings."
+      "source_notes": "The Town\u2019s primary careers site (carync.gov) may block some automated tools; GovernmentJobs.com is the standard application host for Town of Cary listings."
     },
     {
       "id": "opp-155",
@@ -6438,9 +6438,9 @@
       "title": "WFIRM High School Summer Research Exposure Program",
       "organization_id": "org-083",
       "category": "research",
-      "short_summary": "Four-week, unpaid commuter research exposure in Winston-Salem for NC high school students ages 16–18; separate virtual academy option.",
-      "full_description": "Wake Forest Institute for Regenerative Medicine offers a competitive four-week mentored program (June 22–July 17, 2026) for North Carolina high school students ages 16–18. Participants commute to WFIRM for an average of 20–30 research hours per week, attend seminars, and complete application materials including teacher recommendations. A one-week virtual academy is also available for broader ages. The program is unpaid; selected students must meet immunization and TB testing requirements.",
-      "eligibility": "North Carolina high school student ages 16–18 for the four-week program; complete online application and mailed or emailed packet by the deadline; two teacher recommendations for the research track.",
+      "short_summary": "Four-week, unpaid commuter research exposure in Winston-Salem for NC high school students ages 16\u201318; separate virtual academy option.",
+      "full_description": "Wake Forest Institute for Regenerative Medicine offers a competitive four-week mentored program (June 22\u2013July 17, 2026) for North Carolina high school students ages 16\u201318. Participants commute to WFIRM for an average of 20\u201330 research hours per week, attend seminars, and complete application materials including teacher recommendations. A one-week virtual academy is also available for broader ages. The program is unpaid; selected students must meet immunization and TB testing requirements.",
+      "eligibility": "North Carolina high school student ages 16\u201318 for the four-week program; complete online application and mailed or emailed packet by the deadline; two teacher recommendations for the research track.",
       "grades_min": 10,
       "grades_max": 12,
       "age_min": 16,
@@ -6477,8 +6477,8 @@
         "Laboratory skills",
         "Professional skills"
       ],
-      "capacity_note": "Roughly 8–10 seats for the high school research cohort (per WFIRM page).",
-      "source_notes": "Winston-Salem is a drive from Wake County; plan daily commuting or local housing with a guardian. Virtual Academy (July 13–17) is a separate track on the same application page."
+      "capacity_note": "Roughly 8\u201310 seats for the high school research cohort (per WFIRM page).",
+      "source_notes": "Winston-Salem is a drive from Wake County; plan daily commuting or local housing with a guardian. Virtual Academy (July 13\u201317) is a separate track on the same application page."
     },
     {
       "id": "opp-156",
@@ -6486,7 +6486,7 @@
       "title": "Morehead Planetarium Summer Science Camp High School Assistant",
       "organization_id": "org-049",
       "category": "job",
-      "short_summary": "Paid seasonal assistant roles for high school students 16+ supporting Morehead’s summer science camps—apply through UNC jobs (Morehead department filter).",
+      "short_summary": "Paid seasonal assistant roles for high school students 16+ supporting Morehead\u2019s summer science camps\u2014apply through UNC jobs (Morehead department filter).",
       "full_description": "Morehead Planetarium and Science Center hires high school assistants age 16 and older before May 1 to support summer day camps for rising kindergarten through eighth grade. The employment page directs applicants to the UNC Chapel Hill careers site with the department filter set to Morehead Planetarium. Roles emphasize enthusiasm for science education and working with children. Seasonal postings appear in late winter or spring.",
       "eligibility": "Will be at least 16 years old before May 1 of the camp season; interest in STEM education and youth programs; availability for summer camp schedule.",
       "grades_min": 9,
@@ -6512,7 +6512,7 @@
       "last_verified_at": "2026-05-09T13:55:00Z",
       "featured": false,
       "is_active": true,
-      "time_commitment": "Summer camp season; applications historically open February–March.",
+      "time_commitment": "Summer camp season; applications historically open February\u2013March.",
       "tags": [
         "job",
         "summer",
@@ -6526,7 +6526,7 @@
         "Teaching",
         "Teamwork"
       ],
-      "source_notes": "Volunteer “Counselor in Training” materials are separate PDFs on the same employment page if you are not yet 16 or if paid roles are full."
+      "source_notes": "Volunteer \u201cCounselor in Training\u201d materials are separate PDFs on the same employment page if you are not yet 16 or if paid roles are full."
     },
     {
       "id": "opp-157",
@@ -6613,7 +6613,7 @@
         "alpha-phi-alpha",
         "college"
       ],
-      "source_notes": "Not limited to Wake County—Durham and Orange County residents only. Wake County students are not eligible unless they meet the county residency rule. See http://www.alphasouth.org for chapter context."
+      "source_notes": "Not limited to Wake County\u2014Durham and Orange County residents only. Wake County students are not eligible unless they meet the county residency rule. See http://www.alphasouth.org for chapter context."
     },
     {
       "id": "opp-159",
@@ -6621,8 +6621,8 @@
       "title": "Online Research Academy for High School Students (NC State GTI)",
       "organization_id": "org-003",
       "category": "research",
-      "short_summary": "Virtual four-week summer program through NC State’s Global Training Initiative: faculty-mentored, college-level research project online, about 5 to 10 hours per week, with certificate and professor evaluation letter.",
-      "full_description": "The Global Training Initiative’s Online Research Academy is an intensive virtual program. The official page states students apply fundamental research methodologies to complete a dedicated college-level research project with direct faculty mentorship through regular online meetings. Orientation is June 29, 2026; research workshops run July 6 through July 31, 2026; graduation is August 7, 2026. Students who successfully complete the program receive an NC State program certificate and an evaluation letter from the faculty mentor.",
+      "short_summary": "Virtual four-week summer program through NC State\u2019s Global Training Initiative: faculty-mentored, college-level research project online, about 5 to 10 hours per week, with certificate and professor evaluation letter.",
+      "full_description": "The Global Training Initiative\u2019s Online Research Academy is an intensive virtual program. The official page states students apply fundamental research methodologies to complete a dedicated college-level research project with direct faculty mentorship through regular online meetings. Orientation is June 29, 2026; research workshops run July 6 through July 31, 2026; graduation is August 7, 2026. Students who successfully complete the program receive an NC State program certificate and an evaluation letter from the faculty mentor.",
       "eligibility": "Currently enrolled in high school and rising grade 10 or higher by summer 2026 (per official application requirements). Confirm any additional rules on the live program page.",
       "grades_min": 10,
       "grades_max": 12,
@@ -6765,7 +6765,7 @@
       "organization_id": "org-001",
       "category": "job",
       "short_summary": "Part-time lifeguard roles for City of Raleigh year-round and seasonal pools; official page lists a minimum age of 15, swim-test requirements, and applications through GovernmentJobs.com.",
-      "full_description": "The City of Raleigh Parks, Recreation and Cultural Resources aquatics program hires lifeguards for four year-round and four seasonal pools. The official Lifeguards service page states the City is accepting applications, describes flexible hours (pools often operate from 5 a.m. to 8 p.m., with noted need for morning and daytime coverage), and outlines how to apply online. Certified lifeguards apply through GovernmentJobs.com listings; applicants who are not yet certified may qualify for the City’s S.A.V.E. (Seasonal Aquatic Vocational Education) training pathway described on the same page, including paid work-hour expectations after training. You must pass a swim-skills evaluation, City background check, and controlled-substance testing as described on the official page.",
+      "full_description": "The City of Raleigh Parks, Recreation and Cultural Resources aquatics program hires lifeguards for four year-round and four seasonal pools. The official Lifeguards service page states the City is accepting applications, describes flexible hours (pools often operate from 5 a.m. to 8 p.m., with noted need for morning and daytime coverage), and outlines how to apply online. Certified lifeguards apply through GovernmentJobs.com listings; applicants who are not yet certified may qualify for the City\u2019s S.A.V.E. (Seasonal Aquatic Vocational Education) training pathway described on the same page, including paid work-hour expectations after training. You must pass a swim-skills evaluation, City background check, and controlled-substance testing as described on the official page.",
       "eligibility": "15 years of age or older, plus swim-test, background check, and substance-screening requirements described on the official Lifeguards page.",
       "grades_min": null,
       "grades_max": null,
@@ -6812,7 +6812,7 @@
       "organization_id": "org-085",
       "category": "job",
       "short_summary": "Paid event-support roles at the nonprofit Triangle Aquatic Center in Cary: timing-console operators and admission or heat-sheet sales. Official employment page describes these as strong fits for high school and college students.",
-      "full_description": "Triangle Aquatic Center (TAC) in Cary hires Event Staff for swim meets and programs. The nonprofit’s Join Our Team page describes two tracks: Timing Operators run the timing console with full training provided, and Admission / Heat Sheet Sales staff handle event admissions (cash-handling experience preferred). Both roles require availability for nights and/or weekends. The same page states these positions are a good match for college and high school students and lists a hiring range of $12.50 to $15.00 per hour. Apply through the job application section on the official Join Our Team page.",
+      "full_description": "Triangle Aquatic Center (TAC) in Cary hires Event Staff for swim meets and programs. The nonprofit\u2019s Join Our Team page describes two tracks: Timing Operators run the timing console with full training provided, and Admission / Heat Sheet Sales staff handle event admissions (cash-handling experience preferred). Both roles require availability for nights and/or weekends. The same page states these positions are a good match for college and high school students and lists a hiring range of $12.50 to $15.00 per hour. Apply through the job application section on the official Join Our Team page.",
       "eligibility": "High school and college students are explicitly welcomed on the official TAC employment page; meet shift availability and any employer requirements in the application materials.",
       "grades_min": null,
       "grades_max": null,
@@ -6822,7 +6822,7 @@
       "location_county": "Wake",
       "remote_type": "in_person",
       "paid_type": "paid",
-      "compensation_text": "$12.50–$15.00/hour hiring range stated on the official Join Our Team page (Event Staff).",
+      "compensation_text": "$12.50\u2013$15.00/hour hiring range stated on the official Join Our Team page (Event Staff).",
       "cost_text": null,
       "is_free": true,
       "deadline_type": "none",
@@ -6859,8 +6859,8 @@
       "title": "Raleigh Youth Council (RYC)",
       "organization_id": "org-001",
       "category": "leadership",
-      "short_summary": "City-sponsored teen leadership council for high school students with civic engagement, volunteer projects, and conference opportunities—open to participants across Wake County.",
-      "full_description": "Raleigh Parks Teen Programs hosts the Raleigh Youth Council as a forum where high school students advocate for peers, join civics-focused activities, earn volunteer hours, and participate in special programs such as Youth Legislative Assembly and statewide youth council conferences. Meetings are scheduled on the second and fourth Monday of each month from 7:00 to 8:00 p.m. Prospective members register through Raleigh’s RecLink platform and attend an orientation meeting; contacts are listed on the official Teen Programs page.",
+      "short_summary": "City-sponsored teen leadership council for high school students with civic engagement, volunteer projects, and conference opportunities\u2014open to participants across Wake County.",
+      "full_description": "Raleigh Parks Teen Programs hosts the Raleigh Youth Council as a forum where high school students advocate for peers, join civics-focused activities, earn volunteer hours, and participate in special programs such as Youth Legislative Assembly and statewide youth council conferences. Meetings are scheduled on the second and fourth Monday of each month from 7:00 to 8:00 p.m. Prospective members register through Raleigh\u2019s RecLink platform and attend an orientation meeting; contacts are listed on the official Teen Programs page.",
       "eligibility": "High school students able to attend evening meetings and register through Raleigh Parks RecLink (free Raleigh Teen Connect membership required per city guidance).",
       "grades_min": 9,
       "grades_max": 12,
@@ -6885,7 +6885,7 @@
       "last_verified_at": "2026-05-09T13:55:00Z",
       "featured": false,
       "is_active": true,
-      "time_commitment": "Second and fourth Mondays, 7:00–8:00 p.m., plus optional service projects and events.",
+      "time_commitment": "Second and fourth Mondays, 7:00\u20138:00 p.m., plus optional service projects and events.",
       "tags": [
         "leadership",
         "civic-engagement",
@@ -6893,16 +6893,16 @@
         "wake-county",
         "volunteer-hours"
       ],
-      "source_notes": "Primary instructions verified May 2026 from the live Teen Programs page (contacts listed there include Nieya Garland and teens@raleighnc.gov). RecLink enrollment URLs rotate—search “RYC” inside RecLink if a pasted deep link expires."
+      "source_notes": "Primary instructions verified May 2026 from the live Teen Programs page (contacts listed there include Nieya Garland and teens@raleighnc.gov). RecLink enrollment URLs rotate\u2014search \u201cRYC\u201d inside RecLink if a pasted deep link expires."
     },
     {
       "id": "opp-165",
       "slug": "cooperative-leadership-camp-raleigh-2026",
-      "title": "Cooperative Leadership Camp — Raleigh Session (2026)",
+      "title": "Cooperative Leadership Camp \u2014 Raleigh Session (2026)",
       "organization_id": "org-086",
       "category": "summer_program",
-      "short_summary": "Three-day daytime leadership academy in Raleigh (June 22–24, 2026) introducing high school sophomores–seniors to cooperative businesses; $45 registration.",
-      "full_description": "Cooperative Leadership Camp explores leadership habits and the cooperative business model through workshops, cooperative mentors, and team activities. The Raleigh session meets 9:00 a.m.–4:00 p.m. daily June 22–24, 2026 at the NC Rural Center (4021 Carya Drive). Tuition is $45 thanks to cooperative sponsors, meals and materials are included, and transportation is the student’s responsibility. Successful attendance enables seniors to apply later for the Jim Graham Leadership Scholarship described on the Cooperative Council website.",
+      "short_summary": "Three-day daytime leadership academy in Raleigh (June 22\u201324, 2026) introducing high school sophomores\u2013seniors to cooperative businesses; $45 registration.",
+      "full_description": "Cooperative Leadership Camp explores leadership habits and the cooperative business model through workshops, cooperative mentors, and team activities. The Raleigh session meets 9:00 a.m.\u20134:00 p.m. daily June 22\u201324, 2026 at the NC Rural Center (4021 Carya Drive). Tuition is $45 thanks to cooperative sponsors, meals and materials are included, and transportation is the student\u2019s responsibility. Successful attendance enables seniors to apply later for the Jim Graham Leadership Scholarship described on the Cooperative Council website.",
       "eligibility": "Rising high school sophomores, juniors, and seniors (rising freshmen may attend only with a teacher/cooperative recommendation per organizer FAQ).",
       "grades_min": 10,
       "grades_max": 12,
@@ -6927,7 +6927,7 @@
       "last_verified_at": "2026-05-31T18:00:00Z",
       "featured": false,
       "is_active": true,
-      "time_commitment": "June 22–24, 2026; 9:00 a.m.–4:00 p.m. each day.",
+      "time_commitment": "June 22\u201324, 2026; 9:00 a.m.\u20134:00 p.m. each day.",
       "tags": [
         "summer",
         "leadership",
@@ -6943,9 +6943,9 @@
       "title": "NCAAT Youth Leadership Institute (Summer 2026)",
       "organization_id": "org-087",
       "category": "summer_program",
-      "short_summary": "Three-day workshops (July 13–15, 2026) for Asian American high school youth ages 14–18—two days at UNC-Chapel Hill plus one day at NCAAT’s Raleigh office.",
-      "full_description": "Youth Leadership Institute empowers Asian American teens to explore identity, movement history, advocacy, and leadership through interactive workshops, panels with elected leaders, and community-building. Monday–Tuesday sessions take place at the Sonja Haynes Stone Center at UNC-Chapel Hill; Wednesday concludes at NCAAT’s workspace co-located with the Junior League of Raleigh building. Programming runs roughly 9:00 a.m.–4:00 p.m. with daily check-in starting at 8:30 a.m.",
-      "eligibility": "Asian American youth ages 14–18 currently in high school.",
+      "short_summary": "Three-day workshops (July 13\u201315, 2026) for Asian American high school youth ages 14\u201318\u2014two days at UNC-Chapel Hill plus one day at NCAAT\u2019s Raleigh office.",
+      "full_description": "Youth Leadership Institute empowers Asian American teens to explore identity, movement history, advocacy, and leadership through interactive workshops, panels with elected leaders, and community-building. Monday\u2013Tuesday sessions take place at the Sonja Haynes Stone Center at UNC-Chapel Hill; Wednesday concludes at NCAAT\u2019s workspace co-located with the Junior League of Raleigh building. Programming runs roughly 9:00 a.m.\u20134:00 p.m. with daily check-in starting at 8:30 a.m.",
+      "eligibility": "Asian American youth ages 14\u201318 currently in high school.",
       "grades_min": 9,
       "grades_max": 12,
       "age_min": 14,
@@ -6969,7 +6969,7 @@
       "last_verified_at": "2026-05-09T13:55:00Z",
       "featured": false,
       "is_active": true,
-      "time_commitment": "July 13–15, 2026 (daily ~9:00 a.m.–4:00 p.m.).",
+      "time_commitment": "July 13\u201315, 2026 (daily ~9:00 a.m.\u20134:00 p.m.).",
       "tags": [
         "leadership",
         "civic-engagement",
@@ -6985,7 +6985,7 @@
       "title": "Wake Summer Teamship (District C partnership)",
       "organization_id": "org-088",
       "category": "internship",
-      "short_summary": "Team-based summer experience connecting Wake County students with educator coaches to solve authentic employer challenges—often coordinated through WCPSS career programming.",
+      "short_summary": "Team-based summer experience connecting Wake County students with educator coaches to solve authentic employer challenges\u2014often coordinated through WCPSS career programming.",
       "full_description": "Wake Summer Teamship adapts the College Board Teamship model for Wake County: diverse student teams interview sponsors, analyze ambiguous problems, prototype recommendations, and pitch solutions publicly. Schedules, stipends, and nomination pathways vary by summer announcement; recent Triangle reporting describes multi-week cohort options hosted across Wake County with expanded employer partnerships.",
       "eligibility": "Wake County Public School System high school students selected or recruited each spring; confirm grade eligibility and transportation expectations with your school counselor or district career staff.",
       "grades_min": 9,
@@ -6996,7 +6996,7 @@
       "location_county": "Wake",
       "remote_type": "in_person",
       "paid_type": "unpaid",
-      "compensation_text": "Some cohort years reference stipends via partner announcements—verify directly each cycle.",
+      "compensation_text": "Some cohort years reference stipends via partner announcements\u2014verify directly each cycle.",
       "cost_text": null,
       "is_free": true,
       "deadline_type": "none",
@@ -7019,17 +7019,17 @@
         "summer",
         "business"
       ],
-      "source_notes": "Wake-specific logistics are communicated via WCPSS/District C channels; EDNC (Jan 2025) chronicled rapid expansion of Wake Summer Teamship but URLs move yearly—College Board’s Teamship hub remains the stable overview."
+      "source_notes": "Wake-specific logistics are communicated via WCPSS/District C channels; EDNC (Jan 2025) chronicled rapid expansion of Wake Summer Teamship but URLs move yearly\u2014College Board\u2019s Teamship hub remains the stable overview."
     },
     {
       "id": "opp-168",
       "slug": "triangle-community-foundation-scholarships-portal",
-      "title": "Triangle Community Foundation — Scholarships for Students (portal)",
+      "title": "Triangle Community Foundation \u2014 Scholarships for Students (portal)",
       "organization_id": "org-064",
       "category": "scholarship",
-      "short_summary": "Universal scholarship portal for Triangle Community Foundation funds—many awards include Wake County seniors; deadlines vary by fund.",
-      "full_description": "Triangle Community Foundation aggregates more than thirty donor-established scholarships behind one eligibility quiz and application workflow. Wake County students routinely qualify for multiple endowed awards (examples include immigrant/refugee supports, STEM pathways, and county-specific funds). Applicants should review each fund’s status, essays, and deadlines inside the portal after completing the quiz.",
-      "eligibility": "Varies by fund; generally North Carolina high school seniors or specified counties—complete the portal quiz for tailored matches.",
+      "short_summary": "Universal scholarship portal for Triangle Community Foundation funds\u2014many awards include Wake County seniors; deadlines vary by fund.",
+      "full_description": "Triangle Community Foundation aggregates more than thirty donor-established scholarships behind one eligibility quiz and application workflow. Wake County students routinely qualify for multiple endowed awards (examples include immigrant/refugee supports, STEM pathways, and county-specific funds). Applicants should review each fund\u2019s status, essays, and deadlines inside the portal after completing the quiz.",
+      "eligibility": "Varies by fund; generally North Carolina high school seniors or specified counties\u2014complete the portal quiz for tailored matches.",
       "grades_min": 12,
       "grades_max": 12,
       "age_min": null,
@@ -7053,19 +7053,19 @@
       "last_verified_at": "2026-05-09T13:55:00Z",
       "featured": false,
       "is_active": true,
-      "time_commitment": "Seasonal application windows—monitor portal between January and spring each year.",
+      "time_commitment": "Seasonal application windows\u2014monitor portal between January and spring each year.",
       "tags": [
         "scholarship",
         "triangle",
         "wake-county",
         "seniors"
       ],
-      "source_notes": "Individual funds inside the portal display Open/Closed status (verified May 2026 snapshot). Closed awards remain visible historically—focus on rows marked Open for active cycles."
+      "source_notes": "Individual funds inside the portal display Open/Closed status (verified May 2026 snapshot). Closed awards remain visible historically\u2014focus on rows marked Open for active cycles."
     },
     {
       "id": "opp-169",
       "slug": "raleigh-teen-connect-co-op-interest-2026",
-      "title": "Raleigh Teen Connect Co-Op Space — Interest Form (Saint Monica Teen Center)",
+      "title": "Raleigh Teen Connect Co-Op Space \u2014 Interest Form (Saint Monica Teen Center)",
       "organization_id": "org-001",
       "category": "other",
       "short_summary": "City of Raleigh interest form for nonprofits or teen-led groups requesting collaborative workspace time at the Raleigh Teen Connect Co-Op.",
@@ -7094,14 +7094,14 @@
       "last_verified_at": "2026-05-09T13:55:00Z",
       "featured": false,
       "is_active": true,
-      "time_commitment": "Interest window listed May 1–June 14, 2026 on the Teen Programs page (deadline stored as end-of-day Eastern converted to UTC).",
+      "time_commitment": "Interest window listed May 1\u2013June 14, 2026 on the Teen Programs page (deadline stored as end-of-day Eastern converted to UTC).",
       "tags": [
         "community",
         "leadership",
         "nonprofit",
         "wake-county"
       ],
-      "source_notes": "This listing targets youth organizations rather than individual teens—share with advisors coordinating civic clubs."
+      "source_notes": "This listing targets youth organizations rather than individual teens\u2014share with advisors coordinating civic clubs."
     }
   ]
 }

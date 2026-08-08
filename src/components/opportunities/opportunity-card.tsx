@@ -60,6 +60,10 @@ export function OpportunityCard({
 }: OpportunityCardProps) {
   const CategoryIcon = CATEGORY_ICONS[opportunity.category];
   const categoryInfo = CATEGORY_MAP[opportunity.category];
+  const orgName = opportunity.organization?.name;
+  const cardLabel = orgName
+    ? `${categoryInfo.label} opportunity at ${orgName}: ${opportunity.title}`
+    : `${categoryInfo.label} for Wake County students: ${opportunity.title}`;
 
   const href =
     exploreContextQuery && exploreContextQuery.length > 0
@@ -69,6 +73,7 @@ export function OpportunityCard({
   return (
     <Link
       href={href}
+      aria-label={cardLabel}
       className={cn(
         'group relative flex min-w-0 flex-col rounded-xl border border-border bg-white shadow-[var(--elevated-card-shadow)]',
         'transition-all duration-200 hover:shadow-md hover:-translate-y-0.5',
@@ -81,7 +86,7 @@ export function OpportunityCard({
         <div className="flex items-center justify-between gap-3">
           <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-2">
             <Badge variant="opportunity" className={CATEGORY_BADGE_CLASSES[opportunity.category]}>
-              <CategoryIcon className="size-3 shrink-0" />
+              <CategoryIcon className="size-3 shrink-0" aria-hidden />
               {categoryInfo.label}
             </Badge>
             <Badge variant="opportunity" className={getApplicationStatusColor(opportunity.application_status)}>

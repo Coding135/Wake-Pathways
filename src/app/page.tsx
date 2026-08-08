@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -23,6 +24,20 @@ import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { OpportunityCard } from '@/components/opportunities/opportunity-card';
 import { CATEGORY_HOME_TILE_CLASSES } from '@/lib/opportunity-badge-styles';
+import {
+  buildPageMetadata,
+  CATEGORY_LANDINGS,
+  LOCATION_LANDINGS,
+  ORGANIZATION_DESCRIPTION,
+  organizationJsonLd,
+} from '@/lib/seo';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Wake County Internships, Scholarships & Opportunities for Students | Wake Pathways',
+  description:
+    'Find internships, scholarships, volunteer opportunities, competitions, and more for Wake County high school students. Free, updated weekly, and built for students in Raleigh, Cary, Apex, Holly Springs, and beyond.',
+  path: '/',
+});
 
 const CATEGORY_ICONS: Record<OpportunityCategory, React.ElementType> = {
   internship: Briefcase,
@@ -65,6 +80,11 @@ export default function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+      />
+
       {/* ===== Hero ===== */}
       {/* Light hero: screenshot 3 — bright center, soft cool lavender/ice-blue at periphery (no green/mint wash). */}
       <section className="relative overflow-hidden bg-white dark:bg-[#09090b]">
@@ -321,6 +341,77 @@ export default function HomePage() {
             Learn more
             <ArrowRight className="h-4 w-4" />
           </Link>
+        </div>
+      </section>
+
+      {/* ===== About Wake Pathways (crawlable SEO copy) ===== */}
+      <section
+        className={cn('animate-fade-in border-t border-border bg-[var(--section-browse-bg)]')}
+        aria-labelledby="about-wake-pathways"
+      >
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+          <h2
+            id="about-wake-pathways"
+            className="text-xl font-bold tracking-tight text-foreground text-balance sm:text-2xl"
+          >
+            About Wake Pathways
+          </h2>
+          <p className="mt-4 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+            {ORGANIZATION_DESCRIPTION}
+          </p>
+        </div>
+      </section>
+
+      {/* ===== Explore by category & location (internal links) ===== */}
+      <section
+        className={cn('animate-fade-in mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8')}
+        aria-labelledby="explore-directories"
+      >
+        <h2
+          id="explore-directories"
+          className="text-xl font-bold tracking-tight text-foreground text-balance sm:text-2xl"
+        >
+          Explore Wake County directories
+        </h2>
+        <p className="mt-2 max-w-2xl text-pretty text-sm text-muted-foreground sm:text-base">
+          Jump into category and city pages built for Wake County high school students.
+        </p>
+
+        <div className="mt-8 grid gap-8 sm:grid-cols-2">
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              By category
+            </h3>
+            <ul className="mt-3 space-y-2">
+              {CATEGORY_LANDINGS.map((cat) => (
+                <li key={cat.slug}>
+                  <Link
+                    href={cat.path}
+                    className="text-sm font-medium text-primary underline-offset-4 hover:underline sm:text-base"
+                  >
+                    {cat.exploreMoreLabel}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              By city
+            </h3>
+            <ul className="mt-3 space-y-2">
+              {LOCATION_LANDINGS.map((loc) => (
+                <li key={loc.slug}>
+                  <Link
+                    href={loc.path}
+                    className="text-sm font-medium text-primary underline-offset-4 hover:underline sm:text-base"
+                  >
+                    {`Browse opportunities in ${loc.city}, NC`}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 

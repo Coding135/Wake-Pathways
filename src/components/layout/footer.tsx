@@ -26,7 +26,7 @@ export function Footer() {
               <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg ring-1 ring-border/50">
                 <Image
                   src={BRAND_LOGO_MARK_32}
-                  alt="Wake Pathways logo"
+                  alt="Wake Pathways logo — opportunities for Wake County students"
                   width={32}
                   height={32}
                   className="object-cover"

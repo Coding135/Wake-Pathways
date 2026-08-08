@@ -3,11 +3,13 @@ import Link from 'next/link';
 import { APP_SHORT_NAME } from '@/lib/constants';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: `Privacy Policy - ${APP_SHORT_NAME}`,
   description: `How ${APP_SHORT_NAME} collects, uses, and protects your information.`,
-};
+  path: '/privacy',
+});
 
 function Section({
   title,

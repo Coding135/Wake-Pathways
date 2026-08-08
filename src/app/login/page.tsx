@@ -1,13 +1,16 @@
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { safeNextPath } from '@/lib/auth/redirect';
 import { LoginForm } from '@/components/auth/login-form';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Log in - Wake Pathways',
   description: 'Sign in to save and compare Wake County teen opportunities.',
-};
+  path: '/login',
+});
 
 type Props = {
   searchParams: Promise<{ next?: string; error?: string; hint?: string }>;

@@ -1,12 +1,15 @@
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import type { SavedOpportunity } from '@/types/database';
 import { SavedAuthenticatedView } from './saved-authenticated-view';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Saved Opportunities - Wake Pathways',
   description: 'Your saved Wake County teen opportunities.',
-};
+  path: '/saved',
+});
 
 export default async function SavedPage() {
   const supabase = await createClient();

@@ -20,6 +20,7 @@ export function formatDeadline(
   if (deadlineType === 'none' || !deadline) return 'No fixed deadline';
 
   const d = new Date(deadline);
+  if (Number.isNaN(d.getTime())) return 'See official deadline';
   if (isPast(d)) return format(d, 'MMM d') + ' (passed)';
   return format(d, 'MMM d');
 }

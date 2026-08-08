@@ -112,13 +112,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!opp) return { title: 'Not Found - Wake Pathways' };
   const base = process.env.NEXT_PUBLIC_SITE_URL?.trim() || 'https://wakepathways.com';
   const pageUrl = `${base.replace(/\/$/, '')}/opportunities/${opp.slug}`;
-  const ogTitle = `${opp.title} - Wake Pathways`;
+  const ogTitle = `${opp.title} | Wake Pathways`;
   const ogDescription =
     opp.short_summary ||
     `Explore details for ${opp.title} on Wake Pathways, including eligibility, location, and application links.`;
   return {
     title: ogTitle,
     description: ogDescription,
+    alternates: { canonical: pageUrl },
     openGraph: {
       type: 'article',
       url: pageUrl,
@@ -130,7 +131,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           url: '/brand/og-card.svg',
           width: 1200,
           height: 630,
-          alt: 'Wake Pathways opportunity listing preview',
+          alt: `${CATEGORY_MAP[opp.category]?.label || 'Opportunity'} opportunity${opp.organization ? ` at ${opp.organization.name}` : ''} for Wake County students`,
         },
       ],
     },
@@ -191,6 +192,31 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
   const compensationExtended = shouldUseExtendedDetailText(compensationBody);
   const schemaDatePublished = opp.created_at || opp.last_verified_at || undefined;
   const schemaDateModified = opp.updated_at || opp.last_verified_at || undefined;
+  const orgSchema = opp.organization
+    ? {
+        '@type': 'Organization' as const,
+        name: opp.organization.name,
+        url: opp.organization.website || undefined,
+      }
+    : undefined;
+  const placeLocation =
+    opp.remote_type === 'remote'
+      ? {
+          '@type': 'VirtualLocation' as const,
+          url: opp.official_application_url || listingUrl,
+        }
+      : {
+          '@type': 'Place' as const,
+          name: opp.location_city
+            ? `${opp.location_city}, NC`
+            : 'Wake County, NC',
+          address: {
+            '@type': 'PostalAddress' as const,
+            addressLocality: opp.location_city || 'Wake County',
+            addressRegion: 'NC',
+            addressCountry: 'US',
+          },
+        };
   const baseSchema = {
     '@context': 'https://schema.org',
     name: opp.title,
@@ -199,20 +225,9 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
     datePublished: schemaDatePublished,
     dateModified: schemaDateModified,
     applicationDeadline: opp.deadline_at || undefined,
-    hiringOrganization: opp.organization
-      ? {
-          '@type': 'Organization',
-          name: opp.organization.name,
-          url: opp.organization.website || undefined,
-        }
-      : undefined,
-    provider: opp.organization
-      ? {
-          '@type': 'Organization',
-          name: opp.organization.name,
-          url: opp.organization.website || undefined,
-        }
-      : undefined,
+    hiringOrganization: orgSchema,
+    provider: orgSchema,
+    organizer: orgSchema,
     educationalProgramMode: REMOTE_LABELS[opp.remote_type],
     offers:
       opp.paid_type !== 'unpaid'
@@ -228,8 +243,23 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
             '@type': 'AdministrativeArea',
             name: [opp.location_city, opp.location_county, 'NC'].filter(Boolean).join(', '),
           }
-        : undefined,
+        : {
+            '@type': 'AdministrativeArea',
+            name: 'Wake County, NC',
+          },
   };
+
+  const tagSet = new Set(opp.tags.map((t) => t.toLowerCase()));
+  const isWorkshopOrCommunityEvent =
+    tagSet.has('workshop') ||
+    tagSet.has('event') ||
+    /\b(workshop|training|summit|networking|hackathon)\b/i.test(
+      [opp.title, opp.short_summary ?? '', ...opp.tags].join(' ')
+    );
+  const useEventSchema =
+    opp.category === 'competition' ||
+    opp.category === 'summer_program' ||
+    isWorkshopOrCommunityEvent;
 
   const listingSchema =
     opp.category === 'job' || opp.category === 'internship'
@@ -240,6 +270,11 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
           datePosted: schemaDatePublished,
           employmentType: opp.category === 'internship' ? 'INTERN' : 'PART_TIME',
           validThrough: opp.deadline_at || undefined,
+          jobLocation: placeLocation,
+          hiringOrganization: orgSchema || {
+            '@type': 'Organization',
+            name: 'Wake Pathways listing partner',
+          },
           applicantLocationRequirements:
             opp.remote_type === 'remote'
               ? {
@@ -248,41 +283,36 @@ export default async function OpportunityDetailPage({ params, searchParams }: Pa
                 }
               : undefined,
         }
-      : opp.category === 'competition' || opp.category === 'summer_program'
+      : opp.category === 'scholarship'
         ? {
             ...baseSchema,
-            '@type': 'Event',
-            eventAttendanceMode:
-              opp.remote_type === 'remote'
-                ? 'https://schema.org/OnlineEventAttendanceMode'
-                : opp.remote_type === 'hybrid'
-                  ? 'https://schema.org/MixedEventAttendanceMode'
-                  : 'https://schema.org/OfflineEventAttendanceMode',
-            eventStatus:
-              opp.application_status === 'closed'
-                ? 'https://schema.org/EventCancelled'
-                : 'https://schema.org/EventScheduled',
-            location:
-              opp.remote_type === 'remote'
-                ? {
-                    '@type': 'VirtualLocation',
-                    url: opp.official_application_url || listingUrl,
-                  }
-                : {
-                    '@type': 'Place',
-                    address: {
-                      '@type': 'PostalAddress',
-                      addressLocality: opp.location_city || undefined,
-                      addressRegion: 'NC',
-                      addressCountry: 'US',
-                    },
-                  },
+            '@type': 'Scholarship',
+            title: opp.title,
+            provider: orgSchema,
           }
-        : {
-            ...baseSchema,
-            '@type': 'EducationalOccupationalProgram',
-            occupationalCategory: CATEGORY_MAP[opp.category]?.label || 'Youth Opportunity',
-          };
+        : useEventSchema
+          ? {
+              ...baseSchema,
+              '@type': 'Event',
+              startDate: opp.deadline_at || schemaDatePublished,
+              eventAttendanceMode:
+                opp.remote_type === 'remote'
+                  ? 'https://schema.org/OnlineEventAttendanceMode'
+                  : opp.remote_type === 'hybrid'
+                    ? 'https://schema.org/MixedEventAttendanceMode'
+                    : 'https://schema.org/OfflineEventAttendanceMode',
+              eventStatus:
+                opp.application_status === 'closed'
+                  ? 'https://schema.org/EventCancelled'
+                  : 'https://schema.org/EventScheduled',
+              location: placeLocation,
+              organizer: orgSchema,
+            }
+          : {
+              ...baseSchema,
+              '@type': 'EducationalOccupationalProgram',
+              occupationalCategory: CATEGORY_MAP[opp.category]?.label || 'Youth Opportunity',
+            };
 
   const compactDetails: DetailBlock[] = [
     {

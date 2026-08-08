@@ -10,12 +10,14 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { buttonVariants } from '@/components/ui/button';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Explore Opportunities - Wake Pathways',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Browse All Opportunities | Wake Pathways — Wake County Students',
   description:
-    'Wake County-first internships, volunteering, and leadership, plus Triangle and NC options. Scholarships include local, statewide, and a small curated set of national awards.',
-};
+    'Browse hundreds of internships, scholarships, volunteer hours, and competitions for Wake County high school students. Filter by category, location, and deadline.',
+  path: '/opportunities',
+});
 
 interface PageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

@@ -1,13 +1,16 @@
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { safeNextPath } from '@/lib/auth/redirect';
 import { SignupForm } from '@/components/auth/signup-form';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Sign up - Wake Pathways',
   description: 'Create a Wake Pathways account to save opportunities.',
-};
+  path: '/signup',
+});
 
 type Props = {
   searchParams: Promise<{ next?: string }>;

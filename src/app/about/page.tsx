@@ -16,11 +16,13 @@ import { APP_SHORT_NAME } from '@/lib/constants';
 import { WCPSS_ENROLLMENT_DISPLAY, getAboutPageListingStats } from '@/lib/about-public-stats';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: `About - ${APP_SHORT_NAME}`,
   description: `Learn about ${APP_SHORT_NAME} and how we help Wake County teens find real local opportunities.`,
-};
+  path: '/about',
+});
 
 const DIFFERENTIATORS = [
   {
