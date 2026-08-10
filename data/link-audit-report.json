@@ -1,0 +1,262 @@
+{
+  "scannedAt": "2026-08-10T15:57:13.590Z",
+  "uniqueUrls": 166,
+  "criticalCount": 3,
+  "blockedCount": 24,
+  "suspiciousCount": 0,
+  "metadataCount": 0,
+  "critical": [
+    {
+      "url": "https://moreheadplanetarium.org/program/teen-science-cafe/",
+      "ok": false,
+      "status": 404,
+      "ct": "text/html",
+      "finalUrl": "https://moreheadplanetarium.org/program/teen-science-cafe/",
+      "crossDomain": false,
+      "isImage": false,
+      "isHtml": true,
+      "isPdf": false,
+      "refs": [
+        {
+          "id": "opp-093",
+          "title": "Morehead Teen Science Cafe",
+          "field": "official_application_url"
+        },
+        {
+          "id": "opp-093",
+          "title": "Morehead Teen Science Cafe",
+          "field": "source_url"
+        }
+      ],
+      "problem": "not_found"
+    },
+    {
+      "url": "https://teamship.us/find-a-teamship-program/nc-teamship-showcase/",
+      "ok": false,
+      "status": 404,
+      "ct": "text/html",
+      "finalUrl": "https://teamship.collegeboard.org/find-a-teamship-program/nc-teamship-showcase/",
+      "crossDomain": true,
+      "isImage": false,
+      "isHtml": true,
+      "isPdf": false,
+      "refs": [
+        {
+          "id": "opp-110",
+          "title": "NC Teamship Showcase (NCSSM partnership)",
+          "field": "official_application_url"
+        }
+      ],
+      "problem": "not_found"
+    },
+    {
+      "url": "https://northcarolina.teach.org/teaching-fellows",
+      "ok": false,
+      "status": 429,
+      "ct": "text/html",
+      "finalUrl": "https://northcarolina.teach.org/teaching-fellows",
+      "crossDomain": false,
+      "isImage": false,
+      "isHtml": true,
+      "isPdf": false,
+      "refs": [
+        {
+          "id": "opp-137",
+          "title": "North Carolina Teaching Fellows Program",
+          "field": "official_application_url"
+        }
+      ],
+      "problem": "http_429"
+    }
+  ],
+  "blocked": [
+    {
+      "url": "https://raleighnc.gov/parks-and-recreation/news/counselor-training-summer-2025",
+      "status": 403,
+      "refs": [
+        "opp-003",
+        "opp-003"
+      ]
+    },
+    {
+      "url": "https://www.ymcatriangle.org/programs/teen-programs/southeast-raleigh-fellowship",
+      "status": 403,
+      "refs": [
+        "opp-023",
+        "opp-023"
+      ]
+    },
+    {
+      "url": "https://carolinatigerrescue.org/get-involved/high-school-community-service/",
+      "status": 403,
+      "refs": [
+        "opp-022",
+        "opp-022"
+      ]
+    },
+    {
+      "url": "https://www.wakeed.org/scholarships/",
+      "status": 403,
+      "refs": [
+        "opp-032",
+        "opp-032"
+      ]
+    },
+    {
+      "url": "https://www.wakeed.org/career-accelerator/",
+      "status": 403,
+      "refs": [
+        "opp-029",
+        "opp-029"
+      ]
+    },
+    {
+      "url": "https://maa.org/math-competitions/amc",
+      "status": 403,
+      "refs": [
+        "opp-049",
+        "opp-049"
+      ]
+    },
+    {
+      "url": "https://cheop.unc.edu/pre-college-programs/project-uplift-and-uplift-plus/",
+      "status": 403,
+      "refs": [
+        "opp-072",
+        "opp-072"
+      ]
+    },
+    {
+      "url": "https://cheop.unc.edu/pre-college-expo/",
+      "status": 403,
+      "refs": [
+        "opp-073",
+        "opp-073"
+      ]
+    },
+    {
+      "url": "https://nchcap.unc.edu/pre-college/hcie-workshops/",
+      "status": 403,
+      "refs": [
+        "opp-075",
+        "opp-075"
+      ]
+    },
+    {
+      "url": "https://upwardbound.unc.edu/",
+      "status": 403,
+      "refs": [
+        "opp-076",
+        "opp-076"
+      ]
+    },
+    {
+      "url": "https://nchcap.unc.edu/pre-college/health-careers-day-on-the-hill/",
+      "status": 403,
+      "refs": [
+        "opp-074",
+        "opp-074"
+      ]
+    },
+    {
+      "url": "https://www.kramden.org/volunteer",
+      "status": 403,
+      "refs": [
+        "opp-090",
+        "opp-090"
+      ]
+    },
+    {
+      "url": "https://www.ncsciencefestival.org/get-involved/volunteer",
+      "status": 403,
+      "refs": [
+        "opp-104",
+        "opp-104"
+      ]
+    },
+    {
+      "url": "https://ncssm.campintouch.com/ui/forms/application/camper/App",
+      "status": 403,
+      "refs": [
+        "opp-108",
+        "opp-109"
+      ]
+    },
+    {
+      "url": "https://www.indeed.com/q-teen-tutoring-l-cary,-nc-jobs.html",
+      "status": 403,
+      "refs": [
+        "opp-116",
+        "opp-116"
+      ]
+    },
+    {
+      "url": "https://www.mathnasium.com/cary/careers",
+      "status": 403,
+      "refs": [
+        "opp-115",
+        "opp-115"
+      ]
+    },
+    {
+      "url": "https://kwfalumnae-dst.org/2026-scholarships/",
+      "status": 403,
+      "refs": [
+        "opp-129",
+        "opp-129"
+      ]
+    },
+    {
+      "url": "https://altriangle.org/scholarships/",
+      "status": 403,
+      "refs": [
+        "opp-133"
+      ]
+    },
+    {
+      "url": "https://altriangle.org/philanthropic-programs/",
+      "status": 403,
+      "refs": [
+        "opp-133"
+      ]
+    },
+    {
+      "url": "https://k12.ncseaa.edu/opportunity-scholarship/",
+      "status": 403,
+      "refs": [
+        "opp-141"
+      ]
+    },
+    {
+      "url": "https://www.ncseaa.edu/2026/01/north-carolina-k12-programs-priority-application-period-opens/",
+      "status": 403,
+      "refs": [
+        "opp-141"
+      ]
+    },
+    {
+      "url": "https://couchoilcares.org/scholarship/",
+      "status": 403,
+      "refs": [
+        "opp-151"
+      ]
+    },
+    {
+      "url": "https://www.couchoilcompany.com/couch-oil-cares/",
+      "status": 403,
+      "refs": [
+        "opp-151"
+      ]
+    },
+    {
+      "url": "https://ncaat.org/our-work/youth-programs/high-school/youth-leadership-institute-summer/",
+      "status": 403,
+      "refs": [
+        "opp-166",
+        "opp-166"
+      ]
+    }
+  ],
+  "suspicious": [],
+  "metadata": []
+}

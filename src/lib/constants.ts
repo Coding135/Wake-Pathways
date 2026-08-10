@@ -16,6 +16,9 @@ export const APP_SHORT_NAME = 'Wake Pathways';
 export const APP_DESCRIPTION =
   'Discover real internships, research experiences, volunteer roles, scholarships, and programs for teens in Wake County, NC.';
 
+/** Dataset freshness shown in the footer; keep in sync with data/verified-listings.json generated_at. */
+export const DATA_LAST_UPDATED_ISO = '2026-08-10T15:56:30.996Z';
+
 // =============================================================================
 // Navigation
 // =============================================================================

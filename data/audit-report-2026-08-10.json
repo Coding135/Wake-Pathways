@@ -1,0 +1,335 @@
+{
+  "audit_date": "2026-08-10",
+  "audited_at": "2026-08-10T15:56:30.996034Z",
+  "source": "data/verified-listings.json (canonical listings store; no Supabase listings table)",
+  "part1": {
+    "deactivated_count": 5,
+    "deactivated": [
+      {
+        "id": "opp-135",
+        "title": "North Carolina Jaycees Outstanding Teenager Scholarship",
+        "deadline_at": "2026-07-15T04:00:00.000Z",
+        "deadline_type": "fixed",
+        "previous_application_status": "unknown"
+      },
+      {
+        "id": "opp-159",
+        "title": "Online Research Academy for High School Students (NC State GTI)",
+        "deadline_at": "2026-06-15T23:59:59Z",
+        "deadline_type": "fixed",
+        "previous_application_status": "open"
+      },
+      {
+        "id": "opp-165",
+        "title": "Cooperative Leadership Camp \u2014 Raleigh Session (2026)",
+        "deadline_at": "2026-05-19T03:59:59.000Z",
+        "deadline_type": "fixed",
+        "previous_application_status": "closed"
+      },
+      {
+        "id": "opp-166",
+        "title": "NCAAT Youth Leadership Institute (Summer 2026)",
+        "deadline_at": "2026-06-08T03:59:59.000Z",
+        "deadline_type": "fixed",
+        "previous_application_status": "open"
+      },
+      {
+        "id": "opp-169",
+        "title": "Raleigh Teen Connect Co-Op Space \u2014 Interest Form (Saint Monica Teen Center)",
+        "deadline_at": "2026-06-15T03:59:59.000Z",
+        "deadline_type": "fixed",
+        "previous_application_status": "open"
+      }
+    ],
+    "flagged_for_review_count": 22,
+    "flagged_for_review": [
+      {
+        "id": "opp-003",
+        "title": "Raleigh Counselor in Training (CIT) Program",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "open",
+        "is_active": true,
+        "official_application_url": "https://raleighnc.gov/parks-and-recreation/news/counselor-training-summer-2025"
+      },
+      {
+        "id": "opp-004",
+        "title": "Wake County Youth Health Council",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "open",
+        "is_active": true,
+        "official_application_url": "https://www.wake.gov/departments-government/public-health/population-health/wake-countys-youth-health-council"
+      },
+      {
+        "id": "opp-009",
+        "title": "NC State Engineering Residential Program",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://www.engr.ncsu.edu/theengineeringplace/summerprograms/hs-residential/"
+      },
+      {
+        "id": "opp-012",
+        "title": "Habitat for Humanity Wake County Summer of Service",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "open",
+        "is_active": true,
+        "official_application_url": "https://www.habitatwake.org/summerofservice"
+      },
+      {
+        "id": "opp-018",
+        "title": "NC Museum of Art Teen Arts Council",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://ncartmuseum.org/events-and-exhibitions/programs/teens/"
+      },
+      {
+        "id": "opp-020",
+        "title": "Raleigh Little Theatre Teens on Stage",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://raleighlittletheatre.org/education/teens-on-stage-teens-backstage/"
+      },
+      {
+        "id": "opp-021",
+        "title": "Raleigh Little Theatre Teens Backstage",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://raleighlittletheatre.org/education/teens-on-stage-teens-backstage/"
+      },
+      {
+        "id": "opp-023",
+        "title": "YMCA Southeast Raleigh Fellowship",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://www.ymcatriangle.org/programs/teen-programs/southeast-raleigh-fellowship"
+      },
+      {
+        "id": "opp-028",
+        "title": "Wake County 4-H Summer Sleepaway Camp",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "open",
+        "is_active": true,
+        "official_application_url": "https://wake.ces.ncsu.edu/wake-county-4-h-2/summer-camp-2026/"
+      },
+      {
+        "id": "opp-032",
+        "title": "Coach Bob Pittard Scholarship",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "open",
+        "is_active": true,
+        "official_application_url": "https://www.wakeed.org/scholarships/"
+      },
+      {
+        "id": "opp-036",
+        "title": "NC Science Olympiad High School Competition",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://ncscienceolympiad.ncsu.edu/tournaments/middle-high-2/"
+      },
+      {
+        "id": "opp-037",
+        "title": "NC Science Olympiad Middle School Competition",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://ncscienceolympiad.ncsu.edu/tournaments/middle-high-2/"
+      },
+      {
+        "id": "opp-042",
+        "title": "NC Governor's School",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://www.dpi.nc.gov/students-families/enhanced-opportunities/governors-school-north-carolina"
+      },
+      {
+        "id": "opp-049",
+        "title": "AMC Math Competitions",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://maa.org/math-competitions/amc"
+      },
+      {
+        "id": "opp-050",
+        "title": "MATHCOUNTS",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://www.mathcounts.org/"
+      },
+      {
+        "id": "opp-051",
+        "title": "Wake County Housing Authority Scholarships",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "open",
+        "is_active": true,
+        "official_application_url": "https://www.wakecountyha.org/scholarships"
+      },
+      {
+        "id": "opp-053",
+        "title": "NC Museum of Natural Sciences Junior Curators",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "open",
+        "is_active": true,
+        "official_application_url": "https://naturalsciences.org/learn/teens"
+      },
+      {
+        "id": "opp-054",
+        "title": "FIRST Robotics Competition (Wake County Teams)",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://www.firstinspires.org/robotics/frc"
+      },
+      {
+        "id": "opp-055",
+        "title": "Raleigh Police Youth Summer Camps",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "open",
+        "is_active": true,
+        "official_application_url": "https://raleighnc.gov/youth/services/police-youth-services/police-youth-summer-camps"
+      },
+      {
+        "id": "opp-080",
+        "title": "NC State Engineering Summer Day Camps (High School)",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://engr.ncsu.edu/theengineeringplace/summerprograms/high-school/"
+      },
+      {
+        "id": "opp-081",
+        "title": "NC State Engineering Summer Day Camps (Middle School)",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://engr.ncsu.edu/theengineeringplace/summerprograms/middle-school/"
+      },
+      {
+        "id": "opp-083",
+        "title": "Engineering Summer Camp Assistant Counselor (High School)",
+        "reason": "null_deadline",
+        "deadline_type": "fixed",
+        "application_status": "closed",
+        "is_active": true,
+        "official_application_url": "https://engr.ncsu.edu/theengineeringplace/summerprograms/employment/"
+      }
+    ],
+    "note": "Deactivated by setting is_active=false (and application_status=closed when needed). No hard deletes."
+  },
+  "part2": {
+    "unique_urls_checked": 166,
+    "broken_links": [
+      {
+        "id": "opp-093",
+        "title": "Morehead Teen Science Cafe",
+        "url": "https://moreheadplanetarium.org/program/teen-science-cafe/",
+        "status": 404
+      },
+      {
+        "id": "opp-110",
+        "title": "NC Teamship Showcase (NCSSM partnership)",
+        "url": "https://teamship.us/find-a-teamship-program/nc-teamship-showcase/",
+        "status": 404
+      }
+    ],
+    "rate_limited_or_uncertain": [
+      {
+        "id": "opp-137",
+        "title": "North Carolina Teaching Fellows Program",
+        "url": "https://northcarolina.teach.org/teaching-fellows",
+        "status": 429
+      }
+    ],
+    "blocked_403_count": 24,
+    "content_spotcheck_file": "data/content-spotcheck-2026-08-10.json",
+    "notable_content_flags": [
+      {
+        "id": "opp-083",
+        "note": "Employment page may indicate roles no longer available"
+      },
+      {
+        "id": "opp-051",
+        "note": "Housing Authority scholarships page content looks like not found / empty"
+      },
+      {
+        "id": "opp-003",
+        "note": "CIT URL returns 403 to bots; path references summer 2025"
+      }
+    ]
+  },
+  "part3": {
+    "pending_file": "data/pending-ai-submissions-2026-08-10.json",
+    "count": 48,
+    "by_category": {
+      "internship": 8,
+      "scholarship": 8,
+      "volunteer": 8,
+      "competition": 8,
+      "summer_program": 8,
+      "other": 8
+    },
+    "supabase_insert": "inserted_48_pending",
+    "insert_script": "scripts/insert-pending-ai-submissions.mjs",
+    "note": "No real SUPABASE keys in workspace. 48 pending rows prepared with verification_notes containing source: ai. Run insert script after adding .env.local keys. Do not auto-publish.",
+    "inserted_at": "2026-08-10"
+  },
+  "part4": {
+    "pages_checked": [
+      "Home",
+      "Browse",
+      "Submit",
+      "Admin",
+      "Listing detail"
+    ],
+    "console_errors_observed": 0,
+    "broken_images": 0,
+    "placeholder_text_in_active_listings": 0,
+    "filters": {
+      "unit_tests": "18/18 passed",
+      "internship_filter": "8 results",
+      "cary_filter": "6 results",
+      "explore_actionable_count": 114
+    },
+    "mobile_375": "Home/Browse/Submit checked; hamburger nav present; footer Data last updated Aug 10 2026 visible",
+    "admin": "returns notFound for non-moderator (expected)",
+    "performance_note": "Local first-nav ~10s includes Turbopack compile; transferSize ~28KB on listing page. No large listing images in dataset.",
+    "footer_data_last_updated": "August 10, 2026",
+    "bugs_fixed": [
+      "Added footer Data last updated timestamp (was missing)",
+      "Deactivated 5 expired active listings in verified-listings.json"
+    ],
+    "bugs_found_not_fixed": [
+      "Local/dev requires NEXT_PUBLIC_SUPABASE_* or Home throws",
+      "ncfbla.org appears domain-hijacked/parked (shopping content) \u2014 do not link",
+      "Accessibility tree sometimes reads category count as \"listing s\" due to split text nodes"
+    ]
+  }
+}

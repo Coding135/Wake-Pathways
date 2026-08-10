@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-31T18:00:00Z",
-  "total_listings": 135,
+  "generated_at": "2026-08-10T15:56:30.996034Z",
+  "total_listings": 130,
   "organizations": [
     {
       "id": "org-001",
@@ -5613,7 +5613,7 @@
       "is_free": true,
       "deadline_type": "fixed",
       "deadline_at": "2026-07-15T04:00:00.000Z",
-      "application_status": "unknown",
+      "application_status": "closed",
       "official_application_url": "https://trianglecf.org/award/north-carolina-jaycees-outstanding-teenager-scholarship/",
       "source_url": "https://trianglecf.org/award/north-carolina-jaycees-outstanding-teenager-scholarship/",
       "source_name": "North Carolina Jaycee Foundation (via Triangle Community Foundation)",
@@ -5622,7 +5622,7 @@
       "verification_status": "verified",
       "last_verified_at": "2026-05-09T13:55:00Z",
       "featured": false,
-      "is_active": true,
+      "is_active": false,
       "time_commitment": "Deadline is typically mid-July; confirm each year on the award page and PDF.",
       "tags": [
         "scholarship",
@@ -6637,7 +6637,7 @@
       "is_free": false,
       "deadline_type": "fixed",
       "deadline_at": "2026-06-15T23:59:59Z",
-      "application_status": "open",
+      "application_status": "closed",
       "official_application_url": "https://gti.ncsu.edu/student-programs/online-research-program-high-school/",
       "source_url": "https://gti.ncsu.edu/student-programs/online-research-program-high-school/",
       "source_name": "NC State University (Global Training Initiative)",
@@ -6646,7 +6646,7 @@
       "verification_status": "verified",
       "last_verified_at": "2026-05-09T13:55:00Z",
       "featured": false,
-      "is_active": true,
+      "is_active": false,
       "time_commitment": "About 5 to 10 hours per week during workshops; orientation June 29, workshops July 6 through July 31, graduation August 7, 2026 (per official page).",
       "tags": [
         "research",
@@ -6926,7 +6926,7 @@
       "verification_status": "verified",
       "last_verified_at": "2026-05-31T18:00:00Z",
       "featured": false,
-      "is_active": true,
+      "is_active": false,
       "time_commitment": "June 22\u201324, 2026; 9:00 a.m.\u20134:00 p.m. each day.",
       "tags": [
         "summer",
@@ -6959,7 +6959,7 @@
       "is_free": true,
       "deadline_type": "fixed",
       "deadline_at": "2026-06-08T03:59:59.000Z",
-      "application_status": "open",
+      "application_status": "closed",
       "official_application_url": "https://ncaat.org/our-work/youth-programs/high-school/youth-leadership-institute-summer/",
       "source_url": "https://ncaat.org/our-work/youth-programs/high-school/youth-leadership-institute-summer/",
       "source_name": "North Carolina Asian Americans Together (NCAAT)",
@@ -6968,7 +6968,7 @@
       "verification_status": "verified",
       "last_verified_at": "2026-05-09T13:55:00Z",
       "featured": false,
-      "is_active": true,
+      "is_active": false,
       "time_commitment": "July 13\u201315, 2026 (daily ~9:00 a.m.\u20134:00 p.m.).",
       "tags": [
         "leadership",
@@ -7084,7 +7084,7 @@
       "is_free": true,
       "deadline_type": "fixed",
       "deadline_at": "2026-06-15T03:59:59.000Z",
-      "application_status": "open",
+      "application_status": "closed",
       "official_application_url": "https://forms.cloud.microsoft/g/x0XjDH82RN",
       "source_url": "https://raleighnc.gov/parks-and-recreation/services/teen-programs",
       "source_name": "City of Raleigh",
@@ -7093,7 +7093,7 @@
       "verification_status": "verified",
       "last_verified_at": "2026-05-09T13:55:00Z",
       "featured": false,
-      "is_active": true,
+      "is_active": false,
       "time_commitment": "Interest window listed May 1\u2013June 14, 2026 on the Teen Programs page (deadline stored as end-of-day Eastern converted to UTC).",
       "tags": [
         "community",

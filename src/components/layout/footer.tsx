@@ -1,8 +1,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { APP_SHORT_NAME } from '@/lib/constants';
+import { APP_SHORT_NAME, DATA_LAST_UPDATED_ISO } from '@/lib/constants';
 import { BRAND_LOGO_MARK_32 } from '@/lib/brand';
 import { SiteFeedbackDialog } from '@/components/layout/site-feedback-dialog';
+
+function formatDataLastUpdated(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'America/New_York',
+  });
+}
 
 const FOOTER_LINKS = [
   { label: 'Explore', href: '/opportunities' },
@@ -89,6 +100,9 @@ export function Footer() {
               <span className="text-muted-foreground/80">or</span>
               <SiteFeedbackDialog />
             </span>
+          </p>
+          <p className="mt-2 text-xs text-muted-foreground/70">
+            Data last updated {formatDataLastUpdated(DATA_LAST_UPDATED_ISO)}.
           </p>
           <p className="mt-2 text-xs text-muted-foreground/70">
             &copy; {new Date().getFullYear()} {APP_SHORT_NAME}. Built with
